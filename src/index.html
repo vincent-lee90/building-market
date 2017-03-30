@@ -4,9 +4,12 @@
   <meta charset="utf-8">
   <title>BuildingMarket</title>
   <base href="/">
-
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <script>
+    var width = window.innerWidth ? window.innerWidth : window.screen.width;
+    document.documentElement.style.fontSize = width / 3.75 + 'px';
+  </script>
 </head>
 <body>
   <app-root>Loading...</app-root>

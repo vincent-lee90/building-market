@@ -1,7 +1,7 @@
-.header{
+.header {
   background-color: #fff;
   padding: 0.05rem;
-  img{
-    width: .7rem;
-  }
+}
+.header img {
+  width: .7rem;
 }
