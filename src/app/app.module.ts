@@ -6,11 +6,13 @@ import {RouterModule} from '@angular/router';
 import {appRoutes} from './app.routes';
 import { AppComponent } from './app.component';
 import {IndexComponent} from './index/index.component';
+import {SliderComponent} from './slider/slider.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    IndexComponent
+    IndexComponent,
+    SliderComponent
   ],
   imports: [
     BrowserModule,

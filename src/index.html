@@ -7,8 +7,14 @@
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <script>
-    var width = window.innerWidth ? window.innerWidth : window.screen.width;
-    document.documentElement.style.fontSize = width / 3.75 + 'px';
+    var setFontSize = function () {
+      var width = window.innerWidth ? window.innerWidth : window.screen.width;
+      document.documentElement.style.fontSize = width / 3.75 + 'px';
+    };
+    window.onresize = function () {
+      setFontSize()
+    };
+    setFontSize()
   </script>
 </head>
 <body>
