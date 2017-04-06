@@ -7,12 +7,14 @@ import {appRoutes} from './app.routes';
 import { AppComponent } from './app.component';
 import {IndexComponent} from './index/index.component';
 import {SliderComponent} from './slider/slider.component';
+import {MainMenuComponent} from './main-menu/main-menu.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     IndexComponent,
-    SliderComponent
+    SliderComponent,
+    MainMenuComponent
   ],
   imports: [
     BrowserModule,

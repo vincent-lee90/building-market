@@ -30,3 +30,12 @@
 .index {
   padding-top: .42rem;
 }
+.ensure > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ensure img {
+  height: .24rem;
+  margin-right: .02rem;
+}
