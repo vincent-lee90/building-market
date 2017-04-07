@@ -1,2 +1,2 @@
 The compress option has been deprecated. We recommend you use a dedicated css minifier, for instance see less-plugin-clean-css.
-.header{background-color:#fafafa;display:flex;justify-content:space-between;align-items:center;height:.42rem}.header img:nth-child(1){height:.24rem}.header img:nth-child(2){height:.24rem}.header img:nth-child(3){height:.24rem}
+.header{background-color:#fafafa;display:flex;justify-content:space-between;align-items:center;height:.42rem}.header img:nth-child(1){height:.24rem}.header img:nth-child(2){height:.24rem}.header img:nth-child(3){height:.24rem}.stores-list{background-color:#fff;display:flex;flex-wrap:wrap;justify-content:space-between}.stores-list>li{margin-bottom:.1rem;width:1.65rem}.stores-list>li>img{width:100%}

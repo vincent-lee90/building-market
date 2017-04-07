@@ -1,0 +1,33 @@
+.slider{
+  img{
+    max-width: 100%;
+  }
+}
+.goods{
+  background-color: #fff;
+  .goods-header{
+    border-left: 2px solid #e81a62;
+    padding-left: .1rem;
+  }
+  .goods-thumb{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    img{
+      max-width: 100%;
+      width: 100%;
+    }
+    &>li{
+      width: 50%;
+      &:nth-child(1),&:nth-child(3){
+        border-right: 1px solid #dfdfdf;
+      }
+      &:nth-child(4),&:nth-child(3){
+        border-top: 1px solid #dfdfdf;
+      }
+    }
+  }
+}
+.goods-container{
+  margin-bottom: .15rem;
+}

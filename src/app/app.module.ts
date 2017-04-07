@@ -6,20 +6,20 @@ import {RouterModule} from '@angular/router';
 import {appRoutes} from './app.routes';
 import { AppComponent } from './app.component';
 import {IndexComponent} from './index/index.component';
-import {SliderComponent} from './slider/slider.component';
-import {MainMenuComponent} from './main-menu/main-menu.component';
+import {SliderModule} from './share/slider/slider.module';
+import {MainMenuModule} from './share/main-menu/main-menu.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    IndexComponent,
-    SliderComponent,
-    MainMenuComponent
+    IndexComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
+    SliderModule,
+    MainMenuModule,
     RouterModule.forRoot(appRoutes)
   ],
   providers: [],
