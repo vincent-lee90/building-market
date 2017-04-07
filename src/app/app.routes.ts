@@ -7,5 +7,8 @@ export const appRoutes=[
   },{
     path:'index',
     component:IndexComponent
+  },{
+  path:'stores',
+    loadChildren:'./mall/mall.module#MallModule'
   }
 ];

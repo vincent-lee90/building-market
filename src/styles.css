@@ -1848,6 +1848,12 @@ body {
 a {
   color: inherit;
 }
+a:focus,
+a:active,
+a:hover {
+  text-decoration: none;
+  color: inherit;
+}
 ul > li {
   list-style: none;
 }
