@@ -1,2 +1,39 @@
-The compress option has been deprecated. We recommend you use a dedicated css minifier, for instance see less-plugin-clean-css.
-.slider img{max-width:100%}.goods{background-color:#fff}.goods .goods-header{border-left:2px solid #e81a62;padding-left:.1rem;display:flex;justify-content:space-between;align-items:center}.goods .goods-thumb{display:flex;justify-content:space-between;flex-wrap:wrap}.goods .goods-thumb img{max-width:100%;width:100%}.goods .goods-thumb>li{width:50%}.goods .goods-thumb>li:nth-child(1),.goods .goods-thumb>li:nth-child(3){border-right:1px solid #dfdfdf}.goods .goods-thumb>li:nth-child(4),.goods .goods-thumb>li:nth-child(3){border-top:1px solid #dfdfdf}.goods-container{margin-bottom:.8rem}.arrow{height:.18rem}
+.slider img {
+  max-width: 100%;
+}
+.goods {
+  background-color: #fff;
+}
+.goods .goods-header {
+  border-left: 2px solid #e81a62;
+  padding-left: .1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.goods .goods-thumb {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.goods .goods-thumb img {
+  max-width: 100%;
+  width: 100%;
+}
+.goods .goods-thumb > li {
+  width: 50%;
+}
+.goods .goods-thumb > li:nth-child(1),
+.goods .goods-thumb > li:nth-child(3) {
+  border-right: 1px solid #dfdfdf;
+}
+.goods .goods-thumb > li:nth-child(4),
+.goods .goods-thumb > li:nth-child(3) {
+  border-top: 1px solid #dfdfdf;
+}
+.goods-container {
+  margin-bottom: .8rem;
+}
+.arrow {
+  height: .18rem;
+}
