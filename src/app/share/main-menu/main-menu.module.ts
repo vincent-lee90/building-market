@@ -1,7 +1,8 @@
 import {NgModule} from "@angular/core";
+import {RouterModule} from '@angular/router';
 import {MainMenuComponent} from "./main-menu.component";
 @NgModule({
-  imports:[],
+  imports:[RouterModule],
   declarations:[MainMenuComponent],
   exports:[MainMenuComponent]
 })
