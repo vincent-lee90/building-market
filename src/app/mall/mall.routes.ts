@@ -4,5 +4,8 @@ export const mallRoutes=[
   {
     path:'',
     component:MallComponent
+  },{
+  path:'./stores',
+    component:StoresComponent
   }
 ];
