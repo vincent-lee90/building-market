@@ -5,7 +5,7 @@ export const mallRoutes=[
     path:'',
     component:MallComponent
   },{
-  path:'./stores',
+  path:'stores/:category',
     component:StoresComponent
   }
 ];
