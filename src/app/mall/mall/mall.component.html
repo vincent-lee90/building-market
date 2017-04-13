@@ -5,7 +5,8 @@
   <div class="goods-container">
     <div class="goods  margin-top-15">
       <div class="padding-v-12 padding-h-default border-bottom-default">
-        <div class="goods-header">灯饰照明<img class="arrow" src="./imgs/arrow-right.png"></div>
+        <div class="goods-header">灯饰照明<img class="arrow" src="./imgs/arrow-right.png" routerLink="./stores/{{'light'}}">
+        </div>
       </div>
       <ul class="goods-thumb padding-h-default">
         <li><img src="./imgs/light01.jpg"></li>
@@ -16,7 +17,8 @@
     </div>
     <div class="goods  margin-top-15">
       <div class="padding-v-12 padding-h-default border-bottom-default">
-        <div class="goods-header">建材五金<span><img class="arrow" src="./imgs/arrow-right.png" [routerLink]="['/stores',{category:}]"></span></div>
+        <div class="goods-header">建材五金<span><img class="arrow" src="./imgs/arrow-right.png"
+                                                 routerLink="./stores/{{'hardware'}}"></span></div>
       </div>
       <ul class="goods-thumb padding-h-default">
         <li><img src="./imgs/hardware01.jpg"></li>
