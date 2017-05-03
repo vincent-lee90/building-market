@@ -1,2 +1,2 @@
 The compress option has been deprecated. We recommend you use a dedicated css minifier, for instance see less-plugin-clean-css.
-.detail-img img{width:100%}.fixed-bottom{width:100%}.good-title{font-size:.16rem;color:#051b28}.good-price{color:#e81a62}
+.detail-img img{width:100%}.fixed-bottom{width:100%}.good-title{font-size:.16rem;color:#051b28}.good-price{color:#e81a62}.locate{display:flex;align-items:center}.locate img.locate-img{height:.16rem;margin-right:5px}.to-store{width:2rem;border:1px solid #ccc;border-radius:5px;text-align:center;color:#666;padding:.04rem;display:inline-block}
