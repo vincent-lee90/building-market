@@ -6,13 +6,14 @@ export const mineRoutes=[
   {
     path:'',
     canActivate:[AuthGuard],
+    component:MineComponent,
     loadChild:[
       {
         path:'',
         component:MineComponent
       },
       {
-        path:'orders',
+        path:'./orders',
         component:OrdersComponent
       }
     ]
