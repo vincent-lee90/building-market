@@ -8,7 +8,6 @@ import { AppComponent } from './app.component';
 import {IndexComponent} from './index/index.component';
 import {SliderModule} from './share/slider/slider.module';
 import {MainMenuModule} from './share/main-menu/main-menu.module';
-
 @NgModule({
   declarations: [
     AppComponent,

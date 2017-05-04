@@ -1,4 +1,5 @@
 import {IndexComponent} from './index/index.component';
+
 export const appRoutes = [
   {
     path: '',
@@ -13,5 +14,8 @@ export const appRoutes = [
   }, {
     path: 'account',
     loadChildren: './account/account.module#AccountModule'
+  }, {
+    path: 'mine',
+    loadChildren: './mine/mine.module#MineModule'
   }
 ];
