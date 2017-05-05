@@ -10,7 +10,7 @@ export const appRoutes = [
     component: IndexComponent
   }, {
     path: 'mall',
-    loadChildren: 'app/mall/mall.module#MallModuleModModule'
+    loadChildren: 'app/mall/mall.module#MallModule'
   }, {
     path: 'account',
     loadChildren: './account/account.module#AccountModule'
