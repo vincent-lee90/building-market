@@ -17,5 +17,8 @@ export const appRoutes = [
   }, {
     path: 'mine',
     loadChildren: './mine/mine.module#MineModule'
+  }, {
+    path: 'strategy',
+    loadChildren: './strategy/strategy.module#StrategyModule'
   }
 ];

@@ -1,21 +1,19 @@
 import {MineComponent} from './mine/mine.component';
 import {OrdersComponent} from './orders/orders.component';
 import {AuthGuard} from '../auth-guard/auth-guard';
+import {JoinUsComponent} from './join-us/join-us.component';
 
 export const mineRoutes=[
   {
     path:'',
-    canActivate:[AuthGuard],
     component:MineComponent,
-    loadChild:[
-      {
-        path:'',
-        component:MineComponent
-      },
-      {
-        path:'./orders',
-        component:OrdersComponent
-      }
-    ]
+  },
+  {
+    path:'join-us',
+    component:JoinUsComponent
+  },
+  {
+    path:'orders',
+    component:OrdersComponent
   }
 ];
