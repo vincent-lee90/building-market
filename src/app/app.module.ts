@@ -6,12 +6,14 @@ import {RouterModule} from '@angular/router';
 import {appRoutes} from './app.routes';
 import { AppComponent } from './app.component';
 import {IndexComponent} from './index/index.component';
+import {ManualComponent} from './manual/manual.component';
 import {SliderModule} from './share/slider/slider.module';
 import {MainMenuModule} from './share/main-menu/main-menu.module';
 @NgModule({
   declarations: [
     AppComponent,
-    IndexComponent
+    IndexComponent,
+    ManualComponent
   ],
   imports: [
     BrowserModule,

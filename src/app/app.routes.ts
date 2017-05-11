@@ -1,5 +1,5 @@
 import {IndexComponent} from './index/index.component';
-
+import {ManualComponent} from './manual/manual.component'
 export const appRoutes = [
   {
     path: '',
@@ -20,5 +20,8 @@ export const appRoutes = [
   }, {
     path: 'strategy',
     loadChildren: './strategy/strategy.module#StrategyModule'
+  }, {
+    path: 'manual',
+    component: ManualComponent
   }
 ];
