@@ -1,9 +1,9 @@
 <form class="form padding-h-default bg-lightest margin-top-15 padding-v-16">
   <div>
-    <label><input type="text" placeholder="用户名"></label>
+    <label><input type="text" placeholder="用户名" [(ngModel)]="user.userName"></label>
   </div>
   <div class="margin-top-15">
-    <label><input type="password" placeholder="密码"></label>
+    <label><input type="password" placeholder="密码" [(ngModel)]="user.password"></label>
   </div>
   <div class="margin-top-30  btn-radius btn-default login">登录</div>
 </form>
