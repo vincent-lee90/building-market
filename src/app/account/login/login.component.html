@@ -1,11 +1,11 @@
 <form class="form padding-h-default bg-lightest margin-top-15 padding-v-16">
   <div>
-    <label><input type="text" placeholder="用户名" [(ngModel)]="user.userName"></label>
+    <label><input type="text" placeholder="用户名" [(ngModel)]="user.userName" name="userName"></label>
   </div>
   <div class="margin-top-15">
-    <label><input type="password" placeholder="密码" [(ngModel)]="user.password"></label>
+    <label><input type="password" placeholder="密码" [(ngModel)]="user.password" name="password"></label>
   </div>
-  <div class="margin-top-30  btn-radius btn-default login">登录</div>
+  <div class="margin-top-30  btn-radius btn-default login" (click)="login()">登录</div>
 </form>
 <div class="margin-top-15 font-color-content padding-h-default padding-v-12">
   <span class="pull-left" routerLink="./reset">忘记密码</span>

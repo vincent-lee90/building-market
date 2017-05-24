@@ -10,6 +10,7 @@ export const mineRoutes=[
   },
   {
     path:'join-us',
+    canActivate:[AuthGuard],
     component:JoinUsComponent
   },
   {
