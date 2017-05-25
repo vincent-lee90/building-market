@@ -20,7 +20,7 @@ export class AccountService {
       .map((res: Response) => {
         return res;
       }).subscribe(data=>{
-        console.log(data)
+
       })
   }
 }
