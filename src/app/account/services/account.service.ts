@@ -1,5 +1,5 @@
 import {Injectable} from "@angular/core";
-import {Http, Response} from '@angular/http';
+import {Http, Response,URLSearchParams } from '@angular/http';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
@@ -12,10 +12,12 @@ export class AccountService {
   }
 
   login(user: User) {
+    let params=new URLSearchParams();
+    params.append('userName',user.userName);
+    params.append('password',user.password);
     return this.http
-      .get(this.loginUrl)
+      .get(this.loginUrl,{search:params})
       .map((res: Response) => {
-        console.log(res);
         return res;
       }).subscribe(data=>{
         console.log(data)
