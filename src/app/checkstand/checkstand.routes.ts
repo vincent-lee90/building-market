@@ -6,7 +6,7 @@ export const checkstandRoutes = [
   {
     path: '',
     component: CheckstandComponent,
-    AuthGuard: [AuthGuard],
+    canActivate: [AuthGuard],
     children: [
       {path: '', redirectTo: 'order', pathMatch: 'full'},
       {path: 'order', component: OrderComponent},
