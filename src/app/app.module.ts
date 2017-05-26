@@ -9,6 +9,8 @@ import {IndexComponent} from './index/index.component';
 import {ManualComponent} from './manual/manual.component';
 import {SliderModule} from './share/slider/slider.module';
 import {MainMenuModule} from './share/main-menu/main-menu.module';
+import {AuthGuardService} from './auth-guard/auth-guard.service';
+import {AuthGuard} from './auth-guard/auth-guard';
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,7 +25,7 @@ import {MainMenuModule} from './share/main-menu/main-menu.module';
     MainMenuModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [],
+  providers: [AuthGuard,AuthGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -18,9 +18,7 @@ export class AccountService {
     return this.http
       .get(this.loginUrl,{search:params})
       .map((res: Response) => {
-        return res;
-      }).subscribe(data=>{
-
+        return res.json();
       })
   }
 }
