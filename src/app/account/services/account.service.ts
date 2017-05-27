@@ -1,5 +1,5 @@
 import {Injectable} from "@angular/core";
-import {Http, Response,URLSearchParams } from '@angular/http';
+import {Http, Response, URLSearchParams} from '@angular/http';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
@@ -7,18 +7,30 @@ import {User} from '../model/user-model';
 @Injectable()
 export class AccountService {
   public loginUrl = 'users';
+  public registerUrl = 'users/register';
 
   constructor(private http: Http) {
   }
 
   login(user: User) {
-    let params=new URLSearchParams();
-    params.append('userName',user.userName);
-    params.append('password',user.password);
+    let params = new URLSearchParams();
+    params.append('userName', user.userName);
+    params.append('password', user.password);
     return this.http
-      .get(this.loginUrl,{search:params})
+      .get(this.loginUrl, {search: params})
       .map((res: Response) => {
         return res.json();
+      })
+  }
+
+  register(user: User) {
+    let params = new URLSearchParams();
+    params.append('userName', user.userName);
+    params.append('password', user.password);
+    return this.http
+      .post(this.registerUrl,params)
+      .map((res: Response) => {
+        return res.json()
       })
   }
 }

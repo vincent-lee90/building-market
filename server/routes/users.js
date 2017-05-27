@@ -23,16 +23,35 @@ router.get('/', function(req, res, next) {
     res.setHeader('Content-Type', 'application/json;charset=utf-8');
     if(result.length===0){
       response.statusCode='500';
-      response.message='账号或者密码错误';
-      response.body=[];
-      res.send(response);
-    }else{
-      response.statusCode='200';
-      response.message='OK';
+      response.message='请输入用户名';
       response.body=[];
       res.send(response);
     }
+    if(!req.query.password){
+      response.statusCode='500';
+      response.message='请输入密码';
+      response.body=[];
+      res.send(response);
+      return;
+    }
   })
+});
+router.post('/register',function (req,res,next){
+  if(!req.query.userName){
+    response.statusCode='500';
+    response.message='请输入用户名';
+    res.send(response);
+    response.body=[];
+    return;
+  }
+  if(!req.query.password){
+    response.statusCode='500';
+    response.message='请输入密码';
+    response.body=[];
+    res.send(response);
+    return;
+  }
+  res.send("registered");
 });
 
 module.exports = router;
