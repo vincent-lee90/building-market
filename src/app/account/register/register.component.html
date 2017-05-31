@@ -1,12 +1,12 @@
 <form class="form padding-h-default bg-lightest margin-top-15 padding-v-16">
   <div>
-    <label><input type="text" placeholder="用户名"></label>
+    <label><input type="text" placeholder="用户名" [(ngModel)]="user.userName" name="userName"></label>
   </div>
   <div class="margin-top-15">
-    <label><input type="password" placeholder="密码"></label>
+    <label><input type="password" placeholder="密码" [(ngModel)]="user.password" name="password"></label>
   </div>
   <div class="margin-top-15">
-    <label><input type="password" placeholder="再次输入密码"></label>
+    <label><input type="password" placeholder="再次输入密码" #rePassword name="rePassword"></label>
   </div>
-  <div class="margin-top-30  btn-radius btn-default login" (click)="register()">确定</div>
+  <div class="margin-top-30  btn-radius btn-default login" (click)="register(rePassword.value)">确定</div>
 </form>

@@ -50,7 +50,7 @@ router.post('/register',function (req,res,next){
     return;
   }
   var result=mysql.query('insert into user (name,password) values (\''+req.query.userName+'\',\''+req.query.password+'\');',function (result) {
-    
+    res.send('ok');
   })
 });
 

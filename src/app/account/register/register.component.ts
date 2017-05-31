@@ -8,13 +8,16 @@ import {AccountService} from '../services/account.service';
   providers: [AccountService]
 })
 export class RegisterComponent {
-  public newUser = new User();
+  public user = new User();
 
   constructor(private accountService: AccountService) {
   }
 
-  register() {
-    this.accountService.register(this.newUser)
+  register(rePassword) {
+    if(this.user.password!==rePassword){
+      return;
+    }
+    this.accountService.register(this.user)
       .subscribe(data => console.log(data));
   }
 }
