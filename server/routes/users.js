@@ -23,16 +23,14 @@ router.get('/', function(req, res, next) {
     res.setHeader('Content-Type', 'application/json;charset=utf-8');
     if(result.length===0){
       response.statusCode='500';
-      response.message='请输入用户名';
+      response.message='账号或者密码错误';
       response.body=[];
       res.send(response);
-    }
-    if(!req.query.password){
-      response.statusCode='500';
-      response.message='请输入密码';
+    }else{
+      response.statusCode='200';
+      response.message='OK';
       response.body=[];
       res.send(response);
-      return;
     }
   })
 });
@@ -51,7 +49,9 @@ router.post('/register',function (req,res,next){
     res.send(response);
     return;
   }
-  res.send("registered");
+  var result=mysql.query('insert into user (name,password) values (\''+req.query.userName+'\',\''+req.query.password+'\');',function (result) {
+    
+  })
 });
 
 module.exports = router;
