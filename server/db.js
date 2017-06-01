@@ -1,6 +1,6 @@
 var mysql=require('mysql');
 var db={};
-db.query=function sqlback(sqllan,fn) {
+db.query=function sqlback(sqllan,fn,errorFn) {
   var connection=mysql.createConnection({
     host:'119.23.42.129',
     user:'root',
@@ -11,11 +11,12 @@ db.query=function sqlback(sqllan,fn) {
   connection.connect(function (err) {
     if(err){
       console.log(err);
-      return;
+      errorFn(err);
     }
   });
   connection.query(sqllan,function (err,rows,fields) {
     if(err){
+      errorFn&&errorFn(err);
       console.log(err);
       return;
     }

@@ -21,8 +21,10 @@ export class RegisterComponent {
     }
     this.accountService.register(this.user)
       .subscribe(data => {
-        this.authService.isLogin=true;
-        this.router.navigate([this.authService.redirectUrl]);
+        if(data.statusCode==200){
+          this.authService.isLogin=true;
+          this.router.navigate([this.authService.redirectUrl]);
+        }
       });
   }
 }

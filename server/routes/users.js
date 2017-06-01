@@ -51,21 +51,17 @@ router.post('/register', function (req, res, next) {
     res.send(response);
     return;
   }
-  mysql.query('select * from user where name=\'' + req.body.userName + '\';', function (result) {
-    if(result.length===0){
-      mysql.query('insert into user (name,password) values (\'' + req.body.userName + '\',\'' + req.body.password + '\');', function (result) {
-        response.statusCode = '200';
-        response.message = 'OK';
-        response.body = [];
-        res.send(response);
-      })
-    }else{
-      response.statusCode = '500';
-      response.message = '用户名已存在';
-      response.body = [];
-      res.send(response);
-    }
-  });
+  mysql.query('insert into user (name,password) values (\'' + req.body.userName + '\',\'' + req.body.password + '\');', function (result) {
+    response.statusCode = '200';
+    response.message = 'OK';
+    response.body = [];
+    res.send(response);
+  },function (err) {
+    response.statusCode = '500';
+    response.message = err.message;
+    response.body = [];
+    res.send(response)
+  })
 });
 
 module.exports = router;
