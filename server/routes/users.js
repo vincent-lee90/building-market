@@ -57,8 +57,12 @@ router.post('/register', function (req, res, next) {
     response.body = [];
     res.send(response);
   },function (err) {
+    if(err.code==='ER_DUP_ENTRY'){
+      response.message = '用户名已存在';
+    }else {
+      response.message=err.message;
+    }
     response.statusCode = '500';
-    response.message = err.message;
     response.body = [];
     res.send(response)
   })
