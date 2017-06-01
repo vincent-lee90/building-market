@@ -1,6 +1,8 @@
 import {Component} from '@angular/core';
 import {User} from '../model/user-model';
 import {AccountService} from '../services/account.service';
+import {AuthGuardService} from '../../auth-guard/auth-guard.service';
+import {Router} from '@angular/router';
 @Component({
   selector: 'register',
   templateUrl: './register.component.html',
@@ -10,7 +12,7 @@ import {AccountService} from '../services/account.service';
 export class RegisterComponent {
   public user = new User();
 
-  constructor(private accountService: AccountService) {
+  constructor(private accountService: AccountService,private authService:AuthGuardService,private router:Router) {
   }
 
   register(rePassword) {
@@ -18,6 +20,9 @@ export class RegisterComponent {
       return;
     }
     this.accountService.register(this.user)
-      .subscribe(data => console.log(data));
+      .subscribe(data => {
+        this.authService.isLogin=true;
+        this.router.navigate([this.authService.redirectUrl]);
+      });
   }
 }
