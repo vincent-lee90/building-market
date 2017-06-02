@@ -9,6 +9,7 @@ import {IndexComponent} from './index/index.component';
 import {ManualComponent} from './manual/manual.component';
 import {SliderModule} from './share/slider/slider.module';
 import {MainMenuModule} from './share/main-menu/main-menu.module';
+import {MyDialogModule} from './share/myDialog/myDialog.module';
 import {AuthGuardService} from './auth-guard/auth-guard.service';
 import {AuthGuard} from './auth-guard/auth-guard';
 @NgModule({
@@ -23,6 +24,7 @@ import {AuthGuard} from './auth-guard/auth-guard';
     HttpModule,
     SliderModule,
     MainMenuModule,
+    MyDialogModule,
     RouterModule.forRoot(appRoutes)
   ],
   providers: [AuthGuard,AuthGuardService],

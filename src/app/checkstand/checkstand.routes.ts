@@ -1,4 +1,4 @@
-import {OrderComponent} from './order/order.component';
+import {ConfirmOrderComponent} from './confirm-order/confirm-order.component';
 import {PayComponent} from './pay/pay.component';
 import {CheckstandComponent} from './checkstand/checkstand.component';
 import {AuthGuard} from '../auth-guard/auth-guard';
@@ -9,7 +9,7 @@ export const checkstandRoutes = [
     canActivate: [AuthGuard],
     children: [
       {path: '', redirectTo: 'order', pathMatch: 'full'},
-      {path: 'order', component: OrderComponent},
+      {path: 'order', component: ConfirmOrderComponent},
       {path: 'pay', component: PayComponent}
     ]
   },
