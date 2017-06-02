@@ -1,9 +1,9 @@
 import {Component} from '@angular/core';
-Component({
+@Component({
   selector:'alert',
   templateUrl:'alert.component.html',
-  styleUrls:['alert.component.html']
-});
+  styleUrls:['alert.component.less']
+})
 export class AlertComponent{
 
 }
