@@ -13,7 +13,16 @@ export class AppAlertComponent implements OnInit {
 
   ngOnInit() {
     this.appDialogService.alertContentGot$.subscribe(alertContent => {
-      this.alertContent = alertContent
+      this.showAlert(alertContent)
     })
+  }
+  showAlert(alertContent:string){
+    if(this.alertContent){
+      return;
+    }
+    this.alertContent=alertContent;
+    setTimeout(()=>{
+      this.alertContent=""
+    },3000)
   }
 }
