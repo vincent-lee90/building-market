@@ -12,6 +12,7 @@ import {MainMenuModule} from './share/main-menu/main-menu.module';
 import {MyDialogModule} from './share/myDialog/myDialog.module';
 import {AuthGuardService} from './auth-guard/auth-guard.service';
 import {AuthGuard} from './auth-guard/auth-guard';
+import {AppDialogService} from './share/myDialog/app-alert/app-dialog.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +28,7 @@ import {AuthGuard} from './auth-guard/auth-guard';
     MyDialogModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [AuthGuard,AuthGuardService],
+  providers: [AuthGuard,AuthGuardService,AppDialogService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
