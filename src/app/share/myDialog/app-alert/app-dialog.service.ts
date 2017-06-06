@@ -4,7 +4,7 @@ import {Subject} from 'rxjs/Subject';
 export class AppDialogService{
   private alertSource=new Subject<string>();
   alertContentGot$=this.alertSource.asObservable();
-  getAlert(alertContent:string){
+  setAlert(alertContent:string){
     this.alertSource.next(alertContent);
   }
 }

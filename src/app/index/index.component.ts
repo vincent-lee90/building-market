@@ -9,6 +9,6 @@ export class IndexComponent implements OnInit{
   constructor(private appDialogService:AppDialogService){
   }
   ngOnInit(){
-    this.appDialogService.getAlert("1234");
+    this.appDialogService.setAlert("1234");
   }
 }
