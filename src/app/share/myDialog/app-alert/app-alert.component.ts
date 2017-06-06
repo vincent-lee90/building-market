@@ -8,9 +8,8 @@ import {AppDialogService} from './app-dialog.service';
 export class AppAlertComponent implements OnInit {
   constructor(private appDialogService: AppDialogService) {
   }
-
+  isShowAlert=false;
   alertContent = "";
-
   ngOnInit() {
     this.appDialogService.alertContentGot$.subscribe(alertContent => {
       this.showAlert(alertContent)
@@ -20,9 +19,11 @@ export class AppAlertComponent implements OnInit {
     if(this.alertContent){
       return;
     }
+    this.isShowAlert=true;
     this.alertContent=alertContent;
     setTimeout(()=>{
-      this.alertContent=""
+      this.alertContent="";
+      this.isShowAlert=false;
     },3000)
   }
 }
