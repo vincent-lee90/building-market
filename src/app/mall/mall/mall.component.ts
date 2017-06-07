@@ -9,6 +9,5 @@ export class MallComponent implements OnInit{
   constructor(private appDialogService:AppDialogService){
   }
   ngOnInit(){
-    this.appDialogService.setAlert("5555");
   }
 }
