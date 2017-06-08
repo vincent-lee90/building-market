@@ -8,6 +8,7 @@ import {ListComponent} from "./list/list.component";
 import {DetailComponent} from './detail/detail.component';
 import {MallSearchComponent} from './mall-search/mall-search.component';
 import {MallCategoryComponent} from './mall-category/mall-category.component';
+import {MallService} from './service/mall.service';
 @NgModule({
   declarations: [
     StoresComponent,
@@ -21,7 +22,7 @@ import {MallCategoryComponent} from './mall-category/mall-category.component';
     MainMenuModule,
     RouterModule.forChild(mallRoutes)
   ],
-  providers: []
+  providers: [MallService]
 })
 export class MallModule {
 }
