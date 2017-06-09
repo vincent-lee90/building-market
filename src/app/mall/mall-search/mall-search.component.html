@@ -4,12 +4,6 @@
 <div class="padding-h-default hot-words">
   <div class="title margin-top-15">热门搜索</div>
   <ul class="words">
-    <li>雷士照明</li>
-    <li>雷士照明</li>
-    <li>雷士照明</li>
-    <li>雷士照明</li>
-    <li>雷士照明</li>
-    <li>雷士照明</li>
-    <li>雷士照明</li>
+    <li  *ngFor="let hot of hotWords">{{hot.search_words}}</li>
   </ul>
 </div>

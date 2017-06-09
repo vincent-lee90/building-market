@@ -1,4 +1,5 @@
 import {NgModule} from "@angular/core";
+import {CommonModule} from '@angular/common';
 import {RouterModule} from '@angular/router';
 import {mallRoutes} from './mall.routes';
 import {StoresComponent} from "./stores/stores.component";
@@ -20,6 +21,7 @@ import {MallService} from './service/mall.service';
   ],
   imports: [
     MainMenuModule,
+    CommonModule,
     RouterModule.forChild(mallRoutes)
   ],
   providers: [MallService]
