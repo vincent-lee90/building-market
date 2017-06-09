@@ -5,8 +5,7 @@ var mysql = require('../db.js');
 var response = require('../response.js');
 var app = express();
 app.use(bodyParser.json());
-/* GET users listing. */
-router.get('/', function (req, res, next) {
+router.get('/login', function (req, res, next) {
   if (!req.query.userName) {
     response.statusCode = '500';
     response.message = '请输入用户名';

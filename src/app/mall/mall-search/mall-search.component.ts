@@ -9,7 +9,9 @@ export class MallSearchComponent implements OnInit{
   public  hotWords=[];
   constructor(private mallService:MallService){}
   getHotWords(){
-    this.mallService.getHotWords();
+    this.mallService.getHotWords().subscribe(data=>{
+      this.hotWords=data;
+    });
   }
   ngOnInit(){
     this.getHotWords();

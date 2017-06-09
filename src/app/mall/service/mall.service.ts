@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Http, Response, URLSearchParams} from '@angular/http';
-import {AppDialogService} from '../../share/myDialog/app-alert/app-dialog.service'
+import {AppDialogService} from '../../share/myDialog/app-alert/app-dialog.service';
+import 'rxjs/add/operator/map';
 @Injectable()
 export class MallService {
   constructor(private http: Http, private appDialogService: AppDialogService) {
@@ -11,13 +12,12 @@ export class MallService {
   getHotWords() {
     return this.http.get(this.getHotWordsUrl)
       .map((res: Response) => {
-          return res.json()
+          let _res = res.json();
+          if (_res.statusCode != 200) {
+            this.appDialogService.setAlert(_res.message)
+          }
+          return _res.body;
         }
-      ).subscribe(data => {
-        if (data.statusCode != 200) {
-          this.appDialogService.setAlert(data.message)
-        }
-        return data.body;
-      })
+      )
   }
 }
