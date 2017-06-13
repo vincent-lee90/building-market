@@ -8,6 +8,7 @@ export class MallService {
   }
 
   private getHotWordsUrl = 'mall/hotWords';
+  private getProductListUrl = 'mall/products';
 
   getHotWords() {
     return this.http.get(this.getHotWordsUrl)
@@ -19,5 +20,16 @@ export class MallService {
           return _res.body;
         }
       )
+  }
+
+  getProducts() {
+    return this.http.get(this.getProductListUrl)
+      .map((res: Response) => {
+        let _res = res.json();
+        if (_res.statusCode != 200) {
+          this.appDialogService.setAlert(_res.message)
+        }
+        return _res.body;
+      })
   }
 }

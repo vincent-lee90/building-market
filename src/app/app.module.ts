@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import {RouterModule} from '@angular/router';
+import {HashLocationStrategy, LocationStrategy} from '@angular/common';
 import {appRoutes} from './app.routes';
 import { AppComponent } from './app.component';
 import {IndexComponent} from './index/index.component';
@@ -28,7 +29,12 @@ import {AppDialogService} from './share/myDialog/app-alert/app-dialog.service';
     MyDialogModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [AuthGuard,AuthGuardService,AppDialogService],
+  providers: [
+    {provide: LocationStrategy, useClass: HashLocationStrategy},
+    AuthGuard,
+    AuthGuardService,
+    AppDialogService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
