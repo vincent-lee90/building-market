@@ -6,7 +6,7 @@ import 'rxjs/add/operator/map';
 import {User} from '../model/user-model';
 @Injectable()
 export class AccountService {
-  public loginUrl = 'users';
+  public loginUrl = 'users/login';
   public registerUrl = 'users/register';
 
   constructor(private http: Http) {

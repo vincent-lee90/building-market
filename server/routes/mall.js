@@ -17,8 +17,10 @@ router.get('/hotWords', function (req, res, next) {
 });
 router.get('/products',function (req,res,next) {
   mysql.query('select * from product;',function (result) {
-    console.log(os.hostname());
-    res.send("123")
+    response.statusCode = '200';
+    response.message = 'OK';
+    response.body = result;
+    res.send(response);
   })
 });
 module.exports = router;
