@@ -4,6 +4,6 @@
 <div class="padding-h-default hot-words">
   <div class="title margin-top-15">热门搜索</div>
   <ul class="words">
-    <li  *ngFor="let hot of hotWords" routerLink="">{{hot.search_words}}</li>
+    <li  *ngFor="let hot of hotWords" [routerLink]="['../list/light']" [queryParams]="{search:hot.search_words}" >{{hot.search_words}}</li>
   </ul>
 </div>

@@ -12,6 +12,9 @@ export const mallRoutes = [
     path: 'list/:category',
     component: ListComponent
   }, {
+    path: 'list',
+    component: ListComponent
+  }, {
     path: 'stores',
     component: StoresComponent
   }, {
