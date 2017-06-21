@@ -19,7 +19,7 @@ export class AccountService {
       .get(this.loginUrl, {search: params})
       .map((res: Response) => {
         return res.json();
-      })
+      });
   }
 
   register(user: User) {

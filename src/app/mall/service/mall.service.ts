@@ -24,33 +24,15 @@ export class MallService {
       )
   }
 
-  getProducts() {
-    return this.http.get(this.getProductListUrl)
-      .map((res: Response) => {
-        let _res = res.json();
-        if (_res.statusCode != 200) {
-          this.appDialogService.setAlert(_res.message)
-        }
-        return _res.body;
-      })
-  }
-
-  getProductsByCatCode(catCode) {
-    let params = new URLSearchParams();
-    params.set('catCode', catCode);
-    return this.http.get(this.getProductListByCatCodeUrl, {search: params})
-      .map((res: Response) => {
-        let _res = res.json();
-        if (_res.statusCode != 200) {
-          this.appDialogService.setAlert(_res.message)
-        }
-        return _res.body;
-      })
-  }
-  getProductsBySearch(searchString){
-    let params = new URLSearchParams();
-    params.set('searchString', searchString);
-    return this.http.get(this.getProductListBySearch, {search: params})
+  getProducts(search,catCode) {
+    let params=new URLSearchParams();
+    if(search){
+      params.set('search',search)
+    }
+    if(catCode){
+      params.set('catCode',catCode);
+    }
+    return this.http.get(this.getProductListUrl,{search:params})
       .map((res: Response) => {
         let _res = res.json();
         if (_res.statusCode != 200) {

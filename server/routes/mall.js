@@ -16,6 +16,7 @@ router.get('/hotWords', function (req, res, next) {
   })
 });
 router.get('/products',function (req,res,next) {
+  if(req.param('se'))
   mysql.query('select * from product;',function (result) {
     response.statusCode = '200';
     response.message = 'OK';
