@@ -15,7 +15,7 @@ export const mallRoutes = [
     path: 'stores',
     component: StoresComponent
   }, {
-    path: 'detail',
+    path: 'detail/:id',
     component: DetailComponent
   }, {
     path: 'mall-search',
