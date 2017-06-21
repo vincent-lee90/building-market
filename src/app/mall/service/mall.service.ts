@@ -9,8 +9,6 @@ export class MallService {
 
   private getHotWordsUrl = 'mall/hotWords';
   private getProductListUrl = 'mall/products';
-  private getProductListByCatCodeUrl = 'mall/productsByCatCode';
-  private getProductListBySearch = 'mall/productBySearch';
 
   getHotWords() {
     return this.http.get(this.getHotWordsUrl)
@@ -24,15 +22,12 @@ export class MallService {
       )
   }
 
-  getProducts(search,catCode) {
-    let params=new URLSearchParams();
-    if(search){
-      params.set('search',search)
-    }
-    if(catCode){
-      params.set('catCode',catCode);
-    }
-    return this.http.get(this.getProductListUrl,{search:params})
+
+  getProducts(paramsObj) {
+    let params = new URLSearchParams();
+    paramsObj["searchStr"]&&params.set('searchString', paramsObj["searchStr"]);
+    paramsObj["catCode"]&&params.set('catCode', paramsObj["catCode"]);
+    return this.http.get(this.getProductListUrl, {search: params})
       .map((res: Response) => {
         let _res = res.json();
         if (_res.statusCode != 200) {

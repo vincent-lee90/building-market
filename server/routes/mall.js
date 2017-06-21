@@ -16,8 +16,20 @@ router.get('/hotWords', function (req, res, next) {
   })
 });
 router.get('/products',function (req,res,next) {
-  if(req.param('se'))
-  mysql.query('select * from product;',function (result) {
+
+  var sql="",catCode='',searchStr='';
+  if(req.query.catCode||req.query.searchStr){
+    if(req.query.catCode){
+      catCode=req.query.catCode;
+      sql="select * from product where product_cat=\'"+catCode+"\';"
+    }else{
+      searchStr=req.query.searchStr;
+      sql="select * from product where product_cat=\'"+searchStr+"\';"
+    }
+  }else{
+    sql="select * from product;"
+  }
+  mysql.query(sql,function (result) {
     response.statusCode = '200';
     response.message = 'OK';
     response.body = result;
