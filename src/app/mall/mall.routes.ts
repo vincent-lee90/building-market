@@ -8,10 +8,7 @@ export const mallRoutes = [
   {
     path: '',
     component: MallComponent
-  }, {
-    path: 'list/:category',
-    component: ListComponent
-  }, {
+  },{
     path: 'list',
     component: ListComponent
   }, {

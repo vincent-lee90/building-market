@@ -14,12 +14,10 @@ export class ListComponent implements OnInit {
   }
 
   getList() {
- /*   this.route.queryParams.switchMap((params:Params)=>{
-      return this.mallService.getProducts(params['search'])
-    });
-    this.mallService.getProducts().subscribe(data => {
-      this.productList=data;
-    })*/
+    this.route.queryParams.switchMap((params: Params) => {
+      let paramsObj = {searchStr: params['searchStr'], catCode: params['catCode']};
+      return this.mallService.getProducts(paramsObj);
+    }).subscribe(data => this.productList = data);
   }
 
   ngOnInit() {
