@@ -19,7 +19,11 @@ export class ListComponent implements OnInit {
       return this.mallService.getProducts(paramsObj);
     }).subscribe(data => this.productList = data);
   }
-
+  getListByCode(code:string){
+    let paramsObj={catCode:code}
+    this.mallService.getProducts(paramsObj)
+      .subscribe(data=>this.productList=data)
+  }
   ngOnInit() {
     this.getList();
   }
