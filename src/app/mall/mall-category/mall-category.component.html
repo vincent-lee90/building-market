@@ -1,7 +1,9 @@
-<ng-content></ng-content>
-<div class="categories-container">
+<span (click)="showCategories()"><ng-content></ng-content></span>
+<div *ngIf="isShowCategories">
+  <div class="categories-bg" (click)="showCategories()">
+  </div>
   <ul class="categories">
-    <li>灯饰照明</li>
+    <li (click)="select('10001')">灯饰照明</li>
     <li>厨房用品</li>
     <li>卫浴用品</li>
     <li>建材五金</li>

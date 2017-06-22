@@ -1,5 +1,5 @@
 <div class="header padding-h-default padding-v-6 text-center border-bottom-default">
-  <mall-category><img src="./imgs/category.png" routerLink="/mall/mall-category"></mall-category>
+  <mall-category (onSelect)="getListByCode($event)"><img src="./imgs/category.png"></mall-category>
   <img src="./imgs/title.png">
   <img src="./imgs/icon-search.png" routerLink="/mall/mall-search">
 </div>
