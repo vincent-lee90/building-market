@@ -25,7 +25,7 @@ export class MallService {
 
   getProducts(paramsObj) {
     let params = new URLSearchParams();
-    paramsObj["searchStr"] && params.set('searchString', paramsObj["searchStr"]);
+    paramsObj["searchStr"] && params.set('searchStr', paramsObj["searchStr"]);
     paramsObj["catCode"] && params.set('catCode', paramsObj["catCode"]);
     return this.http.get(this.getProductListUrl, {search: params})
       .map((res: Response) => {

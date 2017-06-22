@@ -4,7 +4,7 @@
   <img src="./imgs/icon-search.png" routerLink="/mall/mall-search">
 </div>
 <ul class="list padding-h-default padding-v-16">
-  <li *ngFor="let product of productList" routerLink="../detail">
+  <li *ngFor="let product of productList" routerLink="../detail/{{product.id}}">
     <img src="{{product.product_logo}}">
     <div class="introduction  padding-v-5">{{product.product_name}}</div>
     <div class="price text-left padding-v-5"><span class="font-size-12">¥</span><span class="price font-size-14">{{product.current_price}}</span>
