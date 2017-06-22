@@ -9,6 +9,7 @@ export class MallService {
 
   private getHotWordsUrl = 'mall/hotWords';
   private getProductListUrl = 'mall/products';
+  private getProductByIdUrl = 'mall/product';
   private getCategoriesUrl = 'mall/categories';
 
   getHotWords() {
@@ -28,6 +29,19 @@ export class MallService {
     paramsObj["searchStr"] && params.set('searchStr', paramsObj["searchStr"]);
     paramsObj["catCode"] && params.set('catCode', paramsObj["catCode"]);
     return this.http.get(this.getProductListUrl, {search: params})
+      .map((res: Response) => {
+        let _res = res.json();
+        if (_res.statusCode != 200) {
+          this.appDialogService.setAlert(_res.message)
+        }
+        return _res.body;
+      })
+  }
+
+  getProductById(id) {
+    let params = new URLSearchParams();
+    params.set('id',id);
+    return this.http.get(this.getProductByIdUrl,{search:params})
       .map((res: Response) => {
         let _res = res.json();
         if (_res.statusCode != 200) {

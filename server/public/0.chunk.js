@@ -174,7 +174,7 @@ var SwitchMapSubscriber = (function (_super) {
 /***/ "./src/app/mall/detail/detail.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"margin-bottom-44\">\r\n  <div class=\"detail-img\">\r\n    <img src=\"./imgs/light-detail-1-2.jpg\">\r\n  </div>\r\n  <div class=\"text-info bg-lightest padding-h-default\">\r\n    <div class=\"good-title padding-v-12\">\r\n      月影凯顿现代乡村壁灯全铜客厅灯具布艺卧室床头灯玄关灯过道灯饰\r\n    </div>\r\n    <div>\r\n      <div class=\"good-price font-size-12\">¥<span class=\"font-size-16\">89</span></div>\r\n      <div class=\"font-size-12 margin-top-10 font-color-content\">价格：¥\r\n        <del>200.65</del>\r\n      </div>\r\n    </div>\r\n  </div>\r\n  <div class=\"margin-top-15 bg-lightest padding-v-12 padding-h-default\">\r\n    <div class=\"font-size-16\">月影凯顿\r\n      <div class=\"font-color-content margin-top-5 font-size-12 locate pull-right\"><img class=\"locate-img\"\r\n                                                                                       src=\"./imgs/icon-locate.png\"><span>700m</span>\r\n      </div>\r\n    </div>\r\n    <div class=\"font-color-content margin-top-5 font-size-12\">地址:四川省成都市郫县西区大道455号</div>\r\n\r\n    <div class=\"padding-h-default margin-top-5 text-center\">\r\n      <div class=\"to-store\" routerLink=\"../stores\">进入店铺</div>\r\n    </div>\r\n  </div>\r\n  <div class=\"padding-h-default  margin-top-15 padding-v-12 bg-lightest \">\r\n    <div><span>数量</span>\r\n      <div class=\"pull-right amount\"><img src=\"./imgs/reduce.png\"><span class=\"padding-h-10\">1</span><img src=\"./imgs/add.png\"></div>\r\n    </div>\r\n  </div>\r\n  <div class=\"  margin-top-15  bg-lightest display-imgs\">\r\n    <div class=\"padding-v-12 padding-h-default\"><span>产品详情</span></div>\r\n    <div><img src=\"./imgs/detail-display01.jpg\"></div>\r\n    <div><img src=\"./imgs/detail-display02.jpg\"></div>\r\n    <div><img src=\"./imgs/detail-display03.jpg\"></div>\r\n    <div><img src=\"./imgs/detail-display04.jpg\"></div>\r\n  </div>\r\n</div>\r\n<div class=\"fixed-bottom\">\r\n  <div class=\"btn-flat-default\" routerLink=\"/checkstand\">立即购买</div>\r\n</div>\r\n"
+module.exports = "<div class=\"margin-bottom-44\">\r\n  <div class=\"detail-img\">\r\n    <img src=\"./imgs/light-detail-1-2.jpg\">\r\n  </div>\r\n  <div class=\"text-info bg-lightest padding-h-default\">\r\n    <div class=\"good-title padding-v-12\">\r\n      月影凯顿现代乡村壁灯全铜客厅灯具布艺卧室床头灯玄关灯过道灯饰\r\n    </div>\r\n    <div>\r\n      <div class=\"good-price font-size-12\">¥<span class=\"font-size-16\">89</span></div>\r\n      <div class=\"font-size-12 margin-top-10 font-color-content\">价格：¥\r\n        <del>200.65</del>\r\n      </div>\r\n    </div>\r\n  </div>\r\n  <div class=\"margin-top-15 bg-lightest padding-v-12 padding-h-default\">\r\n    <div class=\"font-size-16\">月影凯顿\r\n      <div class=\"font-color-content margin-top-5 font-size-12 locate pull-right\"><img class=\"locate-img\"\r\n                                                                                       src=\"./imgs/icon-locate.png\"><span>700m</span>\r\n      </div>\r\n    </div>\r\n    <div class=\"font-color-content margin-top-5 font-size-12\">地址:四川省成都市郫县西区大道455号</div>\r\n\r\n    <div class=\"padding-h-default margin-top-5 text-center\">\r\n      <div class=\"to-store\" routerLink=\"../../stores\">进入店铺</div>\r\n    </div>\r\n  </div>\r\n  <div class=\"padding-h-default  margin-top-15 padding-v-12 bg-lightest \">\r\n    <div><span>数量</span>\r\n      <div class=\"pull-right amount\"><img src=\"./imgs/reduce.png\" ><span class=\"padding-h-10\">{{product.amount}}</span><img src=\"./imgs/add.png\"></div>\r\n    </div>\r\n  </div>\r\n  <div class=\"  margin-top-15  bg-lightest display-imgs\">\r\n    <div class=\"padding-v-12 padding-h-default\"><span>产品详情</span></div>\r\n    <div><img src=\"./imgs/detail-display01.jpg\"></div>\r\n    <div><img src=\"./imgs/detail-display02.jpg\"></div>\r\n    <div><img src=\"./imgs/detail-display03.jpg\"></div>\r\n    <div><img src=\"./imgs/detail-display04.jpg\"></div>\r\n  </div>\r\n</div>\r\n<div class=\"fixed-bottom\">\r\n  <div class=\"btn-flat-default\" routerLink=\"/checkstand\">立即购买</div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -201,6 +201,10 @@ module.exports = module.exports.toString();
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("./node_modules/@angular/router/@angular/router.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__service_mall_service__ = __webpack_require__("./src/app/mall/service/mall.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_switchMap__ = __webpack_require__("./node_modules/rxjs/add/operator/switchMap.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_switchMap___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_switchMap__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DetailComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -208,10 +212,30 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
 
 var DetailComponent = (function () {
-    function DetailComponent() {
+    function DetailComponent(mallService, route) {
+        this.mallService = mallService;
+        this.route = route;
+        this.product = {};
     }
+    DetailComponent.prototype.getProductDetail = function () {
+        var _this = this;
+        this.route.params.switchMap(function (params) {
+            return _this.mallService.getProductById(params["id"]);
+        }).subscribe(function (data) {
+            console.log(1);
+        });
+    };
+    DetailComponent.prototype.ngOnInit = function () {
+        this.getProductDetail();
+    };
     return DetailComponent;
 }());
 DetailComponent = __decorate([
@@ -219,9 +243,11 @@ DetailComponent = __decorate([
         selector: 'detail',
         template: __webpack_require__("./src/app/mall/detail/detail.component.html"),
         styles: [__webpack_require__("./src/app/mall/detail/detail.component.less")]
-    })
+    }),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__service_mall_service__["a" /* MallService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__service_mall_service__["a" /* MallService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* ActivatedRoute */]) === "function" && _b || Object])
 ], DetailComponent);
 
+var _a, _b;
 //# sourceMappingURL=E:/myProjects/building-market/src/detail.component.js.map
 
 /***/ }),
@@ -670,6 +696,7 @@ var MallService = (function () {
         this.appDialogService = appDialogService;
         this.getHotWordsUrl = 'mall/hotWords';
         this.getProductListUrl = 'mall/products';
+        this.getProductByIdUrl = 'mall/product';
         this.getCategoriesUrl = 'mall/categories';
     }
     MallService.prototype.getHotWords = function () {
@@ -689,6 +716,19 @@ var MallService = (function () {
         paramsObj["searchStr"] && params.set('searchStr', paramsObj["searchStr"]);
         paramsObj["catCode"] && params.set('catCode', paramsObj["catCode"]);
         return this.http.get(this.getProductListUrl, { search: params })
+            .map(function (res) {
+            var _res = res.json();
+            if (_res.statusCode != 200) {
+                _this.appDialogService.setAlert(_res.message);
+            }
+            return _res.body;
+        });
+    };
+    MallService.prototype.getProductById = function (id) {
+        var _this = this;
+        var params = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* URLSearchParams */]();
+        params.set('id', id);
+        return this.http.get(this.getProductByIdUrl, { search: params })
             .map(function (res) {
             var _res = res.json();
             if (_res.statusCode != 200) {
