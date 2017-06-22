@@ -16,7 +16,6 @@ router.get('/hotWords', function (req, res, next) {
   })
 });
 router.get('/products',function (req,res,next) {
-
   var sql="",catCode='',searchStr='';
   if(req.query.catCode||req.query.searchStr){
     if(req.query.catCode){
