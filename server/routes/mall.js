@@ -35,4 +35,12 @@ router.get('/products',function (req,res,next) {
     res.send(response);
   })
 });
+router.get("/categories",function (req,res,next) {
+  mysql.query("select * from product_cat;",function (result) {
+    response.statusCode = '200';
+    response.message = 'OK';
+    response.body = result;
+    res.send(response);
+  })
+});
 module.exports = router;

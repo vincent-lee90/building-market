@@ -1,22 +1,34 @@
-import {Component,OnInit,Output,EventEmitter} from '@angular/core';
+import {Component, OnInit, Output, EventEmitter} from '@angular/core';
+import {MallService} from "../service/mall.service";
 @Component({
-  selector:'mall-category',
-  templateUrl:'./mall-category.component.html',
-  styleUrls:['./mall-category.component.less']
+  selector: 'mall-category',
+  templateUrl: './mall-category.component.html',
+  styleUrls: ['./mall-category.component.less']
 })
-export class MallCategoryComponent implements OnInit{
-  isShowCategories=false;
-  @Output() onSelect=new EventEmitter<string>();
-  constructor(){
+export class MallCategoryComponent implements OnInit {
+  categories = [];
+  isShowCategories = false;
+  @Output() onSelect = new EventEmitter<string>();
+
+  constructor(private mallService: MallService) {
 
   }
-  select(code:string){
+
+  select(code: string) {
     this.onSelect.emit(code);
+    this.isShowCategories = false;
   }
-  showCategories(){
-    this.isShowCategories=!this.isShowCategories;
-  }
-  ngOnInit(){
 
+  showCategories() {
+    this.isShowCategories = !this.isShowCategories;
+  }
+
+  getCategories() {
+    this.mallService.getCategories()
+      .subscribe(data => this.categories = data);
+  }
+
+  ngOnInit() {
+    this.getCategories()
   }
 }
