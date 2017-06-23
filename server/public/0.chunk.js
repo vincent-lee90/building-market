@@ -174,7 +174,7 @@ var SwitchMapSubscriber = (function (_super) {
 /***/ "./src/app/mall/amount/amount.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"padding-h-default  margin-top-15 padding-v-12 bg-lightest \">\r\n  <div><span>数量</span>\r\n    <div class=\"pull-right amount\"><img src=\"./imgs/reduce.png\" (click)=\"addAmount()\"><span class=\"padding-h-10\">{{amount}}</span><img src=\"./imgs/add.png\" (click)=\"reduceAmount()\"></div>\r\n  </div>\r\n</div>\r\n"
+module.exports = "<div class=\"padding-h-default  margin-top-15 padding-v-12 bg-lightest \">\r\n  <div><span>数量</span>\r\n    <div class=\"pull-right amount\"><img src=\"./imgs/reduce.png\" (click)=\"reduceAmount()\"><span class=\"padding-h-10\">{{amount}}</span><img src=\"./imgs/add.png\" (click)=\"addAmount()\"></div>\r\n  </div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -219,11 +219,13 @@ var AmountComponent = (function () {
     }
     AmountComponent.prototype.addAmount = function () {
         this.amount++;
+        this.onSelectAmount.emit(this.amount);
     };
     AmountComponent.prototype.reduceAmount = function () {
         if (this.amount > 0) {
             this.amount--;
         }
+        this.onSelectAmount.emit(this.amount);
     };
     return AmountComponent;
 }());
@@ -247,7 +249,7 @@ AmountComponent = __decorate([
 /***/ "./src/app/mall/detail/detail.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"margin-bottom-44\">\r\n  <div class=\"detail-img\">\r\n    <img src=\"{{product.product_logo}}\">\r\n  </div>\r\n  <div class=\"text-info bg-lightest padding-h-default\">\r\n    <div class=\"good-title padding-v-12\">\r\n      {{product.product_name}}\r\n    </div>\r\n    <div>\r\n      <div class=\"good-price font-size-12\">¥<span class=\"font-size-16\">{{product.current_price}}</span></div>\r\n      <div class=\"font-size-12 margin-top-10 font-color-content\">价格：¥\r\n        <del>{{product.origin_price}}</del>\r\n      </div>\r\n    </div>\r\n  </div>\r\n  <div class=\"margin-top-15 bg-lightest padding-v-12 padding-h-default\">\r\n    <div class=\"font-size-16\">月影凯顿\r\n      <div class=\"font-color-content margin-top-5 font-size-12 locate pull-right\"><img class=\"locate-img\"\r\n                                                                                       src=\"./imgs/icon-locate.png\"><span>700m</span>\r\n      </div>\r\n    </div>\r\n    <div class=\"font-color-content margin-top-5 font-size-12\">地址:四川省成都市郫县西区大道455号</div>\r\n\r\n    <div class=\"padding-h-default margin-top-5 text-center\">\r\n      <div class=\"to-store\" routerLink=\"../../stores\">进入店铺</div>\r\n    </div>\r\n  </div>\r\n<select-amount></select-amount>\r\n  <div class=\"  margin-top-15  bg-lightest display-imgs\">\r\n    <div class=\"padding-v-12 padding-h-default\"><span>产品详情</span></div>\r\n    <div *ngFor=\"let url of product.img_detail_urls\"><img src=\"{{url}}\"></div>\r\n  </div>\r\n</div>\r\n<div class=\"fixed-bottom\">\r\n  <div class=\"btn-flat-default\" routerLink=\"/checkstand\">立即购买</div>\r\n</div>\r\n"
+module.exports = "<div class=\"margin-bottom-44\">\r\n  <div class=\"detail-img\">\r\n    <img src=\"{{product.product_logo}}\">\r\n  </div>\r\n  <div class=\"text-info bg-lightest padding-h-default\">\r\n    <div class=\"good-title padding-v-12\">\r\n      {{product.product_name}}\r\n    </div>\r\n    <div>\r\n      <div class=\"good-price font-size-12\">¥<span class=\"font-size-16\">{{product.current_price}}</span></div>\r\n      <div class=\"font-size-12 margin-top-10 font-color-content\">价格：¥\r\n        <del>{{product.origin_price}}</del>\r\n      </div>\r\n    </div>\r\n  </div>\r\n  <div class=\"margin-top-15 bg-lightest padding-v-12 padding-h-default\">\r\n    <div class=\"font-size-16\">月影凯顿\r\n      <div class=\"font-color-content margin-top-5 font-size-12 locate pull-right\"><img class=\"locate-img\"\r\n                                                                                       src=\"./imgs/icon-locate.png\"><span>700m</span>\r\n      </div>\r\n    </div>\r\n    <div class=\"font-color-content margin-top-5 font-size-12\">地址:四川省成都市郫县西区大道455号</div>\r\n\r\n    <div class=\"padding-h-default margin-top-5 text-center\">\r\n      <div class=\"to-store\" routerLink=\"../../stores\">进入店铺</div>\r\n    </div>\r\n  </div>\r\n<select-amount (onSelectAmount)=\"selectAmount($event)\"></select-amount>\r\n  <div class=\"  margin-top-15  bg-lightest display-imgs\">\r\n    <div class=\"padding-v-12 padding-h-default\"><span>产品详情</span></div>\r\n    <div *ngFor=\"let url of product.img_detail_urls\"><img src=\"{{url}}\"></div>\r\n  </div>\r\n</div>\r\n<div class=\"fixed-bottom\">\r\n  <div class=\"btn-flat-default\" routerLink=\"/checkstand\">立即购买</div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -297,6 +299,7 @@ var DetailComponent = (function () {
         this.mallService = mallService;
         this.route = route;
         this.product = {};
+        this.amount = "";
     }
     DetailComponent.prototype.getProductDetail = function () {
         var _this = this;
@@ -305,6 +308,9 @@ var DetailComponent = (function () {
         }).subscribe(function (data) {
             _this.product = data;
         });
+    };
+    DetailComponent.prototype.selectAmount = function (amount) {
+        this.amount = amount;
     };
     DetailComponent.prototype.ngOnInit = function () {
         this.getProductDetail();

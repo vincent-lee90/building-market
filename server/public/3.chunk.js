@@ -130,7 +130,7 @@ CheckstandComponent = __decorate([
 /***/ "./src/app/checkstand/confirm-order/confirm-order.component.html":
 /***/ (function(module, exports) {
 
-module.exports = ""
+module.exports = "order\r\n"
 
 /***/ }),
 

@@ -6,16 +6,20 @@ import {Component, EventEmitter, Output} from '@angular/core';
 })
 export class AmountComponent {
   amount = 1;
-  @Output() onSelectAmount = new EventEmitter<string>();
-  addAmount(){
+  @Output() onSelectAmount = new EventEmitter();
+
+  addAmount() {
     this.amount++;
+    this.onSelectAmount.emit(this.amount)
   }
-  reduceAmount(){
-    if(this.amount>0){
+
+  reduceAmount() {
+    if (this.amount > 0) {
       this.amount--;
     }
-
+    this.onSelectAmount.emit(this.amount)
   }
+
   constructor() {
   }
 }

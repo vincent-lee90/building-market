@@ -25,7 +25,7 @@
       <div class="to-store" routerLink="../../stores">进入店铺</div>
     </div>
   </div>
-<select-amount></select-amount>
+<select-amount (onSelectAmount)="selectAmount($event)"></select-amount>
   <div class="  margin-top-15  bg-lightest display-imgs">
     <div class="padding-v-12 padding-h-default"><span>产品详情</span></div>
     <div *ngFor="let url of product.img_detail_urls"><img src="{{url}}"></div>
