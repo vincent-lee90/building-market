@@ -14,7 +14,7 @@ export class DetailComponent implements OnInit{
     this.route.params.switchMap((params:Params)=>{
       return this.mallService.getProductById(params["id"])
     }).subscribe(data=>{
-      console.log(1);
+      this.product=data;
     })
   }
   ngOnInit(){
