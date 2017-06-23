@@ -38,15 +38,21 @@ router.get('/products', function (req, res, next) {
 router.get("/product", function (req, res, next) {
   var id = "", sql = "";
   id = req.query.id;
-  sql = "select a.*,b.img_url from product as a,product_imgs as b where a.id=b.product_id and a.id=" + id + ";";
+  sql = "select a.*,b.img_url,b.type from product as a,product_imgs as b where a.id=b.product_id and a.id=" + id + ";";
   mysql.query(sql, function (result) {
     response.statusCode = '200';
     response.message = 'OK';
     //switch datas
     var _body = result[0];
-    _body.img_urls = [];
+    _body.img_logo_urls = [];
+    _body.img_detail_urls=[];
     result.forEach(function (e) {
-      _body.img_urls.push(e.img_url)
+      if(e.type==='logo'){
+        _body.img_logo_urls.push(e.img_url)
+      }else{
+        _body.img_detail_urls.push(e.img_url);
+      }
+
     });
     delete _body.img_url;
     response.body = _body;
