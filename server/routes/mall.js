@@ -23,7 +23,7 @@ router.get('/products', function (req, res, next) {
       sql = "select * from product where product_cat=\'" + catCode + "\';"
     } else {
       searchStr = req.query.searchStr;
-      sql = "select * from product where product_cat=\'" + searchStr + "\';"
+      sql = "select * from product where product_name like \'%" + searchStr + "%\';"
     }
   } else {
     sql = "select * from product;"

@@ -171,10 +171,83 @@ var SwitchMapSubscriber = (function (_super) {
 
 /***/ }),
 
+/***/ "./src/app/mall/amount/amount.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"padding-h-default  margin-top-15 padding-v-12 bg-lightest \">\r\n  <div><span>数量</span>\r\n    <div class=\"pull-right amount\"><img src=\"./imgs/reduce.png\" (click)=\"addAmount()\"><span class=\"padding-h-10\">{{amount}}</span><img src=\"./imgs/add.png\" (click)=\"reduceAmount()\"></div>\r\n  </div>\r\n</div>\r\n"
+
+/***/ }),
+
+/***/ "./src/app/mall/amount/amount.component.less":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".amount img {\n  height: .16rem;\n}\n", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "./src/app/mall/amount/amount.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AmountComponent; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var AmountComponent = (function () {
+    function AmountComponent() {
+        this.amount = 1;
+        this.onSelectAmount = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* EventEmitter */]();
+    }
+    AmountComponent.prototype.addAmount = function () {
+        this.amount++;
+    };
+    AmountComponent.prototype.reduceAmount = function () {
+        if (this.amount > 0) {
+            this.amount--;
+        }
+    };
+    return AmountComponent;
+}());
+__decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* Output */])(),
+    __metadata("design:type", Object)
+], AmountComponent.prototype, "onSelectAmount", void 0);
+AmountComponent = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["d" /* Component */])({
+        selector: "select-amount",
+        template: __webpack_require__("./src/app/mall/amount/amount.component.html"),
+        styles: [__webpack_require__("./src/app/mall/amount/amount.component.less")]
+    }),
+    __metadata("design:paramtypes", [])
+], AmountComponent);
+
+//# sourceMappingURL=E:/myProjects/building-market/src/amount.component.js.map
+
+/***/ }),
+
 /***/ "./src/app/mall/detail/detail.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"margin-bottom-44\">\r\n  <div class=\"detail-img\">\r\n    <img src=\"{{product.product_logo}}\">\r\n  </div>\r\n  <div class=\"text-info bg-lightest padding-h-default\">\r\n    <div class=\"good-title padding-v-12\">\r\n      {{product.product_name}}\r\n    </div>\r\n    <div>\r\n      <div class=\"good-price font-size-12\">¥<span class=\"font-size-16\">{{product.current_price}}</span></div>\r\n      <div class=\"font-size-12 margin-top-10 font-color-content\">价格：¥\r\n        <del>{{product.origin_price}}</del>\r\n      </div>\r\n    </div>\r\n  </div>\r\n  <div class=\"margin-top-15 bg-lightest padding-v-12 padding-h-default\">\r\n    <div class=\"font-size-16\">月影凯顿\r\n      <div class=\"font-color-content margin-top-5 font-size-12 locate pull-right\"><img class=\"locate-img\"\r\n                                                                                       src=\"./imgs/icon-locate.png\"><span>700m</span>\r\n      </div>\r\n    </div>\r\n    <div class=\"font-color-content margin-top-5 font-size-12\">地址:四川省成都市郫县西区大道455号</div>\r\n\r\n    <div class=\"padding-h-default margin-top-5 text-center\">\r\n      <div class=\"to-store\" routerLink=\"../../stores\">进入店铺</div>\r\n    </div>\r\n  </div>\r\n  <div class=\"padding-h-default  margin-top-15 padding-v-12 bg-lightest \">\r\n    <div><span>数量</span>\r\n      <div class=\"pull-right amount\"><img src=\"./imgs/reduce.png\" ><span class=\"padding-h-10\">{{product.amount}}</span><img src=\"./imgs/add.png\"></div>\r\n    </div>\r\n  </div>\r\n  <div class=\"  margin-top-15  bg-lightest display-imgs\">\r\n    <div class=\"padding-v-12 padding-h-default\"><span>产品详情</span></div>\r\n    <div *ngFor=\"let url of product.img_detail_urls\"><img src=\"{{url}}\"></div>\r\n  </div>\r\n</div>\r\n<div class=\"fixed-bottom\">\r\n  <div class=\"btn-flat-default\" routerLink=\"/checkstand\">立即购买</div>\r\n</div>\r\n"
+module.exports = "<div class=\"margin-bottom-44\">\r\n  <div class=\"detail-img\">\r\n    <img src=\"{{product.product_logo}}\">\r\n  </div>\r\n  <div class=\"text-info bg-lightest padding-h-default\">\r\n    <div class=\"good-title padding-v-12\">\r\n      {{product.product_name}}\r\n    </div>\r\n    <div>\r\n      <div class=\"good-price font-size-12\">¥<span class=\"font-size-16\">{{product.current_price}}</span></div>\r\n      <div class=\"font-size-12 margin-top-10 font-color-content\">价格：¥\r\n        <del>{{product.origin_price}}</del>\r\n      </div>\r\n    </div>\r\n  </div>\r\n  <div class=\"margin-top-15 bg-lightest padding-v-12 padding-h-default\">\r\n    <div class=\"font-size-16\">月影凯顿\r\n      <div class=\"font-color-content margin-top-5 font-size-12 locate pull-right\"><img class=\"locate-img\"\r\n                                                                                       src=\"./imgs/icon-locate.png\"><span>700m</span>\r\n      </div>\r\n    </div>\r\n    <div class=\"font-color-content margin-top-5 font-size-12\">地址:四川省成都市郫县西区大道455号</div>\r\n\r\n    <div class=\"padding-h-default margin-top-5 text-center\">\r\n      <div class=\"to-store\" routerLink=\"../../stores\">进入店铺</div>\r\n    </div>\r\n  </div>\r\n<select-amount></select-amount>\r\n  <div class=\"  margin-top-15  bg-lightest display-imgs\">\r\n    <div class=\"padding-v-12 padding-h-default\"><span>产品详情</span></div>\r\n    <div *ngFor=\"let url of product.img_detail_urls\"><img src=\"{{url}}\"></div>\r\n  </div>\r\n</div>\r\n<div class=\"fixed-bottom\">\r\n  <div class=\"btn-flat-default\" routerLink=\"/checkstand\">立即购买</div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -186,7 +259,7 @@ exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/cs
 
 
 // module
-exports.push([module.i, ".detail-img img {\n  width: 100%;\n}\n.fixed-bottom {\n  width: 100%;\n}\n.good-title {\n  font-size: .16rem;\n  color: #051b28;\n}\n.good-price {\n  color: #e81a62;\n}\n.locate {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n}\n.locate img.locate-img {\n  height: .16rem;\n  margin-right: 5px;\n}\n.amount img {\n  height: .16rem;\n}\n.to-store {\n  width: 2rem;\n  border: 1px solid #ccc;\n  border-radius: 5px;\n  text-align: center;\n  color: #666;\n  padding: .04rem;\n  display: inline-block;\n}\n.display-imgs img {\n  width: 100%;\n}\n", ""]);
+exports.push([module.i, ".detail-img img {\n  width: 100%;\n}\n.fixed-bottom {\n  width: 100%;\n}\n.good-title {\n  font-size: .16rem;\n  color: #051b28;\n}\n.good-price {\n  color: #e81a62;\n}\n.locate {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n}\n.locate img.locate-img {\n  height: .16rem;\n  margin-right: 5px;\n}\n.to-store {\n  width: 2rem;\n  border: 1px solid #ccc;\n  border-radius: 5px;\n  text-align: center;\n  color: #666;\n  padding: .04rem;\n  display: inline-block;\n}\n.display-imgs img {\n  width: 100%;\n}\n", ""]);
 
 // exports
 
@@ -512,7 +585,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__detail_detail_component__ = __webpack_require__("./src/app/mall/detail/detail.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__mall_search_mall_search_component__ = __webpack_require__("./src/app/mall/mall-search/mall-search.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__mall_category_mall_category_component__ = __webpack_require__("./src/app/mall/mall-category/mall-category.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__service_mall_service__ = __webpack_require__("./src/app/mall/service/mall.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__amount_amount_component__ = __webpack_require__("./src/app/mall/amount/amount.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__service_mall_service__ = __webpack_require__("./src/app/mall/service/mall.service.ts");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MallModule", function() { return MallModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -520,6 +594,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -545,14 +620,15 @@ MallModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_7__list_list_component__["a" /* ListComponent */],
             __WEBPACK_IMPORTED_MODULE_8__detail_detail_component__["a" /* DetailComponent */],
             __WEBPACK_IMPORTED_MODULE_9__mall_search_mall_search_component__["a" /* MallSearchComponent */],
-            __WEBPACK_IMPORTED_MODULE_10__mall_category_mall_category_component__["a" /* MallCategoryComponent */]
+            __WEBPACK_IMPORTED_MODULE_10__mall_category_mall_category_component__["a" /* MallCategoryComponent */],
+            __WEBPACK_IMPORTED_MODULE_11__amount_amount_component__["a" /* AmountComponent */]
         ],
         imports: [
             __WEBPACK_IMPORTED_MODULE_6__share_main_menu_main_menu_module__["a" /* MainMenuModule */],
             __WEBPACK_IMPORTED_MODULE_1__angular_common__["i" /* CommonModule */],
             __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* RouterModule */].forChild(__WEBPACK_IMPORTED_MODULE_3__mall_routes__["a" /* mallRoutes */])
         ],
-        providers: [__WEBPACK_IMPORTED_MODULE_11__service_mall_service__["a" /* MallService */]]
+        providers: [__WEBPACK_IMPORTED_MODULE_12__service_mall_service__["a" /* MallService */]]
     })
 ], MallModule);
 
