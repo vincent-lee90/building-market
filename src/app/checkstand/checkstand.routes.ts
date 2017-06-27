@@ -8,8 +8,8 @@ export const checkstandRoutes = [
     component: CheckstandComponent,
     canActivate: [AuthGuard],
     children: [
-      {path: '', redirectTo: 'order', pathMatch: 'full'},
-      {path: 'order', component: ConfirmOrderComponent},
+      {path: '', redirectTo: 'confirm-order', pathMatch: 'full'},
+      {path: 'confirm-order', component: ConfirmOrderComponent},
       {path: 'pay', component: PayComponent}
     ]
   },
