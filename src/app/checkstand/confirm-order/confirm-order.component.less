@@ -1,18 +1,56 @@
-.select-address{
+.select-address {
   background-color: #fff;
   align-items: center;
   display: flex;
-  &>div{
+  & > div {
     padding-left: .15rem;
   }
 }
-.product{
-  background-color: #fff;
-  .product-info{
 
+.product {
+  background-color: #fff;
+  .product-info {
     background-color: #f4f4f4;
-    img{
-      border:1px solid #e5e5e5;
+    img {
+      border: 1px solid #e5e5e5;
+      width: 1rem;
     }
+    & > div {
+      float: right;
+      padding-left: .2rem;
+      width: 70%;
+      height: 1rem;
+      position: relative;
+    }
+    .product-price {
+      position: absolute;
+      left: .2rem;
+      bottom: 0;
+
+    }
+    .purchase-amount{
+      position: absolute;
+      right: 0;
+      bottom: 0;
+    }
+  }
+}
+.price{
+  color:#e81a62;
+  .price-type{
+    margin-right: 5px;
+  }
+}
+.purchase-btn{
+  width: 100%;
+  .left-btn{
+    float: left;
+    width: 70%;
+    height: 0.44rem;
+  }
+  .right-btn{
+    float: left;
+    width: 30%;
+    height: 0.44rem;
   }
 }
