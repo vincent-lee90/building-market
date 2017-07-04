@@ -23,8 +23,5 @@ export const appRoutes = [
   }, {
     path: 'manual',
     component: ManualComponent
-  }, {
-    path: 'checkstand',
-    loadChildren: './checkstand/checkstand.module#CheckstandModule'
   }
 ];

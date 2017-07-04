@@ -9,7 +9,8 @@ import {ListComponent} from "./list/list.component";
 import {DetailComponent} from './detail/detail.component';
 import {MallSearchComponent} from './mall-search/mall-search.component';
 import {MallCategoryComponent} from './mall-category/mall-category.component';
-import {AmountComponent} from './amount/amount.component'
+import {AmountComponent} from './amount/amount.component';
+import {ConfirmOrderComponent} from './confirm-order/confirm-order.component'
 import {MallService} from './service/mall.service';
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import {MallService} from './service/mall.service';
     DetailComponent,
     MallSearchComponent,
     MallCategoryComponent,
-    AmountComponent
+    AmountComponent,
+    ConfirmOrderComponent
   ],
   imports: [
     MainMenuModule,

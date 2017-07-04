@@ -246,10 +246,65 @@ AmountComponent = __decorate([
 
 /***/ }),
 
+/***/ "./src/app/mall/confirm-order/confirm-order.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"select-address padding-v-12 padding-h-default\">\r\n  <img src=\"./imgs/location.png\" height=\"30\">\r\n  <div style=\"width: 100%;\">\r\n    <div><span>收件人：张三</span><span class=\"pull-right\">18683367777</span></div>\r\n    <div class=\"margin-top-5 font-size-12\">\r\n      <img class=\"pull-right\" src=\"./imgs/arrow-right2.png\" width=\"15\">\r\n      <div>收货地址：四川省成都市金牛区两河西三路129号</div>\r\n    </div>\r\n  </div>\r\n</div>\r\n<div class=\"margin-top-10 product\">\r\n  <div class=\"store padding-h-default padding-v-12\">神州建材</div>\r\n  <div class=\"product-info padding-h-default padding-v-12\">\r\n    <img src=\"./imgs/eg-stores.jpg\" width=\"30%\">\r\n    <div>\r\n      <div class=\"font-color-content font-size-12\">雷士照明 led圆形卧室欧式客厅水晶吸顶灯具现代简约温馨大气灯 EYX9053</div>\r\n      <div class=\"product-price price\">\r\n        <span class=\"price-type\"><small>¥</small></span><span>999.00</span>\r\n      </div>\r\n      <div class=\"purchase-amount\">\r\n        <span>x1</span>\r\n      </div>\r\n    </div>\r\n  </div>\r\n\r\n</div>\r\n<div class=\"bg-lightest padding-h-default\">\r\n  <div class=\" padding-v-12 border-bottom-default\"><span>售后服务</span></div>\r\n  <div class=\" padding-v-12 \"><span>配送方式</span></div>\r\n</div>\r\n<div class=\"fixed-bottom purchase-btn\">\r\n  <div class=\"left-btn text-right padding-v-12 padding-h-10 border-top-default bg-lightest\">合计：<span class=\"price\"><span class=\"price-type\"><small>¥</small></span><span>1234</span></span>\r\n  </div>\r\n  <div class=\"right-btn btn-flat-default padding-v-12\">提交订单</div>\r\n</div>\r\n"
+
+/***/ }),
+
+/***/ "./src/app/mall/confirm-order/confirm-order.component.less":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".select-address {\n  background-color: #fff;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n}\n.select-address > div {\n  padding-left: .15rem;\n}\n.product {\n  background-color: #fff;\n}\n.product .product-info {\n  background-color: #f4f4f4;\n}\n.product .product-info img {\n  border: 1px solid #e5e5e5;\n  width: 1rem;\n}\n.product .product-info > div {\n  float: right;\n  padding-left: .2rem;\n  width: 70%;\n  height: 1rem;\n  position: relative;\n}\n.product .product-info .product-price {\n  position: absolute;\n  left: .2rem;\n  bottom: 0;\n}\n.product .product-info .purchase-amount {\n  position: absolute;\n  right: 0;\n  bottom: 0;\n}\n.price {\n  color: #e81a62;\n}\n.price .price-type {\n  margin-right: 5px;\n}\n.purchase-btn {\n  width: 100%;\n}\n.purchase-btn .left-btn {\n  float: left;\n  width: 70%;\n  height: 0.44rem;\n}\n.purchase-btn .right-btn {\n  float: left;\n  width: 30%;\n  height: 0.44rem;\n}\n", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "./src/app/mall/confirm-order/confirm-order.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ConfirmOrderComponent; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+var ConfirmOrderComponent = (function () {
+    function ConfirmOrderComponent() {
+    }
+    return ConfirmOrderComponent;
+}());
+ConfirmOrderComponent = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["d" /* Component */])({
+        selector: 'order',
+        template: __webpack_require__("./src/app/mall/confirm-order/confirm-order.component.html"),
+        styles: [__webpack_require__("./src/app/mall/confirm-order/confirm-order.component.less")]
+    })
+], ConfirmOrderComponent);
+
+//# sourceMappingURL=E:/myProjects/building-market/src/confirm-order.component.js.map
+
+/***/ }),
+
 /***/ "./src/app/mall/detail/detail.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"margin-bottom-44\">\r\n  <div class=\"detail-img\">\r\n    <img src=\"{{product.product_logo}}\">\r\n  </div>\r\n  <div class=\"text-info bg-lightest padding-h-default\">\r\n    <div class=\"good-title padding-v-12\">\r\n      {{product.product_name}}\r\n    </div>\r\n    <div>\r\n      <div class=\"good-price font-size-12\">¥<span class=\"font-size-16\">{{product.current_price}}</span></div>\r\n      <div class=\"font-size-12 margin-top-10 font-color-content\">价格：¥\r\n        <del>{{product.origin_price}}</del>\r\n      </div>\r\n    </div>\r\n  </div>\r\n  <div class=\"margin-top-15 bg-lightest padding-v-12 padding-h-default\">\r\n    <div class=\"font-size-16\">月影凯顿\r\n      <div class=\"font-color-content margin-top-5 font-size-12 locate pull-right\"><img class=\"locate-img\"\r\n                                                                                       src=\"./imgs/icon-locate.png\"><span>700m</span>\r\n      </div>\r\n    </div>\r\n    <div class=\"font-color-content margin-top-5 font-size-12\">地址:四川省成都市郫县西区大道455号</div>\r\n\r\n    <div class=\"padding-h-default margin-top-5 text-center\">\r\n      <div class=\"to-store\" routerLink=\"../../stores\">进入店铺</div>\r\n    </div>\r\n  </div>\r\n<select-amount (onSelectAmount)=\"selectAmount($event)\"></select-amount>\r\n  <div class=\"  margin-top-15  bg-lightest display-imgs\">\r\n    <div class=\"padding-v-12 padding-h-default\"><span>产品详情</span></div>\r\n    <div *ngFor=\"let url of product.img_detail_urls\"><img src=\"{{url}}\"></div>\r\n  </div>\r\n</div>\r\n<div class=\"fixed-bottom\">\r\n  <div class=\"btn-flat-default\" routerLink=\"/checkstand\">立即购买</div>\r\n</div>\r\n"
+module.exports = "<div class=\"margin-bottom-44\">\r\n  <div class=\"detail-img\">\r\n    <img src=\"{{product.product_logo}}\">\r\n  </div>\r\n  <div class=\"text-info bg-lightest padding-h-default\">\r\n    <div class=\"good-title padding-v-12\">\r\n      {{product.product_name}}\r\n    </div>\r\n    <div>\r\n      <div class=\"good-price font-size-12\">¥<span class=\"font-size-16\">{{product.current_price}}</span></div>\r\n      <div class=\"font-size-12 margin-top-10 font-color-content\">价格：¥\r\n        <del>{{product.origin_price}}</del>\r\n      </div>\r\n    </div>\r\n  </div>\r\n  <div class=\"margin-top-15 bg-lightest padding-v-12 padding-h-default\">\r\n    <div class=\"font-size-16\">月影凯顿\r\n      <div class=\"font-color-content margin-top-5 font-size-12 locate pull-right\"><img class=\"locate-img\"\r\n                                                                                       src=\"./imgs/icon-locate.png\"><span>700m</span>\r\n      </div>\r\n    </div>\r\n    <div class=\"font-color-content margin-top-5 font-size-12\">地址:四川省成都市郫县西区大道455号</div>\r\n\r\n    <div class=\"padding-h-default margin-top-5 text-center\">\r\n      <div class=\"to-store\" routerLink=\"../../stores\">进入店铺</div>\r\n    </div>\r\n  </div>\r\n<select-amount (onSelectAmount)=\"selectAmount($event)\"></select-amount>\r\n  <div class=\"  margin-top-15  bg-lightest display-imgs\">\r\n    <div class=\"padding-v-12 padding-h-default\"><span>产品详情</span></div>\r\n    <div *ngFor=\"let url of product.img_detail_urls\"><img src=\"{{url}}\"></div>\r\n  </div>\r\n</div>\r\n<div class=\"fixed-bottom\">\r\n  <div class=\"btn-flat-default\" (click)=\"toConfirm()\">立即购买</div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -295,15 +350,18 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 var DetailComponent = (function () {
-    function DetailComponent(mallService, route) {
+    function DetailComponent(mallService, route, router) {
         this.mallService = mallService;
         this.route = route;
+        this.router = router;
         this.product = {};
-        this.amount = "";
+        this.amount = "1";
+        this.params = {};
     }
     DetailComponent.prototype.getProductDetail = function () {
         var _this = this;
         this.route.params.switchMap(function (params) {
+            _this.params = params;
             return _this.mallService.getProductById(params["id"]);
         }).subscribe(function (data) {
             _this.product = data;
@@ -311,6 +369,9 @@ var DetailComponent = (function () {
     };
     DetailComponent.prototype.selectAmount = function (amount) {
         this.amount = amount;
+    };
+    DetailComponent.prototype.toConfirm = function () {
+        this.router.navigate(['../confirm-order', this.params['id'], this.amount]);
     };
     DetailComponent.prototype.ngOnInit = function () {
         this.getProductDetail();
@@ -323,10 +384,10 @@ DetailComponent = __decorate([
         template: __webpack_require__("./src/app/mall/detail/detail.component.html"),
         styles: [__webpack_require__("./src/app/mall/detail/detail.component.less")]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__service_mall_service__["a" /* MallService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__service_mall_service__["a" /* MallService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* ActivatedRoute */]) === "function" && _b || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__service_mall_service__["a" /* MallService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__service_mall_service__["a" /* MallService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* ActivatedRoute */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */]) === "function" && _c || Object])
 ], DetailComponent);
 
-var _a, _b;
+var _a, _b, _c;
 //# sourceMappingURL=E:/myProjects/building-market/src/detail.component.js.map
 
 /***/ }),
@@ -592,7 +653,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__mall_search_mall_search_component__ = __webpack_require__("./src/app/mall/mall-search/mall-search.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__mall_category_mall_category_component__ = __webpack_require__("./src/app/mall/mall-category/mall-category.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__amount_amount_component__ = __webpack_require__("./src/app/mall/amount/amount.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__service_mall_service__ = __webpack_require__("./src/app/mall/service/mall.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__confirm_order_confirm_order_component__ = __webpack_require__("./src/app/mall/confirm-order/confirm-order.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__service_mall_service__ = __webpack_require__("./src/app/mall/service/mall.service.ts");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MallModule", function() { return MallModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -600,6 +662,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -627,14 +690,15 @@ MallModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_8__detail_detail_component__["a" /* DetailComponent */],
             __WEBPACK_IMPORTED_MODULE_9__mall_search_mall_search_component__["a" /* MallSearchComponent */],
             __WEBPACK_IMPORTED_MODULE_10__mall_category_mall_category_component__["a" /* MallCategoryComponent */],
-            __WEBPACK_IMPORTED_MODULE_11__amount_amount_component__["a" /* AmountComponent */]
+            __WEBPACK_IMPORTED_MODULE_11__amount_amount_component__["a" /* AmountComponent */],
+            __WEBPACK_IMPORTED_MODULE_12__confirm_order_confirm_order_component__["a" /* ConfirmOrderComponent */]
         ],
         imports: [
             __WEBPACK_IMPORTED_MODULE_6__share_main_menu_main_menu_module__["a" /* MainMenuModule */],
             __WEBPACK_IMPORTED_MODULE_1__angular_common__["i" /* CommonModule */],
             __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* RouterModule */].forChild(__WEBPACK_IMPORTED_MODULE_3__mall_routes__["a" /* mallRoutes */])
         ],
-        providers: [__WEBPACK_IMPORTED_MODULE_12__service_mall_service__["a" /* MallService */]]
+        providers: [__WEBPACK_IMPORTED_MODULE_13__service_mall_service__["a" /* MallService */]]
     })
 ], MallModule);
 
@@ -652,7 +716,9 @@ MallModule = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__detail_detail_component__ = __webpack_require__("./src/app/mall/detail/detail.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__mall_search_mall_search_component__ = __webpack_require__("./src/app/mall/mall-search/mall-search.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__mall_category_mall_category_component__ = __webpack_require__("./src/app/mall/mall-category/mall-category.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__confirm_order_confirm_order_component__ = __webpack_require__("./src/app/mall/confirm-order/confirm-order.component.ts");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return mallRoutes; });
+
 
 
 
@@ -678,6 +744,9 @@ var mallRoutes = [
     }, {
         path: 'mall-category',
         component: __WEBPACK_IMPORTED_MODULE_5__mall_category_mall_category_component__["a" /* MallCategoryComponent */]
+    }, {
+        path: 'confirm-order/:id/:amount',
+        component: __WEBPACK_IMPORTED_MODULE_6__confirm_order_confirm_order_component__["a" /* ConfirmOrderComponent */]
     }
 ];
 //# sourceMappingURL=E:/myProjects/building-market/src/mall.routes.js.map

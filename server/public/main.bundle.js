@@ -1,4 +1,4 @@
-webpackJsonp([6],{
+webpackJsonp([5],{
 
 /***/ "./src async recursive":
 /***/ (function(module, exports, __webpack_require__) {
@@ -8,17 +8,13 @@ var map = {
 		"./src/app/account/account.module.ts",
 		1
 	],
-	"./checkstand/checkstand.module": [
-		"./src/app/checkstand/checkstand.module.ts",
-		3
-	],
 	"./mine/mine.module": [
 		"./src/app/mine/mine.module.ts",
 		2
 	],
 	"./strategy/strategy.module": [
 		"./src/app/strategy/strategy.module.ts",
-		4
+		3
 	],
 	"app/mall/mall.module": [
 		"./src/app/mall/mall.module.ts",
@@ -206,9 +202,6 @@ var appRoutes = [
     }, {
         path: 'manual',
         component: __WEBPACK_IMPORTED_MODULE_1__manual_manual_component__["a" /* ManualComponent */]
-    }, {
-        path: 'checkstand',
-        loadChildren: './checkstand/checkstand.module#CheckstandModule'
     }
 ];
 //# sourceMappingURL=E:/myProjects/building-market/src/app.routes.js.map
