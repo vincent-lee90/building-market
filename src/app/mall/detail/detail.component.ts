@@ -29,7 +29,9 @@ export class DetailComponent implements OnInit {
   }
 
   toConfirm() {
-    this.router.navigate(['../confirm-order',this.params['id'],this.amount])
+    this.mallService.initialOrder.product=this.product;
+    this.mallService.initialOrder.amount=this.amount;
+    this.router.navigate(['../../confirm-order'],{relativeTo:this.route})
   }
 
   ngOnInit() {

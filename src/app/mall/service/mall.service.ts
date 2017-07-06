@@ -7,6 +7,10 @@ export class MallService {
   constructor(private http: Http, private appDialogService: AppDialogService) {
   }
 
+  public initialOrder = {
+    product: {},
+    amount: ""
+  };
   private getHotWordsUrl = 'mall/hotWords';
   private getProductListUrl = 'mall/products';
   private getProductByIdUrl = 'mall/product';
@@ -40,8 +44,8 @@ export class MallService {
 
   getProductById(id) {
     let params = new URLSearchParams();
-    params.set('id',id);
-    return this.http.get(this.getProductByIdUrl,{search:params})
+    params.set('id', id);
+    return this.http.get(this.getProductByIdUrl, {search: params})
       .map((res: Response) => {
         let _res = res.json();
         if (_res.statusCode != 200) {

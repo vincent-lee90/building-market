@@ -11,14 +11,14 @@
 <div class="margin-top-10 product">
   <div class="store padding-h-default padding-v-12">神州建材</div>
   <div class="product-info padding-h-default padding-v-12">
-    <img src="./imgs/eg-stores.jpg" width="30%">
-    <div>
-      <div class="font-color-content font-size-12">雷士照明 led圆形卧室欧式客厅水晶吸顶灯具现代简约温馨大气灯 EYX9053</div>
+    <img src="{{product.product_logo}}" width="30%">
+    <div routerLink="../detail/{{product.id}}">
+      <div class="font-color-content font-size-12">{{product.product_name}}</div>
       <div class="product-price price">
-        <span class="price-type"><small>¥</small></span><span>999.00</span>
+        <span class="price-type"><small>¥</small></span><span>{{product.origin_price*amount}}</span>
       </div>
       <div class="purchase-amount">
-        <span>x1</span>
+        <span>x{{amount}}</span>
       </div>
     </div>
   </div>
@@ -29,7 +29,7 @@
   <div class=" padding-v-12 "><span>配送方式</span></div>
 </div>
 <div class="fixed-bottom purchase-btn">
-  <div class="left-btn text-right padding-v-12 padding-h-10 border-top-default bg-lightest">合计：<span class="price"><span class="price-type"><small>¥</small></span><span>1234</span></span>
+  <div class="left-btn text-right padding-v-12 padding-h-10 border-top-default bg-lightest">合计：<span class="price"><span class="price-type"><small>¥</small></span><span>{{product.origin_price*amount}}</span></span>
   </div>
   <div class="right-btn btn-flat-default padding-v-12">提交订单</div>
 </div>

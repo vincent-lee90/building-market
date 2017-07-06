@@ -38,7 +38,7 @@ router.get('/products', function (req, res, next) {
 router.get("/product", function (req, res, next) {
   var id = "", sql = "";
   id = req.query.id;
-  sql = "select a.*,b.img_url,b.type from product as a,product_imgs as b where a.id=b.product_id and a.id=" + id + ";";
+  sql = "select a.*,b.img_url,b.type,c.store_name,c.store_address from product as a,product_imgs as b ,stores as c where a.id=b.product_id and a.store_code=c.store_code and a.id=" + id + ";";
   mysql.query(sql, function (result) {
     response.statusCode = '200';
     response.message = 'OK';

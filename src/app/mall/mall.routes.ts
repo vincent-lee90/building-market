@@ -25,7 +25,7 @@ export const mallRoutes = [
     path: 'mall-category',
     component: MallCategoryComponent
   }, {
-    path: 'confirm-order/:id/:amount',
+    path: 'confirm-order',
     component: ConfirmOrderComponent
   }, {
     path: '**',
