@@ -31,5 +31,5 @@
 <div class="fixed-bottom purchase-btn">
   <div class="left-btn text-right padding-v-12 padding-h-10 border-top-default bg-lightest">合计：<span class="price"><span class="price-type"><small>¥</small></span><span>{{product.origin_price*amount}}</span></span>
   </div>
-  <div class="right-btn btn-flat-default padding-v-12">提交订单</div>
+  <div class="right-btn btn-flat-default padding-v-12" (click)="toPay()">提交订单</div>
 </div>
