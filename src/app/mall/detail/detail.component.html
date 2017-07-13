@@ -22,7 +22,7 @@
     <div class="font-color-content margin-top-5 font-size-12">地址:{{product.store_address}}</div>
 
     <div class="padding-h-default margin-top-5 text-center">
-      <div class="to-store" routerLink="../../stores">进入店铺</div>
+      <div class="to-store" routerLink="../../store/{{product.store_code}}">进入店铺</div>
     </div>
   </div>
 <select-amount (onSelectAmount)="selectAmount($event)"></select-amount>

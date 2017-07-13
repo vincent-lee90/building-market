@@ -1,4 +1,4 @@
-import {StoresComponent} from "./stores/stores.component";
+import {StoreComponent} from "./store/store.component";
 import {MallComponent} from "./mall/mall.component";
 import {ListComponent} from './list/list.component';
 import {DetailComponent} from './detail/detail.component';
@@ -13,8 +13,8 @@ export const mallRoutes = [
     path: 'list',
     component: ListComponent
   }, {
-    path: 'stores',
-    component: StoresComponent
+    path: 'store/:id',
+    component: StoreComponent
   }, {
     path: 'detail/:id',
     component: DetailComponent
