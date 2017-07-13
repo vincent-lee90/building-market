@@ -15,6 +15,7 @@ export class MallService {
   private getProductListUrl = 'mall/products';
   private getProductByIdUrl = 'mall/product';
   private getCategoriesUrl = 'mall/categories';
+  private getStoreInfoUrl='mall/store';
 
   getHotWords() {
     return this.http.get(this.getHotWordsUrl)
@@ -58,6 +59,17 @@ export class MallService {
   getCategories() {
     return this.http.get(this.getCategoriesUrl)
       .map((res: Response) => {
+        let _res = res.json();
+        if (_res.statusCode != 200) {
+          this.appDialogService.setAlert(_res.message)
+        }
+        return _res.body;
+      })
+  }
+
+  getStoreInfo() {
+    return this.http.get(this.getStoreInfoUrl)
+      .switchMap((res: Response) => {
         let _res = res.json();
         if (_res.statusCode != 200) {
           this.appDialogService.setAlert(_res.message)

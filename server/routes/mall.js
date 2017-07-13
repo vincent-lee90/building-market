@@ -67,5 +67,10 @@ router.get("/categories", function (req, res, next) {
     res.send(response);
   })
 });
+router.get('/store',function (req,res,next) {
+  var store_code="",sql="";
+   store_code=req.query.store_Code;
+  sql='select * from product'
+});
 
 module.exports = router;
