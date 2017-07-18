@@ -1,5 +1,6 @@
 import {IndexComponent} from './index/index.component';
 import {ManualComponent} from './manual/manual.component'
+import {PayComponent} from "./pay/pay.component";
 export const appRoutes = [
   {
     path: '',
@@ -23,5 +24,9 @@ export const appRoutes = [
   }, {
     path: 'manual',
     component: ManualComponent
+  },
+  {
+    path:'pay',
+    component:PayComponent
   }
 ];

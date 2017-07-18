@@ -14,8 +14,10 @@ import {MyDialogModule} from './share/myDialog/myDialog.module';
 import {AuthGuardService} from './auth-guard/auth-guard.service';
 import {AuthGuard} from './auth-guard/auth-guard';
 import {AppDialogService} from './share/myDialog/app-alert/app-dialog.service';
+import {PayComponent} from "./pay/pay.component";
 @NgModule({
   declarations: [
+    PayComponent,
     AppComponent,
     IndexComponent,
     ManualComponent
