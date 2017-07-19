@@ -1,5 +1,6 @@
 import {IndexComponent} from './index/index.component';
 import {ManualComponent} from './manual/manual.component'
+import {PayComponent} from "./pay/pay.component";
 export const appRoutes = [
   {
     path: '',
@@ -23,8 +24,9 @@ export const appRoutes = [
   }, {
     path: 'manual',
     component: ManualComponent
-  }, {
-    path: 'checkstand',
-    loadChildren: './checkstand/checkstand.module#CheckstandModule'
+  },
+  {
+    path:'pay',
+    component:PayComponent
   }
 ];

@@ -1,0 +1,35 @@
+<div class="select-address padding-v-12 padding-h-default">
+  <img src="./imgs/location.png" height="30">
+  <div style="width: 100%;">
+    <div><span>收件人：张三</span><span class="pull-right">18683367777</span></div>
+    <div class="margin-top-5 font-size-12">
+      <img class="pull-right" src="./imgs/arrow-right2.png" width="15">
+      <div>收货地址：四川省成都市金牛区两河西三路129号</div>
+    </div>
+  </div>
+</div>
+<div class="margin-top-10 product">
+  <div class="store padding-h-default padding-v-12">神州建材</div>
+  <div class="product-info padding-h-default padding-v-12">
+    <img src="{{product.product_logo}}" width="30%">
+    <div routerLink="../detail/{{product.id}}">
+      <div class="font-color-content font-size-12">{{product.product_name}}</div>
+      <div class="product-price price">
+        <span class="price-type"><small>¥</small></span><span>{{product.origin_price*amount}}</span>
+      </div>
+      <div class="purchase-amount">
+        <span>x{{amount}}</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+<div class="bg-lightest padding-h-default">
+  <div class=" padding-v-12 border-bottom-default"><span>售后服务</span></div>
+  <div class=" padding-v-12 "><span>配送方式</span></div>
+</div>
+<div class="fixed-bottom purchase-btn">
+  <div class="left-btn text-right padding-v-12 padding-h-10 border-top-default bg-lightest">合计：<span class="price"><span class="price-type"><small>¥</small></span><span>{{product.origin_price*amount}}</span></span>
+  </div>
+  <div class="right-btn btn-flat-default padding-v-12" (click)="toPay()">提交订单</div>
+</div>

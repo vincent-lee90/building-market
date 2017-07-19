@@ -14,15 +14,15 @@
     </div>
   </div>
   <div class="margin-top-15 bg-lightest padding-v-12 padding-h-default">
-    <div class="font-size-16">月影凯顿
+    <div class="font-size-16">{{product.store_name}}
       <div class="font-color-content margin-top-5 font-size-12 locate pull-right"><img class="locate-img"
                                                                                        src="./imgs/icon-locate.png"><span>700m</span>
       </div>
     </div>
-    <div class="font-color-content margin-top-5 font-size-12">地址:四川省成都市郫县西区大道455号</div>
+    <div class="font-color-content margin-top-5 font-size-12">地址:{{product.store_address}}</div>
 
     <div class="padding-h-default margin-top-5 text-center">
-      <div class="to-store" routerLink="../../stores">进入店铺</div>
+      <div class="to-store" routerLink="../../store/{{product.store_code}}">进入店铺</div>
     </div>
   </div>
 <select-amount (onSelectAmount)="selectAmount($event)"></select-amount>
@@ -32,5 +32,5 @@
   </div>
 </div>
 <div class="fixed-bottom">
-  <div class="btn-flat-default" routerLink="/checkstand">立即购买</div>
+  <div class="btn-flat-default" (click)="toConfirm()">立即购买</div>
 </div>

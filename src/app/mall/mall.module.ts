@@ -2,24 +2,26 @@ import {NgModule} from "@angular/core";
 import {CommonModule} from '@angular/common';
 import {RouterModule} from '@angular/router';
 import {mallRoutes} from './mall.routes';
-import {StoresComponent} from "./stores/stores.component";
+import {StoreComponent} from "./store/store.component";
 import {MallComponent} from "./mall/mall.component";
 import{MainMenuModule} from "../share/main-menu/main-menu.module"
 import {ListComponent} from "./list/list.component";
 import {DetailComponent} from './detail/detail.component';
 import {MallSearchComponent} from './mall-search/mall-search.component';
 import {MallCategoryComponent} from './mall-category/mall-category.component';
-import {AmountComponent} from './amount/amount.component'
+import {AmountComponent} from './amount/amount.component';
+import {ConfirmOrderComponent} from './confirm-order/confirm-order.component'
 import {MallService} from './service/mall.service';
 @NgModule({
   declarations: [
-    StoresComponent,
+    StoreComponent,
     MallComponent,
     ListComponent,
     DetailComponent,
     MallSearchComponent,
     MallCategoryComponent,
-    AmountComponent
+    AmountComponent,
+    ConfirmOrderComponent
   ],
   imports: [
     MainMenuModule,
