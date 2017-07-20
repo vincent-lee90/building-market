@@ -16,7 +16,7 @@ export class MallService {
   private getProductByIdUrl = 'mall/product';
   private getCategoriesUrl = 'mall/categories';
   private getStoreInfoUrl='mall/store';
-
+  private createOrder='order/createOrder'
   getHotWords() {
     return this.http.get(this.getHotWordsUrl)
       .map((res: Response) => {

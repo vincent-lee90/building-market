@@ -5,10 +5,16 @@ var bodyParser = require('body-parser');
 var mysql = require('../db.js');
 var response = require('../response.js');
 var app = express();
-var tool=require('../tools/tool.js');
+var tool = require('../tools/tool.js');
 app.use(bodyParser.json());
 router.get('/createOrder', function (req, res, next) {
-  mysql.query('insert');
+  var orderCode = tool.getOrderCode(), product_id, product_name, amount, price, user_id;
+  product_id = req.query.product_id;
+  product_name = req.query.product_name;
+  amount = req.query.amount;
+  price = req.query.price;
+  user_id = req.query.user_id;
+
   mysql.query('select search_words from hot_search;', function (result) {
     res.setHeader('Content-Type', 'application/json;charset=utf-8');
     response.statusCode = '200';

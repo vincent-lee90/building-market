@@ -12,7 +12,6 @@ export class ConfirmOrderComponent implements OnInit {
   constructor(private mallService: MallService) {
   }
   toPay() {
-
   }
 
   ngOnInit() {
