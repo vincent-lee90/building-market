@@ -2,6 +2,8 @@ import {Injectable} from '@angular/core';
 import {Http, Response, URLSearchParams} from '@angular/http';
 import {AppDialogService} from '../../share/myDialog/app-alert/app-dialog.service';
 import 'rxjs/add/operator/map';
+import {Order} from "../model/order.model";
+
 @Injectable()
 export class MallService {
   constructor(private http: Http, private appDialogService: AppDialogService) {
@@ -15,8 +17,9 @@ export class MallService {
   private getProductListUrl = 'mall/products';
   private getProductByIdUrl = 'mall/product';
   private getCategoriesUrl = 'mall/categories';
-  private getStoreInfoUrl='mall/store';
-  private createOrder='order/createOrder'
+  private getStoreInfoUrl = 'mall/store';
+  private createOrderUrl = 'order/createOrder';
+
   getHotWords() {
     return this.http.get(this.getHotWordsUrl)
       .map((res: Response) => {
@@ -77,4 +80,10 @@ export class MallService {
         return _res.body;
       })
   }
+  createOrder(order:Order){
+    let params=new URLSearchParams();
+
+    return this.http.post(this.createOrderUrl,params)
+  }
 }
+

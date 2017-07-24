@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {MallService} from "../service/mall.service";
+import {Order} from "../model/order.model";
 @Component({
   selector: 'order',
   templateUrl: './confirm-order.component.html',
@@ -8,10 +9,13 @@ import {MallService} from "../service/mall.service";
 export class ConfirmOrderComponent implements OnInit {
   private product = {};
   private amount = "";
+  public order: Order = new Order();
 
   constructor(private mallService: MallService) {
   }
+
   toPay() {
+    this.mallService.createOrder(this.order)
   }
 
   ngOnInit() {
