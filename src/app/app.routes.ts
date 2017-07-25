@@ -26,7 +26,7 @@ export const appRoutes = [
     component: ManualComponent
   },
   {
-    path:'pay',
+    path:'pay/:orderCode',
     component:PayComponent
   }
 ];

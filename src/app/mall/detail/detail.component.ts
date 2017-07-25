@@ -2,13 +2,14 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Params,Router} from '@angular/router';
 import {MallService} from '../service/mall.service';
 import 'rxjs/add/operator/switchMap';
+import {Product} from "../model/product.model";
 @Component({
   selector: 'detail',
   templateUrl: './detail.component.html',
   styleUrls: ['./detail.component.less']
 })
 export class DetailComponent implements OnInit {
-  product = {};
+  product:Product = new Product();
   amount = "1";
   params = {};
 
