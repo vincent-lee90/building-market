@@ -20,7 +20,7 @@ export class ListComponent implements OnInit {
     }).subscribe(data => this.productList = data);
   }
   getListByCode(code:string){
-    let paramsObj={catCode:code}
+    let paramsObj={catCode:code};
     this.mallService.getProducts(paramsObj)
       .subscribe(data=>this.productList=data)
   }
