@@ -242,7 +242,7 @@ AmountComponent = __decorate([
     __metadata("design:paramtypes", [])
 ], AmountComponent);
 
-//# sourceMappingURL=E:/myProjects/building-market/src/amount.component.js.map
+//# sourceMappingURL=F:/myProjects/building-market/src/amount.component.js.map
 
 /***/ }),
 
@@ -332,7 +332,7 @@ ConfirmOrderComponent = __decorate([
 ], ConfirmOrderComponent);
 
 var _a, _b, _c;
-//# sourceMappingURL=E:/myProjects/building-market/src/confirm-order.component.js.map
+//# sourceMappingURL=F:/myProjects/building-market/src/confirm-order.component.js.map
 
 /***/ }),
 
@@ -427,7 +427,7 @@ DetailComponent = __decorate([
 ], DetailComponent);
 
 var _a, _b, _c;
-//# sourceMappingURL=E:/myProjects/building-market/src/detail.component.js.map
+//# sourceMappingURL=F:/myProjects/building-market/src/detail.component.js.map
 
 /***/ }),
 
@@ -513,7 +513,7 @@ ListComponent = __decorate([
 ], ListComponent);
 
 var _a, _b;
-//# sourceMappingURL=E:/myProjects/building-market/src/list.component.js.map
+//# sourceMappingURL=F:/myProjects/building-market/src/list.component.js.map
 
 /***/ }),
 
@@ -598,7 +598,7 @@ MallCategoryComponent = __decorate([
 ], MallCategoryComponent);
 
 var _a;
-//# sourceMappingURL=E:/myProjects/building-market/src/mall-category.component.js.map
+//# sourceMappingURL=F:/myProjects/building-market/src/mall-category.component.js.map
 
 /***/ }),
 
@@ -671,7 +671,7 @@ MallSearchComponent = __decorate([
 ], MallSearchComponent);
 
 var _a;
-//# sourceMappingURL=E:/myProjects/building-market/src/mall-search.component.js.map
+//# sourceMappingURL=F:/myProjects/building-market/src/mall-search.component.js.map
 
 /***/ }),
 
@@ -741,7 +741,7 @@ MallModule = __decorate([
     })
 ], MallModule);
 
-//# sourceMappingURL=E:/myProjects/building-market/src/mall.module.js.map
+//# sourceMappingURL=F:/myProjects/building-market/src/mall.module.js.map
 
 /***/ }),
 
@@ -791,7 +791,7 @@ var mallRoutes = [
         component: __WEBPACK_IMPORTED_MODULE_1__mall_mall_component__["a" /* MallComponent */]
     }
 ];
-//# sourceMappingURL=E:/myProjects/building-market/src/mall.routes.js.map
+//# sourceMappingURL=F:/myProjects/building-market/src/mall.routes.js.map
 
 /***/ }),
 
@@ -856,7 +856,7 @@ MallComponent = __decorate([
 ], MallComponent);
 
 var _a;
-//# sourceMappingURL=E:/myProjects/building-market/src/mall.component.js.map
+//# sourceMappingURL=F:/myProjects/building-market/src/mall.component.js.map
 
 /***/ }),
 
@@ -871,7 +871,7 @@ var Order = (function () {
     return Order;
 }());
 
-//# sourceMappingURL=E:/myProjects/building-market/src/order.model.js.map
+//# sourceMappingURL=F:/myProjects/building-market/src/order.model.js.map
 
 /***/ }),
 
@@ -886,7 +886,7 @@ var Product = (function () {
     return Product;
 }());
 
-//# sourceMappingURL=E:/myProjects/building-market/src/product.model.js.map
+//# sourceMappingURL=F:/myProjects/building-market/src/product.model.js.map
 
 /***/ }),
 
@@ -982,7 +982,7 @@ var MallService = (function () {
     MallService.prototype.getStoreInfo = function () {
         var _this = this;
         return this.http.get(this.getStoreInfoUrl)
-            .switchMap(function (res) {
+            .map(function (res) {
             var _res = res.json();
             if (_res.statusCode != 200) {
                 _this.appDialogService.setAlert(_res.message);
@@ -999,7 +999,7 @@ var MallService = (function () {
         params.append('price', order.price);
         /*   params.append('user_id',order.user_id);*/
         return this.http.post(this.createOrderUrl, params)
-            .switchMap(function (res) {
+            .map(function (res) {
             var _res = res.json();
             if (_res.statusCode != 200) {
                 _this.appDialogService.setAlert(_res.message);
@@ -1015,7 +1015,7 @@ MallService = __decorate([
 ], MallService);
 
 var _a, _b;
-//# sourceMappingURL=E:/myProjects/building-market/src/mall.service.js.map
+//# sourceMappingURL=F:/myProjects/building-market/src/mall.service.js.map
 
 /***/ }),
 
@@ -1085,7 +1085,7 @@ StoreComponent = __decorate([
 ], StoreComponent);
 
 var _a, _b;
-//# sourceMappingURL=E:/myProjects/building-market/src/store.component.js.map
+//# sourceMappingURL=F:/myProjects/building-market/src/store.component.js.map
 
 /***/ })
 

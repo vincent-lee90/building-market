@@ -74,7 +74,7 @@ export class MallService {
 
   getStoreInfo() {
     return this.http.get(this.getStoreInfoUrl)
-      .switchMap((res: Response) => {
+      .map((res: Response) => {
         let _res = res.json();
         if (_res.statusCode != 200) {
           this.appDialogService.setAlert(_res.message)
@@ -91,7 +91,7 @@ export class MallService {
     params.append('price', order.price);
     /*   params.append('user_id',order.user_id);*/
     return this.http.post(this.createOrderUrl, params)
-      .switchMap((res: Response) => {
+      .map((res: Response) => {
         let _res = res.json();
         if (_res.statusCode != 200) {
           this.appDialogService.setAlert(_res.message)
