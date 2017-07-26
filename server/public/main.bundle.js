@@ -88,7 +88,7 @@ AppComponent = __decorate([
     })
 ], AppComponent);
 
-//# sourceMappingURL=F:/myProjects/building-market/src/app.component.js.map
+//# sourceMappingURL=E:/myProjects/building-market/src/app.component.js.map
 
 /***/ }),
 
@@ -169,7 +169,7 @@ AppModule = __decorate([
     })
 ], AppModule);
 
-//# sourceMappingURL=F:/myProjects/building-market/src/app.module.js.map
+//# sourceMappingURL=E:/myProjects/building-market/src/app.module.js.map
 
 /***/ }),
 
@@ -213,7 +213,7 @@ var appRoutes = [
         component: __WEBPACK_IMPORTED_MODULE_2__pay_pay_component__["a" /* PayComponent */]
     }
 ];
-//# sourceMappingURL=F:/myProjects/building-market/src/app.routes.js.map
+//# sourceMappingURL=E:/myProjects/building-market/src/app.routes.js.map
 
 /***/ }),
 
@@ -245,7 +245,7 @@ AuthGuardService = __decorate([
     __metadata("design:paramtypes", [])
 ], AuthGuardService);
 
-//# sourceMappingURL=F:/myProjects/building-market/src/auth-guard.service.js.map
+//# sourceMappingURL=E:/myProjects/building-market/src/auth-guard.service.js.map
 
 /***/ }),
 
@@ -295,7 +295,7 @@ AuthGuard = __decorate([
 ], AuthGuard);
 
 var _a, _b;
-//# sourceMappingURL=F:/myProjects/building-market/src/auth-guard.js.map
+//# sourceMappingURL=E:/myProjects/building-market/src/auth-guard.js.map
 
 /***/ }),
 
@@ -360,7 +360,22 @@ IndexComponent = __decorate([
 ], IndexComponent);
 
 var _a;
-//# sourceMappingURL=F:/myProjects/building-market/src/index.component.js.map
+//# sourceMappingURL=E:/myProjects/building-market/src/index.component.js.map
+
+/***/ }),
+
+/***/ "./src/app/mall/model/order.model.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Order; });
+var Order = (function () {
+    function Order() {
+    }
+    return Order;
+}());
+
+//# sourceMappingURL=E:/myProjects/building-market/src/order.model.js.map
 
 /***/ }),
 
@@ -415,14 +430,68 @@ ManualComponent = __decorate([
     })
 ], ManualComponent);
 
-//# sourceMappingURL=F:/myProjects/building-market/src/manual.component.js.map
+//# sourceMappingURL=E:/myProjects/building-market/src/manual.component.js.map
+
+/***/ }),
+
+/***/ "./src/app/mine/service/mine.service.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__("./node_modules/@angular/http/@angular/http.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__share_myDialog_app_alert_app_dialog_service__ = __webpack_require__("./src/app/share/myDialog/app-alert/app-dialog.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__ = __webpack_require__("./node_modules/rxjs/add/operator/map.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MineService; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+var MineService = (function () {
+    function MineService(http, appDialogService) {
+        this.http = http;
+        this.appDialogService = appDialogService;
+        this.getOrderUrl = "order/getOrder";
+    }
+    MineService.prototype.getOrderByCode = function (order_code) {
+        var _this = this;
+        var params = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* URLSearchParams */]();
+        params.set('order_code', order_code);
+        return this.http.get(this.getOrderUrl, { search: params })
+            .map(function (res) {
+            var _res = res.json();
+            if (_res.statusCode != 200) {
+                _this.appDialogService.setAlert(_res.message);
+            }
+            return _res.body;
+        });
+    };
+    return MineService;
+}());
+MineService = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["c" /* Injectable */])(),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Http */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__share_myDialog_app_alert_app_dialog_service__["a" /* AppDialogService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__share_myDialog_app_alert_app_dialog_service__["a" /* AppDialogService */]) === "function" && _b || Object])
+], MineService);
+
+var _a, _b;
+//# sourceMappingURL=E:/myProjects/building-market/src/mine.service.js.map
 
 /***/ }),
 
 /***/ "./src/app/pay/pay.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\" text-center order-info padding-h-default\">\r\n  <div class=\"font-color-title\">订单号：001239123333</div>\r\n  <div class=\"margin-top-15 font-size-16\"><span class=\"font-color-content font-size-12\">实付金额：</span><span class=\"font-color-orange  pay-money\">8864.00元</span></div>\r\n</div>\r\n<div class=\"padding-h-default text-center margin-top-30\">\r\n  <div class=\"btn-radius btn-border-blue pay-way\"><img class=\"pull-left check\" src=\"./imgs/icon-checked.png\">微信支付</div>\r\n</div>\r\n<div class=\"fixed-bottom btn-flat-default\">\r\n  立即支付\r\n</div>\r\n"
+module.exports = "<div class=\" order-info padding-h-default\">\r\n  <div class=\"font-color-title padding-h-default\">订单号：<span class=\"pull-right\">{{order_code}}</span></div>\r\n  <div class=\"margin-top-15 font-size-16 padding-h-default\"><span class=\"font-color-content font-size-12\">实付金额：</span><span class=\"font-color-orange  pay-money pull-right\">{{order.price}}元</span></div>\r\n</div>\r\n<div class=\"padding-h-default text-center margin-top-30\">\r\n  <div class=\"btn-radius btn-border-blue pay-way\"><img class=\"pull-left check\" src=\"./imgs/icon-checked.png\">微信支付</div>\r\n</div>\r\n<div class=\"fixed-bottom btn-flat-default\">\r\n  立即支付\r\n</div>\r\n"
 
 /***/ }),
 
@@ -434,7 +503,7 @@ exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/cs
 
 
 // module
-exports.push([module.i, ".order-info {\n  margin-top: 30%;\n}\n.pay-way {\n  padding: .06rem .3rem;\n  text-align: center;\n  width: 3rem;\n  position: relative;\n}\n.pay-way img.check {\n  position: absolute;\n  height: .18rem;\n  width: .18rem;\n  left: .3rem;\n  top: 50%;\n  margin-top: -0.09rem;\n}\n.pay-money {\n  margin-left: .2rem;\n  font-size: .2rem;\n}\n", ""]);
+exports.push([module.i, ".order-info {\n  margin-top: 30%;\n}\n.pay-way {\n  padding: .06rem .3rem;\n  text-align: center;\n  width: 3rem;\n  position: relative;\n}\n.pay-way img.check {\n  position: absolute;\n  height: .18rem;\n  width: .18rem;\n  left: .3rem;\n  top: 50%;\n  margin-top: -0.09rem;\n}\n.order-code {\n  margin-left: .2rem;\n}\n.pay-money {\n  margin-left: .2rem;\n  font-size: .2rem;\n}\n", ""]);
 
 // exports
 
@@ -449,6 +518,9 @@ module.exports = module.exports.toString();
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("./node_modules/@angular/router/@angular/router.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__mine_service_mine_service__ = __webpack_require__("./src/app/mine/service/mine.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__mall_model_order_model__ = __webpack_require__("./src/app/mall/model/order.model.ts");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PayComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -456,21 +528,44 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
 
 var PayComponent = (function () {
-    function PayComponent() {
+    function PayComponent(mineService, route) {
+        this.mineService = mineService;
+        this.route = route;
+        this.order = new __WEBPACK_IMPORTED_MODULE_3__mall_model_order_model__["a" /* Order */]();
+        this.order_code = this.route.snapshot.params['orderCode'];
     }
+    PayComponent.prototype.getOrder = function () {
+        var _this = this;
+        this.mineService.getOrderByCode(this.order_code)
+            .subscribe(function (data) {
+            _this.order = data;
+        });
+    };
+    PayComponent.prototype.ngOnInit = function () {
+        this.getOrder();
+    };
     return PayComponent;
 }());
 PayComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["d" /* Component */])({
         selector: 'pay',
         template: __webpack_require__("./src/app/pay/pay.component.html"),
-        styles: [__webpack_require__("./src/app/pay/pay.component.less")]
-    })
+        styles: [__webpack_require__("./src/app/pay/pay.component.less")],
+        providers: [__WEBPACK_IMPORTED_MODULE_2__mine_service_mine_service__["a" /* MineService */]]
+    }),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__mine_service_mine_service__["a" /* MineService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__mine_service_mine_service__["a" /* MineService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* ActivatedRoute */]) === "function" && _b || Object])
 ], PayComponent);
 
-//# sourceMappingURL=F:/myProjects/building-market/src/pay.component.js.map
+var _a, _b;
+//# sourceMappingURL=E:/myProjects/building-market/src/pay.component.js.map
 
 /***/ }),
 
@@ -525,7 +620,7 @@ MainMenuComponent = __decorate([
     })
 ], MainMenuComponent);
 
-//# sourceMappingURL=F:/myProjects/building-market/src/main-menu.component.js.map
+//# sourceMappingURL=E:/myProjects/building-market/src/main-menu.component.js.map
 
 /***/ }),
 
@@ -559,7 +654,7 @@ MainMenuModule = __decorate([
     })
 ], MainMenuModule);
 
-//# sourceMappingURL=F:/myProjects/building-market/src/main-menu.module.js.map
+//# sourceMappingURL=E:/myProjects/building-market/src/main-menu.module.js.map
 
 /***/ }),
 
@@ -642,7 +737,7 @@ AppAlertComponent = __decorate([
 ], AppAlertComponent);
 
 var _a;
-//# sourceMappingURL=F:/myProjects/building-market/src/app-alert.component.js.map
+//# sourceMappingURL=E:/myProjects/building-market/src/app-alert.component.js.map
 
 /***/ }),
 
@@ -676,7 +771,7 @@ AppDialogService = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["c" /* Injectable */])()
 ], AppDialogService);
 
-//# sourceMappingURL=F:/myProjects/building-market/src/app-dialog.service.js.map
+//# sourceMappingURL=E:/myProjects/building-market/src/app-dialog.service.js.map
 
 /***/ }),
 
@@ -731,7 +826,7 @@ LoadingComponent = __decorate([
     })
 ], LoadingComponent);
 
-//# sourceMappingURL=F:/myProjects/building-market/src/loading.component.js.map
+//# sourceMappingURL=E:/myProjects/building-market/src/loading.component.js.map
 
 /***/ }),
 
@@ -767,7 +862,7 @@ MyDialogModule = __decorate([
     })
 ], MyDialogModule);
 
-//# sourceMappingURL=F:/myProjects/building-market/src/myDialog.module.js.map
+//# sourceMappingURL=E:/myProjects/building-market/src/myDialog.module.js.map
 
 /***/ }),
 
@@ -822,7 +917,7 @@ SliderComponent = __decorate([
     })
 ], SliderComponent);
 
-//# sourceMappingURL=F:/myProjects/building-market/src/slider.component.js.map
+//# sourceMappingURL=E:/myProjects/building-market/src/slider.component.js.map
 
 /***/ }),
 
@@ -854,7 +949,7 @@ SliderModule = __decorate([
     })
 ], SliderModule);
 
-//# sourceMappingURL=F:/myProjects/building-market/src/slider.module.js.map
+//# sourceMappingURL=E:/myProjects/building-market/src/slider.module.js.map
 
 /***/ }),
 
@@ -871,7 +966,7 @@ SliderModule = __decorate([
 var environment = {
     production: false
 };
-//# sourceMappingURL=F:/myProjects/building-market/src/environment.js.map
+//# sourceMappingURL=E:/myProjects/building-market/src/environment.js.map
 
 /***/ }),
 
@@ -892,7 +987,7 @@ if (__WEBPACK_IMPORTED_MODULE_2__environments_environment__["a" /* environment *
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["a" /* enableProdMode */])();
 }
 __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* platformBrowserDynamic */])().bootstrapModule(__WEBPACK_IMPORTED_MODULE_3__app_app_module__["a" /* AppModule */]);
-//# sourceMappingURL=F:/myProjects/building-market/src/main.js.map
+//# sourceMappingURL=E:/myProjects/building-market/src/main.js.map
 
 /***/ }),
 

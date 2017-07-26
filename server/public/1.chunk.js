@@ -13,18 +13,6 @@ Observable_1.Observable.prototype._catch = catch_1._catch;
 
 /***/ }),
 
-/***/ "./node_modules/rxjs/add/operator/map.js":
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var Observable_1 = __webpack_require__("./node_modules/rxjs/Observable.js");
-var map_1 = __webpack_require__("./node_modules/rxjs/operator/map.js");
-Observable_1.Observable.prototype.map = map_1.map;
-//# sourceMappingURL=map.js.map
-
-/***/ }),
-
 /***/ "./src/app/account/account.module.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -67,7 +55,7 @@ AccountModule = __decorate([
     })
 ], AccountModule);
 
-//# sourceMappingURL=F:/myProjects/building-market/src/account.module.js.map
+//# sourceMappingURL=E:/myProjects/building-market/src/account.module.js.map
 
 /***/ }),
 
@@ -94,7 +82,7 @@ var accountRoutes = [
         component: __WEBPACK_IMPORTED_MODULE_2__reset_reset_component__["a" /* ResetComponent */]
     }
 ];
-//# sourceMappingURL=F:/myProjects/building-market/src/account.routes.js.map
+//# sourceMappingURL=E:/myProjects/building-market/src/account.routes.js.map
 
 /***/ }),
 
@@ -185,7 +173,7 @@ LoginComponent = __decorate([
 ], LoginComponent);
 
 var _a, _b, _c, _d;
-//# sourceMappingURL=F:/myProjects/building-market/src/login.component.js.map
+//# sourceMappingURL=E:/myProjects/building-market/src/login.component.js.map
 
 /***/ }),
 
@@ -200,7 +188,7 @@ var User = (function () {
     return User;
 }());
 
-//# sourceMappingURL=F:/myProjects/building-market/src/user-model.js.map
+//# sourceMappingURL=E:/myProjects/building-market/src/user-model.js.map
 
 /***/ }),
 
@@ -286,7 +274,7 @@ RegisterComponent = __decorate([
 ], RegisterComponent);
 
 var _a, _b, _c;
-//# sourceMappingURL=F:/myProjects/building-market/src/register.component.js.map
+//# sourceMappingURL=E:/myProjects/building-market/src/register.component.js.map
 
 /***/ }),
 
@@ -341,7 +329,7 @@ ResetComponent = __decorate([
     })
 ], ResetComponent);
 
-//# sourceMappingURL=F:/myProjects/building-market/src/reset.component.js.map
+//# sourceMappingURL=E:/myProjects/building-market/src/reset.component.js.map
 
 /***/ }),
 
@@ -403,7 +391,7 @@ AccountService = __decorate([
 ], AccountService);
 
 var _a;
-//# sourceMappingURL=F:/myProjects/building-market/src/account.service.js.map
+//# sourceMappingURL=E:/myProjects/building-market/src/account.service.js.map
 
 /***/ })
 
