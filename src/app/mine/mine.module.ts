@@ -6,13 +6,14 @@ import {MineComponent} from './mine/mine.component';
 import {OrdersComponent} from './orders/orders.component'
 import {JoinUsComponent} from './join-us/join-us.component';
 import {AgreementComponent} from "./agreement/agreement.component";
+import {MineService} from "./service/mine.service";
 
 @NgModule({
   imports:[
     MainMenuModule,
     RouterModule.forChild(mineRoutes)
   ],
-  providers:[],
+  providers:[MineService],
   declarations:[MineComponent,OrdersComponent,JoinUsComponent,AgreementComponent]
 })
 export class MineModule{
