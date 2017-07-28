@@ -1,5 +1,6 @@
 import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
+import { CommonModule } from '@angular/common';
 import {MainMenuModule} from '../share/main-menu/main-menu.module';
 import {mineRoutes} from './mine.routes'
 import {MineComponent} from './mine/mine.component';
@@ -11,6 +12,7 @@ import {MineService} from "./service/mine.service";
 @NgModule({
   imports:[
     MainMenuModule,
+    CommonModule,
     RouterModule.forChild(mineRoutes)
   ],
   providers:[MineService],
