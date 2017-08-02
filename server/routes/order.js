@@ -52,4 +52,22 @@ router.get('/getOrder', function (req, res, next) {
 
   })
 });
+router.get('/getOrders', function (req, res, next) {
+  var order_status, sql;
+  order_status = req.query.order_status;
+  if(order_status!==0){
+    sql = 'select * from orders where order_status = \'' + order_status + "\';";
+  }else{
+    sql='select * from orders;'
+  }
+  mysql.query(sql, function (result) {
+    res.setHeader('Content-Type', 'application/json;charset=utf-8');
+    response.statusCode = '200';
+    response.message = 'OK';
+    response.body = result[0];
+    res.send(response);
+  },function (err) {
+
+  })
+});
 module.exports = router;

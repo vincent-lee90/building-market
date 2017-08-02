@@ -11,8 +11,6 @@ import {Order} from "../../mall/model/order.model";
 })
 export class OrdersComponent implements OnInit {
   private orders: Order[] = [];
-  private current_tab = '';
-
   constructor(private route: ActivatedRoute, private mineService: MineService) {
   }
 

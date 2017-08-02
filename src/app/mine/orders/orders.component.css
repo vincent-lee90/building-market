@@ -1,2 +1,2 @@
 The compress option has been deprecated. We recommend you use a dedicated css minifier, for instance see less-plugin-clean-css.
-.order-status{background-color:#fff;float:left;width:100%}.order-status li{float:left;text-align:center;width:25%;padding:.12rem}.order-status li.active{color:#DD2727}
+.order-status{background-color:#fff;float:left;width:100%}.order-status li{float:left;text-align:center;width:25%;padding:.12rem}.order-status li.active{color:#DD2727}.order-list{padding-top:.41rem}.order-list li{background-color:#fff}.order-list .product-info{height:1.16rem;background-color:#f4f4f4;margin-top:.08rem}.order-list .product-info img{float:left;width:1rem;height:1rem;margin-right:.1rem}
