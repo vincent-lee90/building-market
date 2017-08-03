@@ -20,10 +20,12 @@ export const mineRoutes = [
   },
   {
     path: 'orders',
+    canActivate: [AuthGuard],
     component: OrdersComponent
   },
   {
     path:'orders/:orderStatus',
+    canActivate: [AuthGuard],
     component:OrdersComponent
   }
 ];

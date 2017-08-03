@@ -30,7 +30,7 @@ router.get('/login', function (req, res, next) {
     } else {
       response.statusCode = '200';
       response.message = 'OK';
-      response.body = [];
+      response.body = result[0];
       res.send(response);
     }
   })

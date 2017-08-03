@@ -15,6 +15,7 @@ import {AuthGuardService} from './auth-guard/auth-guard.service';
 import {AuthGuard} from './auth-guard/auth-guard';
 import {AppDialogService} from './share/myDialog/app-alert/app-dialog.service';
 import {PayComponent} from "./pay/pay.component";
+import {CommonService} from "./service/common.service";
 @NgModule({
   declarations: [
     PayComponent,
@@ -35,7 +36,8 @@ import {PayComponent} from "./pay/pay.component";
     {provide: LocationStrategy, useClass: HashLocationStrategy},
     AuthGuard,
     AuthGuardService,
-    AppDialogService
+    AppDialogService,
+    CommonService
   ],
   bootstrap: [AppComponent]
 })

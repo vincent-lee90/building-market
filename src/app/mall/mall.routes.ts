@@ -5,6 +5,7 @@ import {DetailComponent} from './detail/detail.component';
 import {MallSearchComponent} from './mall-search/mall-search.component';
 import {MallCategoryComponent} from './mall-category/mall-category.component';
 import {ConfirmOrderComponent} from "./confirm-order/confirm-order.component";
+import {AuthGuard} from "../auth-guard/auth-guard";
 export const mallRoutes = [
   {
     path: '',
@@ -26,6 +27,7 @@ export const mallRoutes = [
     component: MallCategoryComponent
   }, {
     path: 'confirm-order',
+    canActivate: [AuthGuard],
     component: ConfirmOrderComponent
   }, {
     path: '**',
