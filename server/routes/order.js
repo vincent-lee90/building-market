@@ -14,7 +14,7 @@ router.post('/createOrder', function (req, res, next) {
   product_name = req.body.product_name;
   amount = req.body.amount;
   price = req.body.price;
-  user_id = req.body.user_id || '1';
+  user_id = req.body.user_id;
   order_status = '1';
   order_status_desc = '待支付';
   order_name = product_name + ' x ' + amount;
@@ -48,17 +48,17 @@ router.get('/getOrder', function (req, res, next) {
     response.message = 'OK';
     response.body = result[0];
     res.send(response);
-  },function (err) {
+  }, function (err) {
 
   })
 });
 router.get('/getOrders', function (req, res, next) {
   var order_status, sql;
   order_status = req.query.order_status;
-  if(order_status!==0){
+  if (order_status !== '0') {
     sql = 'select * from orders where order_status = \'' + order_status + "\';";
-  }else{
-    sql='select * from orders;'
+  } else {
+    sql = 'select * from orders;'
   }
   mysql.query(sql, function (result) {
     res.setHeader('Content-Type', 'application/json;charset=utf-8');
@@ -66,7 +66,7 @@ router.get('/getOrders', function (req, res, next) {
     response.message = 'OK';
     response.body = result[0];
     res.send(response);
-  },function (err) {
+  }, function (err) {
 
   })
 });

@@ -268,6 +268,7 @@ module.exports = module.exports.toString();
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__service_mall_service__ = __webpack_require__("./src/app/mall/service/mall.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__model_order_model__ = __webpack_require__("./src/app/mall/model/order.model.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__model_product_model__ = __webpack_require__("./src/app/mall/model/product.model.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__service_common_service__ = __webpack_require__("./src/app/service/common.service.ts");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ConfirmOrderComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -283,11 +284,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var ConfirmOrderComponent = (function () {
-    function ConfirmOrderComponent(mallService, router, route) {
+    function ConfirmOrderComponent(mallService, router, route, commonService) {
         this.mallService = mallService;
         this.router = router;
         this.route = route;
+        this.commonService = commonService;
         this.product = new __WEBPACK_IMPORTED_MODULE_4__model_product_model__["a" /* Product */]();
         this.amount = "";
         this.order = new __WEBPACK_IMPORTED_MODULE_3__model_order_model__["a" /* Order */]();
@@ -298,7 +301,7 @@ var ConfirmOrderComponent = (function () {
         this.order.product_name = this.product.product_name;
         this.order.amount = this.amount;
         this.order.price = this.product.current_price;
-        /*this.order.user_id=this.user_id;*/
+        this.order.user_id = this.commonService.user.id;
         this.mallService.createOrder(this.order)
             .subscribe(function (data) {
             _this.router.navigate(['../../pay', data['order_code']], { relativeTo: _this.route });
@@ -316,10 +319,10 @@ ConfirmOrderComponent = __decorate([
         template: __webpack_require__("./src/app/mall/confirm-order/confirm-order.component.html"),
         styles: [__webpack_require__("./src/app/mall/confirm-order/confirm-order.component.less")]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__service_mall_service__["a" /* MallService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__service_mall_service__["a" /* MallService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* ActivatedRoute */]) === "function" && _c || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__service_mall_service__["a" /* MallService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__service_mall_service__["a" /* MallService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* ActivatedRoute */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_5__service_common_service__["a" /* CommonService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__service_common_service__["a" /* CommonService */]) === "function" && _d || Object])
 ], ConfirmOrderComponent);
 
-var _a, _b, _c;
+var _a, _b, _c, _d;
 //# sourceMappingURL=E:/myProjects/building-market/src/confirm-order.component.js.map
 
 /***/ }),
@@ -973,7 +976,7 @@ var MallService = (function () {
         params.append('product_name', order.product_name);
         params.append('amount', order.amount);
         params.append('price', order.price);
-        /*   params.append('user_id',order.user_id);*/
+        params.append('user_id', order.user_id);
         return this.http.post(this.createOrderUrl, params)
             .map(function (res) {
             var _res = res.json();
