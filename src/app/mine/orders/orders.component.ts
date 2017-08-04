@@ -11,16 +11,18 @@ import {Order} from "../../mall/model/order.model";
 })
 export class OrdersComponent implements OnInit {
   private orders: Order[] = [];
+
   constructor(private route: ActivatedRoute, private mineService: MineService) {
   }
 
   getOrdersByStatus() {
     this.route.params.subscribe((params: Params) => {
-       this.mineService.getOrdersByStatus(params['orderStatus']).subscribe(data=>{
-         this.orders=data;
-       })
+      return this.mineService.getOrdersByStatus(params['orderStatus']).subscribe(data => {
+        this.orders = data;
+      })
     })
   }
+
   ngOnInit() {
     this.getOrdersByStatus()
   }

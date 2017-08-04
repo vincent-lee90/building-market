@@ -58,7 +58,7 @@ router.get('/getOrders', function (req, res, next) {
   user_id = req.query.user_id;
   order_status = req.query.order_status;
   if (order_status !== '0') {
-    sql = 'select a.*,b.product_logo,c.store_name from orders as a,product as b,stores as c where a.product_id=b.id and a.store_code=c.store_code and user_id= \'' + user_id + '\' and' + order_status + '=\'' + order_status + '\';';
+    sql = 'select a.*,b.product_logo,c.store_name from orders as a,product as b,stores as c where a.product_id=b.id and a.store_code=c.store_code and user_id= \'' + user_id + '\' and order_status=\''+  order_status + '\';';
   } else {
     sql = 'select a.*,b.product_logo,c.store_name from orders as a,product as b,stores as c where a.product_id=b.id and a.store_code=c.store_code and user_id = \'' + user_id + '\';'
   }
@@ -69,7 +69,10 @@ router.get('/getOrders', function (req, res, next) {
     response.body = result;
     res.send(response);
   }, function (err) {
-
+    response.statusCode = '500';
+    response.message = '服务器出错了';
+    response.body = err;
+    res.send(response);
   })
 });
 module.exports = router;

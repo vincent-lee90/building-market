@@ -504,7 +504,7 @@ var OrdersComponent = (function () {
     OrdersComponent.prototype.getOrdersByStatus = function () {
         var _this = this;
         this.route.params.subscribe(function (params) {
-            _this.mineService.getOrdersByStatus(params['orderStatus']).subscribe(function (data) {
+            return _this.mineService.getOrdersByStatus(params['orderStatus']).subscribe(function (data) {
                 _this.orders = data;
             });
         });
