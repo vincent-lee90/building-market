@@ -90,6 +90,7 @@ export class MallService {
     params.append('amount', order.amount);
     params.append('price', order.price);
     params.append('user_id', order.user_id);
+    params.append('store_code', order.store_code);
     return this.http.post(this.createOrderUrl, params)
       .map((res: Response) => {
         let _res = res.json();

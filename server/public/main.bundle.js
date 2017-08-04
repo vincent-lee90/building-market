@@ -460,6 +460,7 @@ ManualComponent = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__share_myDialog_app_alert_app_dialog_service__ = __webpack_require__("./src/app/share/myDialog/app-alert/app-dialog.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__ = __webpack_require__("./node_modules/rxjs/add/operator/map.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__service_common_service__ = __webpack_require__("./src/app/service/common.service.ts");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MineService; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -474,10 +475,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var MineService = (function () {
-    function MineService(http, appDialogService) {
+    function MineService(http, appDialogService, commonService) {
         this.http = http;
         this.appDialogService = appDialogService;
+        this.commonService = commonService;
         this.getOrderUrl = "order/getOrder";
         this.getOrdersByStatusUrl = "order/getOrders";
     }
@@ -498,6 +501,7 @@ var MineService = (function () {
         var _this = this;
         var params = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* URLSearchParams */]();
         params.set('order_status', order_status);
+        params.set('user_id', this.commonService.user.id);
         return this.http.get(this.getOrdersByStatusUrl, { search: params })
             .map(function (res) {
             var _res = res.json();
@@ -511,10 +515,10 @@ var MineService = (function () {
 }());
 MineService = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["c" /* Injectable */])(),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Http */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__share_myDialog_app_alert_app_dialog_service__["a" /* AppDialogService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__share_myDialog_app_alert_app_dialog_service__["a" /* AppDialogService */]) === "function" && _b || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Http */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__share_myDialog_app_alert_app_dialog_service__["a" /* AppDialogService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__share_myDialog_app_alert_app_dialog_service__["a" /* AppDialogService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_4__service_common_service__["a" /* CommonService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__service_common_service__["a" /* CommonService */]) === "function" && _c || Object])
 ], MineService);
 
-var _a, _b;
+var _a, _b, _c;
 //# sourceMappingURL=E:/myProjects/building-market/src/mine.service.js.map
 
 /***/ }),

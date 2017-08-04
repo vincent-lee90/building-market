@@ -8,33 +8,18 @@
 </div>
 <ul class="order-list">
   <li *ngFor="let order of orders">
-    <div class="store-name font-color-title font-size-12 padding-h-default padding-v-12">某某旗舰店</div>
-    <div class="product-info padding-h-default padding-v-8">
-      <img src="./imgs/light01.jpg">
+    <div class="store-name font-color-title font-size-12 padding-h-default padding-v-12" routerLink="/mall/store/{{order.store_code}}">{{order.store_name}} <img src="./imgs/arrow-right2.png"></div>
+    <div class="product-info padding-h-default padding-v-8" routerLink="/mall/detail/{{order.product_id}}">
+      <img src="{{order.product_logo}}">
       <div>
-        <span class="product-name">xxxxxxxxx灯泡特别亮的那种</span>
+        <span class="font-color-title font-size-14">{{order.order_name}}</span>
         <div class="purchase-info margin-top-20 font-color-content">
-          ¥1999.00  <span class="pull-right">x1</span>
+          ¥{{order.price}}  <span class="pull-right">x{{order.amount}}</span>
         </div>
       </div>
     </div>
     <div class="padding-v-12 text-right padding-h-default ">
-      <span class="info-space">共1件商品</span><span>合计：</span><span class="font-size-12">¥</span><span class="font-color-orange">99.90</span>
-    </div>
-  </li>
-  <li>
-    <div class="store-name font-color-title font-size-12 padding-h-default padding-v-12">某某旗舰店</div>
-    <div class="product-info padding-h-default padding-v-8">
-      <img src="./imgs/light01.jpg">
-      <div>
-        <span class="product-name">xxxxxxxxx灯泡特别亮的那种</span>
-        <div class="purchase-info margin-top-20 font-color-content">
-          ¥1999.00  <span class="pull-right">x1</span>
-        </div>
-      </div>
-    </div>
-    <div class="padding-v-12 text-right padding-h-default ">
-      <span class="info-space">共1件商品</span><span>合计：</span><span class="font-size-12">¥</span><span>99.90</span>
+      <span class="info-space">共<span class="font-color-orange">{{order.amount}}</span>件商品</span><span>合计：</span><span class="font-size-12">¥ </span><span class="font-color-orange">{{order.price}}</span>
     </div>
   </li>
 </ul>

@@ -302,6 +302,7 @@ var ConfirmOrderComponent = (function () {
         this.order.amount = this.amount;
         this.order.price = this.product.current_price;
         this.order.user_id = this.commonService.user.id;
+        this.order.store_code = this.mallService.initialOrder.product.store_code;
         this.mallService.createOrder(this.order)
             .subscribe(function (data) {
             _this.router.navigate(['../../pay', data['order_code']], { relativeTo: _this.route });
@@ -977,6 +978,7 @@ var MallService = (function () {
         params.append('amount', order.amount);
         params.append('price', order.price);
         params.append('user_id', order.user_id);
+        params.append('store_code', order.store_code);
         return this.http.post(this.createOrderUrl, params)
             .map(function (res) {
             var _res = res.json();

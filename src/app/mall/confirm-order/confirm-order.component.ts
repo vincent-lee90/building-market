@@ -24,6 +24,7 @@ export class ConfirmOrderComponent implements OnInit {
     this.order.amount=this.amount;
     this.order.price=this.product.current_price;
     this.order.user_id=this.commonService.user.id;
+    this.order.store_code=this.mallService.initialOrder.product.store_code;
     this.mallService.createOrder(this.order)
       .subscribe(data=>{
          this.router.navigate(['../../pay',data['order_code']],{relativeTo:this.route})
