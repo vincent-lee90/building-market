@@ -6,6 +6,9 @@ import {Component,OnInit} from '@angular/core';
 })
 export class BaseInfoComponent implements OnInit{
   constructor(){}
+  toStoreInfo(template){
+    console.log(template.form)
+  }
   ngOnInit(){
 
   }
