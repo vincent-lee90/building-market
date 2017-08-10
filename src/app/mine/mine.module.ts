@@ -8,6 +8,9 @@ import {OrdersComponent} from './orders/orders.component'
 import {JoinUsComponent} from './join-us/join-us.component';
 import {AgreementComponent} from "./agreement/agreement.component";
 import {MineService} from "./service/mine.service";
+import {BaseInfoComponent} from "./join-us/base-info/base-info.component";
+import {StoreInfoComponent} from "./join-us/store-info/store-info.component";
+import {UploadImgComponent} from "./join-us/upload-img/upload-img.component";
 
 @NgModule({
   imports:[
@@ -16,7 +19,7 @@ import {MineService} from "./service/mine.service";
     RouterModule.forChild(mineRoutes)
   ],
   providers:[MineService],
-  declarations:[MineComponent,OrdersComponent,JoinUsComponent,AgreementComponent]
+  declarations:[MineComponent,OrdersComponent,JoinUsComponent,BaseInfoComponent,StoreInfoComponent,UploadImgComponent,AgreementComponent]
 })
 export class MineModule{
 
