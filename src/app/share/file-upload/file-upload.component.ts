@@ -6,16 +6,20 @@ import {Component} from "@angular/core";
 })
 
 export class FileUploadComponent {
+  public test='./imgs/add-img.png';
   fileChooser(event) {
     if (!event.srcElement.files.length) {
       return
     }
-    var files = [];
+    let files = [];
     files = event.srcElement.files;
     let reader = new FileReader();
     reader.onload=function () {
-      console.log(1)
-    }
-
+      var result=this.result;
+      var img=new Image();
+      img.src=result;
+      document.querySelector("#test").appendChild(img);
+    };
+    reader.readAsDataURL(files[0]);
   }
 }
