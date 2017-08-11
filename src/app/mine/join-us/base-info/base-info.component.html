@@ -1,9 +1,12 @@
 <div class="padding-h-default margin-top-30 font-color-title">第一步：填写个人信息</div>
-<form class="margin-top-30 padding-h-default" #baseInfoForm="ngForm">
-  <label class="border-bottom-default input-group"><input  type="text" placeholder="姓名"></label>
+<form class="margin-top-30 padding-h-default" #baseInfoForm="ngForm" novalidate>
+  <label class="border-bottom-default input-group"><input  type="text" ngModel #name="ngModel" name="name" placeholder="姓名" required></label>
   <label class="border-bottom-default input-group"><input type="text" placeholder="身份证号"></label>
   <label class="border-bottom-default input-group"><input type="text" placeholder="手机号"></label>
 </form>
 <div class="fixed-bottom">
-  <div class="btn-flat-default" routerLink="../store-info" (click)="toStoreInfo(baseInfoForm)">下一步</div>
+  <div class="btn-flat-default" routerLink="../store-info">下一步</div>
+</div>
+<div>
+
 </div>
