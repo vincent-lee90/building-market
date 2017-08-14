@@ -15,12 +15,6 @@ export class FileUploadComponent {
     let files = [];
     files = event.srcElement.files;
     let reader = new FileReader();
-    /*   reader.onload=function () {
-     var result=this.result;
-     var img=new Image();
-     img.src=result;
-     document.querySelector("#test").appendChild(img);
-     };*/
     reader.onload = ((e) => {
       this.test=e.currentTarget['result'];
 
