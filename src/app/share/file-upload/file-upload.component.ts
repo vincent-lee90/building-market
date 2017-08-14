@@ -6,7 +6,8 @@ import {Component} from "@angular/core";
 })
 
 export class FileUploadComponent {
-  public test='./imgs/add-img.png';
+  public test = './imgs/add-img.png';
+
   fileChooser(event) {
     if (!event.srcElement.files.length) {
       return
@@ -14,12 +15,16 @@ export class FileUploadComponent {
     let files = [];
     files = event.srcElement.files;
     let reader = new FileReader();
-    reader.onload=function () {
-      var result=this.result;
-      var img=new Image();
-      img.src=result;
-      document.querySelector("#test").appendChild(img);
-    };
+    /*   reader.onload=function () {
+     var result=this.result;
+     var img=new Image();
+     img.src=result;
+     document.querySelector("#test").appendChild(img);
+     };*/
+    reader.onload = ((e) => {
+      this.test=e.currentTarget['result'];
+
+    });
     reader.readAsDataURL(files[0]);
   }
 }
