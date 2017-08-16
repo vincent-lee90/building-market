@@ -1,4 +1,5 @@
 import {Component} from "@angular/core";
+import {build$} from "protractor/built/element";
 @Component({
   selector: 'file-upload',
   templateUrl: './file-upload.component.html',
@@ -16,9 +17,39 @@ export class FileUploadComponent {
     files = event.srcElement.files;
     let reader = new FileReader();
     reader.onload = ((e) => {
-      this.test=e.currentTarget['result'];
-
+      this.test = e.currentTarget['result'];
+      this.upload(this.test,files[0].type);
     });
     reader.readAsDataURL(files[0]);
+  }
+
+  upload(baseStr, type) {
+    let text = window.atob(baseStr.split(',')[1]);
+    let buffer = new ArrayBuffer(text.length);
+    let uBuffer = new Uint8Array(buffer);
+    for (let i = 0; i < text.length; i++) {
+      uBuffer[i] = text.charCodeAt(i);
+    }
+    let Builder = window['WebKitBlobBuilder'] || window['MozBlobBuilder'];
+    let blob;
+    if (Builder) {
+      let builder = new Builder();
+      builder.append(buffer);
+      blob = builder.getBlob(type);
+    } else {
+      blob = new window.Blob([buffer], {type: type})
+    }
+    let xhr = new XMLHttpRequest();
+    let formData = new FormData();
+    formData.append('image', blob);
+    xhr.open('post', '/upload');
+    xhr.onreadystatechange = (() => {
+      if (xhr.readyState === 4 && xhr.status === 200) {
+        console.log('上传成功');
+      }else{
+        console.log('上传失败，readyState='+xhr.readyState)
+      }
+    });
+    xhr.send(formData);
   }
 }
