@@ -18,6 +18,8 @@ router.post('/', function (req, res, next) {
     if (err) {
       console.log('parse files:' + filesTmp)
     } else {
+
+
       var inputFile = files.inputFile[0];
       var uploadedPath = inputFile.path;
       var dstPath = './public/files/' + inputFile.originalFilename;
