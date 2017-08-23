@@ -754,7 +754,7 @@ var _a, _b;
 /***/ "./src/app/share/file-upload/file-upload.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<form class=\"\" method='post' action='/upload' enctype='multipart/form-data'>\r\n<!--    <img src=\"{{test}}\" width=\"100%\">-->\r\n<!--    <input  type=\"file\" (change)=\"fileChooser($event)\">-->\r\n  <input  type=\"file\" >\r\n  <input type=\"submit\" value=\"上传\">\r\n  <div id=\"test\"></div>\r\n</form>\r\n"
+module.exports = "<div class=\"file-upload\">\r\n    <img src=\"{{test}}\" width=\"100%\">\r\n    <input  type=\"file\" (change)=\"fileChooser($event)\">\r\n</div>\r\n"
 
 /***/ }),
 

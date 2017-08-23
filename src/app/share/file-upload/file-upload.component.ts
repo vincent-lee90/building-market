@@ -1,5 +1,4 @@
 import {Component} from "@angular/core";
-import {build$} from "protractor/built/element";
 @Component({
   selector: 'file-upload',
   templateUrl: './file-upload.component.html',
@@ -18,7 +17,7 @@ export class FileUploadComponent {
     let reader = new FileReader();
     reader.onload = ((e) => {
       this.test = e.currentTarget['result'];
-      this.upload(this.test,files[0].type);
+      this.upload(this.test, files[0].type);
     });
     reader.readAsDataURL(files[0]);
   }
@@ -46,8 +45,8 @@ export class FileUploadComponent {
     xhr.onreadystatechange = (() => {
       if (xhr.readyState === 4 && xhr.status === 200) {
         console.log('上传成功');
-      }else{
-        console.log('上传失败，readyState='+xhr.readyState)
+      } else {
+        console.log('上传失败，readyState=' + xhr.readyState)
       }
     });
     xhr.send(formData);

@@ -16,11 +16,10 @@ router.post('/', function (req, res, next) {
   form.parse(req, function (err, fields, files) {
     var filesTmp = JSON.stringify(files, null, 2);
     if (err) {
-      console.log('parse files:' + filesTmp)
+      console.log('parse error:' + err)
     } else {
-
-
-      var inputFile = files.inputFile[0];
+      console.log('parse files'+filesTmp);
+      var inputFile = files.image[0];
       var uploadedPath = inputFile.path;
       var dstPath = './public/files/' + inputFile.originalFilename;
       //重命名为真实文件名
