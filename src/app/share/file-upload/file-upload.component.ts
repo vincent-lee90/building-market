@@ -44,9 +44,7 @@ export class FileUploadComponent {
     xhr.open('post', '/upload');
     xhr.onreadystatechange = (() => {
       if (xhr.readyState === 4 && xhr.status === 200) {
-        console.log('上传成功');
-      } else {
-        console.log('上传失败，readyState=' + xhr.readyState)
+        return JSON.parse(xhr.responseText);
       }
     });
     xhr.send(formData);

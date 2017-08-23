@@ -16,23 +16,30 @@ router.post('/', function (req, res, next) {
   form.parse(req, function (err, fields, files) {
     var filesTmp = JSON.stringify(files, null, 2);
     if (err) {
-      console.log('parse error:' + err)
+      response.statusCode = 500;
+      response.message = err;
+      res.send(response);
     } else {
-      console.log('parse files'+filesTmp);
-      var inputFile = files.image[0];
-      var uploadedPath = inputFile.path;
-      var dstPath = './public/files/' + inputFile.originalFilename;
+      var inputFile, uploadedPath, header, fileType;
+      inputFile = files.image[0];
+      uploadedPath = inputFile.path;
+      header = inputFile.headers['content-type'];
+      fileType = header.split('/')[1];
       //重命名为真实文件名
-      fs.rename(uploadedPath, dstPath, function (err) {
+      fs.rename(uploadedPath, uploadedPath + '.' + fileType, function (err) {
         if (err) {
+          response.statusCode = 500;
+          response.message = err;
           console.log('rename error: ' + err);
         } else {
+          response.statusCode=200;
+          response.message='ok';
+          response.body=uploadedPath + '.' + fileType;
           console.log('rename ok');
         }
+        res.send(response);
       });
     }
   });
-
-  res.send(response);
 });
 module.exports = router;
