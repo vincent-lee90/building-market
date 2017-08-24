@@ -2,13 +2,13 @@
 <div class="margin-top-30 padding-h-default">
   <div class="text-center">
     <div class="font-size-14 padding-v-8 font-color-title">身份证正面照</div>
-    <file-upload></file-upload>
+    <file-upload (uploadImg)="getUploadImgInfo($event,'front')"></file-upload>
   </div>
 </div>
 <div class="margin-top-30 padding-h-default">
   <div class="text-center">
     <div class="font-size-14 padding-v-8 font-color-title">身份证反面照</div>
-    <file-upload></file-upload>
+    <file-upload (uploadImg)="getUploadImgInfo($event,'back')"></file-upload>
   </div>
 </div>
 <div class="fixed-bottom">

@@ -12,7 +12,7 @@ var fs = require('fs');
 app.use(bodyParser.json());
 router.post('/', function (req, res, next) {
   //生成multiparty对象，并配置上传目标路径
-  var form = new multiparty.Form({uploadDir: './public/files/'});
+  var form = new multiparty.Form({uploadDir: '/home/static/imgs'});
   form.parse(req, function (err, fields, files) {
     var filesTmp = JSON.stringify(files, null, 2);
     if (err) {

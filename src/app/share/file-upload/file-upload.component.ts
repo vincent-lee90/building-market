@@ -1,4 +1,5 @@
-import {Component} from "@angular/core";
+import {Component, EventEmitter, Output} from "@angular/core";
+
 @Component({
   selector: 'file-upload',
   templateUrl: './file-upload.component.html',
@@ -6,8 +7,8 @@ import {Component} from "@angular/core";
 })
 
 export class FileUploadComponent {
-  public test = './imgs/add-img.png';
-
+  @Output() uploadImg = new EventEmitter<any>();
+  public defaultAddImg = './imgs/add-img.png';
   fileChooser(event) {
     if (!event.srcElement.files.length) {
       return
@@ -16,8 +17,8 @@ export class FileUploadComponent {
     files = event.srcElement.files;
     let reader = new FileReader();
     reader.onload = ((e) => {
-      this.test = e.currentTarget['result'];
-      this.upload(this.test, files[0].type);
+      this.defaultAddImg = e.currentTarget['result'];
+      this.upload(this.defaultAddImg, files[0].type);
     });
     reader.readAsDataURL(files[0]);
   }
@@ -42,9 +43,9 @@ export class FileUploadComponent {
     let formData = new FormData();
     formData.append('image', blob);
     xhr.open('post', '/upload');
-    xhr.onreadystatechange = (() => {
+     xhr.onreadystatechange = (() => {
       if (xhr.readyState === 4 && xhr.status === 200) {
-        return JSON.parse(xhr.responseText);
+        this.uploadImg.emit(JSON.parse(xhr.responseText));
       }
     });
     xhr.send(formData);

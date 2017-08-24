@@ -402,7 +402,7 @@ StoreInfoComponent = __decorate([
 /***/ "./src/app/mine/join-us/upload-img/upload-img.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"padding-h-default margin-top-30 font-color-title\">第三步：资料上传</div>\r\n<div class=\"margin-top-30 padding-h-default\">\r\n  <div class=\"text-center\">\r\n    <div class=\"font-size-14 padding-v-8 font-color-title\">身份证正面照</div>\r\n    <file-upload></file-upload>\r\n  </div>\r\n</div>\r\n<div class=\"margin-top-30 padding-h-default\">\r\n  <div class=\"text-center\">\r\n    <div class=\"font-size-14 padding-v-8 font-color-title\">身份证反面照</div>\r\n    <file-upload></file-upload>\r\n  </div>\r\n</div>\r\n<div class=\"fixed-bottom\">\r\n  <div class=\"btn-flat-default\" routerLink=\"../store-info\">完成</div>\r\n</div>\r\n"
+module.exports = "<div class=\"padding-h-default margin-top-30 font-color-title\">第三步：资料上传</div>\r\n<div class=\"margin-top-30 padding-h-default\">\r\n  <div class=\"text-center\">\r\n    <div class=\"font-size-14 padding-v-8 font-color-title\">身份证正面照</div>\r\n    <file-upload (uploadImg)=\"getUploadImgInfo($event,'front')\"></file-upload>\r\n  </div>\r\n</div>\r\n<div class=\"margin-top-30 padding-h-default\">\r\n  <div class=\"text-center\">\r\n    <div class=\"font-size-14 padding-v-8 font-color-title\">身份证反面照</div>\r\n    <file-upload (uploadImg)=\"getUploadImgInfo($event,'back')\"></file-upload>\r\n  </div>\r\n</div>\r\n<div class=\"fixed-bottom\">\r\n  <div class=\"btn-flat-default\" routerLink=\"../store-info\">完成</div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -442,7 +442,20 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 var UploadImgComponent = (function () {
     function UploadImgComponent() {
+        this.frontIdCardUrl = "";
+        this.backIdCardUrl = "";
     }
+    UploadImgComponent.prototype.getUploadImgInfo = function (res, type) {
+        if (res.statusCode === 200) {
+            if (type === 'front') {
+                this.frontIdCardUrl = res.body;
+            }
+            else if (type === 'back') {
+                this.backIdCardUrl = res.body;
+            }
+        }
+        console.log("frontIdCardUrl=" + this.frontIdCardUrl + "</br>backIdCardUrl=" + this.backIdCardUrl);
+    };
     UploadImgComponent.prototype.ngOnInit = function () {
     };
     return UploadImgComponent;
@@ -754,7 +767,7 @@ var _a, _b;
 /***/ "./src/app/share/file-upload/file-upload.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"file-upload\">\r\n    <img src=\"{{test}}\" width=\"100%\">\r\n    <input  type=\"file\" (change)=\"fileChooser($event)\">\r\n</div>\r\n"
+module.exports = "<div class=\"file-upload\">\r\n    <img src=\"{{defaultAddImg}}\" width=\"100%\">\r\n    <input  type=\"file\" (change)=\"fileChooser($event)\">\r\n</div>\r\n"
 
 /***/ }),
 
@@ -788,10 +801,14 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
 
 var FileUploadComponent = (function () {
     function FileUploadComponent() {
-        this.test = './imgs/add-img.png';
+        this.uploadImg = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* EventEmitter */]();
+        this.defaultAddImg = './imgs/add-img.png';
     }
     FileUploadComponent.prototype.fileChooser = function (event) {
         var _this = this;
@@ -802,12 +819,13 @@ var FileUploadComponent = (function () {
         files = event.srcElement.files;
         var reader = new FileReader();
         reader.onload = (function (e) {
-            _this.test = e.currentTarget['result'];
-            _this.upload(_this.test, files[0].type);
+            _this.defaultAddImg = e.currentTarget['result'];
+            _this.upload(_this.defaultAddImg, files[0].type);
         });
         reader.readAsDataURL(files[0]);
     };
     FileUploadComponent.prototype.upload = function (baseStr, type) {
+        var _this = this;
         var text = window.atob(baseStr.split(',')[1]);
         var buffer = new ArrayBuffer(text.length);
         var uBuffer = new Uint8Array(buffer);
@@ -830,16 +848,17 @@ var FileUploadComponent = (function () {
         xhr.open('post', '/upload');
         xhr.onreadystatechange = (function () {
             if (xhr.readyState === 4 && xhr.status === 200) {
-                console.log('上传成功');
-            }
-            else {
-                console.log('上传失败，readyState=' + xhr.readyState);
+                _this.uploadImg.emit(JSON.parse(xhr.responseText));
             }
         });
         xhr.send(formData);
     };
     return FileUploadComponent;
 }());
+__decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* Output */])(),
+    __metadata("design:type", Object)
+], FileUploadComponent.prototype, "uploadImg", void 0);
 FileUploadComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["d" /* Component */])({
         selector: 'file-upload',
