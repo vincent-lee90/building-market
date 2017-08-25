@@ -1,15 +1,16 @@
-          import {Injectable} from '@angular/core';
+import {Injectable} from '@angular/core';
 import {Http, Response, URLSearchParams} from '@angular/http';
 import {AppDialogService} from '../../share/myDialog/app-alert/app-dialog.service';
 import 'rxjs/add/operator/map';
 import {CommonService} from "../../service/common.service";
 @Injectable()
 export class MineService {
-  constructor(private http: Http, private appDialogService: AppDialogService,private commonService:CommonService) {
+  constructor(private http: Http, private appDialogService: AppDialogService, private commonService: CommonService) {
   }
 
   private getOrderUrl = "order/getOrder";
   private getOrdersByStatusUrl = "order/getOrders";
+  private uploadIdCardImgUrl = ''
 
   getOrderByCode(order_code) {
     let params = new URLSearchParams();
@@ -29,6 +30,28 @@ export class MineService {
     params.set('order_status', order_status);
     params.set('user_id', this.commonService.user.id);
     return this.http.get(this.getOrdersByStatusUrl, {search: params})
+      .map((res: Response) => {
+        let _res = res.json();
+        if (_res.statusCode != 200) {
+          this.appDialogService.setAlert(_res.message)
+        }
+        return _res.body;
+      })
+  }
+
+  uploadStoreInfoImg(front_id_card_img_url: string, back_id_card_img_url: string) {
+    if (!front_id_card_img_url) {
+      this.appDialogService.setAlert('请上传身份证正面照');
+      return;
+    }
+    if (!back_id_card_img_url) {
+      this.appDialogService.setAlert("请上传身份证反面照");
+    }
+    let params = new URLSearchParams();
+    params.append('front_id_card_img_url', front_id_card_img_url);
+    params.append('back_id_card_img_url', back_id_card_img_url);
+    params.append('user_id', this.commonService.user.id);
+    return this.http.post(this.uploadIdCardImgUrl, params)
       .map((res: Response) => {
         let _res = res.json();
         if (_res.statusCode != 200) {

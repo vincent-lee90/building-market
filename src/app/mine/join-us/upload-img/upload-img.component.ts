@@ -1,4 +1,5 @@
 import {Component, OnInit} from "@angular/core";
+import {MineService} from "../../service/mine.service";
 @Component({
   selector: 'upload-img',
   templateUrl: './upload-img.component.html',
@@ -8,7 +9,7 @@ export class UploadImgComponent implements OnInit {
   frontIdCardUrl = "";
   backIdCardUrl = "";
 
-  constructor() {
+  constructor(private mineService:MineService) {
   }
 
   getUploadImgInfo(res, type) {
@@ -20,7 +21,9 @@ export class UploadImgComponent implements OnInit {
       }
     }
   }
-
+  finish(){
+    this.mineService.uploadStoreInfoImg(this.frontIdCardUrl,this.backIdCardUrl);
+  }
   ngOnInit() {
 
   }
