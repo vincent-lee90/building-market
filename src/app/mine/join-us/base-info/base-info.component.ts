@@ -20,7 +20,6 @@ export class BaseInfoComponent implements OnInit{
       this.appDialogService.setAlert('请填入手机号');
       return
     }
-    this.mineService.setBaseInfo()
   }
   ngOnInit(){
 

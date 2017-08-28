@@ -10,8 +10,8 @@ export class MineService {
 
   private getOrderUrl = "order/getOrder";
   private getOrdersByStatusUrl = "order/getOrders";
-  private uploadIdCardImgUrl = ''
-
+  private uploadIdCardImgUrl = '';
+  private user={};
   getOrderByCode(order_code) {
     let params = new URLSearchParams();
     params.set('order_code', order_code);
@@ -59,5 +59,9 @@ export class MineService {
         }
         return _res.body;
       })
+  }
+  setBaseInfo(name:string,telephone:string){
+    this.user['realName']=name;
+    this.user['telephone']=telephone;
   }
 }
