@@ -1,28 +1,35 @@
 <div class="padding-h-default margin-top-30 font-color-title">第二步：填写店铺信息</div>
-<form class="margin-top-30 padding-h-default">
-  <label class="border-bottom-default input-group"><input type="text" placeholder="店铺名"></label>
-  <label class="border-bottom-default input-group"><input type="text" placeholder="店铺地址"></label>
+<form class="margin-top-30 padding-h-default" #storeInfoForm="ngForm">
+  <label class="border-bottom-default input-group"><input type="text" placeholder="店铺名" name="storeName"
+                                                          ngModel></label>
+  <label class="border-bottom-default input-group"><input type="text" placeholder="店铺地址" name="storeAddr"
+                                                          ngModel></label>
   <div class="border-bottom-default">
     <div class="padding-v-12 font-size-14">经营类目</div>
     <div class="font-size-12">
       <label class="checkbox-group">
-        <span>灯饰照明</span><input type="checkbox" >
+        <span>灯饰照明</span>
+        <input name="category" type="checkbox"  [checked]="" value="">
       </label>
       <label class="checkbox-group">
-        <span>厨房用品</span><input type="checkbox">
+        <span>厨房用品</span>
+        <input name="category" type="checkbox" ngModel>
       </label>
       <label class="checkbox-group">
-        <span>卫浴用品</span><input type="checkbox">
+        <span>卫浴用品</span>
+        <input name="category" type="checkbox" ngModel>
       </label>
       <label class="checkbox-group">
-        <span>建材五金</span><input type="checkbox">
+        <span>建材五金</span>
+        <input name="category" type="checkbox" ngModel>
       </label>
       <label class="checkbox-group">
-        <span>墙地面</span><input type="checkbox">
+        <span>墙地面</span>
+        <input name="category" type="checkbox" ngModel>
       </label>
     </div>
   </div>
 </form>
 <div class="fixed-bottom">
-  <div class="btn-flat-default" routerLink="../upload-img">下一步</div>
+  <div class="btn-flat-default" (click)="completeStoreInfo(storeInfoForm)">下一步</div>
 </div>

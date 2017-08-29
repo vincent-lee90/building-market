@@ -1,4 +1,5 @@
 import {Component, OnInit} from "@angular/core";
+import {NgForm} from "@angular/forms";
 @Component({
   selector:'store-info',
   templateUrl:'./store-info.component.html',
@@ -6,6 +7,9 @@ import {Component, OnInit} from "@angular/core";
 })
 export class StoreInfoComponent implements OnInit{
   constructor(){}
+  completeStoreInfo(f:NgForm){
+    console.log(f);
+  }
   ngOnInit(){
 
   }
