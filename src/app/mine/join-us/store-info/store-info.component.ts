@@ -8,7 +8,7 @@ import {NgForm} from "@angular/forms";
 export class StoreInfoComponent implements OnInit{
   constructor(){}
   completeStoreInfo(f:NgForm){
-    console.log(f);
+
   }
   ngOnInit(){
 
