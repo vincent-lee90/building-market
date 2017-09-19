@@ -1,7 +1,7 @@
 <div class="padding-h-default margin-top-30 font-color-title">第二步：填写店铺信息</div>
 <form class="margin-top-30 padding-h-default" #storeInfoForm="ngForm">
   <label class="border-bottom-default input-group"><input type="text" placeholder="店铺名" name="storeName"
-                                                          ngModel></label>
+                                                          ngModel required></label>
   <label class="border-bottom-default input-group"><input type="text" placeholder="店铺地址" name="storeAddr"
                                                           ngModel></label>
   <div class="border-bottom-default">
@@ -9,23 +9,23 @@
     <div class="font-size-12">
       <label class="checkbox-group">
         <span>灯饰照明</span>
-        <input name="category" type="checkbox" ngModel (click)="addToCategory('')">
+        <input name="category" type="checkbox"  (click)="addToCategory('10001')">
       </label>
       <label class="checkbox-group">
         <span>厨房用品</span>
-        <input name="category" type="checkbox" ngModel>
+        <input name="category" type="checkbox" (click)="addToCategory('10002')">
       </label>
       <label class="checkbox-group">
         <span>卫浴用品</span>
-        <input name="category" type="checkbox" ngModel>
+        <input name="category" type="checkbox" (click)="addToCategory('10003')">
       </label>
       <label class="checkbox-group">
         <span>建材五金</span>
-        <input name="category" type="checkbox" ngModel>
+        <input name="category" type="checkbox" (click)="addToCategory('10004')">
       </label>
       <label class="checkbox-group">
         <span>墙地面</span>
-        <input name="category" type="checkbox" ngModel>
+        <input name="category" type="checkbox" (click)="addToCategory('10005')">
       </label>
     </div>
   </div>

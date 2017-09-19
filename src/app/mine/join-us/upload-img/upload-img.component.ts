@@ -16,6 +16,9 @@ export class UploadImgComponent implements OnInit {
     if (res.statusCode === 200) {
       if (type === 'front') {
         this.frontIdCardUrl = res.body;
+
+
+
       } else if (type === 'back') {
         this.backIdCardUrl = res.body;
       }

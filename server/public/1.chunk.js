@@ -361,7 +361,7 @@ JoinUsComponent = __decorate([
 /***/ "./src/app/mine/join-us/store-info/store-info.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"padding-h-default margin-top-30 font-color-title\">第二步：填写店铺信息</div>\r\n<form class=\"margin-top-30 padding-h-default\" #storeInfoForm=\"ngForm\">\r\n  <label class=\"border-bottom-default input-group\"><input type=\"text\" placeholder=\"店铺名\" name=\"storeName\"\r\n                                                          ngModel></label>\r\n  <label class=\"border-bottom-default input-group\"><input type=\"text\" placeholder=\"店铺地址\" name=\"storeAddr\"\r\n                                                          ngModel></label>\r\n  <div class=\"border-bottom-default\">\r\n    <div class=\"padding-v-12 font-size-14\">经营类目</div>\r\n    <div class=\"font-size-12\">\r\n      <label class=\"checkbox-group\">\r\n        <span>灯饰照明</span>\r\n        <input name=\"category\" type=\"checkbox\" ngModel>\r\n      </label>\r\n      <label class=\"checkbox-group\">\r\n        <span>厨房用品</span>\r\n        <input name=\"category\" type=\"checkbox\" ngModel>\r\n      </label>\r\n      <label class=\"checkbox-group\">\r\n        <span>卫浴用品</span>\r\n        <input name=\"category\" type=\"checkbox\" ngModel>\r\n      </label>\r\n      <label class=\"checkbox-group\">\r\n        <span>建材五金</span>\r\n        <input name=\"category\" type=\"checkbox\" ngModel>\r\n      </label>\r\n      <label class=\"checkbox-group\">\r\n        <span>墙地面</span>\r\n        <input name=\"category\" type=\"checkbox\" ngModel>\r\n      </label>\r\n    </div>\r\n  </div>\r\n</form>\r\n<div class=\"fixed-bottom\">\r\n  <div class=\"btn-flat-default\" (click)=\"completeStoreInfo(storeInfoForm)\">下一步</div>\r\n</div>\r\n"
+module.exports = "<div class=\"padding-h-default margin-top-30 font-color-title\">第二步：填写店铺信息</div>\r\n<form class=\"margin-top-30 padding-h-default\" #storeInfoForm=\"ngForm\">\r\n  <label class=\"border-bottom-default input-group\"><input type=\"text\" placeholder=\"店铺名\" name=\"storeName\"\r\n                                                          ngModel required></label>\r\n  <label class=\"border-bottom-default input-group\"><input type=\"text\" placeholder=\"店铺地址\" name=\"storeAddr\"\r\n                                                          ngModel></label>\r\n  <div class=\"border-bottom-default\">\r\n    <div class=\"padding-v-12 font-size-14\">经营类目</div>\r\n    <div class=\"font-size-12\">\r\n      <label class=\"checkbox-group\">\r\n        <span>灯饰照明</span>\r\n        <input name=\"category\" type=\"checkbox\"  (click)=\"addToCategory('10001')\">\r\n      </label>\r\n      <label class=\"checkbox-group\">\r\n        <span>厨房用品</span>\r\n        <input name=\"category\" type=\"checkbox\" (click)=\"addToCategory('10002')\">\r\n      </label>\r\n      <label class=\"checkbox-group\">\r\n        <span>卫浴用品</span>\r\n        <input name=\"category\" type=\"checkbox\" (click)=\"addToCategory('10003')\">\r\n      </label>\r\n      <label class=\"checkbox-group\">\r\n        <span>建材五金</span>\r\n        <input name=\"category\" type=\"checkbox\" (click)=\"addToCategory('10004')\">\r\n      </label>\r\n      <label class=\"checkbox-group\">\r\n        <span>墙地面</span>\r\n        <input name=\"category\" type=\"checkbox\" (click)=\"addToCategory('10005')\">\r\n      </label>\r\n    </div>\r\n  </div>\r\n</form>\r\n<div class=\"fixed-bottom\">\r\n  <div class=\"btn-flat-default\" (click)=\"completeStoreInfo(storeInfoForm)\">下一步</div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -388,6 +388,9 @@ module.exports = module.exports.toString();
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__share_myDialog_app_alert_app_dialog_service__ = __webpack_require__("./src/app/share/myDialog/app-alert/app-dialog.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__service_mine_service__ = __webpack_require__("./src/app/mine/service/mine.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_router__ = __webpack_require__("./node_modules/@angular/router/@angular/router.es5.js");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return StoreInfoComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -399,11 +402,41 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
+
+
 var StoreInfoComponent = (function () {
-    function StoreInfoComponent() {
+    function StoreInfoComponent(appDialogService, mineService, router, route) {
+        this.appDialogService = appDialogService;
+        this.mineService = mineService;
+        this.router = router;
+        this.route = route;
+        this.category = [];
     }
     StoreInfoComponent.prototype.completeStoreInfo = function (f) {
-        console.log(f);
+        if (f.form.controls['storeName'].invalid) {
+            this.appDialogService.setAlert("请输入店铺名称");
+            return;
+        }
+        if (f.form.controls['storeAddr'].invalid) {
+            this.appDialogService.setAlert("请输入正确的店铺地址");
+            return;
+        }
+        if (this.category.length === 0) {
+            this.appDialogService.setAlert("请选择经营类目");
+            return;
+        }
+        this.mineService.setStoreInfo(f.value.storeName, f.value.storeAddr, this.category);
+        this.router.navigate(['../upload-img'], { relativeTo: this.route });
+    };
+    StoreInfoComponent.prototype.addToCategory = function (catCode) {
+        var index = this.category.indexOf(catCode);
+        if (index > -1) {
+            this.category.splice(index, 1);
+        }
+        else {
+            this.category.push(catCode);
+        }
     };
     StoreInfoComponent.prototype.ngOnInit = function () {
     };
@@ -415,9 +448,10 @@ StoreInfoComponent = __decorate([
         template: __webpack_require__("./src/app/mine/join-us/store-info/store-info.component.html"),
         styles: [__webpack_require__("./src/app/mine/join-us/store-info/store-info.component.less")]
     }),
-    __metadata("design:paramtypes", [])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__share_myDialog_app_alert_app_dialog_service__["a" /* AppDialogService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__share_myDialog_app_alert_app_dialog_service__["a" /* AppDialogService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__service_mine_service__["a" /* MineService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__service_mine_service__["a" /* MineService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_router__["c" /* Router */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3__angular_router__["b" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_router__["b" /* ActivatedRoute */]) === "function" && _d || Object])
 ], StoreInfoComponent);
 
+var _a, _b, _c, _d;
 //# sourceMappingURL=E:/myProjects/building-market/src/store-info.component.js.map
 
 /***/ }),

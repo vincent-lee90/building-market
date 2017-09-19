@@ -486,6 +486,7 @@ var MineService = (function () {
         this.getOrdersByStatusUrl = "order/getOrders";
         this.uploadIdCardImgUrl = '';
         this.user = {};
+        this.storeInfo = {};
     }
     MineService.prototype.getOrderByCode = function (order_code) {
         var _this = this;
@@ -539,6 +540,11 @@ var MineService = (function () {
     MineService.prototype.setBaseInfo = function (name, telephone) {
         this.user['realName'] = name;
         this.user['telephone'] = telephone;
+    };
+    MineService.prototype.setStoreInfo = function (storeName, storeAddr, category) {
+        this.storeInfo['storeName'] = storeName;
+        this.storeInfo['storeAddr'] = storeAddr;
+        this.storeInfo['category'] = category.join(',');
     };
     return MineService;
 }());

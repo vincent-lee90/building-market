@@ -11,7 +11,9 @@ export class MineService {
   private getOrderUrl = "order/getOrder";
   private getOrdersByStatusUrl = "order/getOrders";
   private uploadIdCardImgUrl = '';
-  private user={};
+  private user = {};
+  private storeInfo = {};
+
   getOrderByCode(order_code) {
     let params = new URLSearchParams();
     params.set('order_code', order_code);
@@ -60,8 +62,15 @@ export class MineService {
         return _res.body;
       })
   }
-  setBaseInfo(name:string,telephone:string){
-    this.user['realName']=name;
-    this.user['telephone']=telephone;
+
+  setBaseInfo(name: string, telephone: string) {
+    this.user['realName'] = name;
+    this.user['telephone'] = telephone;
+  }
+
+  setStoreInfo(storeName: string, storeAddr: string, category: Array<any>) {
+    this.storeInfo['storeName'] = storeName;
+    this.storeInfo['storeAddr'] = storeAddr;
+    this.storeInfo['category'] = category.join(',');
   }
 }
