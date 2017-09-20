@@ -55,16 +55,84 @@ router.post('/register', function (req, res, next) {
     response.message = 'OK';
     response.body = [];
     res.send(response);
-  },function (err) {
-    if(err.code==='ER_DUP_ENTRY'){
+  }, function (err) {
+    if (err.code === 'ER_DUP_ENTRY') {
       response.message = '用户名已存在';
-    }else {
-      response.message=err.message;
+    } else {
+      response.message = err.message;
     }
     response.statusCode = '500';
     response.body = [];
     res.send(response)
   })
 });
-
+router.post('/completeInfo', function (req, res, next) {
+  var user_id = req.body.user_id,
+    real_name = req.body.real_name,
+    telephone = req.body.telephone,
+    store_name = req.body.store_name,
+    store_addr = req.body.store_addr,
+    category = req.body.category,
+    front_id_card_img_url = req.body.front_id_card_img_url,
+    back_id_card_img_url = req.body.back_id_card_img_url;
+  if (!user_id) {
+    response.statusCode = '500';
+    response.message = '请先登录';
+    res.send(response);
+    response.body = [];
+    return;
+  }
+  if (!real_name) {
+    response.statusCode = '500';
+    response.message = '请填入真实姓名';
+    response.body = [];
+    res.send(response);
+    return;
+  }
+  if (!telephone) {
+    response.statusCode = '500';
+    response.message = '请输入联系电话';
+    response.body = [];
+    res.send(response);
+    return;
+  }
+  if (!storeName) {
+    response.statusCode = '500';
+    response.message = '请输入店铺名称';
+    response.body = [];
+    res.send(response);
+    return;
+  }
+  if (!storeAddr) {
+    response.statusCode = '500';
+    response.message = '请输入店铺地址';
+    response.body = [];
+    res.send(response);
+    return;
+  }
+  if (!category) {
+    response.statusCode = '500';
+    response.message = '请选择经营类目';
+    response.body = [];
+    res.send(response);
+    return;
+  }
+  if (!front_id_card_img_url) {
+    response.statusCode = '500';
+    response.message = '请上传身份证正面照';
+    response.body = [];
+    res.send(response);
+    return;
+  }
+  if (!back_id_card_img_url) {
+    response.statusCode = '500';
+    response.message = '请上传身份证反面照';
+    res.send(response);
+    response.body = [];
+    return;
+  }
+  var p1 = new Promise(function (resolve, reject) {
+    mysql.query('')
+  })
+});
 module.exports = router;

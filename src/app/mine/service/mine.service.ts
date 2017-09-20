@@ -41,7 +41,7 @@ export class MineService {
       })
   }
 
-  uploadStoreInfoImg(front_id_card_img_url: string, back_id_card_img_url: string) {
+  uploadInfo(front_id_card_img_url: string, back_id_card_img_url: string) {
     if (!front_id_card_img_url) {
       this.appDialogService.setAlert('请上传身份证正面照');
       return;
@@ -50,9 +50,14 @@ export class MineService {
       this.appDialogService.setAlert("请上传身份证反面照");
     }
     let params = new URLSearchParams();
+    params.append('user_id', this.commonService.user.id);
     params.append('front_id_card_img_url', front_id_card_img_url);
     params.append('back_id_card_img_url', back_id_card_img_url);
-    params.append('user_id', this.commonService.user.id);
+    params.append('real_name',this.user['realName']);
+    params.append('telephone',this.user['telephone']);
+    params.append('store_name',this.storeInfo['storeName']);
+    params.append('store_addr',this.storeInfo['storeAddr']);
+    params.append('category',this.storeInfo['category']);
     return this.http.post(this.uploadIdCardImgUrl, params)
       .map((res: Response) => {
         let _res = res.json();

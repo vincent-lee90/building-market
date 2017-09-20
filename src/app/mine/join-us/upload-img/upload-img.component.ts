@@ -22,7 +22,7 @@ export class UploadImgComponent implements OnInit {
     }
   }
   finish(){
-    this.mineService.uploadStoreInfoImg(this.frontIdCardUrl,this.backIdCardUrl);
+    this.mineService.uploadInfo(this.frontIdCardUrl,this.backIdCardUrl);
   }
   ngOnInit() {
 
