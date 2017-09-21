@@ -294,8 +294,8 @@ var AuthGuard = (function () {
     }
     AuthGuard.prototype.canActivate = function (route, state) {
         var url = state.url;
-        /*    return this.checkLogin(url);*/
-        return true;
+        return this.checkLogin(url);
+        /*    return true;*/
     };
     AuthGuard.prototype.checkLogin = function (url) {
         if (this.authGuardService.isLogin) {
@@ -484,7 +484,7 @@ var MineService = (function () {
         this.commonService = commonService;
         this.getOrderUrl = "order/getOrder";
         this.getOrdersByStatusUrl = "order/getOrders";
-        this.uploadIdCardImgUrl = '';
+        this.uploadIdCardImgUrl = 'user/completeInfo';
         this.user = {};
         this.storeInfo = {};
     }
@@ -515,7 +515,7 @@ var MineService = (function () {
             return _res.body;
         });
     };
-    MineService.prototype.uploadStoreInfoImg = function (front_id_card_img_url, back_id_card_img_url) {
+    MineService.prototype.uploadInfo = function (front_id_card_img_url, back_id_card_img_url) {
         var _this = this;
         if (!front_id_card_img_url) {
             this.appDialogService.setAlert('请上传身份证正面照');
@@ -525,9 +525,14 @@ var MineService = (function () {
             this.appDialogService.setAlert("请上传身份证反面照");
         }
         var params = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* URLSearchParams */]();
+        params.append('user_id', this.commonService.user.id);
         params.append('front_id_card_img_url', front_id_card_img_url);
         params.append('back_id_card_img_url', back_id_card_img_url);
-        params.append('user_id', this.commonService.user.id);
+        params.append('real_name', this.user['realName']);
+        params.append('telephone', this.user['telephone']);
+        params.append('store_name', this.storeInfo['storeName']);
+        params.append('store_addr', this.storeInfo['storeAddr']);
+        params.append('category', this.storeInfo['category']);
         return this.http.post(this.uploadIdCardImgUrl, params)
             .map(function (res) {
             var _res = res.json();

@@ -516,7 +516,7 @@ var UploadImgComponent = (function () {
         }
     };
     UploadImgComponent.prototype.finish = function () {
-        this.mineService.uploadStoreInfoImg(this.frontIdCardUrl, this.backIdCardUrl);
+        this.mineService.uploadInfo(this.frontIdCardUrl, this.backIdCardUrl);
     };
     UploadImgComponent.prototype.ngOnInit = function () {
     };

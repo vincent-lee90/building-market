@@ -96,14 +96,14 @@ router.post('/completeInfo', function (req, res, next) {
     res.send(response);
     return;
   }
-  if (!storeName) {
+  if (!store_name) {
     response.statusCode = '500';
     response.message = '请输入店铺名称';
     response.body = [];
     res.send(response);
     return;
   }
-  if (!storeAddr) {
+  if (!store_addr) {
     response.statusCode = '500';
     response.message = '请输入店铺地址';
     response.body = [];
@@ -131,8 +131,34 @@ router.post('/completeInfo', function (req, res, next) {
     response.body = [];
     return;
   }
-  var p1 = new Promise(function (resolve, reject) {
-    mysql.query('')
+  var p1 = function () {
+    return new Promise(function (resolve, reject) {
+      mysql.query('update user set front_id_card_img=\'' + front_id_card_img_url + '\',back_id_card_img=\'' + back_id_card_img_url + '\',real_name=\'' + real_name + '\',telephone=\'' + telephone + '\' where id=\'' + user_id + '\';', function (result) {
+        resolve('ok');
+      }, function (err) {
+        reject(err)
+      })
+    });
+  };
+  var p2 = function () {
+    new Promise(function (resolve, reject) {
+      mysql.query('insert into stores (store_name,store_address,store_cat,user_id) values (\'' + store_name + '\',\'' + store_addr + '\',\'' + user_id + '\'', function (result) {
+        resolve('ok');
+      }, function (err) {
+        reject(err);
+      })
+    })
+  };
+  Promise.all([p1(),p2()]).then(function (data) {
+    response.statusCode = '200';
+    response.message = 'OK';
+    response.body = [];
+    res.send(response);
+  },function (err) {
+    response.statusCode = '200';
+    response.message = '出错了';
+    response.body = err;
+    res.send(response);
   })
 });
 module.exports = router;
