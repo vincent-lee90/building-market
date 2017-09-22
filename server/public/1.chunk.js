@@ -487,6 +487,7 @@ module.exports = module.exports.toString();
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__service_mine_service__ = __webpack_require__("./src/app/mine/service/mine.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__("./node_modules/@angular/router/@angular/router.es5.js");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return UploadImgComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -499,9 +500,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
 var UploadImgComponent = (function () {
-    function UploadImgComponent(mineService) {
+    function UploadImgComponent(mineService, router, route) {
         this.mineService = mineService;
+        this.router = router;
+        this.route = route;
         this.frontIdCardUrl = "";
         this.backIdCardUrl = "";
     }
@@ -516,7 +520,11 @@ var UploadImgComponent = (function () {
         }
     };
     UploadImgComponent.prototype.finish = function () {
-        this.mineService.uploadInfo(this.frontIdCardUrl, this.backIdCardUrl);
+        var _this = this;
+        this.mineService.uploadInfo(this.frontIdCardUrl, this.backIdCardUrl)
+            .subscribe(function (data) {
+            _this.router.navigate(['/mine']);
+        });
     };
     UploadImgComponent.prototype.ngOnInit = function () {
     };
@@ -528,10 +536,10 @@ UploadImgComponent = __decorate([
         template: __webpack_require__("./src/app/mine/join-us/upload-img/upload-img.component.html"),
         styles: [__webpack_require__("./src/app/mine/join-us/upload-img/upload-img.component.less")],
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__service_mine_service__["a" /* MineService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__service_mine_service__["a" /* MineService */]) === "function" && _a || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__service_mine_service__["a" /* MineService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__service_mine_service__["a" /* MineService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["c" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* ActivatedRoute */]) === "function" && _c || Object])
 ], UploadImgComponent);
 
-var _a;
+var _a, _b, _c;
 //# sourceMappingURL=E:/myProjects/building-market/src/upload-img.component.js.map
 
 /***/ }),

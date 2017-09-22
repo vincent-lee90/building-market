@@ -10,7 +10,7 @@ export class MineService {
 
   private getOrderUrl = "order/getOrder";
   private getOrdersByStatusUrl = "order/getOrders";
-  private uploadIdCardImgUrl = 'user/completeInfo';
+  private uploadIdCardImgUrl = 'users/completeInfo';
   private user = {};
   private storeInfo = {};
 

@@ -484,7 +484,7 @@ var MineService = (function () {
         this.commonService = commonService;
         this.getOrderUrl = "order/getOrder";
         this.getOrdersByStatusUrl = "order/getOrders";
-        this.uploadIdCardImgUrl = 'user/completeInfo';
+        this.uploadIdCardImgUrl = 'users/completeInfo';
         this.user = {};
         this.storeInfo = {};
     }
