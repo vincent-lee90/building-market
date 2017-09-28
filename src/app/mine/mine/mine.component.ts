@@ -12,10 +12,10 @@ export class MineComponent implements OnInit{
 
   }
   getUserInfo(){
-    if(this.commonService.user.userName){
+    if(this.commonService.user.role){
       this.user=this.commonService.user;
     }else{
-      this.user.userName="游客";
+      this.user.role="游客";
     }
   }
   ngOnInit(){
