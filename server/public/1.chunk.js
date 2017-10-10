@@ -680,7 +680,7 @@ var mineRoutes = [
 /***/ "./src/app/mine/mine/mine.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"head padding-h-default border-bottom-default\">\r\n  <img class=\"logo pull-left\" src=\"./imgs/default-avatar.png\">\r\n  <div class=\"user-info\">\r\n    <div class=\"name\">{{user.name}}</div>\r\n    <div class=\"margin-top-5 font-size-12\"><span class=\"font-color-content\">{{user.role}}</span></div>\r\n  </div>\r\n</div>\r\n<section class=\"margin-top-10\">\r\n  <div class=\"padding-l-default  bg-lightest\">\r\n    <div class=\"padding-r-default padding-v-12 section-title \" routerLink=\"./agreement\">\r\n      <span class=\"font-color-title\">商家入驻</span>\r\n      <span><img class=\"arrow\" src=\"./imgs/arrow-right2.png\"></span>\r\n    </div>\r\n  </div>\r\n</section>\r\n<section class=\"margin-top-10\">\r\n  <div class=\"padding-l-default  bg-lightest\">\r\n    <div class=\"padding-r-default padding-v-12 section-title border-bottom-default\">\r\n      <span class=\"font-color-title\">我的店铺</span>\r\n      <span><img class=\"arrow\" src=\"./imgs/arrow-right2.png\"></span>\r\n    </div>\r\n    <div class=\"padding-l-default font-size-12\">\r\n      <div class=\"padding-r-default padding-v-12 section-title border-bottom-default\">\r\n        <span class=\"font-color-title\">商品上新</span>\r\n        <span><img class=\"arrow\" src=\"./imgs/arrow-right2.png\"></span>\r\n      </div>\r\n      <div class=\"padding-r-default padding-v-12 section-title\">\r\n        <span class=\"font-color-title\">店铺管理</span>\r\n        <span><img class=\"arrow\" src=\"./imgs/arrow-right2.png\"></span>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</section>\r\n<section class=\"margin-top-10\">\r\n  <div class=\"padding-l-default  bg-lightest\">\r\n    <div class=\"padding-r-default padding-v-12 section-title border-bottom-default\" routerLink=\"/mine/orders/0\">\r\n      <span class=\"font-color-title\">我的订单</span>\r\n      <span><img class=\"arrow\" src=\"./imgs/arrow-right2.png\"></span>\r\n    </div>\r\n    <div class=\"padding-l-default font-size-12\">\r\n      <div class=\"padding-r-default padding-v-12 section-title border-bottom-default\" routerLink=\"/mine/orders/1\">\r\n        <span class=\"font-color-title\">待付款</span>\r\n        <span><img class=\"arrow\" src=\"./imgs/arrow-right2.png\"></span>\r\n      </div>\r\n      <div class=\"padding-r-default padding-v-12 section-title border-bottom-default\" routerLink=\"/mine/orders/2\">\r\n        <span class=\"font-color-title\">待评价</span>\r\n        <span><img class=\"arrow\" src=\"./imgs/arrow-right2.png\"></span>\r\n      </div>\r\n      <div class=\"padding-r-default padding-v-12 section-title\" routerLink=\"/mine/orders/4\">\r\n        <span class=\"font-color-title\">已完成</span>\r\n        <span><img class=\"arrow\" src=\"./imgs/arrow-right2.png\"></span>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</section>\r\n<main-menu></main-menu>\r\n"
+module.exports = "<div class=\"head padding-h-default border-bottom-default\">\r\n  <img class=\"logo pull-left\" src=\"./imgs/default-avatar.png\">\r\n  <div class=\"user-info\">\r\n    <div class=\"name\">{{user.name}}</div>\r\n    <div class=\"margin-top-5 font-size-12\"><span class=\"font-color-content\">{{user.role}}</span><span class=\"font-color-link pull-right font-size-14\" routerLink=\"/account\" *ngIf=\"!isLogin\">登录</span></div>\r\n  </div>\r\n</div>\r\n<section class=\"margin-top-10\" *ngIf=\"user.role!=='merchant'\">\r\n  <div class=\"padding-l-default  bg-lightest\">\r\n    <div class=\"padding-r-default padding-v-12 section-title \" routerLink=\"./agreement\">\r\n      <span class=\"font-color-title\">商家入驻</span>\r\n      <span><img class=\"arrow\" src=\"./imgs/arrow-right2.png\"></span>\r\n    </div>\r\n  </div>\r\n</section>\r\n<section class=\"margin-top-10\" *ngIf=\"user.role==='merchant'\">\r\n  <div class=\"padding-l-default  bg-lightest\">\r\n    <div class=\"padding-r-default padding-v-12 section-title border-bottom-default\">\r\n      <span class=\"font-color-title\">我的店铺</span>\r\n      <span><img class=\"arrow\" src=\"./imgs/arrow-right2.png\"></span>\r\n    </div>\r\n    <div class=\"padding-l-default font-size-12\">\r\n      <div class=\"padding-r-default padding-v-12 section-title border-bottom-default\">\r\n        <span class=\"font-color-title\">商品上新</span>\r\n        <span><img class=\"arrow\" src=\"./imgs/arrow-right2.png\"></span>\r\n      </div>\r\n      <div class=\"padding-r-default padding-v-12 section-title\">\r\n        <span class=\"font-color-title\">店铺管理</span>\r\n        <span><img class=\"arrow\" src=\"./imgs/arrow-right2.png\"></span>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</section>\r\n<section class=\"margin-top-10\">\r\n  <div class=\"padding-l-default  bg-lightest\">\r\n    <div class=\"padding-r-default padding-v-12 section-title border-bottom-default\" routerLink=\"/mine/orders/0\">\r\n      <span class=\"font-color-title\">我的订单</span>\r\n      <span><img class=\"arrow\" src=\"./imgs/arrow-right2.png\"></span>\r\n    </div>\r\n    <div class=\"padding-l-default font-size-12\">\r\n      <div class=\"padding-r-default padding-v-12 section-title border-bottom-default\" routerLink=\"/mine/orders/1\">\r\n        <span class=\"font-color-title\">待付款</span>\r\n        <span><img class=\"arrow\" src=\"./imgs/arrow-right2.png\"></span>\r\n      </div>\r\n      <div class=\"padding-r-default padding-v-12 section-title border-bottom-default\" routerLink=\"/mine/orders/2\">\r\n        <span class=\"font-color-title\">待评价</span>\r\n        <span><img class=\"arrow\" src=\"./imgs/arrow-right2.png\"></span>\r\n      </div>\r\n      <div class=\"padding-r-default padding-v-12 section-title\" routerLink=\"/mine/orders/4\">\r\n        <span class=\"font-color-title\">已完成</span>\r\n        <span><img class=\"arrow\" src=\"./imgs/arrow-right2.png\"></span>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</section>\r\n<main-menu></main-menu>\r\n"
 
 /***/ }),
 
@@ -709,6 +709,7 @@ module.exports = module.exports.toString();
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__service_common_service__ = __webpack_require__("./src/app/service/common.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__account_model_user_model__ = __webpack_require__("./src/app/account/model/user-model.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__auth_guard_auth_guard_service__ = __webpack_require__("./src/app/auth-guard/auth-guard.service.ts");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MineComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -722,10 +723,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var MineComponent = (function () {
-    function MineComponent(commonService) {
+    function MineComponent(commonService, authGuard) {
         this.commonService = commonService;
+        this.authGuard = authGuard;
         this.user = new __WEBPACK_IMPORTED_MODULE_2__account_model_user_model__["a" /* User */]();
+        this.isLogin = this.authGuard.isLogin;
     }
     MineComponent.prototype.getUserInfo = function () {
         if (this.commonService.user.role) {
@@ -746,10 +750,10 @@ MineComponent = __decorate([
         template: __webpack_require__("./src/app/mine/mine/mine.component.html"),
         styles: [__webpack_require__("./src/app/mine/mine/mine.component.less")]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__service_common_service__["a" /* CommonService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__service_common_service__["a" /* CommonService */]) === "function" && _a || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__service_common_service__["a" /* CommonService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__service_common_service__["a" /* CommonService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__auth_guard_auth_guard_service__["a" /* AuthGuardService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__auth_guard_auth_guard_service__["a" /* AuthGuardService */]) === "function" && _b || Object])
 ], MineComponent);
 
-var _a;
+var _a, _b;
 //# sourceMappingURL=E:/myProjects/building-market/src/mine.component.js.map
 
 /***/ }),

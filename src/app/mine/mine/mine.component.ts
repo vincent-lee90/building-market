@@ -1,6 +1,7 @@
 import {Component,OnInit} from '@angular/core';
 import {CommonService} from "../../service/common.service";
 import {User} from "../../account/model/user-model";
+import {AuthGuardService} from "../../auth-guard/auth-guard.service";
 @Component({
   selector:'mine',
   templateUrl:'./mine.component.html',
@@ -8,7 +9,8 @@ import {User} from "../../account/model/user-model";
 })
 export class MineComponent implements OnInit{
   private user:User=new User();
-  constructor(private commonService:CommonService){
+  private isLogin=this.authGuard.isLogin;
+  constructor(private commonService:CommonService,private authGuard:AuthGuardService){
 
   }
   getUserInfo(){
