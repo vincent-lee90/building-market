@@ -14,7 +14,7 @@ export const mallRoutes = [
     path: 'list',
     component: ListComponent
   }, {
-    path: 'store/:id',
+    path: 'store/:storeCode',
     component: StoreComponent
   }, {
     path: 'detail/:id',

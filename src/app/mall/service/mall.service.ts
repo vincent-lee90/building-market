@@ -18,7 +18,7 @@ export class MallService {
   private getProductListUrl = 'mall/products';
   private getProductByIdUrl = 'mall/product';
   private getCategoriesUrl = 'mall/categories';
-  private getStoreInfoUrl = 'mall/store';
+  private getStoreInfoUrl = 'store/getStoreInfo';
   private createOrderUrl = 'order/createOrder';
 
   getHotWords() {
@@ -72,8 +72,10 @@ export class MallService {
       })
   }
 
-  getStoreInfo() {
-    return this.http.get(this.getStoreInfoUrl)
+  getStoreInfo(storeCode) {
+    let params=new URLSearchParams();
+    params.set('storeCode',storeCode);
+    return this.http.get(this.getStoreInfoUrl,{search:params})
       .map((res: Response) => {
         let _res = res.json();
         if (_res.statusCode != 200) {

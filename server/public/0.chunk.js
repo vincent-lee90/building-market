@@ -766,7 +766,7 @@ var mallRoutes = [
         path: 'list',
         component: __WEBPACK_IMPORTED_MODULE_2__list_list_component__["a" /* ListComponent */]
     }, {
-        path: 'store/:id',
+        path: 'store/:storeCode',
         component: __WEBPACK_IMPORTED_MODULE_0__store_store_component__["a" /* StoreComponent */]
     }, {
         path: 'detail/:id',
@@ -907,7 +907,7 @@ var MallService = (function () {
         this.getProductListUrl = 'mall/products';
         this.getProductByIdUrl = 'mall/product';
         this.getCategoriesUrl = 'mall/categories';
-        this.getStoreInfoUrl = 'mall/store';
+        this.getStoreInfoUrl = 'store/getStoreInfo';
         this.createOrderUrl = 'order/createOrder';
     }
     MallService.prototype.getHotWords = function () {
@@ -959,9 +959,11 @@ var MallService = (function () {
             return _res.body;
         });
     };
-    MallService.prototype.getStoreInfo = function () {
+    MallService.prototype.getStoreInfo = function (storeCode) {
         var _this = this;
-        return this.http.get(this.getStoreInfoUrl)
+        var params = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* URLSearchParams */]();
+        params.set('storeCode', storeCode);
+        return this.http.get(this.getStoreInfoUrl, { search: params })
             .map(function (res) {
             var _res = res.json();
             if (_res.statusCode != 200) {
@@ -1049,10 +1051,18 @@ var StoreComponent = (function () {
     function StoreComponent(route, mallService) {
         this.route = route;
         this.mallService = mallService;
+        this.storeInfo = {};
     }
     StoreComponent.prototype.getStoreInfo = function () {
+        var _this = this;
+        this.route.params.switchMap(function (params) {
+            return _this.mallService.getStoreInfo(params['storeCode']);
+        }).subscribe(function (data) {
+            _this.storeInfo = data;
+        });
     };
     StoreComponent.prototype.ngOnInit = function () {
+        this.getStoreInfo();
     };
     return StoreComponent;
 }());

@@ -10,6 +10,7 @@ var users = require('./routes/users');
 var mall=require('./routes/mall');
 var order=require('./routes/order');
 var upload=require('./routes/upload');
+var store=require('./routes/store');
 var app = express();
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -28,6 +29,7 @@ app.use('/users', users);
 app.use('/mall',mall);
 app.use('/order',order);
 app.use('/upload',upload);
+app.use('/store',store);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
