@@ -13,6 +13,9 @@ import {BaseInfoComponent} from "./join-us/base-info/base-info.component";
 import {StoreInfoComponent} from "./join-us/store-info/store-info.component";
 import {UploadImgComponent} from "./join-us/upload-img/upload-img.component";
 import {FileUploadModule} from "../share/file-upload/file-upload.module";
+import {MyStoreComponent} from "./my-store/my-store.component";
+import {PublishComponent} from "./my-store/publish/publish.component";
+import {StoreDisplayComponent} from "./my-store/store-display/store-display.component";
 
 
 @NgModule({
@@ -24,7 +27,7 @@ import {FileUploadModule} from "../share/file-upload/file-upload.module";
     RouterModule.forChild(mineRoutes)
   ],
   providers:[MineService],
-  declarations:[MineComponent,OrdersComponent,JoinUsComponent,BaseInfoComponent,StoreInfoComponent,UploadImgComponent,AgreementComponent
+  declarations:[MineComponent,OrdersComponent,JoinUsComponent,BaseInfoComponent,StoreInfoComponent,UploadImgComponent,AgreementComponent,MyStoreComponent,PublishComponent,StoreDisplayComponent
   ]
 })
 export class MineModule{
