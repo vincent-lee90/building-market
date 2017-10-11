@@ -761,7 +761,7 @@ var _a, _b;
 /***/ "./src/app/mine/orders/orders.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"order-status font-size-12 border-bottom-default\">\r\n  <ul>\r\n    <li routerLinkActive=\"active\" routerLink=\"/mine/orders/0\">全部</li>\r\n    <li routerLinkActive=\"active\" routerLink=\"/mine/orders/1\">待付款</li>\r\n    <li routerLinkActive=\"active\" routerLink=\"/mine/orders/2\">待发货</li>\r\n    <li routerLinkActive=\"active\" routerLink=\"/mine/orders/4\">待评价</li>\r\n  </ul>\r\n</div>\r\n<ul class=\"order-list\">\r\n  <li *ngFor=\"let order of orders\">\r\n    <div class=\"store-name font-color-title font-size-12 padding-h-default padding-v-12\" routerLink=\"/mall/store/{{order.store_code}}\">{{order.store_name}} <img src=\"./imgs/arrow-right2.png\"></div>\r\n    <div class=\"product-info padding-h-default padding-v-8\" routerLink=\"/mall/detail/{{order.product_id}}\">\r\n      <img src=\"{{order.product_logo}}\">\r\n      <div>\r\n        <span class=\"font-color-title font-size-14\">{{order.order_name}}</span>\r\n        <div class=\"purchase-info margin-top-20 font-color-content\">\r\n          ¥{{order.price}}  <span class=\"pull-right\">x{{order.amount}}</span>\r\n        </div>\r\n      </div>\r\n    </div>\r\n    <div class=\"padding-v-12 text-right padding-h-default \">\r\n      <span class=\"info-space\">共<span class=\"font-color-orange\">{{order.amount}}</span>件商品</span><span>合计：</span><span class=\"font-size-12\">¥ </span><span class=\"font-color-orange\">{{order.price}}</span>\r\n    </div>\r\n  </li>\r\n</ul>\r\n"
+module.exports = "<div class=\"order-status font-size-12\">\r\n  <ul>\r\n    <li routerLinkActive=\"active\" routerLink=\"/mine/orders/0\">全部</li>\r\n    <li routerLinkActive=\"active\" routerLink=\"/mine/orders/1\">待付款</li>\r\n    <li routerLinkActive=\"active\" routerLink=\"/mine/orders/2\">待发货</li>\r\n    <li routerLinkActive=\"active\" routerLink=\"/mine/orders/4\">待评价</li>\r\n  </ul>\r\n</div>\r\n<ul class=\"order-list border-top-default\" [class.hidden]=\"orders.length==0\">\r\n  <li *ngFor=\"let order of orders\">\r\n    <div class=\"store-name font-color-title font-size-12 padding-h-default padding-v-12\" routerLink=\"/mall/store/{{order.store_code}}\">{{order.store_name}} <img src=\"./imgs/arrow-right2.png\"></div>\r\n    <div class=\"product-info padding-h-default padding-v-8\" routerLink=\"/mall/detail/{{order.product_id}}\">\r\n      <img src=\"{{order.product_logo}}\">\r\n      <div>\r\n        <span class=\"font-color-title font-size-14\">{{order.order_name}}</span>\r\n        <div class=\"purchase-info margin-top-20 font-color-content\">\r\n          ¥{{order.price}}  <span class=\"pull-right\">x{{order.amount}}</span>\r\n        </div>\r\n      </div>\r\n    </div>\r\n    <div class=\"padding-v-12 text-right padding-h-default\">\r\n      <span class=\"info-space\">共<span class=\"font-color-orange\">{{order.amount}}</span>件商品</span><span>合计：</span><span class=\"font-size-12\">¥ </span><span class=\"font-color-orange\">{{order.price}}</span>\r\n    </div>\r\n  </li>\r\n</ul>\r\n<div *ngIf=\"orders.length==0&&hasGot\" class=\"text-center margin-top-90  font-color-content font-size-12 col-xs-12\">\r\n  <img src=\"./imgs/no-data.png\">\r\n  <div class=\"margin-top-15\">暂时没有相关订单哦</div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -811,12 +811,16 @@ var OrdersComponent = (function () {
         this.route = route;
         this.mineService = mineService;
         this.orders = [];
+        this.hasGot = false;
     }
     OrdersComponent.prototype.getOrdersByStatus = function () {
         var _this = this;
         this.route.params.subscribe(function (params) {
             return _this.mineService.getOrdersByStatus(params['orderStatus']).subscribe(function (data) {
                 _this.orders = data;
+                _this.hasGot = true;
+            }, function (err) {
+                _this.hasGot = true;
             });
         });
     };

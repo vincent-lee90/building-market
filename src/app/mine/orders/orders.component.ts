@@ -11,6 +11,7 @@ import {Order} from "../../mall/model/order.model";
 })
 export class OrdersComponent implements OnInit {
   private orders: Order[] = [];
+  public hasGot = false;
 
   constructor(private route: ActivatedRoute, private mineService: MineService) {
   }
@@ -19,6 +20,9 @@ export class OrdersComponent implements OnInit {
     this.route.params.subscribe((params: Params) => {
       return this.mineService.getOrdersByStatus(params['orderStatus']).subscribe(data => {
         this.orders = data;
+        this.hasGot = true;
+      }, err => {
+        this.hasGot = true;
       })
     })
   }

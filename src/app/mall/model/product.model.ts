@@ -6,5 +6,5 @@ export class Product {
   origin_price: string;
   product_cat: string;
   store_code: string;
-  store_name:string;
+  store_name?:string;
 }

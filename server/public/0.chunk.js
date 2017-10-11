@@ -426,7 +426,7 @@ var _a, _b, _c;
 /***/ "./src/app/mall/list/list.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"header padding-h-default padding-v-6 text-center border-bottom-default\">\r\n  <mall-category (onSelect)=\"getListByCode($event)\"><img src=\"./imgs/category.png\"></mall-category>\r\n  <img src=\"./imgs/title.png\">\r\n  <img src=\"./imgs/icon-search.png\" routerLink=\"/mall/mall-search\">\r\n</div>\r\n<ul class=\"list padding-h-default padding-v-16\">\r\n  <li *ngFor=\"let product of productList\" routerLink=\"../detail/{{product.id}}\">\r\n    <img src=\"{{product.product_logo}}\">\r\n    <div class=\"introduction  padding-v-5\">{{product.product_name}}</div>\r\n    <div class=\"price text-left padding-v-5\"><span class=\"font-size-12\">¥</span><span class=\"price font-size-14\">{{product.current_price}}</span>\r\n      <del class=\"font-color-content\">¥{{product.origin_price}}</del>\r\n    </div>\r\n  </li>\r\n</ul>\r\n"
+module.exports = "<div class=\"header padding-h-default padding-v-6 text-center \">\r\n  <mall-category (onSelect)=\"getListByCode($event)\"><img src=\"./imgs/category.png\"></mall-category>\r\n  <img src=\"./imgs/title.png\" routerLink=\"/\">\r\n  <img src=\"./imgs/icon-search.png\" routerLink=\"/mall/mall-search\">\r\n</div>\r\n<ul class=\"list padding-h-default padding-v-16 border-top-default\" [class.hidden]=\"productList.length==0\">\r\n  <li *ngFor=\"let product of productList\" routerLink=\"../detail/{{product.id}}\">\r\n    <img src=\"{{product.product_logo}}\">\r\n    <div class=\"introduction  padding-v-5\">{{product.product_name}}</div>\r\n    <div class=\"price text-left padding-v-5\"><span class=\"font-size-12\">¥</span><span class=\"price font-size-14\">{{product.current_price}}</span>\r\n      <del class=\"font-color-content\">¥{{product.origin_price}}</del>\r\n    </div>\r\n  </li>\r\n</ul>\r\n<div *ngIf=\"productList.length==0&&hasGot\" class=\"text-center margin-top-90  font-color-content font-size-12\">\r\n  <img src=\"./imgs/no-data.png\">\r\n  <div class=\"margin-top-15\">暂时没有相关的产品哦</div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -476,13 +476,19 @@ var ListComponent = (function () {
         this.route = route;
         this.mallService = mallService;
         this.productList = [];
+        this.hasGot = false;
     }
     ListComponent.prototype.getList = function () {
         var _this = this;
         this.route.queryParams.switchMap(function (params) {
             var paramsObj = { searchStr: params['searchStr'], catCode: params['catCode'] };
             return _this.mallService.getProducts(paramsObj);
-        }).subscribe(function (data) { return _this.productList = data; });
+        }).subscribe(function (data) {
+            _this.productList = data;
+            _this.hasGot = true;
+        }, function (err) {
+            _this.hasGot = true;
+        });
     };
     ListComponent.prototype.getListByCode = function (code) {
         var _this = this;
@@ -1005,7 +1011,7 @@ var _a, _b;
 /***/ "./src/app/mall/store/store.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"store-head padding-h-default border-bottom-default\">\r\n  <img class=\"logo pull-left\" src=\"./imgs/default-avatar.png\">\r\n  <div class=\"font-color-title\">\r\n    <div >箭牌卫浴旗舰店</div>\r\n    <div class=\"margin-top-5 font-size-12\"><span class=\"label\">品牌店</span></div>\r\n  </div>\r\n</div>\r\n<ul class=\"list padding-h-default padding-v-16\">\r\n  <li routerLink=\"../detail\">\r\n    <img src=\"./imgs/eg-stores.jpg\">\r\n    <div class=\"introduction  padding-v-5\">雷士照明 双头源卧室灯EYX9060</div>\r\n    <div class=\"price text-left padding-v-5\"><span class=\"font-size-12\">¥</span><span class=\"price font-size-14\">36.6</span><del class=\"font-color-content\">¥58</del></div>\r\n  </li>\r\n  <li>\r\n    <img src=\"./imgs/eg-stores02.jpg\">\r\n    <div class=\"introduction  padding-v-5\">月影凯顿现代乡村壁灯全铜客厅灯具布艺卧室床头灯玄关灯过道灯饰</div>\r\n    <div class=\"price text-left padding-v-5\"><span class=\"font-size-12\">¥</span><span class=\"price font-size-14\">36.6</span><del class=\"font-color-content\">¥58</del></div>\r\n  </li>\r\n  <li>\r\n    <img src=\"./imgs/eg-stores03.jpg\">\r\n    <div class=\"introduction  padding-v-5\">[WOOMAR/瑝玛] 瑝玛 铜灯吊灯客厅灯 欧式灯具卧室灯温馨浪漫复古别墅复式楼云石灯饰HM-8809-3仿云石</div>\r\n    <div class=\"price text-left padding-v-5\"><span class=\"font-size-12\">¥</span><span class=\"price font-size-14\">36.6</span><del class=\"font-color-content\">¥58</del></div>\r\n  </li>\r\n</ul>\r\n"
+module.exports = "<div class=\"store-head padding-h-default border-bottom-default\">\r\n  <img class=\"logo pull-left\" src=\"./imgs/default-avatar.png\">\r\n  <div class=\"font-color-title\">\r\n    <div >{{storeInfo.store_name}}</div>\r\n    <div class=\"margin-top-5 font-size-12\"><span class=\"label\">品牌店</span></div>\r\n  </div>\r\n</div>\r\n<ul class=\"list padding-h-default padding-v-16\">\r\n  <li *ngFor=\"let product of storeInfo.products\" routerLink=\"../../detail/{{product.id}}\">\r\n    <img src=\"{{product.product_logo}}\">\r\n    <div class=\"introduction  padding-v-5\">{{product.product_name}}</div>\r\n    <div class=\"price text-left padding-v-5\"><span class=\"font-size-12\">¥</span><span class=\"price font-size-14\">{{product.current_price}}</span><del class=\"font-color-content\">¥{{product.origin_price}}</del></div>\r\n  </li>\r\n</ul>\r\n"
 
 /***/ }),
 

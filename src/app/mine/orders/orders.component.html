@@ -1,4 +1,4 @@
-<div class="order-status font-size-12 border-bottom-default">
+<div class="order-status font-size-12">
   <ul>
     <li routerLinkActive="active" routerLink="/mine/orders/0">全部</li>
     <li routerLinkActive="active" routerLink="/mine/orders/1">待付款</li>
@@ -6,7 +6,7 @@
     <li routerLinkActive="active" routerLink="/mine/orders/4">待评价</li>
   </ul>
 </div>
-<ul class="order-list">
+<ul class="order-list border-top-default" [class.hidden]="orders.length==0">
   <li *ngFor="let order of orders">
     <div class="store-name font-color-title font-size-12 padding-h-default padding-v-12" routerLink="/mall/store/{{order.store_code}}">{{order.store_name}} <img src="./imgs/arrow-right2.png"></div>
     <div class="product-info padding-h-default padding-v-8" routerLink="/mall/detail/{{order.product_id}}">
@@ -18,8 +18,12 @@
         </div>
       </div>
     </div>
-    <div class="padding-v-12 text-right padding-h-default ">
+    <div class="padding-v-12 text-right padding-h-default">
       <span class="info-space">共<span class="font-color-orange">{{order.amount}}</span>件商品</span><span>合计：</span><span class="font-size-12">¥ </span><span class="font-color-orange">{{order.price}}</span>
     </div>
   </li>
 </ul>
+<div *ngIf="orders.length==0&&hasGot" class="text-center margin-top-90  font-color-content font-size-12 col-xs-12">
+  <img src="./imgs/no-data.png">
+  <div class="margin-top-15">暂时没有相关订单哦</div>
+</div>

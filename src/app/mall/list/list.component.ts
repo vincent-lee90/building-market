@@ -9,6 +9,7 @@ import 'rxjs/add/operator/switchMap';
 })
 export class ListComponent implements OnInit {
   public productList = [];
+  public hasGot = false;
 
   constructor(private route: ActivatedRoute, private mallService: MallService) {
   }
@@ -17,13 +18,20 @@ export class ListComponent implements OnInit {
     this.route.queryParams.switchMap((params: Params) => {
       let paramsObj = {searchStr: params['searchStr'], catCode: params['catCode']};
       return this.mallService.getProducts(paramsObj);
-    }).subscribe(data => this.productList = data);
+    }).subscribe(data => {
+      this.productList = data;
+      this.hasGot = true;
+    }, err => {
+      this.hasGot = true;
+    });
   }
-  getListByCode(code:string){
-    let paramsObj={catCode:code};
+
+  getListByCode(code: string) {
+    let paramsObj = {catCode: code};
     this.mallService.getProducts(paramsObj)
-      .subscribe(data=>this.productList=data)
+      .subscribe(data => this.productList = data)
   }
+
   ngOnInit() {
     this.getList();
   }

@@ -1,9 +1,9 @@
-<div class="header padding-h-default padding-v-6 text-center border-bottom-default">
+<div class="header padding-h-default padding-v-6 text-center ">
   <mall-category (onSelect)="getListByCode($event)"><img src="./imgs/category.png"></mall-category>
-  <img src="./imgs/title.png">
+  <img src="./imgs/title.png" routerLink="/">
   <img src="./imgs/icon-search.png" routerLink="/mall/mall-search">
 </div>
-<ul class="list padding-h-default padding-v-16">
+<ul class="list padding-h-default padding-v-16 border-top-default" [class.hidden]="productList.length==0">
   <li *ngFor="let product of productList" routerLink="../detail/{{product.id}}">
     <img src="{{product.product_logo}}">
     <div class="introduction  padding-v-5">{{product.product_name}}</div>
@@ -12,3 +12,7 @@
     </div>
   </li>
 </ul>
+<div *ngIf="productList.length==0&&hasGot" class="text-center margin-top-90  font-color-content font-size-12">
+  <img src="./imgs/no-data.png">
+  <div class="margin-top-15">暂时没有相关的产品哦</div>
+</div>

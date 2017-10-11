@@ -6,19 +6,9 @@
   </div>
 </div>
 <ul class="list padding-h-default padding-v-16">
-  <li routerLink="../detail">
-    <img src="./imgs/eg-stores.jpg">
-    <div class="introduction  padding-v-5">雷士照明 双头源卧室灯EYX9060</div>
-    <div class="price text-left padding-v-5"><span class="font-size-12">¥</span><span class="price font-size-14">36.6</span><del class="font-color-content">¥58</del></div>
-  </li>
-  <li>
-    <img src="./imgs/eg-stores02.jpg">
-    <div class="introduction  padding-v-5">月影凯顿现代乡村壁灯全铜客厅灯具布艺卧室床头灯玄关灯过道灯饰</div>
-    <div class="price text-left padding-v-5"><span class="font-size-12">¥</span><span class="price font-size-14">36.6</span><del class="font-color-content">¥58</del></div>
-  </li>
-  <li>
-    <img src="./imgs/eg-stores03.jpg">
-    <div class="introduction  padding-v-5">[WOOMAR/瑝玛] 瑝玛 铜灯吊灯客厅灯 欧式灯具卧室灯温馨浪漫复古别墅复式楼云石灯饰HM-8809-3仿云石</div>
-    <div class="price text-left padding-v-5"><span class="font-size-12">¥</span><span class="price font-size-14">36.6</span><del class="font-color-content">¥58</del></div>
+  <li *ngFor="let product of storeInfo.products" routerLink="../../detail/{{product.id}}">
+    <img src="{{product.product_logo}}">
+    <div class="introduction  padding-v-5">{{product.product_name}}</div>
+    <div class="price text-left padding-v-5"><span class="font-size-12">¥</span><span class="price font-size-14">{{product.current_price}}</span><del class="font-color-content">¥{{product.origin_price}}</del></div>
   </li>
 </ul>
