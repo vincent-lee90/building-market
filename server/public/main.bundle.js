@@ -486,7 +486,7 @@ var MineService = (function () {
         this.getOrdersByStatusUrl = "order/getOrders";
         this.uploadIdCardImgUrl = 'users/completeInfo';
         this.getStoreInfoByUserIdUrl = 'store/getStoreInfoByUserId';
-        this.getProductsByStoreCodeUrl = '';
+        this.getProductsByStoreCodeUrl = 'mall/getProductsByStoreCode';
         this.user = {};
         this.storeInfo = {};
     }

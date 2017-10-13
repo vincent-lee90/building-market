@@ -671,7 +671,7 @@ var mineRoutes = [
         ]
     },
     {
-        path: 'my-store',
+        path: 'my-store/:storeCode',
         canActivate: [__WEBPACK_IMPORTED_MODULE_2__auth_guard_auth_guard__["a" /* AuthGuard */]],
         component: __WEBPACK_IMPORTED_MODULE_8__my_store_my_store_component__["a" /* MyStoreComponent */],
         children: [
@@ -711,7 +711,7 @@ var mineRoutes = [
 /***/ "./src/app/mine/mine/mine.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"head padding-h-default border-bottom-default\">\r\n  <img class=\"logo pull-left\" src=\"./imgs/default-avatar.png\">\r\n  <div class=\"user-info\">\r\n    <div class=\"name\">{{user.name}}</div>\r\n    <div class=\"margin-top-5 font-size-12\"><span class=\"font-color-content\">{{user.role}}</span><span class=\"font-color-link pull-right font-size-14\" routerLink=\"/account\" *ngIf=\"!isLogin\">登录</span></div>\r\n  </div>\r\n</div>\r\n<section class=\"margin-top-10\" *ngIf=\"isLogin&&user.role!=='merchant'\">\r\n  <div class=\"padding-l-default  bg-lightest\">\r\n    <div class=\"padding-r-default padding-v-12 section-title \" routerLink=\"./agreement\">\r\n      <span class=\"font-color-title\">商家入驻</span>\r\n      <span><img class=\"arrow\" src=\"./imgs/arrow-right2.png\"></span>\r\n    </div>\r\n  </div>\r\n</section>\r\n<section class=\"margin-top-10\" *ngIf=\"user.role==='merchant'\">\r\n  <div class=\"padding-l-default  bg-lightest\">\r\n    <div class=\"padding-r-default padding-v-12 section-title border-bottom-default\" routerLink=\"./my-store\">\r\n      <span class=\"font-color-title\">我的店铺</span>\r\n      <span><img class=\"arrow\" src=\"./imgs/arrow-right2.png\"></span>\r\n    </div>\r\n    <div class=\"padding-l-default font-size-12\">\r\n      <div class=\"padding-r-default padding-v-12 section-title border-bottom-default\" routerLink=\"./my-store/publish\">\r\n        <span class=\"font-color-title\">商品上新</span>\r\n        <span><img class=\"arrow\" src=\"./imgs/arrow-right2.png\"></span>\r\n      </div>\r\n      <div class=\"padding-r-default padding-v-12 section-title\">\r\n        <span class=\"font-color-title\">店铺管理</span>\r\n        <span><img class=\"arrow\" src=\"./imgs/arrow-right2.png\"></span>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</section>\r\n<section class=\"margin-top-10\">\r\n  <div class=\"padding-l-default  bg-lightest\">\r\n    <div class=\"padding-r-default padding-v-12 section-title border-bottom-default\" routerLink=\"/mine/orders/0\">\r\n      <span class=\"font-color-title\">我的订单</span>\r\n      <span><img class=\"arrow\" src=\"./imgs/arrow-right2.png\"></span>\r\n    </div>\r\n    <div class=\"padding-l-default font-size-12\">\r\n      <div class=\"padding-r-default padding-v-12 section-title border-bottom-default\" routerLink=\"/mine/orders/1\">\r\n        <span class=\"font-color-title\">待付款</span>\r\n        <span><img class=\"arrow\" src=\"./imgs/arrow-right2.png\"></span>\r\n      </div>\r\n      <div class=\"padding-r-default padding-v-12 section-title border-bottom-default\" routerLink=\"/mine/orders/2\">\r\n        <span class=\"font-color-title\">待评价</span>\r\n        <span><img class=\"arrow\" src=\"./imgs/arrow-right2.png\"></span>\r\n      </div>\r\n      <div class=\"padding-r-default padding-v-12 section-title\" routerLink=\"/mine/orders/4\">\r\n        <span class=\"font-color-title\">已完成</span>\r\n        <span><img class=\"arrow\" src=\"./imgs/arrow-right2.png\"></span>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</section>\r\n<main-menu></main-menu>\r\n"
+module.exports = "<div class=\"head padding-h-default border-bottom-default\">\r\n  <img class=\"logo pull-left\" src=\"./imgs/default-avatar.png\">\r\n  <div class=\"user-info\">\r\n    <div class=\"name\">{{user.name}}</div>\r\n    <div class=\"margin-top-5 font-size-12\"><span class=\"font-color-content\">{{user.role}}</span><span class=\"font-color-link pull-right font-size-14\" routerLink=\"/account\" *ngIf=\"!isLogin\">登录</span></div>\r\n  </div>\r\n</div>\r\n<section class=\"margin-top-10\" *ngIf=\"isLogin&&user.role!=='merchant'\">\r\n  <div class=\"padding-l-default  bg-lightest\">\r\n    <div class=\"padding-r-default padding-v-12 section-title \" routerLink=\"./agreement\">\r\n      <span class=\"font-color-title\">商家入驻</span>\r\n      <span><img class=\"arrow\" src=\"./imgs/arrow-right2.png\"></span>\r\n    </div>\r\n  </div>\r\n</section>\r\n<section class=\"margin-top-10\" *ngIf=\"user.role==='merchant'\">\r\n  <div class=\"padding-l-default  bg-lightest\">\r\n    <div class=\"padding-r-default padding-v-12 section-title border-bottom-default\" routerLink=\"./my-store/{{storeInfo.store_code}}\">\r\n      <span class=\"font-color-title\">我的店铺</span>\r\n      <span><img class=\"arrow\" src=\"./imgs/arrow-right2.png\"></span>\r\n    </div>\r\n    <div class=\"padding-l-default font-size-12\">\r\n      <div class=\"padding-r-default padding-v-12 section-title border-bottom-default\" routerLink=\"./my-store/publish\">\r\n        <span class=\"font-color-title\">商品上新</span>\r\n        <span><img class=\"arrow\" src=\"./imgs/arrow-right2.png\"></span>\r\n      </div>\r\n      <div class=\"padding-r-default padding-v-12 section-title\">\r\n        <span class=\"font-color-title\">店铺管理</span>\r\n        <span><img class=\"arrow\" src=\"./imgs/arrow-right2.png\"></span>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</section>\r\n<section class=\"margin-top-10\">\r\n  <div class=\"padding-l-default  bg-lightest\">\r\n    <div class=\"padding-r-default padding-v-12 section-title border-bottom-default\" routerLink=\"/mine/orders/0\">\r\n      <span class=\"font-color-title\">我的订单</span>\r\n      <span><img class=\"arrow\" src=\"./imgs/arrow-right2.png\"></span>\r\n    </div>\r\n    <div class=\"padding-l-default font-size-12\">\r\n      <div class=\"padding-r-default padding-v-12 section-title border-bottom-default\" routerLink=\"/mine/orders/1\">\r\n        <span class=\"font-color-title\">待付款</span>\r\n        <span><img class=\"arrow\" src=\"./imgs/arrow-right2.png\"></span>\r\n      </div>\r\n      <div class=\"padding-r-default padding-v-12 section-title border-bottom-default\" routerLink=\"/mine/orders/2\">\r\n        <span class=\"font-color-title\">待评价</span>\r\n        <span><img class=\"arrow\" src=\"./imgs/arrow-right2.png\"></span>\r\n      </div>\r\n      <div class=\"padding-r-default padding-v-12 section-title\" routerLink=\"/mine/orders/4\">\r\n        <span class=\"font-color-title\">已完成</span>\r\n        <span><img class=\"arrow\" src=\"./imgs/arrow-right2.png\"></span>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</section>\r\n<main-menu></main-menu>\r\n"
 
 /***/ }),
 
@@ -925,6 +925,7 @@ module.exports = module.exports.toString();
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__service_mine_service__ = __webpack_require__("./src/app/mine/service/mine.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__("./node_modules/@angular/router/@angular/router.es5.js");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return StoreDisplayComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -937,14 +938,18 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
 var StoreDisplayComponent = (function () {
-    function StoreDisplayComponent(mineService) {
+    function StoreDisplayComponent(mineService, route) {
         this.mineService = mineService;
+        this.route = route;
         this.productList = [];
     }
     StoreDisplayComponent.prototype.getProductsByStoreCode = function () {
         var _this = this;
-        this.mineService.getProductsByStoreCode().subscribe(function (data) {
+        this.route.params.switchMap(function (params) {
+            return _this.mineService.getProductsByStoreCode(params['orderCode']);
+        }).subscribe(function (data) {
             _this.productList = data;
         });
     };
@@ -959,10 +964,10 @@ StoreDisplayComponent = __decorate([
         template: __webpack_require__("./src/app/mine/my-store/store-display/store-display.component.html"),
         styles: [__webpack_require__("./src/app/mine/my-store/store-display/store-display.component.less")]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__service_mine_service__["a" /* MineService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__service_mine_service__["a" /* MineService */]) === "function" && _a || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__service_mine_service__["a" /* MineService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__service_mine_service__["a" /* MineService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* ActivatedRoute */]) === "function" && _b || Object])
 ], StoreDisplayComponent);
 
-var _a;
+var _a, _b;
 //# sourceMappingURL=E:/myProjects/building-market/src/store-display.component.js.map
 
 /***/ }),

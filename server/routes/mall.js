@@ -41,7 +41,7 @@ router.get('/getProductsByStoreCode', function (req, res, next) {
   mysql.query(sql,function (result) {
     response.statusCode = '200';
     response.message = 'OK';
-    response.body = result[0];
+    response.body = result;
     res.send(response);
   },function (err) {
     response.statusCode = '500';
