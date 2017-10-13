@@ -265,3 +265,32 @@ input {
   left: 0;
   top: 0;
 }
+.list{
+  background-color: #fff;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  &>li{
+    padding: .05rem 0.05rem 0 0.05rem;
+    margin-bottom: .1rem;
+    width: 1.65rem;
+    text-align: center;
+    border: 1px solid #dfdfdf;
+    height: 2.1rem;
+    .introduction{
+      word-break: break-all;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+      font-size: .12rem;
+      border-bottom: 1px dashed #dfdfdf;
+    }
+    .price{
+      color: #e81a62;
+      margin-right: .1rem;
+    }
+    &>img{
+      width: 95%;
+    }
+  }
+}

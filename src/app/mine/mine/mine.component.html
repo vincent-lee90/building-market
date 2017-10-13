@@ -5,7 +5,7 @@
     <div class="margin-top-5 font-size-12"><span class="font-color-content">{{user.role}}</span><span class="font-color-link pull-right font-size-14" routerLink="/account" *ngIf="!isLogin">登录</span></div>
   </div>
 </div>
-<section class="margin-top-10" *ngIf="user.role!=='merchant'">
+<section class="margin-top-10" *ngIf="isLogin&&user.role!=='merchant'">
   <div class="padding-l-default  bg-lightest">
     <div class="padding-r-default padding-v-12 section-title " routerLink="./agreement">
       <span class="font-color-title">商家入驻</span>
@@ -15,12 +15,12 @@
 </section>
 <section class="margin-top-10" *ngIf="user.role==='merchant'">
   <div class="padding-l-default  bg-lightest">
-    <div class="padding-r-default padding-v-12 section-title border-bottom-default">
+    <div class="padding-r-default padding-v-12 section-title border-bottom-default" routerLink="./my-store">
       <span class="font-color-title">我的店铺</span>
       <span><img class="arrow" src="./imgs/arrow-right2.png"></span>
     </div>
     <div class="padding-l-default font-size-12">
-      <div class="padding-r-default padding-v-12 section-title border-bottom-default">
+      <div class="padding-r-default padding-v-12 section-title border-bottom-default" routerLink="./my-store/publish">
         <span class="font-color-title">商品上新</span>
         <span><img class="arrow" src="./imgs/arrow-right2.png"></span>
       </div>

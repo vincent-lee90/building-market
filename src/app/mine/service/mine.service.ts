@@ -11,6 +11,8 @@ export class MineService {
   private getOrderUrl = "order/getOrder";
   private getOrdersByStatusUrl = "order/getOrders";
   private uploadIdCardImgUrl = 'users/completeInfo';
+  private getStoreInfoByUserIdUrl = 'store/getStoreInfoByUserId';
+  private getProductsByStoreCodeUrl='mall/getProductsByStoreCode';
   private user = {};
   private storeInfo = {};
 
@@ -53,11 +55,11 @@ export class MineService {
     params.append('user_id', this.commonService.user.id);
     params.append('front_id_card_img_url', front_id_card_img_url);
     params.append('back_id_card_img_url', back_id_card_img_url);
-    params.append('real_name',this.user['realName']);
-    params.append('telephone',this.user['telephone']);
-    params.append('store_name',this.storeInfo['storeName']);
-    params.append('store_addr',this.storeInfo['storeAddr']);
-    params.append('category',this.storeInfo['category']);
+    params.append('real_name', this.user['realName']);
+    params.append('telephone', this.user['telephone']);
+    params.append('store_name', this.storeInfo['storeName']);
+    params.append('store_addr', this.storeInfo['storeAddr']);
+    params.append('category', this.storeInfo['category']);
     return this.http.post(this.uploadIdCardImgUrl, params)
       .map((res: Response) => {
         let _res = res.json();
@@ -77,5 +79,30 @@ export class MineService {
     this.storeInfo['storeName'] = storeName;
     this.storeInfo['storeAddr'] = storeAddr;
     this.storeInfo['category'] = category.join(',');
+  }
+
+  getStoreInfoByUserId() {
+    let params = new URLSearchParams();
+    params.set('user_id', this.commonService.user.id);
+    return this.http.get(this.getStoreInfoByUserIdUrl, {search: params})
+      .map((res: Response) => {
+        let _res = res.json();
+        if (_res.statusCode != 200) {
+          this.appDialogService.setAlert(_res.message)
+        }
+        return _res.body;
+      })
+  }
+  getProductsByStoreCode(storeCode?){
+    let params=new URLSearchParams();
+    params.set('store_code',storeCode);
+    return this.http.get(this.getProductsByStoreCodeUrl,{search:params})
+      .map((res: Response) => {
+        let _res = res.json();
+        if (_res.statusCode != 200) {
+          this.appDialogService.setAlert(_res.message)
+        }
+        return _res.body;
+      })
   }
 }

@@ -35,6 +35,21 @@ router.get('/products', function (req, res, next) {
     res.send(response);
   })
 });
+router.get('/getProductsByStoreCode', function (req, res, next) {
+  var store_code=req.query.store_code,sql;
+  sql="select * from product where store_code=\'"+store_code+"\';";
+  mysql.query(sql,function (result) {
+    response.statusCode = '200';
+    response.message = 'OK';
+    response.body = result[0];
+    res.send(response);
+  },function (err) {
+    response.statusCode = '500';
+    response.message = '系统出错了';
+    response.body = err;
+    res.send(response);
+  })
+});
 router.get("/product", function (req, res, next) {
   var id = "", sql = "";
   id = req.query.id;
@@ -45,11 +60,11 @@ router.get("/product", function (req, res, next) {
     //switch datas
     var _body = result[0];
     _body.img_logo_urls = [];
-    _body.img_detail_urls=[];
+    _body.img_detail_urls = [];
     result.forEach(function (e) {
-      if(e.type==='logo'){
+      if (e.type === 'logo') {
         _body.img_logo_urls.push(e.img_url)
-      }else{
+      } else {
         _body.img_detail_urls.push(e.img_url);
       }
 
