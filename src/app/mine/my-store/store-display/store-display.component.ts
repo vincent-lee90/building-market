@@ -8,19 +8,29 @@ import {ActivatedRoute, Params} from "@angular/router";
 })
 export class StoreDisplayComponent implements OnInit {
   public productList = [];
-
+  public storeInfo = {};
+  public hasGot=false;
   constructor(private mineService: MineService, private route: ActivatedRoute) {
   }
 
   getProductsByStoreCode() {
-    this.route.params.switchMap((params: Params) => {
-      return this.mineService.getProductsByStoreCode(params['orderCode'])
+    this.route.parent.params.switchMap((params: Params) => {
+      return this.mineService.getProductsByStoreCode(params['storeCode'])
     }).subscribe(data => {
+      this.hasGot=true;
       this.productList = data
     });
   }
 
+  getStoreInfoByStoreCode() {
+    this.mineService.getStoreInfoByUserId()
+      .subscribe(data=>{
+        this.storeInfo=data;
+      })
+  }
+
   ngOnInit() {
     this.getProductsByStoreCode();
+    this.getStoreInfoByStoreCode();
   }
 }

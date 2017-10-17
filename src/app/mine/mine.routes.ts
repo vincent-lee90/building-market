@@ -40,7 +40,7 @@ export const mineRoutes = [
 
   },
   {
-    path: 'my-store',
+    path: 'my-store/:storeCode',
     canActivate: [AuthGuard],
     component: MyStoreComponent,
     children: [

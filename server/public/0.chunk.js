@@ -897,7 +897,7 @@ PublishComponent = __decorate([
 /***/ "./src/app/mine/my-store/store-display/store-display.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"bg-lightest padding-h-default padding-v-16 border-bottom-default store-head\">\r\n  <div class=\"pull-left\">\r\n    <img class=\"avatar\" src=\"./imgs/default-avatar.png\" width=\"64\">\r\n  </div>\r\n  <div class=\"text-info \">\r\n      <div class=\"font-color-title name\">林氏木业</div>\r\n      <div class=\"font-color-content font-size-12 profile\">简介：百年传承，匠心制造</div>\r\n  </div>\r\n</div>\r\n<div>\r\n  <ul class=\"list padding-h-default padding-v-16 \" [class.hidden]=\"productList.length==0\">\r\n    <li *ngFor=\"let product of productList\" routerLink=\"../detail/{{product.id}}\">\r\n      <img src=\"{{product.product_logo}}\">\r\n      <div class=\"introduction  padding-v-5\">{{product.product_name}}</div>\r\n      <div class=\"price text-left padding-v-5\"><span class=\"font-size-12\">¥</span><span class=\"price font-size-14\">{{product.current_price}}</span>\r\n        <del class=\"font-color-content\">¥{{product.origin_price}}</del>\r\n      </div>\r\n    </li>\r\n  </ul>\r\n</div>\r\n"
+module.exports = "<div class=\"bg-lightest padding-h-default padding-v-16 border-bottom-default store-head\">\r\n  <div class=\"pull-left\">\r\n    <img class=\"avatar\" src=\"./imgs/default-avatar.png\" width=\"64\">\r\n  </div>\r\n  <div class=\"text-info\">\r\n      <div class=\"font-color-title name\">{{storeInfo.store_name}}</div>\r\n      <div class=\"font-color-content font-size-12 profile\">简介：百年传承，匠心制造</div>\r\n  </div>\r\n</div>\r\n<div>\r\n  <ul class=\"list padding-h-default padding-v-16 \" [class.hidden]=\"productList.length==0\">\r\n    <li *ngFor=\"let product of productList\" routerLink=\"../detail/{{product.id}}\">\r\n      <img src=\"{{product.product_logo}}\">\r\n      <div class=\"introduction  padding-v-5\">{{product.product_name}}</div>\r\n      <div class=\"price text-left padding-v-5\"><span class=\"font-size-12\">¥</span><span class=\"price font-size-14\">{{product.current_price}}</span>\r\n        <del class=\"font-color-content\">¥{{product.origin_price}}</del>\r\n      </div>\r\n    </li>\r\n  </ul>\r\n  <div *ngIf=\"productList.length==0&&hasGot\" class=\"text-center margin-top-90  font-color-content font-size-12\">\r\n    <img src=\"./imgs/no-data.png\">\r\n    <div class=\"margin-top-15\">您暂时还没有相关的产品哟</div>\r\n  </div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -944,17 +944,28 @@ var StoreDisplayComponent = (function () {
         this.mineService = mineService;
         this.route = route;
         this.productList = [];
+        this.storeInfo = {};
+        this.hasGot = false;
     }
     StoreDisplayComponent.prototype.getProductsByStoreCode = function () {
         var _this = this;
-        this.route.params.switchMap(function (params) {
-            return _this.mineService.getProductsByStoreCode(params['orderCode']);
+        this.route.parent.params.switchMap(function (params) {
+            return _this.mineService.getProductsByStoreCode(params['storeCode']);
         }).subscribe(function (data) {
+            _this.hasGot = true;
             _this.productList = data;
+        });
+    };
+    StoreDisplayComponent.prototype.getStoreInfoByStoreCode = function () {
+        var _this = this;
+        this.mineService.getStoreInfoByUserId()
+            .subscribe(function (data) {
+            _this.storeInfo = data;
         });
     };
     StoreDisplayComponent.prototype.ngOnInit = function () {
         this.getProductsByStoreCode();
+        this.getStoreInfoByStoreCode();
     };
     return StoreDisplayComponent;
 }());
