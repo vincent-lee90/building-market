@@ -10,7 +10,7 @@ import {MineService} from "../service/mine.service";
 })
 export class MineComponent implements OnInit {
   private user: User = new User();
-  private storeInfo = {};
+  private myStoreInfo = {};
   private isLogin = this.authGuard.isLogin;
 
   constructor(private commonService: CommonService, private authGuard: AuthGuardService, private mineService: MineService) {
@@ -31,7 +31,7 @@ export class MineComponent implements OnInit {
   getStoreInfo() {
     this.mineService.getStoreInfoByUserId()
       .subscribe(data => {
-        this.storeInfo = data;
+        this.myStoreInfo =this.mineService.myStoreInfo=data;
       })
   }
 

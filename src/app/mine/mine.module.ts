@@ -31,5 +31,4 @@ import {EditProductComponent} from "./my-store/edit-product/edit-product.compone
   ]
 })
 export class MineModule{
-
 }

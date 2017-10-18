@@ -51,6 +51,9 @@ export const mineRoutes = [
         path: 'edit-product', component: EditProductComponent
       },
       {
+        path:'edit-product/:productCode',component:EditProductComponent
+      },
+      {
         path: 'store-display', component: StoreDisplayComponent
       },
       {

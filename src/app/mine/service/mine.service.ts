@@ -13,9 +13,9 @@ export class MineService {
   private uploadIdCardImgUrl = 'users/completeInfo';
   private getStoreInfoByUserIdUrl = 'store/getStoreInfoByUserId';
   private getProductsByStoreCodeUrl='mall/getProductsByStoreCode';
-  private user = {};
-  private storeInfo = {};
-
+  public user = {};
+  public storeInfo = {};//店铺申请信息
+  public myStoreInfo={};//我的店铺信息
   getOrderByCode(order_code) {
     let params = new URLSearchParams();
     params.set('order_code', order_code);
@@ -28,7 +28,6 @@ export class MineService {
         return _res.body;
       })
   }
-
   getOrdersByStatus(order_status) {
     let params = new URLSearchParams();
     params.set('order_status', order_status);
@@ -81,7 +80,7 @@ export class MineService {
     this.storeInfo['category'] = category.join(',');
   }
 
-  getStoreInfoByUserId() {
+  public getStoreInfoByUserId() {
     let params = new URLSearchParams();
     params.set('user_id', this.commonService.user.id);
     return this.http.get(this.getStoreInfoByUserIdUrl, {search: params})
@@ -93,7 +92,7 @@ export class MineService {
         return _res.body;
       })
   }
-  getProductsByStoreCode(storeCode?){
+  getProductsByStoreCode(storeCode){
     let params=new URLSearchParams();
     params.set('store_code',storeCode);
     return this.http.get(this.getProductsByStoreCodeUrl,{search:params})

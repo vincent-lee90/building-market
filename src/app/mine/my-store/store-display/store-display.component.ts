@@ -8,11 +8,10 @@ import {ActivatedRoute, Params} from "@angular/router";
 })
 export class StoreDisplayComponent implements OnInit {
   public productList = [];
-  public storeInfo = {};
+  public myStoreInfo = {};
   public hasGot=false;
   constructor(private mineService: MineService, private route: ActivatedRoute) {
   }
-
   getProductsByStoreCode() {
     this.route.parent.params.switchMap((params: Params) => {
       return this.mineService.getProductsByStoreCode(params['storeCode'])
@@ -21,16 +20,9 @@ export class StoreDisplayComponent implements OnInit {
       this.productList = data
     });
   }
-
-  getStoreInfoByStoreCode() {
-    this.mineService.getStoreInfoByUserId()
-      .subscribe(data=>{
-        this.storeInfo=data;
-      })
-  }
-
   ngOnInit() {
+    this.myStoreInfo=this.mineService.myStoreInfo;
     this.getProductsByStoreCode();
-    this.getStoreInfoByStoreCode();
+
   }
 }
