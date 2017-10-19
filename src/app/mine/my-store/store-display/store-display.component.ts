@@ -23,6 +23,5 @@ export class StoreDisplayComponent implements OnInit {
   ngOnInit() {
     this.myStoreInfo=this.mineService.myStoreInfo;
     this.getProductsByStoreCode();
-
   }
 }
