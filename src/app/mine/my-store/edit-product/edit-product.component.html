@@ -5,6 +5,11 @@
       <input class="text-right " type="text"/></label>
   </div>
   <div class="bg-lightest padding-v-12 padding-h-default col-xs-12 margin-top-10">
+    <span class="col-xs-3">产品简介：</span>
+    <label class="col-xs-9">
+      <textarea placeholder="至少十二个字符" class="padding-h-5"></textarea></label>
+  </div>
+  <div class="bg-lightest padding-v-12 padding-h-default col-xs-12 margin-top-10">
     <span class="col-xs-3">原价：</span>
     <label class="col-xs-9">
       <input class="text-right" type="text"/></label>
@@ -17,8 +22,43 @@
   <div class="bg-lightest padding-v-12 padding-h-default col-xs-12 margin-top-10">
     <span class="col-xs-3">类别：</span>
     <label class="col-xs-9 custom-select">
-     <select>
-       <option value="10001">灯饰照明</option>
-     </select></label>
+      <select>
+        <option value="10001">灯饰照明</option>
+      </select>
+    </label>
   </div>
+  <div class="bg-lightest padding-v-12 padding-h-default col-xs-12 margin-top-10 text-center">
+    <span class="col-xs-12">产品头像（必传）</span>
+    <div class="col-xs-12  padding-v-12">
+      <div>
+        <file-upload (uploadImg)="getUploadImgInfo($event,'logo')"></file-upload>
+      </div>
+    </div>
+  </div>
+  <div class="bg-lightest padding-v-12 padding-h-default col-xs-12 margin-top-10 text-center margin-bottom-44">
+    <span class="col-xs-12">产品详情（至少三张，最多6张）</span>
+    <div class="col-xs-12 padding-v-12">
+      <div>
+        <file-upload (uploadImg)="getUploadImgInfo($event,'detail')"></file-upload>
+      </div>
+      <div class="margin-top-15">
+        <file-upload (uploadImg)="getUploadImgInfo($event,'detail')"></file-upload>
+      </div>
+      <div class="margin-top-15">
+        <file-upload (uploadImg)="getUploadImgInfo($event,'detail')"></file-upload>
+      </div>
+      <div class="margin-top-15">
+        <file-upload (uploadImg)="getUploadImgInfo($event,'detail')"></file-upload>
+      </div>
+      <div class="margin-top-15">
+        <file-upload (uploadImg)="getUploadImgInfo($event,'detail')"></file-upload>
+      </div>
+      <div class="margin-top-15">
+        <file-upload (uploadImg)="getUploadImgInfo($event,'detail')"></file-upload>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="col-xs-12 fixed-bottom">
+  <div class="btn-flat-default" (click)="confirm()">确定</div>
 </div>
