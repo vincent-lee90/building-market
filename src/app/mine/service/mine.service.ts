@@ -13,6 +13,7 @@ export class MineService {
   private uploadIdCardImgUrl = 'users/completeInfo';
   private getStoreInfoByUserIdUrl = 'store/getStoreInfoByUserId';
   private getProductsByStoreCodeUrl='mall/getProductsByStoreCode';
+  private getProductByProductCodeUrl='';
   public user = {};
   public storeInfo = {};//店铺申请信息
   public myStoreInfo={};//我的店铺信息
@@ -96,6 +97,18 @@ export class MineService {
     let params=new URLSearchParams();
     params.set('store_code',storeCode);
     return this.http.get(this.getProductsByStoreCodeUrl,{search:params})
+      .map((res: Response) => {
+        let _res = res.json();
+        if (_res.statusCode != 200) {
+          this.appDialogService.setAlert(_res.message)
+        }
+        return _res.body;
+      })
+  }
+  getProductByProductCode(productCode){
+    let params=new URLSearchParams();
+    params.set('store_code',productCode);
+    return this.http.get(this.getProductByProductCodeUrl,{search:params})
       .map((res: Response) => {
         let _res = res.json();
         if (_res.statusCode != 200) {
