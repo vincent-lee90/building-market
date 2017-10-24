@@ -13,7 +13,7 @@ export class MineService {
   private uploadIdCardImgUrl = 'users/completeInfo';
   private getStoreInfoByUserIdUrl = 'store/getStoreInfoByUserId';
   private getProductsByStoreCodeUrl='mall/getProductsByStoreCode';
-  private getProductByProductCodeUrl='';
+  private getProductByProductCodeUrl='mall/getProductByProductCode';
   public user = {};
   public storeInfo = {};//店铺申请信息
   public myStoreInfo={};//我的店铺信息
