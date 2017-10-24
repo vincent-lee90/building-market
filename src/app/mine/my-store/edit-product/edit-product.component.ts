@@ -23,7 +23,9 @@ export class EditProductComponent implements OnInit {
         })
     }
   }
+  confirm(){
 
+  }
   ngOnInit() {
     this.myStoreInfo = this.mineService.myStoreInfo;
     this.getProductByProductCode();
