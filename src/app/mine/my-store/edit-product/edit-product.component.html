@@ -2,30 +2,30 @@
   <div class="bg-lightest padding-v-12 padding-h-default col-xs-12">
     <span class="col-xs-3">产品名称：</span>
     <label class="col-xs-9">
-      <input type="text"/></label>
+      <input type="text" name="productName" ngModel required/></label>
   </div>
   <div class="bg-lightest padding-v-12 padding-h-default col-xs-12 margin-top-10">
     <span class="col-xs-3">产品简介：</span>
     <label class="col-xs-9">
-      <textarea placeholder="至少十二个字符" class="padding-h-5"></textarea></label>
+      <textarea placeholder="至少十二个字符" class="padding-h-5" name="productIntro" ngModel required minlength="12"></textarea></label>
   </div>
   <div class="bg-lightest padding-v-12 padding-h-default col-xs-12 margin-top-10">
     <span class="col-xs-3">原&emsp;&emsp;价：</span>
     <label class="col-xs-9">
-      <input type="text"/></label>
+      <input type="text" name="originPrice" ngModel required/></label>
   </div>
   <div class="bg-lightest padding-v-12 padding-h-default col-xs-12 margin-top-10">
     <span class="col-xs-3">活&ensp;动&ensp;价：</span>
     <label class="col-xs-9">
-      <input type="text"/></label>
+      <input type="text" name="currentPrice" ngModel required/></label>
   </div>
   <div class="bg-lightest padding-v-12 padding-h-default col-xs-12 margin-top-10">
     <span class="col-xs-3">类&emsp;&emsp;别：</span>
-    <label class="col-xs-9 custom-select">
-      <span>灯饰照明</span>
+    <label class="col-xs-9 custom-select" for="category">
+      <span>{{selectedCategory|productCategory}}</span>
       <img class="pull-right" src="./imgs/select.png" width="20">
-      <select>
-        <option value="10001">灯饰照明</option>
+      <select id="category" name="category" [(ngModel)]="selectedCategory">
+        <option [value]="10001">灯饰照明</option>
       </select>
     </label>
   </div>
@@ -62,5 +62,5 @@
   </div>
 </form>
 <div class="col-xs-12 fixed-bottom">
-  <div class="btn-flat-default" (click)="confirm()">确定</div>
+  <div class="btn-flat-default" (click)="confirm(productForm)">确定</div>
 </div>
