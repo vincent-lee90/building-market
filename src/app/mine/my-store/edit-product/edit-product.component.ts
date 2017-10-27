@@ -11,11 +11,19 @@ import {AppDialogService} from "../../../share/myDialog/app-alert/app-dialog.ser
 })
 export class EditProductComponent implements OnInit {
   public myStoreInfo = {};
-  public product: Product;
+  public product: Product = {
+    product_name: "",
+    product_intro: "",
+    product_logo: "",
+    current_price: "",
+    origin_price: "",
+    product_cat: "",
+    store_code: ""
+  };
   public logoImgUrl: string;
-  public detailImgUrl = [];
-  public selectedCategory:string;
-  constructor(private mineService: MineService, private route: ActivatedRoute, private router: Router,private appDialogService:AppDialogService) {
+  public detailImgUrl: Array<string> = [];
+
+  constructor(private mineService: MineService, private route: ActivatedRoute, private router: Router, private appDialogService: AppDialogService) {
   }
 
   getProductByProductCode() {
@@ -37,7 +45,8 @@ export class EditProductComponent implements OnInit {
       }
     }
   }
-  validate(f:NgForm){
+
+  validate(f: NgForm) {
     if (f.form.controls['productName'].invalid) {
       this.appDialogService.setAlert('请填入产品名称');
       return
@@ -51,27 +60,35 @@ export class EditProductComponent implements OnInit {
       return
     }
     if (f.form.controls['currentPrice'].invalid) {
-      this.appDialogService.setAlert('请填入产品现价');
+      this.appDialogService.setAlert('请填入产品活动价');
       return
     }
-    if (!this.selectedCategory) {
+    if (!this.product.product_cat) {
       this.appDialogService.setAlert('请选择产品类型');
       return
     }
-    if(!this.logoImgUrl){
+    if (!this.logoImgUrl) {
       this.appDialogService.setAlert('请上传产品头像');
       return;
     }
-    if(this.detailImgUrl.length<3){
+    if (this.detailImgUrl.length < 3) {
       this.appDialogService.setAlert('请上传产品详情图,至少3张，最多6张');
       return;
     }
   }
-  createProduct(){
 
+  createProduct(f) {
+    this.product.product_detail = this.detailImgUrl.join(",");
+    this.mineService.createProduct(this.product)
+      .subscribe(data => {
+        this.appDialogService.setAlert("产品添加成功");
+        this.router.navigate(["/mine"], {relativeTo: this.route})
+      })
   }
-  confirm(f:NgForm) {
+
+  confirm(f: NgForm) {
     this.validate(f);
+    this.createProduct(f);
   }
 
   ngOnInit() {

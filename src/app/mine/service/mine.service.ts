@@ -3,6 +3,7 @@ import {Http, Response, URLSearchParams} from '@angular/http';
 import {AppDialogService} from '../../share/myDialog/app-alert/app-dialog.service';
 import 'rxjs/add/operator/map';
 import {CommonService} from "../../service/common.service";
+import {Product} from "../../mall/model/product.model";
 @Injectable()
 export class MineService {
   constructor(private http: Http, private appDialogService: AppDialogService, private commonService: CommonService) {
@@ -12,11 +13,12 @@ export class MineService {
   private getOrdersByStatusUrl = "order/getOrders";
   private uploadIdCardImgUrl = 'users/completeInfo';
   private getStoreInfoByUserIdUrl = 'store/getStoreInfoByUserId';
-  private getProductsByStoreCodeUrl='mall/getProductsByStoreCode';
-  private getProductByProductCodeUrl='mall/getProductByProductCode';
+  private getProductsByStoreCodeUrl = 'mall/getProductsByStoreCode';
+  private getProductByProductCodeUrl = 'mall/getProductByProductCode';
+  private createProductUrl = 'store'
   public user = {};
   public storeInfo = {};//店铺申请信息
-  public myStoreInfo={};//我的店铺信息
+  public myStoreInfo = {};//我的店铺信息
   getOrderByCode(order_code) {
     let params = new URLSearchParams();
     params.set('order_code', order_code);
@@ -29,6 +31,7 @@ export class MineService {
         return _res.body;
       })
   }
+
   getOrdersByStatus(order_status) {
     let params = new URLSearchParams();
     params.set('order_status', order_status);
@@ -93,10 +96,11 @@ export class MineService {
         return _res.body;
       })
   }
-  getProductsByStoreCode(storeCode){
-    let params=new URLSearchParams();
-    params.set('store_code',storeCode);
-    return this.http.get(this.getProductsByStoreCodeUrl,{search:params})
+
+  getProductsByStoreCode(storeCode) {
+    let params = new URLSearchParams();
+    params.set('store_code', storeCode);
+    return this.http.get(this.getProductsByStoreCodeUrl, {search: params})
       .map((res: Response) => {
         let _res = res.json();
         if (_res.statusCode != 200) {
@@ -105,10 +109,31 @@ export class MineService {
         return _res.body;
       })
   }
-  getProductByProductCode(productCode){
-    let params=new URLSearchParams();
-    params.set('store_code',productCode);
-    return this.http.get(this.getProductByProductCodeUrl,{search:params})
+
+  getProductByProductCode(productCode) {
+    let params = new URLSearchParams();
+    params.set('store_code', productCode);
+    return this.http.get(this.getProductByProductCodeUrl, {search: params})
+      .map((res: Response) => {
+        let _res = res.json();
+        if (_res.statusCode != 200) {
+          this.appDialogService.setAlert(_res.message)
+        }
+        return _res.body;
+      })
+  }
+
+  createProduct(product: Product) {
+    let params = new URLSearchParams();
+    params.append("product_name", product.product_name);
+    params.append("product_intro", product.product_intro);
+    params.append("origin_price", product.origin_price);
+    params.append("current_price", product.current_price);
+    params.append("product_cat", product.product_cat);
+    params.append("product_logo", product.product_logo);
+    params.append("product_detail", product.product_detail);
+    params.append("store_code", product.store_code);
+    return this.http.post(this.createProductUrl, params)
       .map((res: Response) => {
         let _res = res.json();
         if (_res.statusCode != 200) {

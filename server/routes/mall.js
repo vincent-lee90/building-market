@@ -82,6 +82,11 @@ router.get("/categories", function (req, res, next) {
     res.send(response);
   })
 });
-
+router.post("/createProduct",function (req,res,next) {
+  response.statusCode = '200';
+  response.message = 'OK';
+  response.body = result;
+  res.send(response);
+});
 
 module.exports = router;
