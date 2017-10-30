@@ -83,10 +83,16 @@ router.get("/categories", function (req, res, next) {
   })
 });
 router.post("/createProduct",function (req,res,next) {
-  response.statusCode = '200';
-  response.message = 'OK';
-  response.body = result;
-  res.send(response);
+  var product_name,product_intro,origin_price,current_price,product_cat,product_logo,product_detail,store_code;
+  product_name=req.body.product_name;
+  product_intro=req.body.product_intro;
+  origin_price=req.body.origin_price;
+  current_price=req.body.current_price;
+  product_cat=req.body.product_cat;
+  product_logo=req.body.product_logo;
+  product_detail=req.body.product_detail;
+  store_code=req.body.store_code;
+
 });
 
 module.exports = router;

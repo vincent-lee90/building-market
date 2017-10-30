@@ -15,7 +15,7 @@ export class MineService {
   private getStoreInfoByUserIdUrl = 'store/getStoreInfoByUserId';
   private getProductsByStoreCodeUrl = 'mall/getProductsByStoreCode';
   private getProductByProductCodeUrl = 'mall/getProductByProductCode';
-  private createProductUrl = 'store'
+  private createProductUrl = 'mall/createProduct';
   public user = {};
   public storeInfo = {};//店铺申请信息
   public myStoreInfo = {};//我的店铺信息
