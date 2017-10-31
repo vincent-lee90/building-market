@@ -20,7 +20,6 @@ export class EditProductComponent implements OnInit {
     product_cat: "",
     store_code: ""
   };
-  public logoImgUrl: string;
   public detailImgUrl: Array<string> = [];
 
   constructor(private mineService: MineService, private route: ActivatedRoute, private router: Router, private appDialogService: AppDialogService) {
@@ -39,7 +38,7 @@ export class EditProductComponent implements OnInit {
   getUploadImgInfo(res, type) {
     if (res.statusCode === 200) {
       if (type === 'logo') {
-        this.logoImgUrl = res.body;
+        this.product.product_logo = res.body;
       } else if (type === 'detail') {
         this.detailImgUrl.push(res.body);
       }
@@ -49,36 +48,38 @@ export class EditProductComponent implements OnInit {
   validate(f: NgForm) {
     if (f.form.controls['productName'].invalid) {
       this.appDialogService.setAlert('请填入产品名称');
-      return
+      return false;
     }
     if (f.form.controls['productIntro'].invalid) {
       this.appDialogService.setAlert('请填入产品简介');
-      return
+      return false;
     }
     if (f.form.controls['originPrice'].invalid) {
       this.appDialogService.setAlert('请填入产品原价');
-      return
+      return false;
     }
     if (f.form.controls['currentPrice'].invalid) {
       this.appDialogService.setAlert('请填入产品活动价');
-      return
+      return false;
     }
     if (!this.product.product_cat) {
       this.appDialogService.setAlert('请选择产品类型');
-      return
+      return false;
     }
-    if (!this.logoImgUrl) {
+    if (!this.product.product_logo) {
       this.appDialogService.setAlert('请上传产品头像');
-      return;
+      return false;
     }
     if (this.detailImgUrl.length < 3) {
       this.appDialogService.setAlert('请上传产品详情图,至少3张，最多6张');
-      return;
+      return false;
     }
+    return true;
   }
 
   createProduct(f) {
     this.product.product_detail = this.detailImgUrl.join(",");
+    this.product.store_code = this.myStoreInfo["store_code"];
     this.mineService.createProduct(this.product)
       .subscribe(data => {
         this.appDialogService.setAlert("产品添加成功");
@@ -87,12 +88,17 @@ export class EditProductComponent implements OnInit {
   }
 
   confirm(f: NgForm) {
-    this.validate(f);
-    this.createProduct(f);
+    if(this.validate(f)){
+      this.createProduct(f);
+    }
   }
 
   ngOnInit() {
-    this.myStoreInfo = this.mineService.myStoreInfo;
-    this.getProductByProductCode();
+    if(this.mineService.myStoreInfo){
+      this.myStoreInfo = this.mineService.myStoreInfo;
+      this.getProductByProductCode();
+    }else{
+      this.router.navigate(["/mine"],{relativeTo:this.route})
+    }
   }
 }

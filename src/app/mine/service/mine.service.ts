@@ -4,6 +4,7 @@ import {AppDialogService} from '../../share/myDialog/app-alert/app-dialog.servic
 import 'rxjs/add/operator/map';
 import {CommonService} from "../../service/common.service";
 import {Product} from "../../mall/model/product.model";
+import {StoreInfo} from "../../mall/model/store.model";
 @Injectable()
 export class MineService {
   constructor(private http: Http, private appDialogService: AppDialogService, private commonService: CommonService) {
@@ -18,7 +19,7 @@ export class MineService {
   private createProductUrl = 'mall/createProduct';
   public user = {};
   public storeInfo = {};//店铺申请信息
-  public myStoreInfo = {};//我的店铺信息
+  public myStoreInfo:StoreInfo;//我的店铺信息
   getOrderByCode(order_code) {
     let params = new URLSearchParams();
     params.set('order_code', order_code);

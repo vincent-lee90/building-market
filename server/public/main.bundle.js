@@ -491,7 +491,6 @@ var MineService = (function () {
         this.createProductUrl = 'mall/createProduct';
         this.user = {};
         this.storeInfo = {}; //店铺申请信息
-        this.myStoreInfo = {}; //我的店铺信息
     }
     MineService.prototype.getOrderByCode = function (order_code) {
         var _this = this;
