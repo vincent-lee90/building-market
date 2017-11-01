@@ -51,7 +51,7 @@ router.get('/getProductsByStoreCode', function (req, res, next) {
   })
 });
 router.get("/product", function (req, res, next) {
-  var id = "", sql = "";
+  var id , sql ;
   id = req.query.id;
   sql = "select a.*,b.img_url,b.type,c.store_name,c.store_address from product as a,product_imgs as b ,stores as c where a.id=b.product_id and a.store_code=c.store_code and a.id=" + id + ";";
   mysql.query(sql, function (result) {
@@ -98,7 +98,7 @@ router.post("/createProduct", function (req, res, next) {
     return new Promise(function (resolve, reject) {
       var sql = "select max(id) as id from product;";
       mysql.query(sql, function (result) {
-        product_id = result[0].id+1;
+        product_id = result[0].id + 1;
         resolve(result);
       }, function (err) {
         reject(err);
@@ -107,7 +107,7 @@ router.post("/createProduct", function (req, res, next) {
   };
   var p2 = function () {
     return new Promise(function (resolve, reject) {
-      var sql = "insert into product (id,product_name,product_intro,product_logo,current_price,origin_price,product_cat,store_code) values (\'"+product_id+"\',\'" + product_name + "+\',\'" + product_intro + "\',\'" + product_logo + "\',\'" + current_price + "\',\'" + origin_price + "\',\'" + product_cat + "\',\'" + store_code + "\');";
+      var sql = "insert into product (id,product_name,product_intro,product_logo,current_price,origin_price,product_cat,store_code) values (\'" + product_id + "\',\'" + product_name + "+\',\'" + product_intro + "\',\'" + product_logo + "\',\'" + current_price + "\',\'" + origin_price + "\',\'" + product_cat + "\',\'" + store_code + "\');";
       mysql.query(sql, function (result) {
         resolve(result)
       }, function (errMsg) {
@@ -129,31 +129,34 @@ router.post("/createProduct", function (req, res, next) {
       })
     })
   };
-  p1().then(function () {
-    return p2();
-  }, function (err) {
-    response.statusCode = '500';
-    response.message = 'error';
-    response.body = err;
-    res.send(response)
-  }).then(function () {
-    return p3();
-  }, function (err) {
-    response.statusCode = '500';
-    response.message = 'error';
-    response.body = err;
-    res.send(response)
-  }).then(function (result) {
-    response.statusCode = '200';
-    response.message = 'OK';
-    response.body = result;
-    res.send(response);
-  }, function (err) {
-    response.statusCode = '500';
-    response.message = 'error';
-    response.body = err;
-    res.send(response)
-  })
+  p1()
+    .then(function () {
+      return p2();
+    }, function (err) {
+      response.statusCode = '500';
+      response.message = 'error';
+      response.body = err;
+      res.send(response)
+    })
+    .then(function () {
+      return p3();
+    }, function (err) {
+      response.statusCode = '500';
+      response.message = 'error';
+      response.body = err;
+      res.send(response)
+    })
+    .then(function (result) {
+      response.statusCode = '200';
+      response.message = 'OK';
+      response.body = result;
+      res.send(response);
+    }, function (err) {
+      response.statusCode = '500';
+      response.message = 'error';
+      response.body = err;
+      res.send(response)
+    })
 });
 
 module.exports = router;
