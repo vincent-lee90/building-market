@@ -50,7 +50,8 @@ router.post('/register', function (req, res, next) {
     res.send(response);
     return;
   }
-  mysql.query('insert into user (name,password) values (\'' + req.body.userName + '\',\'' + req.body.password + '\');', function (result) {
+  var sql = 'insert into user (name,password) values (\'' + req.body.userName + '\',\'' + req.body.password + '\');';
+  mysql.query(sql, function (result) {
     response.statusCode = '200';
     response.message = 'OK';
     response.body = [];
@@ -133,7 +134,7 @@ router.post('/completeInfo', function (req, res, next) {
   }
   var p1 = function () {
     return new Promise(function (resolve, reject) {
-      mysql.query('update user set front_id_card_img=\'' + front_id_card_img_url.toString() + '\',back_id_card_img=\'' + back_id_card_img_url.toString() + '\',real_name=\'' + real_name + '\',telephone=\'' + telephone+'\',role=\'merchant\' where id=\'' + user_id + '\';', function (result) {
+      mysql.query('update user set front_id_card_img=\'' + front_id_card_img_url.toString() + '\',back_id_card_img=\'' + back_id_card_img_url.toString() + '\',real_name=\'' + real_name + '\',telephone=\'' + telephone + '\',role=\'merchant\' where id=\'' + user_id + '\';', function (result) {
         resolve('ok');
       }, function (err) {
         reject(err)
@@ -142,7 +143,7 @@ router.post('/completeInfo', function (req, res, next) {
   };
   var p2 = function () {
     return new Promise(function (resolve, reject) {
-      var sql='insert into stores (store_name,store_address,store_cat,user_id) values (\'' + store_name + '\',\'' + store_addr + '\',\''+category+'\',\'' + user_id + '\');';
+      var sql = 'insert into stores (store_name,store_address,store_cat,user_id) values (\'' + store_name + '\',\'' + store_addr + '\',\'' + category + '\',\'' + user_id + '\');';
       mysql.query(sql, function (result) {
         resolve('ok');
       }, function (err) {
@@ -150,12 +151,12 @@ router.post('/completeInfo', function (req, res, next) {
       })
     })
   };
-  Promise.all([p1(),p2()]).then(function (data) {
+  Promise.all([p1(), p2()]).then(function (data) {
     response.statusCode = '200';
     response.message = 'OK';
     response.body = [data];
     res.send(response);
-  },function (err) {
+  }, function (err) {
     response.statusCode = '500';
     response.message = '出错了';
     response.body = err;

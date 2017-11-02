@@ -6,7 +6,8 @@ db.query=function sqlback(sqllan,fn,errorFn) {
     user:'root',
     password:'MyNewPass4!',
     database:'building',
-    port:'3306'
+    port:'3306',
+    multipleStatements:true
   });
   connection.connect(function (err) {
     if(err){

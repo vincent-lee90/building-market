@@ -2,29 +2,29 @@
   <div class="bg-lightest padding-v-12 padding-h-default col-xs-12">
     <span class="col-xs-3">产品名称：</span>
     <label class="col-xs-9">
-      <input type="text" name="productName" ngModel required/></label>
+      <input type="text" name="productName" ngModel required [(ngModel)]="product.product_name" /></label>
   </div>
   <div class="bg-lightest padding-v-12 padding-h-default col-xs-12 margin-top-10">
     <span class="col-xs-3">产品简介：</span>
     <label class="col-xs-9">
-      <textarea placeholder="至少十二个字符" class="padding-h-5" name="productIntro" ngModel required minlength="12"></textarea></label>
+      <textarea placeholder="至少十二个字符" class="padding-h-5" name="productIntro" ngModel [(ngModel)]="product.product_intro" required minlength="12"></textarea></label>
   </div>
   <div class="bg-lightest padding-v-12 padding-h-default col-xs-12 margin-top-10">
     <span class="col-xs-3">原&emsp;&emsp;价：</span>
     <label class="col-xs-9">
-      <input type="text" name="originPrice" ngModel required/></label>
+      <input type="text" name="originPrice" ngModel [(ngModel)]="product.origin_price" required/></label>
   </div>
   <div class="bg-lightest padding-v-12 padding-h-default col-xs-12 margin-top-10">
     <span class="col-xs-3">活&ensp;动&ensp;价：</span>
     <label class="col-xs-9">
-      <input type="text" name="currentPrice" ngModel required/></label>
+      <input type="text" name="currentPrice" ngModel [(ngModel)]="product.current_price" required/></label>
   </div>
   <div class="bg-lightest padding-v-12 padding-h-default col-xs-12 margin-top-10">
     <span class="col-xs-3">类&emsp;&emsp;别：</span>
     <label class="col-xs-9 custom-select" for="category">
-      <span>{{selectedCategory|productCategory}}</span>
+      <span>{{product.product_cat|productCategory}}</span>
       <img class="pull-right" src="./imgs/select.png" width="20">
-      <select id="category" name="category" [(ngModel)]="selectedCategory">
+      <select id="category" name="category" [(ngModel)]="product.product_cat">
         <option [value]="10001">灯饰照明</option>
       </select>
     </label>

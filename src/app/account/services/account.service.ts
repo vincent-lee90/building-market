@@ -26,8 +26,7 @@ export class AccountService {
     let params = new URLSearchParams();
     params.append('userName', user.userName);
     params.append('password', user.password);
-    return this.http
-      .post(this.registerUrl,params)
+    return this.http.post(this.registerUrl,params)
       .map((res: Response) => {
         return res.json()
       })

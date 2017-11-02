@@ -58,7 +58,7 @@ router.get('/getOrders', function (req, res, next) {
   user_id = req.query.user_id;
   order_status = req.query.order_status;
   if (order_status !== '0') {
-    sql = 'select a.*,b.product_logo,c.store_name from orders as a,product as b,stores as c where a.product_id=b.id and a.store_code=c.store_code and a.user_id= \'' + user_id + '\' and a.order_status=\''+  order_status + '\';';
+    sql = 'select a.*,b.product_logo,c.store_name from orders as a,product as b,stores as c where a.product_id=b.id and a.store_code=c.store_code and a.user_id= \'' + user_id + '\' and a.order_status=\'' + order_status + '\';';
   } else {
     sql = 'select a.*,b.product_logo,c.store_name from orders as a,product as b,stores as c where a.product_id=b.id and a.store_code=c.store_code and a.user_id = \'' + user_id + '\';'
   }

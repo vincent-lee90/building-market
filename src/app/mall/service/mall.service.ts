@@ -20,7 +20,7 @@ export class MallService {
   private getCategoriesUrl = 'mall/categories';
   private getStoreInfoUrl = 'store/getStoreInfo';
   private createOrderUrl = 'order/createOrder';
-
+  private getProductsBySearchText="mall/searchProducts";
   getHotWords() {
     return this.http.get(this.getHotWordsUrl)
       .map((res: Response) => {
