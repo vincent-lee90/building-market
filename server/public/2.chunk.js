@@ -215,6 +215,7 @@ module.exports = module.exports.toString();
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_account_service__ = __webpack_require__("./src/app/account/services/account.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__auth_guard_auth_guard_service__ = __webpack_require__("./src/app/auth-guard/auth-guard.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_router__ = __webpack_require__("./node_modules/@angular/router/@angular/router.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__share_myDialog_app_alert_app_dialog_service__ = __webpack_require__("./src/app/share/myDialog/app-alert/app-dialog.service.ts");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RegisterComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -230,11 +231,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var RegisterComponent = (function () {
-    function RegisterComponent(accountService, authService, router) {
+    function RegisterComponent(accountService, authService, router, appDialogService) {
         this.accountService = accountService;
         this.authService = authService;
         this.router = router;
+        this.appDialogService = appDialogService;
         this.user = new __WEBPACK_IMPORTED_MODULE_1__model_user_model__["a" /* User */]();
     }
     RegisterComponent.prototype.register = function (rePassword) {
@@ -245,9 +248,13 @@ var RegisterComponent = (function () {
         this.accountService.register(this.user)
             .subscribe(function (data) {
             if (data.statusCode == 200) {
+                _this.appDialogService.setAlert("注册成功");
                 _this.authService.isLogin = true;
-                _this.router.navigate([_this.authService.redirectUrl]);
             }
+            else {
+                _this.appDialogService.setAlert("注册失败了");
+            }
+            _this.router.navigate([_this.authService.redirectUrl]);
         });
     };
     return RegisterComponent;
@@ -259,10 +266,10 @@ RegisterComponent = __decorate([
         styles: [__webpack_require__("./src/app/account/register/register.component.less")],
         providers: [__WEBPACK_IMPORTED_MODULE_2__services_account_service__["a" /* AccountService */]]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__services_account_service__["a" /* AccountService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_account_service__["a" /* AccountService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__auth_guard_auth_guard_service__["a" /* AuthGuardService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__auth_guard_auth_guard_service__["a" /* AuthGuardService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_4__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__angular_router__["c" /* Router */]) === "function" && _c || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__services_account_service__["a" /* AccountService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_account_service__["a" /* AccountService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__auth_guard_auth_guard_service__["a" /* AuthGuardService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__auth_guard_auth_guard_service__["a" /* AuthGuardService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_4__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__angular_router__["c" /* Router */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_5__share_myDialog_app_alert_app_dialog_service__["a" /* AppDialogService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__share_myDialog_app_alert_app_dialog_service__["a" /* AppDialogService */]) === "function" && _d || Object])
 ], RegisterComponent);
 
-var _a, _b, _c;
+var _a, _b, _c, _d;
 //# sourceMappingURL=E:/myProjects/building-market/src/register.component.js.map
 
 /***/ }),
@@ -366,8 +373,7 @@ var AccountService = (function () {
         var params = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* URLSearchParams */]();
         params.append('userName', user.userName);
         params.append('password', user.password);
-        return this.http
-            .post(this.registerUrl, params)
+        return this.http.post(this.registerUrl, params)
             .map(function (res) {
             return res.json();
         });

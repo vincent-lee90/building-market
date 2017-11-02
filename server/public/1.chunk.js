@@ -603,7 +603,7 @@ var _a;
 /***/ "./src/app/mall/mall-search/mall-search.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"border-bottom-default padding-v-12 search padding-h-default\">\r\n  <input type=\"text\" placeholder=\"雷士照明\">\r\n</div>\r\n<div class=\"padding-h-default hot-words\">\r\n  <div class=\"title margin-top-15\">热门搜索</div>\r\n  <ul class=\"words\">\r\n    <li  *ngFor=\"let hot of hotWords\" [routerLink]=\"['../list']\" [queryParams]=\"{searchStr:hot.search_words}\" >{{hot.search_words}}</li>\r\n  </ul>\r\n</div>\r\n"
+module.exports = "<div class=\"border-bottom-default padding-v-12 search padding-h-default\">\r\n  <form action=\"javascript:void(0);\" (submit)=\"toSearch($event,searchTest.value)\">\r\n    <input name=\"search\" type=\"search\" autocomplete=\"off\" placeholder=\"雷士照明\" #searchTest>\r\n  </form>\r\n</div>\r\n<div class=\"padding-h-default hot-words\">\r\n  <div class=\"title margin-top-15\">热门搜索</div>\r\n  <ul class=\"words\">\r\n    <li *ngFor=\"let hot of hotWords\" [routerLink]=\"['../list']\" [queryParams]=\"{searchStr:hot.search_words}\">\r\n      {{hot.search_words}}\r\n    </li>\r\n  </ul>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -631,6 +631,7 @@ module.exports = module.exports.toString();
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__service_mall_service__ = __webpack_require__("./src/app/mall/service/mall.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__("./node_modules/@angular/router/@angular/router.es5.js");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MallSearchComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -643,16 +644,24 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
 var MallSearchComponent = (function () {
-    function MallSearchComponent(mallService) {
+    function MallSearchComponent(mallService, router, route) {
         this.mallService = mallService;
+        this.router = router;
+        this.route = route;
         this.hotWords = [];
+        this.searchText = "";
     }
     MallSearchComponent.prototype.getHotWords = function () {
         var _this = this;
         this.mallService.getHotWords().subscribe(function (data) {
             _this.hotWords = data;
         });
+    };
+    MallSearchComponent.prototype.toSearch = function (e, text) {
+        e.preventDefault();
+        this.router.navigate(['../list'], { relativeTo: this.route, queryParams: { searchStr: text } });
     };
     MallSearchComponent.prototype.ngOnInit = function () {
         this.getHotWords();
@@ -665,10 +674,10 @@ MallSearchComponent = __decorate([
         template: __webpack_require__("./src/app/mall/mall-search/mall-search.component.html"),
         styles: [__webpack_require__("./src/app/mall/mall-search/mall-search.component.less")]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__service_mall_service__["a" /* MallService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__service_mall_service__["a" /* MallService */]) === "function" && _a || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__service_mall_service__["a" /* MallService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__service_mall_service__["a" /* MallService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["c" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* ActivatedRoute */]) === "function" && _c || Object])
 ], MallSearchComponent);
 
-var _a;
+var _a, _b, _c;
 //# sourceMappingURL=E:/myProjects/building-market/src/mall-search.component.js.map
 
 /***/ }),
@@ -915,6 +924,7 @@ var MallService = (function () {
         this.getCategoriesUrl = 'mall/categories';
         this.getStoreInfoUrl = 'store/getStoreInfo';
         this.createOrderUrl = 'order/createOrder';
+        this.getProductsBySearchText = "mall/searchProducts";
     }
     MallService.prototype.getHotWords = function () {
         var _this = this;
