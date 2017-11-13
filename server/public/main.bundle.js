@@ -294,8 +294,8 @@ var AuthGuard = (function () {
     }
     AuthGuard.prototype.canActivate = function (route, state) {
         var url = state.url;
-        return this.checkLogin(url);
-        /*      return true;*/
+        /*    return this.checkLogin(url);*/
+        return true;
     };
     AuthGuard.prototype.checkLogin = function (url) {
         if (this.authGuardService.isLogin) {

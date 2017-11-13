@@ -373,7 +373,7 @@ exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/cs
 
 
 // module
-exports.push([module.i, ".checkbox-group {\n  width: 100%;\n  text-align: center;\n  padding: .1rem 0;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n}\n.checkbox-group > span {\n  margin-right: .05rem;\n}\n", ""]);
+exports.push([module.i, "", ""]);
 
 // exports
 
@@ -568,6 +568,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__my_store_store_display_store_display_component__ = __webpack_require__("./src/app/mine/my-store/store-display/store-display.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__my_store_edit_product_edit_product_component__ = __webpack_require__("./src/app/mine/my-store/edit-product/edit-product.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__pipes_product_category_pipe__ = __webpack_require__("./src/app/pipes/product-category.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__my_store_store_info_edit_store_component__ = __webpack_require__("./src/app/mine/my-store/store-info/edit-store.component.ts");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MineModule", function() { return MineModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -575,6 +576,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -609,7 +611,7 @@ MineModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* RouterModule */].forChild(__WEBPACK_IMPORTED_MODULE_5__mine_routes__["a" /* mineRoutes */])
         ],
         providers: [__WEBPACK_IMPORTED_MODULE_10__service_mine_service__["a" /* MineService */]],
-        declarations: [__WEBPACK_IMPORTED_MODULE_6__mine_mine_component__["a" /* MineComponent */], __WEBPACK_IMPORTED_MODULE_7__orders_orders_component__["a" /* OrdersComponent */], __WEBPACK_IMPORTED_MODULE_8__join_us_join_us_component__["a" /* JoinUsComponent */], __WEBPACK_IMPORTED_MODULE_11__join_us_base_info_base_info_component__["a" /* BaseInfoComponent */], __WEBPACK_IMPORTED_MODULE_12__join_us_store_info_store_info_component__["a" /* StoreInfoComponent */], __WEBPACK_IMPORTED_MODULE_13__join_us_upload_img_upload_img_component__["a" /* UploadImgComponent */], __WEBPACK_IMPORTED_MODULE_9__agreement_agreement_component__["a" /* AgreementComponent */], __WEBPACK_IMPORTED_MODULE_15__my_store_my_store_component__["a" /* MyStoreComponent */], __WEBPACK_IMPORTED_MODULE_17__my_store_edit_product_edit_product_component__["a" /* EditProductComponent */], __WEBPACK_IMPORTED_MODULE_16__my_store_store_display_store_display_component__["a" /* StoreDisplayComponent */], __WEBPACK_IMPORTED_MODULE_18__pipes_product_category_pipe__["a" /* ProductCategoryPipe */]]
+        declarations: [__WEBPACK_IMPORTED_MODULE_6__mine_mine_component__["a" /* MineComponent */], __WEBPACK_IMPORTED_MODULE_7__orders_orders_component__["a" /* OrdersComponent */], __WEBPACK_IMPORTED_MODULE_8__join_us_join_us_component__["a" /* JoinUsComponent */], __WEBPACK_IMPORTED_MODULE_11__join_us_base_info_base_info_component__["a" /* BaseInfoComponent */], __WEBPACK_IMPORTED_MODULE_12__join_us_store_info_store_info_component__["a" /* StoreInfoComponent */], __WEBPACK_IMPORTED_MODULE_13__join_us_upload_img_upload_img_component__["a" /* UploadImgComponent */], __WEBPACK_IMPORTED_MODULE_9__agreement_agreement_component__["a" /* AgreementComponent */], __WEBPACK_IMPORTED_MODULE_15__my_store_my_store_component__["a" /* MyStoreComponent */], __WEBPACK_IMPORTED_MODULE_17__my_store_edit_product_edit_product_component__["a" /* EditProductComponent */], __WEBPACK_IMPORTED_MODULE_16__my_store_store_display_store_display_component__["a" /* StoreDisplayComponent */], __WEBPACK_IMPORTED_MODULE_18__pipes_product_category_pipe__["a" /* ProductCategoryPipe */], __WEBPACK_IMPORTED_MODULE_19__my_store_store_info_edit_store_component__["a" /* EditStoreComponent */]]
     })
 ], MineModule);
 
@@ -632,7 +634,9 @@ MineModule = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__my_store_my_store_component__ = __webpack_require__("./src/app/mine/my-store/my-store.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__my_store_store_display_store_display_component__ = __webpack_require__("./src/app/mine/my-store/store-display/store-display.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__my_store_edit_product_edit_product_component__ = __webpack_require__("./src/app/mine/my-store/edit-product/edit-product.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__my_store_store_info_edit_store_component__ = __webpack_require__("./src/app/mine/my-store/store-info/edit-store.component.ts");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return mineRoutes; });
+
 
 
 
@@ -687,6 +691,9 @@ var mineRoutes = [
             },
             {
                 path: 'store-display', component: __WEBPACK_IMPORTED_MODULE_9__my_store_store_display_store_display_component__["a" /* StoreDisplayComponent */]
+            },
+            {
+                path: 'edit-store', component: __WEBPACK_IMPORTED_MODULE_11__my_store_store_info_edit_store_component__["a" /* EditStoreComponent */]
             },
             {
                 path: '**', redirectTo: 'store-display'
@@ -1084,6 +1091,75 @@ StoreDisplayComponent = __decorate([
 
 var _a, _b;
 //# sourceMappingURL=E:/myProjects/building-market/src/store-display.component.js.map
+
+/***/ }),
+
+/***/ "./src/app/mine/my-store/store-info/edit-store.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<form  #editStoreForm=\"ngForm\" novalidate class=\"padding-h-default bg-lightest\">\r\n  <div class=\"padding-v-12\">\r\n    <label>\r\n      <span class=\"font-size-12 font-color-content\">店铺名</span>\r\n      <input class=\"border-bottom-default padding-v-5\" type=\"text\" placeholder=\"请输入店铺名\" required name=\"storeName\" ngModel ([ngModel])=\"storeInfo.store_name\">\r\n    </label>\r\n  </div>\r\n  <div class=\"padding-v-12\">\r\n    <div class=\"font-size-12 font-color-content\">店铺类别</div>\r\n    <label class=\"checkbox-group\">\r\n      <span>灯饰照明</span>\r\n      <input name=\"category\" type=\"checkbox\"  (click)=\"addToCategory('10001')\">\r\n    </label>\r\n    <label class=\"checkbox-group\">\r\n      <span>厨房用品</span>\r\n      <input name=\"category\" type=\"checkbox\" (click)=\"addToCategory('10002')\">\r\n    </label>\r\n    <label class=\"checkbox-group\">\r\n      <span>卫浴用品</span>\r\n      <input name=\"category\" type=\"checkbox\" (click)=\"addToCategory('10003')\">\r\n    </label>\r\n    <label class=\"checkbox-group\">\r\n      <span>建材五金</span>\r\n      <input name=\"category\" type=\"checkbox\" (click)=\"addToCategory('10004')\">\r\n    </label>\r\n    <label class=\"checkbox-group\">\r\n      <span>墙地面</span>\r\n      <input name=\"category\" type=\"checkbox\" (click)=\"addToCategory('10005')\">\r\n    </label>\r\n\r\n  </div>\r\n  <div class=\"padding-v-12\">\r\n    <label>\r\n      <span class=\"font-size-12 font-color-content\">店铺简介</span>\r\n      <textarea  class=\" padding-v-5 padding-h-default\"></textarea>\r\n    </label>\r\n  </div>\r\n  <div class=\"padding-v-12\">\r\n    <label>\r\n      <span class=\"font-size-12 font-color-content\">店铺地址</span>\r\n      <textarea class=\" padding-v-5 padding-h-default\"></textarea>\r\n    </label>\r\n  </div>\r\n</form>\r\n<div class=\"fixed-bottom\">\r\n  <div class=\"btn-flat-default\" (click)=\"saveStoreInfo()\">确定</div>\r\n</div>\r\n"
+
+/***/ }),
+
+/***/ "./src/app/mine/my-store/store-info/edit-store.component.less":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "label {\n  width: 100%;\n}\nlabel input[type='text'],\nlabel textarea {\n  display: block;\n  width: 100%;\n}\nlabel textarea {\n  resize: none;\n}\n.fixed-bottom {\n  width: 100%;\n}\n", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "./src/app/mine/my-store/store-info/edit-store.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__service_mine_service__ = __webpack_require__("./src/app/mine/service/mine.service.ts");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return EditStoreComponent; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var EditStoreComponent = (function () {
+    function EditStoreComponent(mineService) {
+        this.mineService = mineService;
+    }
+    EditStoreComponent.prototype.addToCategory = function (categoryCode) {
+    };
+    EditStoreComponent.prototype.saveStoreInfo = function () {
+    };
+    EditStoreComponent.prototype.ngOnInit = function () {
+    };
+    return EditStoreComponent;
+}());
+EditStoreComponent = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["d" /* Component */])({
+        selector: 'edit-store',
+        template: __webpack_require__("./src/app/mine/my-store/store-info/edit-store.component.html"),
+        styles: [__webpack_require__("./src/app/mine/my-store/store-info/edit-store.component.less")]
+    }),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__service_mine_service__["a" /* MineService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__service_mine_service__["a" /* MineService */]) === "function" && _a || Object])
+], EditStoreComponent);
+
+var _a;
+//# sourceMappingURL=E:/myProjects/building-market/src/edit-store.component.js.map
 
 /***/ }),
 

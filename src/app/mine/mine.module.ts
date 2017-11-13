@@ -17,6 +17,7 @@ import {MyStoreComponent} from "./my-store/my-store.component";
 import {StoreDisplayComponent} from "./my-store/store-display/store-display.component";
 import {EditProductComponent} from "./my-store/edit-product/edit-product.component";
 import {ProductCategoryPipe} from "../pipes/product-category.pipe";
+import {EditStoreComponent} from "./my-store/store-info/edit-store.component";
 
 
 @NgModule({
@@ -28,7 +29,7 @@ import {ProductCategoryPipe} from "../pipes/product-category.pipe";
     RouterModule.forChild(mineRoutes)
   ],
   providers:[MineService],
-  declarations:[MineComponent,OrdersComponent,JoinUsComponent,BaseInfoComponent,StoreInfoComponent,UploadImgComponent,AgreementComponent,MyStoreComponent,EditProductComponent,StoreDisplayComponent,ProductCategoryPipe]
+  declarations:[MineComponent,OrdersComponent,JoinUsComponent,BaseInfoComponent,StoreInfoComponent,UploadImgComponent,AgreementComponent,MyStoreComponent,EditProductComponent,StoreDisplayComponent,ProductCategoryPipe,EditStoreComponent]
 })
 export class MineModule{
 }
