@@ -7,6 +7,7 @@ import {AfterContentChecked, AfterContentInit, AfterViewInit, Component, Input} 
 export class SliderComponent implements AfterViewInit {
   @Input() imgSrcArr: Array<string> = [];
   timer;
+
   constructor() {
   }
 
@@ -17,10 +18,10 @@ export class SliderComponent implements AfterViewInit {
       if (items[i].className.indexOf('slider-item-active') > -1) {
         if (direction === 'next') {
           nextItem = items[i + 1] || items[0];
-          nextItem.className='slider-item next';
+          nextItem.className = 'slider-item next';
         } else {
           nextItem = items[i - 1] || items[length - 1];
-          nextItem.className='slider-item prev';
+          nextItem.className = 'slider-item prev';
         }
         break;
       }
@@ -31,16 +32,17 @@ export class SliderComponent implements AfterViewInit {
   }
 
   goNext() {
-    let $prev = document.querySelector('.slider-item-active');
+    let $active = document.querySelector('.slider-item-active');
     let $next = this.getNext();
-    if ($prev && $next) {
-      $prev.className += ' prev';
+    if ($active && $next) {
+      $active.className += ' prev';
       $next.className += ' left';
-      $next.addEventListener('webkitTransitionEnd',function () {
-        $next.className='slider-item slider-item-active';
+      $next.offsetWidth;
+      $next.addEventListener('webkitTransitionEnd', function () {
+        $next.className = 'slider-item slider-item-active';
       });
-      $prev.addEventListener('webkitTransitionEnd',function () {
-        $prev.className='slider-item';
+      $active.addEventListener('webkitTransitionEnd', function () {
+        $active.className = 'slider-item';
       })
     }
 
@@ -53,7 +55,7 @@ export class SliderComponent implements AfterViewInit {
   autoPlay() {
     let $nextItem: any;
     this.initActivateItem();
-    this.timer=setInterval(() => {
+    this.timer = setTimeout(() => {
       this.goNext()
     }, 5000)
   }
@@ -70,7 +72,7 @@ export class SliderComponent implements AfterViewInit {
       firstSlider.className = classNameTemp;
     }
   }
-  ngAfterViewInit(){
+  ngAfterViewInit() {
     this.autoPlay()
   }
 }
