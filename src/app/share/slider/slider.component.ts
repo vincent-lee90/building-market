@@ -16,13 +16,17 @@ export class SliderComponent implements AfterViewInit {
     for (let i = 0, length = items.length; i < length; i++) {
       if (items[i].className.indexOf('slider-item-active') > -1) {
         if (direction === 'next') {
-          nextItem = items[i + 1] || items[0]
+          nextItem = items[i + 1] || items[0];
+          nextItem.className='slider-item next';
         } else {
-          nextItem = items[i - 1] || items[length - 1]
+          nextItem = items[i - 1] || items[length - 1];
+          nextItem.className='slider-item prev';
         }
         break;
       }
     }
+
+
     return nextItem;
   }
 
@@ -30,8 +34,14 @@ export class SliderComponent implements AfterViewInit {
     let $prev = document.querySelector('.slider-item-active');
     let $next = this.getNext();
     if ($prev && $next) {
-      $prev.className = 'slider-item';
-      $next.className = 'slider-item slider-item-active';
+      $prev.className += ' prev';
+      $next.className += ' left';
+      $next.addEventListener('webkitTransitionEnd',function () {
+        $next.className='slider-item slider-item-active';
+      });
+      $prev.addEventListener('webkitTransitionEnd',function () {
+        $prev.className='slider-item';
+      })
     }
 
   }
@@ -44,7 +54,6 @@ export class SliderComponent implements AfterViewInit {
     let $nextItem: any;
     this.initActivateItem();
     this.timer=setInterval(() => {
-      console.log(new Date());
       this.goNext()
     }, 5000)
   }
