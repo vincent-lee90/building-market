@@ -34,10 +34,10 @@ export class SliderComponent implements AfterViewInit {
   goNext() {
     let $active = document.querySelector('.slider-item-active');
     let $next = this.getNext();
-    if ($active && $next) {
+    $next.offsetWidth;//force reflow
+    if($active&&$next){
       $active.className += ' prev';
       $next.className += ' left';
-      $next.offsetWidth;
       $next.addEventListener('webkitTransitionEnd', function () {
         $next.className = 'slider-item slider-item-active';
       });
@@ -45,7 +45,6 @@ export class SliderComponent implements AfterViewInit {
         $active.className = 'slider-item';
       })
     }
-
   }
 
   goPrev() {
@@ -55,7 +54,7 @@ export class SliderComponent implements AfterViewInit {
   autoPlay() {
     let $nextItem: any;
     this.initActivateItem();
-    this.timer = setTimeout(() => {
+    this.timer = setInterval(() => {
       this.goNext()
     }, 5000)
   }
@@ -72,6 +71,7 @@ export class SliderComponent implements AfterViewInit {
       firstSlider.className = classNameTemp;
     }
   }
+
   ngAfterViewInit() {
     this.autoPlay()
   }
