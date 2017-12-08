@@ -1,10 +1,10 @@
-import {AfterContentChecked, AfterContentInit, AfterViewInit, Component, Input} from "@angular/core";
+import {AfterViewInit, Component, Input, OnDestroy} from "@angular/core";
 @Component({
   selector: 'slider',
   templateUrl: './slider.component.html',
   styleUrls: ["./slider.component.less"]
 })
-export class SliderComponent implements AfterViewInit {
+export class SliderComponent implements AfterViewInit, OnDestroy {
   @Input() imgSrcArr: Array<string> = [];
   timer;
 
@@ -35,7 +35,7 @@ export class SliderComponent implements AfterViewInit {
     let $active = document.querySelector('.slider-item-active');
     let $next = this.getNext();
     $next.offsetWidth;//force reflow
-    if($active&&$next){
+    if ($active && $next) {
       $active.className += ' prev';
       $next.className += ' left';
       $next.addEventListener('webkitTransitionEnd', function () {
@@ -54,6 +54,9 @@ export class SliderComponent implements AfterViewInit {
   autoPlay() {
     let $nextItem: any;
     this.initActivateItem();
+    if (this.imgSrcArr.length < 2) {
+      return;
+    }
     this.timer = setInterval(() => {
       this.goNext()
     }, 5000)
@@ -74,5 +77,9 @@ export class SliderComponent implements AfterViewInit {
 
   ngAfterViewInit() {
     this.autoPlay()
+  }
+
+  ngOnDestroy() {
+    clearInterval(this.timer);
   }
 }
