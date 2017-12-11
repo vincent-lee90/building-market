@@ -1,1 +1,5 @@
-<img src="./imgs/slider01.jpg">
+<div class="slider-container">
+  <div class="slider-item" id="{{'slider'+i}}" *ngFor="let imgSrc of imgSrcArr;index as i">
+    <img src="{{imgSrc}}"/>
+  </div>
+</div>

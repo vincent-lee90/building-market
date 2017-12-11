@@ -12,6 +12,7 @@ import {MallCategoryComponent} from './mall-category/mall-category.component';
 import {AmountComponent} from './amount/amount.component';
 import {ConfirmOrderComponent} from './confirm-order/confirm-order.component'
 import {MallService} from './service/mall.service';
+import {SliderModule} from "../share/slider/slider.module";
 @NgModule({
   declarations: [
     StoreComponent,
@@ -26,7 +27,8 @@ import {MallService} from './service/mall.service';
   imports: [
     MainMenuModule,
     CommonModule,
-    RouterModule.forChild(mallRoutes)
+    RouterModule.forChild(mallRoutes),
+    SliderModule
   ],
   providers: [MallService]
 })

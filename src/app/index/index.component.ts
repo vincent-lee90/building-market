@@ -6,6 +6,7 @@ import {AppDialogService} from '../share/myDialog/app-alert/app-dialog.service';
   styleUrls:['./index.component.less']
 })
 export class IndexComponent implements OnInit{
+
   constructor(private appDialogService:AppDialogService){
   }
   ngOnInit(){

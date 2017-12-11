@@ -5,5 +5,6 @@ export class StoreInfo{
   store_cat?:any;
   store_code?:any;
   store_name?:string;
+  store_intro?:string;
   user_id?:any;
 }

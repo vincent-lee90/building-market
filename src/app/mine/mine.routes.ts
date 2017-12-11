@@ -9,6 +9,7 @@ import {UploadImgComponent} from "app/mine/join-us/upload-img/upload-img.compone
 import {MyStoreComponent} from "./my-store/my-store.component";
 import {StoreDisplayComponent} from "./my-store/store-display/store-display.component";
 import {EditProductComponent} from "./my-store/edit-product/edit-product.component";
+import {EditStoreComponent} from "./my-store/store-info/edit-store.component";
 
 export const mineRoutes = [
   {
@@ -51,10 +52,13 @@ export const mineRoutes = [
         path: 'edit-product', component: EditProductComponent
       },
       {
-        path:'edit-product/:productCode',component:EditProductComponent
+        path: 'edit-product/:productCode', component: EditProductComponent
       },
       {
         path: 'store-display', component: StoreDisplayComponent
+      },
+      {
+        path: 'edit-store', component: EditStoreComponent
       },
       {
         path: '**', redirectTo: 'store-display'

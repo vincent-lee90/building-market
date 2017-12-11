@@ -1,0 +1,47 @@
+<form  #editStoreForm="ngForm" novalidate class="padding-h-default bg-lightest">
+  <div class="padding-v-12">
+    <label>
+      <span class="font-size-12 font-color-content">店铺名</span>
+      <input class="border-bottom-default padding-v-5" type="text" placeholder="请输入店铺名" required name="storeName" ngModel ([ngModel])="storeInfo.store_name">
+    </label>
+  </div>
+  <div class="padding-v-12">
+    <div class="font-size-12 font-color-content">店铺类别</div>
+    <label class="checkbox-group">
+      <span>灯饰照明</span>
+      <input name="category" type="checkbox"  (click)="addToCategory('10001')">
+    </label>
+    <label class="checkbox-group">
+      <span>厨房用品</span>
+      <input name="category" type="checkbox" (click)="addToCategory('10002')">
+    </label>
+    <label class="checkbox-group">
+      <span>卫浴用品</span>
+      <input name="category" type="checkbox" (click)="addToCategory('10003')">
+    </label>
+    <label class="checkbox-group">
+      <span>建材五金</span>
+      <input name="category" type="checkbox" (click)="addToCategory('10004')">
+    </label>
+    <label class="checkbox-group">
+      <span>墙地面</span>
+      <input name="category" type="checkbox" (click)="addToCategory('10005')">
+    </label>
+
+  </div>
+  <div class="padding-v-12">
+    <label>
+      <span class="font-size-12 font-color-content">店铺简介</span>
+      <textarea  class=" padding-v-5 padding-h-default" name="storeIntro" placeholder="请简单介绍一下店铺" ngModel ([ngModel])="storeInfo.store_intro" required></textarea>
+    </label>
+  </div>
+  <div class="padding-v-12">
+    <label>
+      <span class="font-size-12 font-color-content">店铺地址</span>
+      <textarea class=" padding-v-5 padding-h-default" name="storeAddress" placeholder="店铺位置好，生意才会做的更好" ngModel ([ngModel])="storeInfo.store_address" required></textarea>
+    </label>
+  </div>
+</form>
+<div class="fixed-bottom">
+  <div class="btn-flat-default" (click)="saveStoreInfo(editStoreForm)">确定</div>
+</div>

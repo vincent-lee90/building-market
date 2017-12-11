@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {AppDialogService} from './app-dialog.service';
 @Component({
   selector: 'app-alert',
