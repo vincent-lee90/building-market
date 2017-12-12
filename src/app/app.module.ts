@@ -16,6 +16,7 @@ import {AuthGuard} from './auth-guard/auth-guard';
 import {AppDialogService} from './share/myDialog/app-alert/app-dialog.service';
 import {PayComponent} from "./pay/pay.component";
 import {CommonService} from "./service/common.service";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 @NgModule({
   declarations: [
     PayComponent,
@@ -25,6 +26,7 @@ import {CommonService} from "./service/common.service";
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     FormsModule,
     HttpModule,
     SliderModule,

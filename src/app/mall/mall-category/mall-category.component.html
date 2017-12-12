@@ -1,5 +1,5 @@
 <span (click)="showCategories()"><ng-content></ng-content></span>
-<div *ngIf="isShowCategories">
+<div *ngIf="isShowCategories" [@flyInOut]="'in'">
   <div class="categories-bg" (click)="showCategories()">
   </div>
   <ul class="categories">
