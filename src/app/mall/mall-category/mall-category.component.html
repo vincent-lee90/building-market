@@ -1,8 +1,8 @@
 <span (click)="showCategories()"><ng-content></ng-content></span>
-<div *ngIf="isShowCategories" [@flyInOut]="'in'">
+<div *ngIf="isShowCategories" >
   <div class="categories-bg" (click)="showCategories()">
   </div>
-  <ul class="categories">
+  <ul class="categories" [@flyInOut]="'in'">
     <li (click)="select(category.cat_code)"  *ngFor="let category of categories">{{category.cat_name}}</li>
   </ul>
 </div>

@@ -12,10 +12,10 @@ import {MallService} from "../service/mall.service";
   selector: 'mall-category',
   templateUrl: './mall-category.component.html',
   styleUrls: ['./mall-category.component.less'],
-  animations:[
-    trigger('flyInOut',[
-      state('in',style({height:'*'})),
-      transition(':enter',[style({transform:'translateX(-100%)',}),animate(100)])
+  animations: [
+    trigger('flyInOut', [
+      state('in', style({transform: 'translateX(0)'})),
+      transition('void=>in', [style({transform: 'translateX(-100%)'}), animate('100ms ease-in')])
     ])
   ]
 })
