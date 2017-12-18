@@ -518,7 +518,7 @@ var _a, _b;
 /***/ "./src/app/mall/mall-category/mall-category.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<span (click)=\"showCategories()\"><ng-content></ng-content></span>\r\n<div *ngIf=\"isShowCategories\" >\r\n  <div class=\"categories-bg\" (click)=\"showCategories()\">\r\n  </div>\r\n  <ul class=\"categories\" [@flyInOut]=\"'in'\">\r\n    <li (click)=\"select(category.cat_code)\"  *ngFor=\"let category of categories\">{{category.cat_name}}</li>\r\n  </ul>\r\n</div>\r\n"
+module.exports = "<span (click)=\"showCategories()\"><ng-content></ng-content></span>\r\n<div >\r\n  <div class=\"categories-bg\" (click)=\"showCategories()\" *ngIf=\"isShowCategories\" >\r\n  </div>\r\n  <ul class=\"categories\" [@flyInOut]=\"'in'\" *ngIf=\"isShowCategories\" >\r\n    <li (click)=\"select(category.cat_code)\"  *ngFor=\"let category of categories\">{{category.cat_name}}</li>\r\n  </ul>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -596,7 +596,8 @@ MallCategoryComponent = __decorate([
         animations: [
             __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_animations__["a" /* trigger */])('flyInOut', [
                 __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_animations__["b" /* state */])('in', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_animations__["c" /* style */])({ transform: 'translateX(0)' })),
-                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_animations__["d" /* transition */])('void=>in', [__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_animations__["c" /* style */])({ transform: 'translateX(-100%)' }), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_animations__["e" /* animate */])('100ms ease-in')])
+                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_animations__["d" /* transition */])(':enter', [__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_animations__["c" /* style */])({ transform: 'translateX(-100%)' }), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_animations__["e" /* animate */])('300ms linear')]),
+                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_animations__["d" /* transition */])(':leave', [__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_animations__["c" /* style */])({ transform: 'translateX(-100%)' }), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_animations__["e" /* animate */])('300 linear')])
             ])
         ]
     }),
