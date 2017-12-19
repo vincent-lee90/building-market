@@ -4,18 +4,18 @@ webpackJsonp([7],{
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "h", function() { return AUTO_STYLE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "i", function() { return AUTO_STYLE; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return animate; });
 /* unused harmony export group */
-/* unused harmony export keyframes */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "g", function() { return sequence; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return keyframes; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "h", function() { return sequence; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return state; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return style; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return transition; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return trigger; });
 /* unused harmony export AnimationPlayer */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return NoopAnimationPlayer; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "i", function() { return AnimationGroupPlayer; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "g", function() { return NoopAnimationPlayer; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "j", function() { return AnimationGroupPlayer; });
 /**
  * @license Angular v4.1.3
  * (c) 2010-2017 Google, Inc. https://angular.io/
@@ -914,7 +914,7 @@ var NoopAnimationDriver = (function () {
     }
     NoopAnimationDriver.prototype.animate = function (element, keyframes, duration, delay, easing, previousPlayers) {
         if (previousPlayers === void 0) { previousPlayers = []; }
-        return new __WEBPACK_IMPORTED_MODULE_0__angular_animations__["f" /* NoopAnimationPlayer */]();
+        return new __WEBPACK_IMPORTED_MODULE_0__angular_animations__["g" /* NoopAnimationPlayer */]();
     };
     return NoopAnimationDriver;
 }());
@@ -1258,7 +1258,7 @@ function createTimelineInstruction(keyframes, duration, delay, easing) {
 function buildAnimationKeyframes(ast, startingStyles, finalStyles) {
     if (startingStyles === void 0) { startingStyles = {}; }
     if (finalStyles === void 0) { finalStyles = {}; }
-    var /** @type {?} */ normalizedAst = Array.isArray(ast) ? __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_animations__["g" /* sequence */])(/** @type {?} */ (ast)) : (ast);
+    var /** @type {?} */ normalizedAst = Array.isArray(ast) ? __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_animations__["h" /* sequence */])(/** @type {?} */ (ast)) : (ast);
     return new AnimationTimelineVisitor().buildKeyframes(normalizedAst, startingStyles, finalStyles);
 }
 var AnimationTimelineContext = (function () {
@@ -1595,8 +1595,8 @@ var TimelineBuilder = (function () {
             // We use `_globalTimelineStyles` here because there may be
             // styles in previous keyframes that are not present in this timeline
             Object.keys(this._globalTimelineStyles).forEach(function (prop) {
-                _this._backFill[prop] = _this._globalTimelineStyles[prop] || __WEBPACK_IMPORTED_MODULE_0__angular_animations__["h" /* AUTO_STYLE */];
-                _this._currentKeyframe[prop] = __WEBPACK_IMPORTED_MODULE_0__angular_animations__["h" /* AUTO_STYLE */];
+                _this._backFill[prop] = _this._globalTimelineStyles[prop] || __WEBPACK_IMPORTED_MODULE_0__angular_animations__["i" /* AUTO_STYLE */];
+                _this._currentKeyframe[prop] = __WEBPACK_IMPORTED_MODULE_0__angular_animations__["i" /* AUTO_STYLE */];
             });
             this._currentEmptyStepKeyframe = this._currentKeyframe;
         }
@@ -1606,7 +1606,7 @@ var TimelineBuilder = (function () {
                     var /** @type {?} */ val = styles[prop];
                     _this._currentKeyframe[prop] = val;
                     if (!_this._localTimelineStyles[prop]) {
-                        _this._backFill[prop] = _this._globalTimelineStyles[prop] || __WEBPACK_IMPORTED_MODULE_0__angular_animations__["h" /* AUTO_STYLE */];
+                        _this._backFill[prop] = _this._globalTimelineStyles[prop] || __WEBPACK_IMPORTED_MODULE_0__angular_animations__["i" /* AUTO_STYLE */];
                     }
                     _this._updateStyle(prop, val);
                 }
@@ -1753,7 +1753,7 @@ var AnimationTransitionFactory = (function () {
         this.matchFns = matchFns;
         this._stateStyles = _stateStyles;
         var normalizedAst = Array.isArray(ast.animation) ?
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_animations__["g" /* sequence */])(ast.animation) :
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_animations__["h" /* sequence */])(ast.animation) :
             ast.animation;
         this._animationAst = normalizedAst;
     }
@@ -1794,7 +1794,7 @@ function oneOrMoreTransitionsMatch(matchFns, currentState, nextState) {
  * @return {?}
  */
 function validateAnimationSequence(ast) {
-    var /** @type {?} */ normalizedAst = Array.isArray(ast) ? __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_animations__["g" /* sequence */])(/** @type {?} */ (ast)) : (ast);
+    var /** @type {?} */ normalizedAst = Array.isArray(ast) ? __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_animations__["h" /* sequence */])(/** @type {?} */ (ast)) : (ast);
     return new AnimationValidatorVisitor().validate(normalizedAst);
 }
 var AnimationValidatorVisitor = (function () {
@@ -2569,7 +2569,7 @@ var DomAnimationEngine = (function () {
                         }
                         else {
                             var /** @type {?} */ event = makeAnimationEvent(element, triggerName, oldValue, VOID_STATE, '', 0);
-                            var /** @type {?} */ player = new __WEBPACK_IMPORTED_MODULE_0__angular_animations__["f" /* NoopAnimationPlayer */]();
+                            var /** @type {?} */ player = new __WEBPACK_IMPORTED_MODULE_0__angular_animations__["g" /* NoopAnimationPlayer */]();
                             _this._queuePlayer(element, triggerName, player, event);
                         }
                     });
@@ -2630,11 +2630,11 @@ function deleteFromArrayMap(map, key, value) {
 function optimizeGroupPlayer(players) {
     switch (players.length) {
         case 0:
-            return new __WEBPACK_IMPORTED_MODULE_0__angular_animations__["f" /* NoopAnimationPlayer */]();
+            return new __WEBPACK_IMPORTED_MODULE_0__angular_animations__["g" /* NoopAnimationPlayer */]();
         case 1:
             return players[0];
         default:
-            return new __WEBPACK_IMPORTED_MODULE_0__angular_animations__["i" /* ɵAnimationGroupPlayer */](players);
+            return new __WEBPACK_IMPORTED_MODULE_0__angular_animations__["j" /* ɵAnimationGroupPlayer */](players);
     }
 }
 /**
@@ -2775,7 +2775,7 @@ var Animation = (function () {
      * @param {?} input
      */
     function Animation(input) {
-        var ast = Array.isArray(input) ? __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_animations__["g" /* sequence */])(input) : input;
+        var ast = Array.isArray(input) ? __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_animations__["h" /* sequence */])(input) : input;
         var errors = validateAnimationSequence(ast);
         if (errors.length) {
             var errorMessage = "animation validation failed:\n" + errors.join("\n");
@@ -3141,7 +3141,7 @@ var WebAnimationsPlayer = (function () {
             var /** @type {?} */ formattedKeyframe = {};
             Object.keys(styles).forEach(function (prop, index) {
                 var /** @type {?} */ value = styles[prop];
-                if (value == __WEBPACK_IMPORTED_MODULE_0__angular_animations__["h" /* AUTO_STYLE */]) {
+                if (value == __WEBPACK_IMPORTED_MODULE_0__angular_animations__["i" /* AUTO_STYLE */]) {
                     value = _computeStyle(_this.element, prop);
                 }
                 if (value != undefined) {

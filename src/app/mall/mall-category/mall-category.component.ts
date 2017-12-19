@@ -4,7 +4,7 @@ import {
   state,
   style,
   animate,
-  transition, group
+  transition, group, keyframes
 } from '@angular/animations';
 import {MallService} from "../service/mall.service";
 
@@ -15,8 +15,16 @@ import {MallService} from "../service/mall.service";
   animations: [
     trigger('flyInOut', [
       state('in', style({transform: 'translateX(0)'})),
-      transition(':enter', [style({transform: 'translateX(-100%)'}), animate('300ms linear')]),
-      transition(':leave',[style({transform:'translateX(-100%)'}),animate('300 linear')])
+      transition(':enter', [animate(200, keyframes([
+        style({transform: 'translateX(-100%)', offset: 0}),
+        style({transform: 'translateX(0)', offset: 1})
+      ]))
+      ]),
+      transition(':leave', [animate(200, keyframes([
+        style({transform: 'translateX(0)', offset: 0}),
+        style({transform: 'translateX(-100%)', offset: 1})
+      ]))
+      ])
     ])
   ]
 })
