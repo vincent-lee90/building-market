@@ -15,7 +15,8 @@ import {MallService} from "../service/mall.service";
   animations: [
     trigger('flyInOut', [
       state('in', style({transform: 'translateX(0)'})),
-      transition('void=>in', [style({transform: 'translateX(-100%)'}), animate('100ms ease-in')])
+      transition(':enter', [style({transform: 'translateX(-100%)'}), animate('200ms ease-in')]),
+      transition(':leave',[style({transform:'translateX(-100%)'}),animate('200ms ease-in')])
     ])
   ]
 })
@@ -25,7 +26,6 @@ export class MallCategoryComponent implements OnInit {
   @Output() onSelect = new EventEmitter<string>();
 
   constructor(private mallService: MallService) {
-
   }
 
   select(code: string) {
