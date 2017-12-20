@@ -61977,7 +61977,7 @@ NoopAnimationsModule.ctorParameters = function () { return []; };
 /* unused harmony export RouterLinkActive */
 /* unused harmony export RouterOutlet */
 /* unused harmony export NavigationCancel */
-/* unused harmony export NavigationEnd */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return NavigationEnd; });
 /* unused harmony export NavigationError */
 /* unused harmony export NavigationStart */
 /* unused harmony export RouteConfigLoadEnd */
