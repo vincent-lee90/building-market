@@ -34,7 +34,6 @@ export class MallCategoryComponent implements OnInit {
   @Output() onSelect = new EventEmitter<string>();
 
   constructor(private mallService: MallService) {
-
   }
 
   select(code: string) {
