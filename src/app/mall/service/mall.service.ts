@@ -70,9 +70,9 @@ export class MallService {
   }
 
   getStoreInfo(storeCode) {
-    return this.http.get(this.getStoreInfoUrl,{params:{'storeCode':storeCode.toString()}})
+    return this.http.get<MyResponse>(this.getStoreInfoUrl,{params:{'storeCode':storeCode}})
       .map((res) => {
-        if (res.statusCode != 200) {
+        if (res.statusCode !== '200') {
           this.appDialogService.setAlert(res.message)
         }
         return res.body;
