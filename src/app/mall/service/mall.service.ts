@@ -4,7 +4,7 @@ import {AppDialogService} from '../../share/myDialog/app-alert/app-dialog.servic
 import 'rxjs/add/operator/map';
 import {Order} from "../model/order.model";
 import {Product} from "../model/product.model";
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpParams} from "@angular/common/http";
 import {MyResponse} from "../../interfaces/response";
 
 @Injectable()
@@ -23,6 +23,7 @@ export class MallService {
   private getStoreInfoUrl = 'store/getStoreInfo';
   private createOrderUrl = 'order/createOrder';
   private getProductsBySearchText="mall/searchProducts";
+
   getHotWords() {
     return this.http.get<MyResponse>(this.getHotWordsUrl)
       .map((res) => {
@@ -34,15 +35,14 @@ export class MallService {
       )
   }
 
-
   getProducts(paramsObj) {
-    let params = {
-      'searchStr':paramsObj["searchStr"],
-      'catCode':paramsObj["catCode"]
-    };
-    return this.http.get<MyResponse>(this.getProductListUrl, {params: {params}})
-      .map((res) => {
-        if (res.statusCode != 200) {
+    let myParams={"searchStr":paramsObj["searchStr"],"catCode":paramsObj["catCode"]};
+/*    let params= new HttpParams()
+      .set("searchStr",paramsObj["searchStr"])
+      .set("catCode",paramsObj["catCode"]);*/
+    return this.http.get<MyResponse>(this.getProductListUrl,{params:myParams})
+      .map(res=>{
+        if (res.statusCode !== '200') {
           this.appDialogService.setAlert(res.message)
         }
         return res.body;
@@ -50,7 +50,7 @@ export class MallService {
   }
 
   getProductById(id) {
-    return this.http.get<MyResponse>(this.getProductByIdUrl, {params: {'id':id}})
+    return this.http.get<MyResponse>(this.getProductByIdUrl, {params:{'id':id}})
       .map((res) => {
         if (res.statusCode !== '200') {
           this.appDialogService.setAlert(res.message)
@@ -70,7 +70,9 @@ export class MallService {
   }
 
   getStoreInfo(storeCode) {
-    return this.http.get<MyResponse>(this.getStoreInfoUrl,{params:{'storeCode':storeCode}})
+    let params: HttpParams;
+    storeCode&&params.append("storeCode",storeCode);
+    return this.http.get<MyResponse>(this.getStoreInfoUrl,{params:params})
       .map((res) => {
         if (res.statusCode !== '200') {
           this.appDialogService.setAlert(res.message)

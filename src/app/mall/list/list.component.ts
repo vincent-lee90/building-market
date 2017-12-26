@@ -15,7 +15,18 @@ export class ListComponent implements OnInit {
   }
 
   getList() {
-    this.route.queryParams.switchMap((params: Params) => {
+    let paramsObj={
+      "searchStr":this.route.snapshot.queryParams.searchStr,
+      "catCode":this.route.snapshot.queryParams.catCode
+    };
+    this.mallService.getProducts(paramsObj)
+      .subscribe(data => {
+        this.productList = data;
+        this.hasGot = true;
+      }, err => {
+        this.hasGot = true;
+      });
+/*    this.route.queryParams.switchMap((params: Params) => {
       let paramsObj = {searchStr: params['searchStr'], catCode: params['catCode']};
       return this.mallService.getProducts(paramsObj);
     }).subscribe(data => {
@@ -23,7 +34,7 @@ export class ListComponent implements OnInit {
       this.hasGot = true;
     }, err => {
       this.hasGot = true;
-    });
+    });*/
   }
 
   getListByCode(code: string) {

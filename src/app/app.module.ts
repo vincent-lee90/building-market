@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import {HttpClientModule} from "@angular/common/http";
 import {RouterModule} from '@angular/router';
 import {HashLocationStrategy, LocationStrategy} from '@angular/common';
 import {appRoutes} from './app.routes';
@@ -17,7 +18,7 @@ import {AppDialogService} from './share/myDialog/app-alert/app-dialog.service';
 import {PayComponent} from "./pay/pay.component";
 import {CommonService} from "./service/common.service";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
-import {HttpClientModule} from "@angular/common/http";
+
 
 @NgModule({
   declarations: [
