@@ -1,12 +1,12 @@
 {
   "project": {
-    "version": "1.0.0-beta.28.3",
+    "version": "0.8.0-beta.28.3",
     "name": "building-market"
   },
   "apps": [
     {
       "root": "src",
-      "outDir": "dist",
+      "outDir": "server/public",
       "assets": [
         "assets",
         "favicon.ico",

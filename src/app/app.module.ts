@@ -17,6 +17,8 @@ import {AppDialogService} from './share/myDialog/app-alert/app-dialog.service';
 import {PayComponent} from "./pay/pay.component";
 import {CommonService} from "./service/common.service";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {HttpClientModule} from "@angular/common/http";
+
 @NgModule({
   declarations: [
     PayComponent,
@@ -29,6 +31,7 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
     BrowserAnimationsModule,
     FormsModule,
     HttpModule,
+    HttpClientModule,
     SliderModule,
     MainMenuModule,
     MyDialogModule,

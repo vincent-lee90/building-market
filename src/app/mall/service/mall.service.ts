@@ -4,10 +4,12 @@ import {AppDialogService} from '../../share/myDialog/app-alert/app-dialog.servic
 import 'rxjs/add/operator/map';
 import {Order} from "../model/order.model";
 import {Product} from "../model/product.model";
+import {HttpClient} from "@angular/common/http";
+import {MyResponse} from "../../interfaces/response";
 
 @Injectable()
 export class MallService {
-  constructor(private http: Http, private appDialogService: AppDialogService) {
+  constructor(private http:HttpClient,private appDialogService: AppDialogService) {
   }
 
   public initialOrder = {
@@ -22,66 +24,58 @@ export class MallService {
   private createOrderUrl = 'order/createOrder';
   private getProductsBySearchText="mall/searchProducts";
   getHotWords() {
-    return this.http.get(this.getHotWordsUrl)
-      .map((res: Response) => {
-          let _res = res.json();
-          if (_res.statusCode != 200) {
-            this.appDialogService.setAlert(_res.message)
+    return this.http.get<MyResponse>(this.getHotWordsUrl)
+      .map((res) => {
+          if (res.statusCode !== '200') {
+            this.appDialogService.setAlert(res.message)
           }
-          return _res.body;
+          return res.body;
         }
       )
   }
 
 
   getProducts(paramsObj) {
-    let params = new URLSearchParams();
-    paramsObj["searchStr"] && params.set('searchStr', paramsObj["searchStr"]);
-    paramsObj["catCode"] && params.set('catCode', paramsObj["catCode"]);
-    return this.http.get(this.getProductListUrl, {search: params})
-      .map((res: Response) => {
-        let _res = res.json();
-        if (_res.statusCode != 200) {
-          this.appDialogService.setAlert(_res.message)
+    let params = {
+      'searchStr':paramsObj["searchStr"],
+      'catCode':paramsObj["catCode"]
+    };
+    return this.http.get<MyResponse>(this.getProductListUrl, {params: {params}})
+      .map((res) => {
+        if (res.statusCode != 200) {
+          this.appDialogService.setAlert(res.message)
         }
-        return _res.body;
+        return res.body;
       })
   }
 
   getProductById(id) {
-    let params = new URLSearchParams();
-    params.set('id', id);
-    return this.http.get(this.getProductByIdUrl, {search: params})
-      .map((res: Response) => {
-        let _res = res.json();
-        if (_res.statusCode != 200) {
-          this.appDialogService.setAlert(_res.message)
+    return this.http.get<MyResponse>(this.getProductByIdUrl, {params: {'id':id}})
+      .map((res) => {
+        if (res.statusCode !== '200') {
+          this.appDialogService.setAlert(res.message)
         }
-        return _res.body;
+        return res.body;
       })
   }
 
   getCategories() {
-    return this.http.get(this.getCategoriesUrl)
-      .map((res: Response) => {
-        let _res = res.json();
-        if (_res.statusCode != 200) {
-          this.appDialogService.setAlert(_res.message)
+    return this.http.get<MyResponse>(this.getCategoriesUrl)
+      .map((res) => {
+        if (res.statusCode !== '200') {
+          this.appDialogService.setAlert(res.message)
         }
-        return _res.body;
+        return res.body;
       })
   }
 
   getStoreInfo(storeCode) {
-    let params=new URLSearchParams();
-    params.set('storeCode',storeCode);
-    return this.http.get(this.getStoreInfoUrl,{search:params})
-      .map((res: Response) => {
-        let _res = res.json();
-        if (_res.statusCode != 200) {
-          this.appDialogService.setAlert(_res.message)
+    return this.http.get(this.getStoreInfoUrl,{params:{'storeCode':storeCode.toString()}})
+      .map((res) => {
+        if (res.statusCode != 200) {
+          this.appDialogService.setAlert(res.message)
         }
-        return _res.body;
+        return res.body;
       })
   }
 
