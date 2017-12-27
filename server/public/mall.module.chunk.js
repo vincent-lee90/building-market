@@ -318,8 +318,8 @@ var ListComponent = (function () {
     ListComponent.prototype.getList = function () {
         var _this = this;
         var paramsObj = {
-            "searchStr": this.route.snapshot.queryParams.searchStr,
-            "catCode": this.route.snapshot.queryParams.catCode
+            "searchStr": this.route.snapshot.queryParams['searchStr'],
+            "catCode": this.route.snapshot.queryParams['catCode']
         };
         this.mallService.getProducts(paramsObj)
             .subscribe(function (data) {
@@ -328,15 +328,6 @@ var ListComponent = (function () {
         }, function (err) {
             _this.hasGot = true;
         });
-        /*    this.route.queryParams.switchMap((params: Params) => {
-              let paramsObj = {searchStr: params['searchStr'], catCode: params['catCode']};
-              return this.mallService.getProducts(paramsObj);
-            }).subscribe(data => {
-              this.productList = data;
-              this.hasGot = true;
-            }, err => {
-              this.hasGot = true;
-            });*/
     };
     ListComponent.prototype.getListByCode = function (code) {
         var _this = this;
@@ -755,11 +746,10 @@ var Product = (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MallService; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__("../../../http/esm5/http.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__share_myDialog_app_alert_app_dialog_service__ = __webpack_require__("../../../../../src/app/share/myDialog/app-alert/app-dialog.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__ = __webpack_require__("../../../../rxjs/_esm5/add/operator/map.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__model_product_model__ = __webpack_require__("../../../../../src/app/mall/model/product.model.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_common_http__ = __webpack_require__("../../../common/esm5/http.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__share_myDialog_app_alert_app_dialog_service__ = __webpack_require__("../../../../../src/app/share/myDialog/app-alert/app-dialog.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__("../../../../rxjs/_esm5/add/operator/map.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__model_product_model__ = __webpack_require__("../../../../../src/app/mall/model/product.model.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_common_http__ = __webpack_require__("../../../common/esm5/http.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -774,13 +764,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-
 var MallService = (function () {
     function MallService(http, appDialogService) {
         this.http = http;
         this.appDialogService = appDialogService;
         this.initialOrder = {
-            product: new __WEBPACK_IMPORTED_MODULE_4__model_product_model__["a" /* Product */](),
+            product: new __WEBPACK_IMPORTED_MODULE_3__model_product_model__["a" /* Product */](),
             amount: ""
         };
         this.getHotWordsUrl = 'mall/hotWords';
@@ -804,9 +793,6 @@ var MallService = (function () {
     MallService.prototype.getProducts = function (paramsObj) {
         var _this = this;
         var myParams = { "searchStr": paramsObj["searchStr"], "catCode": paramsObj["catCode"] };
-        /*    let params= new HttpParams()
-              .set("searchStr",paramsObj["searchStr"])
-              .set("catCode",paramsObj["catCode"]);*/
         return this.http.get(this.getProductListUrl, { params: myParams })
             .map(function (res) {
             if (res.statusCode !== '200') {
@@ -837,9 +823,7 @@ var MallService = (function () {
     };
     MallService.prototype.getStoreInfo = function (storeCode) {
         var _this = this;
-        var params;
-        storeCode && params.append("storeCode", storeCode);
-        return this.http.get(this.getStoreInfoUrl, { params: params })
+        return this.http.get(this.getStoreInfoUrl, { params: { 'storeCode': storeCode } })
             .map(function (res) {
             if (res.statusCode !== '200') {
                 _this.appDialogService.setAlert(res.message);
@@ -849,25 +833,25 @@ var MallService = (function () {
     };
     MallService.prototype.createOrder = function (order) {
         var _this = this;
-        var params = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* URLSearchParams */]();
-        params.append('product_id', order.product_id);
-        params.append('product_name', order.product_name);
-        params.append('amount', order.amount);
-        params.append('price', order.price);
-        params.append('user_id', order.user_id);
-        params.append('store_code', order.store_code);
+        var params = {
+            product_id: order.product_id,
+            product_name: order.product_name,
+            amount: order.amount,
+            price: order.price,
+            user_id: order.user_id,
+            store_code: order.store_code
+        };
         return this.http.post(this.createOrderUrl, params)
             .map(function (res) {
-            var _res = res.json();
-            if (_res.statusCode != 200) {
-                _this.appDialogService.setAlert(_res.message);
+            if (res.statusCode !== '200') {
+                _this.appDialogService.setAlert(res.message);
             }
-            return _res.body;
+            return res.body;
         });
     };
     MallService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_5__angular_common_http__["a" /* HttpClient */], __WEBPACK_IMPORTED_MODULE_2__share_myDialog_app_alert_app_dialog_service__["a" /* AppDialogService */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_4__angular_common_http__["b" /* HttpClient */], __WEBPACK_IMPORTED_MODULE_1__share_myDialog_app_alert_app_dialog_service__["a" /* AppDialogService */]])
     ], MallService);
     return MallService;
 }());

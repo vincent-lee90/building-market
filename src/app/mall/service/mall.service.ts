@@ -27,9 +27,6 @@ export class MallService {
   getHotWords() {
     return this.http.get<MyResponse>(this.getHotWordsUrl)
       .map((res) => {
-          if (res.statusCode !== '200') {
-            this.appDialogService.setAlert(res.message)
-          }
           return res.body;
         }
       )
@@ -37,14 +34,8 @@ export class MallService {
 
   getProducts(paramsObj) {
     let myParams={"searchStr":paramsObj["searchStr"],"catCode":paramsObj["catCode"]};
-/*    let params= new HttpParams()
-      .set("searchStr",paramsObj["searchStr"])
-      .set("catCode",paramsObj["catCode"]);*/
     return this.http.get<MyResponse>(this.getProductListUrl,{params:myParams})
       .map(res=>{
-        if (res.statusCode !== '200') {
-          this.appDialogService.setAlert(res.message)
-        }
         return res.body;
       })
   }
@@ -52,9 +43,6 @@ export class MallService {
   getProductById(id) {
     return this.http.get<MyResponse>(this.getProductByIdUrl, {params:{'id':id}})
       .map((res) => {
-        if (res.statusCode !== '200') {
-          this.appDialogService.setAlert(res.message)
-        }
         return res.body;
       })
   }
@@ -62,40 +50,29 @@ export class MallService {
   getCategories() {
     return this.http.get<MyResponse>(this.getCategoriesUrl)
       .map((res) => {
-        if (res.statusCode !== '200') {
-          this.appDialogService.setAlert(res.message)
-        }
         return res.body;
       })
   }
 
   getStoreInfo(storeCode) {
-    let params: HttpParams;
-    storeCode&&params.append("storeCode",storeCode);
-    return this.http.get<MyResponse>(this.getStoreInfoUrl,{params:params})
+    return this.http.get<MyResponse>(this.getStoreInfoUrl,{params:{'storeCode':storeCode}})
       .map((res) => {
-        if (res.statusCode !== '200') {
-          this.appDialogService.setAlert(res.message)
-        }
         return res.body;
       })
   }
 
   createOrder(order: Order) {
-    let params = new URLSearchParams();
-    params.append('product_id', order.product_id);
-    params.append('product_name', order.product_name);
-    params.append('amount', order.amount);
-    params.append('price', order.price);
-    params.append('user_id', order.user_id);
-    params.append('store_code', order.store_code);
-    return this.http.post(this.createOrderUrl, params)
-      .map((res: Response) => {
-        let _res = res.json();
-        if (_res.statusCode != 200) {
-          this.appDialogService.setAlert(_res.message)
-        }
-        return _res.body;
+    const params={
+      product_id:order.product_id,
+      product_name:order.product_name,
+      amount:order.amount,
+      price:order.price,
+      user_id:order.user_id,
+      store_code:order.store_code
+    };
+    return this.http.post<MyResponse>(this.createOrderUrl, params)
+      .map((res) => {
+        return res.body;
       })
   }
 }

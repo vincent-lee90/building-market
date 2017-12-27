@@ -809,7 +809,7 @@ var EditProductComponent = (function () {
 /***/ "../../../../../src/app/mine/my-store/my-store.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<router-outlet></router-outlet>\r\n"
+module.exports = "<router-outlet></router-outlet>\n"
 
 /***/ }),
 

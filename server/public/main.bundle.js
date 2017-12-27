@@ -76,7 +76,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<router-outlet></router-outlet>\r\n<app-alert></app-alert>\r\n"
+module.exports = "<router-outlet></router-outlet>\n<app-alert></app-alert>\n"
 
 /***/ }),
 
@@ -135,12 +135,14 @@ var AppComponent = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__pay_pay_component__ = __webpack_require__("../../../../../src/app/pay/pay.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__service_common_service__ = __webpack_require__("../../../../../src/app/service/common.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__angular_platform_browser_animations__ = __webpack_require__("../../../platform-browser/esm5/animations.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__interceptors_res_interceptor__ = __webpack_require__("../../../../../src/app/interceptors/res.interceptor.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -177,7 +179,7 @@ var AppModule = (function () {
                 __WEBPACK_IMPORTED_MODULE_19__angular_platform_browser_animations__["a" /* BrowserAnimationsModule */],
                 __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormsModule */],
                 __WEBPACK_IMPORTED_MODULE_3__angular_http__["b" /* HttpModule */],
-                __WEBPACK_IMPORTED_MODULE_4__angular_common_http__["b" /* HttpClientModule */],
+                __WEBPACK_IMPORTED_MODULE_4__angular_common_http__["c" /* HttpClientModule */],
                 __WEBPACK_IMPORTED_MODULE_11__share_slider_slider_module__["a" /* SliderModule */],
                 __WEBPACK_IMPORTED_MODULE_12__share_main_menu_main_menu_module__["a" /* MainMenuModule */],
                 __WEBPACK_IMPORTED_MODULE_13__share_myDialog_myDialog_module__["a" /* MyDialogModule */],
@@ -185,6 +187,7 @@ var AppModule = (function () {
             ],
             providers: [
                 { provide: __WEBPACK_IMPORTED_MODULE_6__angular_common__["g" /* LocationStrategy */], useClass: __WEBPACK_IMPORTED_MODULE_6__angular_common__["d" /* HashLocationStrategy */] },
+                { provide: __WEBPACK_IMPORTED_MODULE_4__angular_common_http__["a" /* HTTP_INTERCEPTORS */], useClass: __WEBPACK_IMPORTED_MODULE_20__interceptors_res_interceptor__["a" /* ResInterceptor */], multi: true },
                 __WEBPACK_IMPORTED_MODULE_15__auth_guard_auth_guard__["a" /* AuthGuard */],
                 __WEBPACK_IMPORTED_MODULE_14__auth_guard_auth_guard_service__["a" /* AuthGuardService */],
                 __WEBPACK_IMPORTED_MODULE_16__share_myDialog_app_alert_app_dialog_service__["a" /* AppDialogService */],
@@ -383,6 +386,54 @@ var IndexComponent = (function () {
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__share_myDialog_app_alert_app_dialog_service__["a" /* AppDialogService */]])
     ], IndexComponent);
     return IndexComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "../../../../../src/app/interceptors/res.interceptor.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ResInterceptor; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__("../../../common/esm5/http.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_do__ = __webpack_require__("../../../../rxjs/_esm5/add/operator/do.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__share_myDialog_app_alert_app_dialog_service__ = __webpack_require__("../../../../../src/app/share/myDialog/app-alert/app-dialog.service.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+var ResInterceptor = (function () {
+    function ResInterceptor(appDialogService) {
+        this.appDialogService = appDialogService;
+    }
+    ResInterceptor.prototype.intercept = function (req, next) {
+        var _this = this;
+        return next.handle(req)
+            .do(function (response) {
+            if (response instanceof __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["d" /* HttpResponse */]) {
+                if (response.body.statusCode !== '200') {
+                    _this.appDialogService.setAlert(response.body.message);
+                }
+            }
+        });
+    };
+    ResInterceptor = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])(),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3__share_myDialog_app_alert_app_dialog_service__["a" /* AppDialogService */]])
+    ], ResInterceptor);
+    return ResInterceptor;
 }());
 
 
