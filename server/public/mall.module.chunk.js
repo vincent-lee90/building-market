@@ -159,7 +159,7 @@ var ConfirmOrderComponent = (function () {
             template: __webpack_require__("../../../../../src/app/mall/confirm-order/confirm-order.component.html"),
             styles: [__webpack_require__("../../../../../src/app/mall/confirm-order/confirm-order.component.less")]
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__service_mall_service__["a" /* MallService */], __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */], __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */], __WEBPACK_IMPORTED_MODULE_5__service_common_service__["a" /* CommonService */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__service_mall_service__["a" /* MallService */], __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */], __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */], __WEBPACK_IMPORTED_MODULE_5__service_common_service__["a" /* CommonService */]])
     ], ConfirmOrderComponent);
     return ConfirmOrderComponent;
 }());
@@ -252,7 +252,7 @@ var DetailComponent = (function () {
             template: __webpack_require__("../../../../../src/app/mall/detail/detail.component.html"),
             styles: [__webpack_require__("../../../../../src/app/mall/detail/detail.component.less")]
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__service_mall_service__["a" /* MallService */], __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */], __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__service_mall_service__["a" /* MallService */], __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */], __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */]])
     ], DetailComponent);
     return DetailComponent;
 }());
@@ -430,16 +430,16 @@ var MallCategoryComponent = (function () {
             template: __webpack_require__("../../../../../src/app/mall/mall-category/mall-category.component.html"),
             styles: [__webpack_require__("../../../../../src/app/mall/mall-category/mall-category.component.less")],
             animations: [
-                Object(__WEBPACK_IMPORTED_MODULE_1__angular_animations__["k" /* trigger */])('flyInOut', [
-                    Object(__WEBPACK_IMPORTED_MODULE_1__angular_animations__["h" /* state */])('in', Object(__WEBPACK_IMPORTED_MODULE_1__angular_animations__["i" /* style */])({ transform: 'translateX(0)' })),
-                    Object(__WEBPACK_IMPORTED_MODULE_1__angular_animations__["j" /* transition */])(':enter', [Object(__WEBPACK_IMPORTED_MODULE_1__angular_animations__["e" /* animate */])(200, Object(__WEBPACK_IMPORTED_MODULE_1__angular_animations__["f" /* keyframes */])([
-                            Object(__WEBPACK_IMPORTED_MODULE_1__angular_animations__["i" /* style */])({ transform: 'translateX(-100%)', offset: 0 }),
-                            Object(__WEBPACK_IMPORTED_MODULE_1__angular_animations__["i" /* style */])({ transform: 'translateX(0)', offset: 1 })
+                Object(__WEBPACK_IMPORTED_MODULE_1__angular_animations__["m" /* trigger */])('flyInOut', [
+                    Object(__WEBPACK_IMPORTED_MODULE_1__angular_animations__["j" /* state */])('in', Object(__WEBPACK_IMPORTED_MODULE_1__angular_animations__["k" /* style */])({ transform: 'translateX(0)' })),
+                    Object(__WEBPACK_IMPORTED_MODULE_1__angular_animations__["l" /* transition */])(':enter', [Object(__WEBPACK_IMPORTED_MODULE_1__angular_animations__["e" /* animate */])(200, Object(__WEBPACK_IMPORTED_MODULE_1__angular_animations__["g" /* keyframes */])([
+                            Object(__WEBPACK_IMPORTED_MODULE_1__angular_animations__["k" /* style */])({ transform: 'translateX(-100%)', offset: 0 }),
+                            Object(__WEBPACK_IMPORTED_MODULE_1__angular_animations__["k" /* style */])({ transform: 'translateX(0)', offset: 1 })
                         ]))
                     ]),
-                    Object(__WEBPACK_IMPORTED_MODULE_1__angular_animations__["j" /* transition */])(':leave', [Object(__WEBPACK_IMPORTED_MODULE_1__angular_animations__["e" /* animate */])(200, Object(__WEBPACK_IMPORTED_MODULE_1__angular_animations__["f" /* keyframes */])([
-                            Object(__WEBPACK_IMPORTED_MODULE_1__angular_animations__["i" /* style */])({ transform: 'translateX(0)', offset: 0 }),
-                            Object(__WEBPACK_IMPORTED_MODULE_1__angular_animations__["i" /* style */])({ transform: 'translateX(-100%)', offset: 1 })
+                    Object(__WEBPACK_IMPORTED_MODULE_1__angular_animations__["l" /* transition */])(':leave', [Object(__WEBPACK_IMPORTED_MODULE_1__angular_animations__["e" /* animate */])(200, Object(__WEBPACK_IMPORTED_MODULE_1__angular_animations__["g" /* keyframes */])([
+                            Object(__WEBPACK_IMPORTED_MODULE_1__angular_animations__["k" /* style */])({ transform: 'translateX(0)', offset: 0 }),
+                            Object(__WEBPACK_IMPORTED_MODULE_1__angular_animations__["k" /* style */])({ transform: 'translateX(-100%)', offset: 1 })
                         ]))
                     ])
                 ])
@@ -526,7 +526,7 @@ var MallSearchComponent = (function () {
             template: __webpack_require__("../../../../../src/app/mall/mall-search/mall-search.component.html"),
             styles: [__webpack_require__("../../../../../src/app/mall/mall-search/mall-search.component.less")]
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__service_mall_service__["a" /* MallService */], __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */], __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* ActivatedRoute */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__service_mall_service__["a" /* MallService */], __WEBPACK_IMPORTED_MODULE_2__angular_router__["c" /* Router */], __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* ActivatedRoute */]])
     ], MallSearchComponent);
     return MallSearchComponent;
 }());
@@ -595,7 +595,7 @@ var MallModule = (function () {
             imports: [
                 __WEBPACK_IMPORTED_MODULE_6__share_main_menu_main_menu_module__["a" /* MainMenuModule */],
                 __WEBPACK_IMPORTED_MODULE_1__angular_common__["b" /* CommonModule */],
-                __WEBPACK_IMPORTED_MODULE_2__angular_router__["c" /* RouterModule */].forChild(__WEBPACK_IMPORTED_MODULE_3__mall_routes__["a" /* mallRoutes */]),
+                __WEBPACK_IMPORTED_MODULE_2__angular_router__["d" /* RouterModule */].forChild(__WEBPACK_IMPORTED_MODULE_3__mall_routes__["a" /* mallRoutes */]),
                 __WEBPACK_IMPORTED_MODULE_14__share_slider_slider_module__["a" /* SliderModule */]
             ],
             providers: [__WEBPACK_IMPORTED_MODULE_13__service_mall_service__["a" /* MallService */]]
@@ -781,58 +781,37 @@ var MallService = (function () {
         this.getProductsBySearchText = "mall/searchProducts";
     }
     MallService.prototype.getHotWords = function () {
-        var _this = this;
         return this.http.get(this.getHotWordsUrl)
             .map(function (res) {
-            if (res.statusCode !== '200') {
-                _this.appDialogService.setAlert(res.message);
-            }
             return res.body;
         });
     };
     MallService.prototype.getProducts = function (paramsObj) {
-        var _this = this;
         var myParams = { "searchStr": paramsObj["searchStr"], "catCode": paramsObj["catCode"] };
         return this.http.get(this.getProductListUrl, { params: myParams })
             .map(function (res) {
-            if (res.statusCode !== '200') {
-                _this.appDialogService.setAlert(res.message);
-            }
             return res.body;
         });
     };
     MallService.prototype.getProductById = function (id) {
-        var _this = this;
         return this.http.get(this.getProductByIdUrl, { params: { 'id': id } })
             .map(function (res) {
-            if (res.statusCode !== '200') {
-                _this.appDialogService.setAlert(res.message);
-            }
             return res.body;
         });
     };
     MallService.prototype.getCategories = function () {
-        var _this = this;
         return this.http.get(this.getCategoriesUrl)
             .map(function (res) {
-            if (res.statusCode !== '200') {
-                _this.appDialogService.setAlert(res.message);
-            }
             return res.body;
         });
     };
     MallService.prototype.getStoreInfo = function (storeCode) {
-        var _this = this;
         return this.http.get(this.getStoreInfoUrl, { params: { 'storeCode': storeCode } })
             .map(function (res) {
-            if (res.statusCode !== '200') {
-                _this.appDialogService.setAlert(res.message);
-            }
             return res.body;
         });
     };
     MallService.prototype.createOrder = function (order) {
-        var _this = this;
         var params = {
             product_id: order.product_id,
             product_name: order.product_name,
@@ -843,9 +822,6 @@ var MallService = (function () {
         };
         return this.http.post(this.createOrderUrl, params)
             .map(function (res) {
-            if (res.statusCode !== '200') {
-                _this.appDialogService.setAlert(res.message);
-            }
             return res.body;
         });
     };

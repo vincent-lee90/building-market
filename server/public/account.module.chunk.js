@@ -32,7 +32,7 @@ var AccountModule = (function () {
     AccountModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* RouterModule */].forChild(__WEBPACK_IMPORTED_MODULE_3__account_routes__["a" /* accountRoutes */]),
+                __WEBPACK_IMPORTED_MODULE_1__angular_router__["d" /* RouterModule */].forChild(__WEBPACK_IMPORTED_MODULE_3__account_routes__["a" /* accountRoutes */]),
                 __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormsModule */]
             ],
             providers: [],
@@ -158,7 +158,7 @@ var LoginComponent = (function () {
             styles: [__webpack_require__("../../../../../src/app/account/login/login.component.less")],
             providers: [__WEBPACK_IMPORTED_MODULE_3__services_account_service__["a" /* AccountService */]]
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3__services_account_service__["a" /* AccountService */], __WEBPACK_IMPORTED_MODULE_4__auth_guard_auth_guard_service__["a" /* AuthGuardService */], __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */], __WEBPACK_IMPORTED_MODULE_5__share_myDialog_app_alert_app_dialog_service__["a" /* AppDialogService */], __WEBPACK_IMPORTED_MODULE_6__service_common_service__["a" /* CommonService */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3__services_account_service__["a" /* AccountService */], __WEBPACK_IMPORTED_MODULE_4__auth_guard_auth_guard_service__["a" /* AuthGuardService */], __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */], __WEBPACK_IMPORTED_MODULE_5__share_myDialog_app_alert_app_dialog_service__["a" /* AppDialogService */], __WEBPACK_IMPORTED_MODULE_6__service_common_service__["a" /* CommonService */]])
     ], LoginComponent);
     return LoginComponent;
 }());
@@ -250,7 +250,7 @@ var RegisterComponent = (function () {
             styles: [__webpack_require__("../../../../../src/app/account/register/register.component.less")],
             providers: [__WEBPACK_IMPORTED_MODULE_2__services_account_service__["a" /* AccountService */]]
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__services_account_service__["a" /* AccountService */], __WEBPACK_IMPORTED_MODULE_3__auth_guard_auth_guard_service__["a" /* AuthGuardService */], __WEBPACK_IMPORTED_MODULE_4__angular_router__["b" /* Router */], __WEBPACK_IMPORTED_MODULE_5__share_myDialog_app_alert_app_dialog_service__["a" /* AppDialogService */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__services_account_service__["a" /* AccountService */], __WEBPACK_IMPORTED_MODULE_3__auth_guard_auth_guard_service__["a" /* AuthGuardService */], __WEBPACK_IMPORTED_MODULE_4__angular_router__["c" /* Router */], __WEBPACK_IMPORTED_MODULE_5__share_myDialog_app_alert_app_dialog_service__["a" /* AppDialogService */]])
     ], RegisterComponent);
     return RegisterComponent;
 }());

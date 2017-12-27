@@ -134,7 +134,7 @@ var BaseInfoComponent = (function () {
             template: __webpack_require__("../../../../../src/app/mine/join-us/base-info/base-info.component.html"),
             styles: [__webpack_require__("../../../../../src/app/mine/join-us/base-info/base-info.component.less")]
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__share_myDialog_app_alert_app_dialog_service__["a" /* AppDialogService */], __WEBPACK_IMPORTED_MODULE_2__service_mine_service__["a" /* MineService */], __WEBPACK_IMPORTED_MODULE_3__angular_router__["b" /* Router */], __WEBPACK_IMPORTED_MODULE_3__angular_router__["a" /* ActivatedRoute */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__share_myDialog_app_alert_app_dialog_service__["a" /* AppDialogService */], __WEBPACK_IMPORTED_MODULE_2__service_mine_service__["a" /* MineService */], __WEBPACK_IMPORTED_MODULE_3__angular_router__["c" /* Router */], __WEBPACK_IMPORTED_MODULE_3__angular_router__["a" /* ActivatedRoute */]])
     ], BaseInfoComponent);
     return BaseInfoComponent;
 }());
@@ -286,7 +286,7 @@ var StoreInfoComponent = (function () {
             template: __webpack_require__("../../../../../src/app/mine/join-us/store-info/store-info.component.html"),
             styles: [__webpack_require__("../../../../../src/app/mine/join-us/store-info/store-info.component.less")]
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__share_myDialog_app_alert_app_dialog_service__["a" /* AppDialogService */], __WEBPACK_IMPORTED_MODULE_2__service_mine_service__["a" /* MineService */], __WEBPACK_IMPORTED_MODULE_3__angular_router__["b" /* Router */], __WEBPACK_IMPORTED_MODULE_3__angular_router__["a" /* ActivatedRoute */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__share_myDialog_app_alert_app_dialog_service__["a" /* AppDialogService */], __WEBPACK_IMPORTED_MODULE_2__service_mine_service__["a" /* MineService */], __WEBPACK_IMPORTED_MODULE_3__angular_router__["c" /* Router */], __WEBPACK_IMPORTED_MODULE_3__angular_router__["a" /* ActivatedRoute */]])
     ], StoreInfoComponent);
     return StoreInfoComponent;
 }());
@@ -373,7 +373,7 @@ var UploadImgComponent = (function () {
             template: __webpack_require__("../../../../../src/app/mine/join-us/upload-img/upload-img.component.html"),
             styles: [__webpack_require__("../../../../../src/app/mine/join-us/upload-img/upload-img.component.less")],
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__service_mine_service__["a" /* MineService */], __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */], __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* ActivatedRoute */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__service_mine_service__["a" /* MineService */], __WEBPACK_IMPORTED_MODULE_2__angular_router__["c" /* Router */], __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* ActivatedRoute */]])
     ], UploadImgComponent);
     return UploadImgComponent;
 }());
@@ -444,7 +444,7 @@ var MineModule = (function () {
                 __WEBPACK_IMPORTED_MODULE_4__share_main_menu_main_menu_module__["a" /* MainMenuModule */],
                 __WEBPACK_IMPORTED_MODULE_2__angular_common__["b" /* CommonModule */],
                 __WEBPACK_IMPORTED_MODULE_3__angular_forms__["a" /* FormsModule */],
-                __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* RouterModule */].forChild(__WEBPACK_IMPORTED_MODULE_5__mine_routes__["a" /* mineRoutes */])
+                __WEBPACK_IMPORTED_MODULE_1__angular_router__["d" /* RouterModule */].forChild(__WEBPACK_IMPORTED_MODULE_5__mine_routes__["a" /* mineRoutes */])
             ],
             providers: [__WEBPACK_IMPORTED_MODULE_10__service_mine_service__["a" /* MineService */]],
             declarations: [__WEBPACK_IMPORTED_MODULE_6__mine_mine_component__["a" /* MineComponent */], __WEBPACK_IMPORTED_MODULE_7__orders_orders_component__["a" /* OrdersComponent */], __WEBPACK_IMPORTED_MODULE_8__join_us_join_us_component__["a" /* JoinUsComponent */], __WEBPACK_IMPORTED_MODULE_11__join_us_base_info_base_info_component__["a" /* BaseInfoComponent */], __WEBPACK_IMPORTED_MODULE_12__join_us_store_info_store_info_component__["a" /* StoreInfoComponent */], __WEBPACK_IMPORTED_MODULE_13__join_us_upload_img_upload_img_component__["a" /* UploadImgComponent */], __WEBPACK_IMPORTED_MODULE_9__agreement_agreement_component__["a" /* AgreementComponent */], __WEBPACK_IMPORTED_MODULE_15__my_store_my_store_component__["a" /* MyStoreComponent */], __WEBPACK_IMPORTED_MODULE_17__my_store_edit_product_edit_product_component__["a" /* EditProductComponent */], __WEBPACK_IMPORTED_MODULE_16__my_store_store_display_store_display_component__["a" /* StoreDisplayComponent */], __WEBPACK_IMPORTED_MODULE_18__pipes_product_category_pipe__["a" /* ProductCategoryPipe */], __WEBPACK_IMPORTED_MODULE_19__my_store_store_info_edit_store_component__["a" /* EditStoreComponent */]]
@@ -797,7 +797,7 @@ var EditProductComponent = (function () {
             template: __webpack_require__("../../../../../src/app/mine/my-store/edit-product/edit-product.component.html"),
             styles: [__webpack_require__("../../../../../src/app/mine/my-store/edit-product/edit-product.component.less")]
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__service_mine_service__["a" /* MineService */], __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* ActivatedRoute */], __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */], __WEBPACK_IMPORTED_MODULE_3__share_myDialog_app_alert_app_dialog_service__["a" /* AppDialogService */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__service_mine_service__["a" /* MineService */], __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* ActivatedRoute */], __WEBPACK_IMPORTED_MODULE_2__angular_router__["c" /* Router */], __WEBPACK_IMPORTED_MODULE_3__share_myDialog_app_alert_app_dialog_service__["a" /* AppDialogService */]])
     ], EditProductComponent);
     return EditProductComponent;
 }());

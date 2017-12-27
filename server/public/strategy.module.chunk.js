@@ -182,7 +182,7 @@ var StrategyModule = (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             imports: [
                 __WEBPACK_IMPORTED_MODULE_3__share_main_menu_main_menu_module__["a" /* MainMenuModule */],
-                __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* RouterModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__stragety_routes__["a" /* strategyRoutes */])
+                __WEBPACK_IMPORTED_MODULE_1__angular_router__["d" /* RouterModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__stragety_routes__["a" /* strategyRoutes */])
             ],
             providers: [],
             declarations: [__WEBPACK_IMPORTED_MODULE_4__strategy_list_strategy_list_component__["a" /* StrategyListComponent */], __WEBPACK_IMPORTED_MODULE_5__strategy_detail_strategy_detail_component__["a" /* StrategyDetailComponent */]]

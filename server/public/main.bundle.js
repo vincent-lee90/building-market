@@ -76,7 +76,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<router-outlet></router-outlet>\n<app-alert></app-alert>\n"
+module.exports = "<div id=\"app\" [@routeAnimation]=\"routerStateCode\">\n  <router-outlet></router-outlet>\n</div>\n<app-alert></app-alert>\n"
 
 /***/ }),
 
@@ -86,22 +86,58 @@ module.exports = "<router-outlet></router-outlet>\n<app-alert></app-alert>\n"
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_animations__ = __webpack_require__("../../../animations/esm5/animations.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__("../../../router/esm5/router.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
 
 var AppComponent = (function () {
-    function AppComponent() {
+    function AppComponent(router) {
+        var _this = this;
+        this.router = router;
+        // router跳转动画所需参数
+        this.routerState = true;
+        this.routerStateCode = 'active';
+        this.router.events.subscribe(function (event) {
+            if (event instanceof __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* NavigationEnd */]) {
+                // 每次路由跳转改变状态
+                _this.routerState = !_this.routerState;
+                _this.routerStateCode = _this.routerState ? 'active' : 'inactive';
+            }
+        });
     }
     AppComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
             selector: 'app-root',
             template: __webpack_require__("../../../../../src/app/app.component.html"),
-            styles: [__webpack_require__("../../../../../src/app/app.component.css")]
-        })
+            styles: [__webpack_require__("../../../../../src/app/app.component.css")],
+            animations: [Object(__WEBPACK_IMPORTED_MODULE_1__angular_animations__["m" /* trigger */])('routeAnimation', [
+                    Object(__WEBPACK_IMPORTED_MODULE_1__angular_animations__["l" /* transition */])(':enter', [
+                        Object(__WEBPACK_IMPORTED_MODULE_1__angular_animations__["k" /* style */])({
+                            position: 'absolute'
+                        }),
+                        Object(__WEBPACK_IMPORTED_MODULE_1__angular_animations__["e" /* animate */])('0.5s ease-in-out')
+                    ]),
+                    Object(__WEBPACK_IMPORTED_MODULE_1__angular_animations__["l" /* transition */])('* => *', [
+                        Object(__WEBPACK_IMPORTED_MODULE_1__angular_animations__["h" /* query */])(':leave', Object(__WEBPACK_IMPORTED_MODULE_1__angular_animations__["k" /* style */])({ transform: 'translateX(0)', position: 'absolute' }), { optional: true }),
+                        Object(__WEBPACK_IMPORTED_MODULE_1__angular_animations__["h" /* query */])(':enter', Object(__WEBPACK_IMPORTED_MODULE_1__angular_animations__["k" /* style */])({ transform: 'translateX(100%)', position: 'absolute' }), { optional: true }),
+                        Object(__WEBPACK_IMPORTED_MODULE_1__angular_animations__["f" /* group */])([
+                            Object(__WEBPACK_IMPORTED_MODULE_1__angular_animations__["h" /* query */])(':leave', Object(__WEBPACK_IMPORTED_MODULE_1__angular_animations__["e" /* animate */])('.5s ease-in-out', Object(__WEBPACK_IMPORTED_MODULE_1__angular_animations__["k" /* style */])({ transform: 'translateX(-100%)' })), { optional: true }),
+                            Object(__WEBPACK_IMPORTED_MODULE_1__angular_animations__["h" /* query */])(':enter', Object(__WEBPACK_IMPORTED_MODULE_1__angular_animations__["e" /* animate */])('.5s ease-in-out', Object(__WEBPACK_IMPORTED_MODULE_1__angular_animations__["k" /* style */])({ transform: 'translateX(0)' })), { optional: true })
+                        ])
+                    ])
+                ])]
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__angular_router__["c" /* Router */]])
     ], AppComponent);
     return AppComponent;
 }());
@@ -183,7 +219,7 @@ var AppModule = (function () {
                 __WEBPACK_IMPORTED_MODULE_11__share_slider_slider_module__["a" /* SliderModule */],
                 __WEBPACK_IMPORTED_MODULE_12__share_main_menu_main_menu_module__["a" /* MainMenuModule */],
                 __WEBPACK_IMPORTED_MODULE_13__share_myDialog_myDialog_module__["a" /* MyDialogModule */],
-                __WEBPACK_IMPORTED_MODULE_5__angular_router__["c" /* RouterModule */].forRoot(__WEBPACK_IMPORTED_MODULE_7__app_routes__["a" /* appRoutes */])
+                __WEBPACK_IMPORTED_MODULE_5__angular_router__["d" /* RouterModule */].forRoot(__WEBPACK_IMPORTED_MODULE_7__app_routes__["a" /* appRoutes */])
             ],
             providers: [
                 { provide: __WEBPACK_IMPORTED_MODULE_6__angular_common__["g" /* LocationStrategy */], useClass: __WEBPACK_IMPORTED_MODULE_6__angular_common__["d" /* HashLocationStrategy */] },
@@ -319,7 +355,7 @@ var AuthGuard = (function () {
     };
     AuthGuard = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__auth_guard_service__["a" /* AuthGuardService */], __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__auth_guard_service__["a" /* AuthGuardService */], __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */]])
     ], AuthGuard);
     return AuthGuard;
 }());
@@ -421,10 +457,10 @@ var ResInterceptor = (function () {
     ResInterceptor.prototype.intercept = function (req, next) {
         var _this = this;
         return next.handle(req)
-            .do(function (response) {
-            if (response instanceof __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["d" /* HttpResponse */]) {
-                if (response.body.statusCode !== '200') {
-                    _this.appDialogService.setAlert(response.body.message);
+            .do(function (event) {
+            if (event instanceof __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["d" /* HttpResponse */]) {
+                if (event.body.statusCode !== '200') {
+                    _this.appDialogService.setAlert(event.body.message);
                 }
             }
         });
@@ -868,7 +904,7 @@ var MainMenuModule = (function () {
     }
     MainMenuModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
-            imports: [__WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* RouterModule */]],
+            imports: [__WEBPACK_IMPORTED_MODULE_1__angular_router__["d" /* RouterModule */]],
             declarations: [__WEBPACK_IMPORTED_MODULE_2__main_menu_component__["a" /* MainMenuComponent */]],
             exports: [__WEBPACK_IMPORTED_MODULE_2__main_menu_component__["a" /* MainMenuComponent */]]
         })

@@ -11,10 +11,10 @@ export class ResInterceptor implements HttpInterceptor {
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     return next.handle(req)
-      .do(response => {
-        if (response instanceof HttpResponse) {
-          if (response.body.statusCode !== '200') {
-            this.appDialogService.setAlert(response.body.message);
+      .do(event => {
+        if (event instanceof HttpResponse) {
+          if (event.body.statusCode !== '200') {
+            this.appDialogService.setAlert(event.body.message);
           }
         }
       });
