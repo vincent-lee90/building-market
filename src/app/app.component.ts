@@ -6,19 +6,13 @@ import {NavigationEnd, Router} from "@angular/router";
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
   animations: [trigger('routeAnimation', [
-    transition(':enter', [
-      style({
-        position: 'absolute'
-      }),
-      animate('0.5s ease-in-out')
-    ]),
     transition('* => *', [
       query(':leave', style({transform: 'translateX(0)', position: 'absolute'}), {optional: true}),
       query(':enter', style({transform: 'translateX(100%)', position: 'absolute'}), {optional: true}),
 
       group([
-        query(':leave', animate('.5s ease-in-out', style({transform: 'translateX(-100%)'})), {optional: true}),
-        query(':enter', animate('.5s ease-in-out', style({transform: 'translateX(0)'})), {optional: true})
+        query(':leave', animate('10s ease-in-out', style({transform: 'translateX(-100%)'})), {optional: true}),
+        query(':enter', animate('10s ease-in-out', style({transform: 'translateX(0)'})), {optional: true})
       ])
     ])
   ])]
