@@ -11,8 +11,8 @@ import {NavigationEnd, Router} from "@angular/router";
       query(':enter', style({transform: 'translateX(100%)', position: 'absolute'}), {optional: true}),
 
       group([
-        query(':leave', animate('10s ease-in-out', style({transform: 'translateX(-100%)'})), {optional: true}),
-        query(':enter', animate('10s ease-in-out', style({transform: 'translateX(0)'})), {optional: true})
+        query(':leave', animate('.5s ease-in-out', style({transform: 'translateX(-100%)'})), {optional: true}),
+        query(':enter', animate('.5s ease-in-out', style({transform: 'translateX(0)'})), {optional: true})
       ])
     ])
   ])]
