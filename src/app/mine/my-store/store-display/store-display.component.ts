@@ -8,7 +8,7 @@ import {ActivatedRoute, Params} from "@angular/router";
 })
 export class StoreDisplayComponent implements OnInit {
   public productList = [];
-  public myStoreInfo = {};
+  public myStoreInfo;
   public hasGot=false;
   constructor(private mineService: MineService, private route: ActivatedRoute) {
   }

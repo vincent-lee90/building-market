@@ -8,7 +8,7 @@ import {StoreInfo} from "../model/store.model";
   styleUrls: ["./store.component.less"]
 })
 export class StoreComponent implements OnInit {
-  private storeInfo:StoreInfo ={};
+  public storeInfo:StoreInfo;
 
   constructor(private route: ActivatedRoute, private  mallService: MallService) {
 

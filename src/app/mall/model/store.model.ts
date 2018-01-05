@@ -7,4 +7,5 @@ export class StoreInfo{
   store_name?:string;
   store_intro?:string;
   user_id?:any;
+  img_detail_urls?:string;
 }

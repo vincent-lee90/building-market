@@ -9,9 +9,9 @@ import {MineService} from "../service/mine.service";
   styleUrls: ['./mine.component.less']
 })
 export class MineComponent implements OnInit {
-  private user: User = new User();
-  private myStoreInfo = {};
-  private isLogin = this.authGuard.isLogin;
+  public user: User = new User();
+  public myStoreInfo = {};
+  public isLogin = this.authGuard.isLogin;
 
   constructor(private commonService: CommonService, private authGuard: AuthGuardService, private mineService: MineService) {
 

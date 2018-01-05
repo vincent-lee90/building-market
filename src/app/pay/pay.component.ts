@@ -11,8 +11,8 @@ import {Order} from "../mall/model/order.model";
 
 })
 export class PayComponent implements OnInit {
-  private order: Order = new Order();
-  private order_code=this.route.snapshot.params['orderCode'];
+  public order: Order = new Order();
+  public order_code=this.route.snapshot.params['orderCode'];
   constructor(private mineService: MineService, private route: ActivatedRoute) {
   }
 

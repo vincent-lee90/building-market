@@ -11,15 +11,7 @@ import {AppDialogService} from "../../../share/myDialog/app-alert/app-dialog.ser
 })
 export class EditProductComponent implements OnInit {
   public myStoreInfo = {};
-  public product: Product = {
-    product_name: "",
-    product_intro: "",
-    product_logo: "",
-    current_price: "",
-    origin_price: "",
-    product_cat: "",
-    store_code: ""
-  };
+  public product = new Product();
   public detailImgUrl: Array<string> = [];
 
   constructor(private mineService: MineService, private route: ActivatedRoute, private router: Router, private appDialogService: AppDialogService) {
@@ -88,17 +80,17 @@ export class EditProductComponent implements OnInit {
   }
 
   confirm(f: NgForm) {
-    if(this.validate(f)){
+    if (this.validate(f)) {
       this.createProduct(f);
     }
   }
 
   ngOnInit() {
-    if(this.mineService.myStoreInfo){
+    if (this.mineService.myStoreInfo) {
       this.myStoreInfo = this.mineService.myStoreInfo;
       this.getProductByProductCode();
-    }else{
-      this.router.navigate(["/mine"],{relativeTo:this.route})
+    } else {
+      this.router.navigate(["/mine"], {relativeTo: this.route})
     }
   }
 }

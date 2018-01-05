@@ -10,8 +10,8 @@ import {CommonService} from "../../service/common.service";
   styleUrls: ['./confirm-order.component.less']
 })
 export class ConfirmOrderComponent implements OnInit {
-  private product: Product = new Product();
-  private amount = "";
+  public product: Product = new Product();
+  public amount:any = "";
   public order: Order = new Order();
 
   constructor(private mallService: MallService,private router:Router,private route:ActivatedRoute,private commonService:CommonService) {

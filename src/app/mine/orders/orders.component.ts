@@ -10,7 +10,7 @@ import {Order} from "../../mall/model/order.model";
   styleUrls: ['./orders.component.less']
 })
 export class OrdersComponent implements OnInit {
-  private orders: Order[] = [];
+  public orders: Order[] = [];
   public hasGot = false;
 
   constructor(private route: ActivatedRoute, private mineService: MineService) {

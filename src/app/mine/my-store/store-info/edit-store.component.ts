@@ -9,7 +9,7 @@ import {AppDialogService} from "../../../share/myDialog/app-alert/app-dialog.ser
   styleUrls:['./edit-store.component.less']
 })
 export class EditStoreComponent implements OnInit{
-  private storeInfo:StoreInfo;
+  public storeInfo:StoreInfo;
   constructor(private mineService:MineService,private appDialogService:AppDialogService){
 
   }
