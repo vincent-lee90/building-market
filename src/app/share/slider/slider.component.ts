@@ -1,4 +1,5 @@
-import {AfterViewInit, Component, Input, OnDestroy} from "@angular/core";
+import {AfterViewInit, Component, ElementRef, Input, OnDestroy} from "@angular/core";
+
 @Component({
   selector: 'slider',
   templateUrl: './slider.component.html',
@@ -8,7 +9,7 @@ export class SliderComponent implements AfterViewInit, OnDestroy {
   @Input() imgSrcArr: Array<string> = [];
   timer;
 
-  constructor() {
+  constructor(el: ElementRef) {
   }
 
   getNext(direction?: string) {
@@ -26,8 +27,6 @@ export class SliderComponent implements AfterViewInit, OnDestroy {
         break;
       }
     }
-
-
     return nextItem;
   }
 
@@ -48,17 +47,28 @@ export class SliderComponent implements AfterViewInit, OnDestroy {
   }
 
   goPrev() {
-
+    let $active = document.querySelector('.slider-item-active');
+    let $next = this.getNext('prev');
+    $next.offsetWidth;
+    if ($active && $next) {
+      $active.className += 'next';
+      $next.className += 'right';
+      $next.addEventListener('webkitTransitionEnd', function () {
+        $next.className = 'slider-item slider-item-active';
+      });
+      $active.addEventListener('webkitTransitionEnd', function () {
+        $active.className = 'slider-item';
+      })
+    }
   }
 
   autoPlay() {
-    let $nextItem: any;
     this.initActivateItem();
     if (this.imgSrcArr.length < 2) {
       return;
     }
     this.timer = setInterval(() => {
-      this.goNext()
+      this.goPrev()
     }, 5000)
   }
 
