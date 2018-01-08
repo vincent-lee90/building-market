@@ -1,10 +1,9 @@
 import {Injectable} from '@angular/core';
-import {Http, Response, URLSearchParams} from '@angular/http';
 import {AppDialogService} from '../../share/myDialog/app-alert/app-dialog.service';
 import 'rxjs/add/operator/map';
 import {Order} from "../model/order.model";
 import {Product} from "../model/product.model";
-import {HttpClient, HttpParams} from "@angular/common/http";
+import {HttpClient} from "@angular/common/http";
 import {MyResponse} from "../../interfaces/response";
 
 @Injectable()

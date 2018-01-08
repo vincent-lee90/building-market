@@ -1,5 +1,6 @@
 import {Injectable} from "@angular/core";
 import {Http, Response, URLSearchParams} from '@angular/http';
+import {HttpClient} from "@angular/common/http";
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 import {User} from '../model/user-model';
@@ -8,7 +9,7 @@ export class AccountService {
   public loginUrl = 'users/login';
   public registerUrl = 'users/register';
 
-  constructor(private http: Http) {
+  constructor(private http: Http,private httpClient:HttpClient) {
   }
 
   login(user: User) {
