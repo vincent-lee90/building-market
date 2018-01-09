@@ -30,6 +30,7 @@ export class SliderComponent implements AfterViewInit, OnDestroy {
     this.endY = e.changedTouches[0].pageY;
     this.getSlideDirect()
   }
+
   getSlideDirect() {
     let X, Y;
     X = this.endX - this.startX;
@@ -46,9 +47,9 @@ export class SliderComponent implements AfterViewInit, OnDestroy {
       this.autoPlay();
     } else if (Math.abs(X) < Math.abs(Y) && Y > 0) {
       console.log('top 2 bottom');
-    }else if(Math.abs(X)<Math.abs(Y)&&Y<0){
+    } else if (Math.abs(X) < Math.abs(Y) && Y < 0) {
       console.log('bottom 2 top');
-    }else{
+    } else {
       console.log('just touch')
     }
   }
@@ -90,8 +91,8 @@ export class SliderComponent implements AfterViewInit, OnDestroy {
   goPrev() {
     let $active = document.querySelector('.slider-item-active');
     let $next = this.getNext('prev');
-    $next.offsetWidth;
     if ($active && $next) {
+      $next.offsetWidth;
       $active.className += ' next';
       $next.className += ' right';
       $next.addEventListener('webkitTransitionEnd', function () {
