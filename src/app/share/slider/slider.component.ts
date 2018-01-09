@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, ElementRef, Input, OnDestroy} from "@angular/core";
+import {AfterViewInit, Component, HostListener, Input, OnDestroy} from "@angular/core";
 
 @Component({
   selector: 'slider',
@@ -8,8 +8,49 @@ import {AfterViewInit, Component, ElementRef, Input, OnDestroy} from "@angular/c
 export class SliderComponent implements AfterViewInit, OnDestroy {
   @Input() imgSrcArr: Array<string> = [];
   timer;
+  intervalTime: Number = 5000;
+  startX;
+  startY;
+  endX;
+  endY;
 
-  constructor(el: ElementRef) {
+  constructor() {
+  }
+
+  @HostListener('touchstart', ['$event'])
+  getStartXY(e: TouchEvent) {
+    this.startX = e.changedTouches[0].pageX;
+    this.startY = e.changedTouches[0].pageY;
+  }
+
+  @HostListener('touchend', ['$event'])
+  getEndXY(e: TouchEvent) {
+    e.preventDefault();
+    this.endX = e.changedTouches[0].pageX;
+    this.endY = e.changedTouches[0].pageY;
+    this.getSlideDirect()
+  }
+  getSlideDirect() {
+    let X, Y;
+    X = this.endX - this.startX;
+    Y = this.endY - this.startY;
+    if (Math.abs(X) > Math.abs(Y) && X > 0) {
+      console.log('left 2 right');
+      this.stopPlay();
+      this.goPrev();
+      this.autoPlay();
+    } else if (Math.abs(X) > Math.abs(Y) && X < 0) {
+      console.log('right 2 left');
+      this.stopPlay();
+      this.goNext();
+      this.autoPlay();
+    } else if (Math.abs(X) < Math.abs(Y) && Y > 0) {
+      console.log('top 2 bottom');
+    }else if(Math.abs(X)<Math.abs(Y)&&Y<0){
+      console.log('bottom 2 top');
+    }else{
+      console.log('just touch')
+    }
   }
 
   getNext(direction?: string) {
@@ -33,8 +74,8 @@ export class SliderComponent implements AfterViewInit, OnDestroy {
   goNext() {
     let $active = document.querySelector('.slider-item-active');
     let $next = this.getNext();
-    $next.offsetWidth;//force reflow
     if ($active && $next) {
+      $next.offsetWidth;//force reflow
       $active.className += ' prev';
       $next.className += ' left';
       $next.addEventListener('webkitTransitionEnd', function () {
@@ -51,8 +92,8 @@ export class SliderComponent implements AfterViewInit, OnDestroy {
     let $next = this.getNext('prev');
     $next.offsetWidth;
     if ($active && $next) {
-      $active.className += 'next';
-      $next.className += 'right';
+      $active.className += ' next';
+      $next.className += ' right';
       $next.addEventListener('webkitTransitionEnd', function () {
         $next.className = 'slider-item slider-item-active';
       });
@@ -62,20 +103,6 @@ export class SliderComponent implements AfterViewInit, OnDestroy {
     }
   }
 
-  autoPlay() {
-    this.initActivateItem();
-    if (this.imgSrcArr.length < 2) {
-      return;
-    }
-    this.timer = setInterval(() => {
-      this.goPrev()
-    }, 5000)
-  }
-
-  stopPlay() {
-
-  }
-
   initActivateItem() {
     let firstSlider = document.querySelector(".slider-item");
     if (firstSlider) {
@@ -83,6 +110,24 @@ export class SliderComponent implements AfterViewInit, OnDestroy {
       classNameTemp += " slider-item-active";
       firstSlider.className = classNameTemp;
     }
+  }
+
+  startPlay() {
+    this.timer = setInterval(() => {
+      this.goNext();
+    }, this.intervalTime)
+  }
+
+  stopPlay() {
+    clearInterval(this.timer);
+  }
+
+  autoPlay() {
+    this.initActivateItem();
+    if (this.imgSrcArr.length < 2) {
+      return;
+    }
+    this.startPlay();
   }
 
   ngAfterViewInit() {
