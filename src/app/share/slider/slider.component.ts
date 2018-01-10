@@ -13,6 +13,7 @@ export class SliderComponent implements AfterViewInit, OnDestroy {
   startY;
   endX;
   endY;
+  isTransition = false;
 
   constructor() {
   }
@@ -25,7 +26,7 @@ export class SliderComponent implements AfterViewInit, OnDestroy {
 
   @HostListener('touchend', ['$event'])
   getEndXY(e: TouchEvent) {
-    e.preventDefault();
+ /*   e.preventDefault();*/
     this.endX = e.changedTouches[0].pageX;
     this.endY = e.changedTouches[0].pageY;
     this.getSlideDirect()
@@ -35,16 +36,14 @@ export class SliderComponent implements AfterViewInit, OnDestroy {
     let X, Y;
     X = this.endX - this.startX;
     Y = this.endY - this.startY;
-    if (Math.abs(X) > Math.abs(Y) && X > 0) {
-      console.log('left 2 right');
+    if (Math.abs(X) > Math.abs(Y) && X > 0) {//left to right
       this.stopPlay();
-      this.goPrev();
-      this.autoPlay();
-    } else if (Math.abs(X) > Math.abs(Y) && X < 0) {
-      console.log('right 2 left');
+      this.goNext('prev');
+      this.startPlay('prev');
+    } else if (Math.abs(X) > Math.abs(Y) && X < 0) {//right to left
       this.stopPlay();
       this.goNext();
-      this.autoPlay();
+      this.startPlay();
     } else if (Math.abs(X) < Math.abs(Y) && Y > 0) {
       console.log('top 2 bottom');
     } else if (Math.abs(X) < Math.abs(Y) && Y < 0) {
@@ -72,39 +71,33 @@ export class SliderComponent implements AfterViewInit, OnDestroy {
     return nextItem;
   }
 
-  goNext() {
+  goNext(direction = 'next') {
+    if (this.isTransition) {
+      return
+    }
     let $active = document.querySelector('.slider-item-active');
-    let $next = this.getNext();
+    let $next = this.getNext(direction);
     if ($active && $next) {
       $next.offsetWidth;//force reflow
-      $active.className += ' prev';
-      $next.className += ' left';
-      $next.addEventListener('webkitTransitionEnd', function () {
+      if (direction === 'next') {
+        $active.className += ' prev';
+        $next.className += ' left';
+      } else {
+        $active.className += ' next';
+        $next.className += ' right';
+      }
+      this.isTransition = true;
+      $next.addEventListener('webkitTransitionEnd',()=> {
+        this.isTransition=false;
         $next.className = 'slider-item slider-item-active';
       });
-      $active.addEventListener('webkitTransitionEnd', function () {
+      $active.addEventListener('webkitTransitionEnd', ()=> {
         $active.className = 'slider-item';
       })
     }
   }
 
-  goPrev() {
-    let $active = document.querySelector('.slider-item-active');
-    let $next = this.getNext('prev');
-    if ($active && $next) {
-      $next.offsetWidth;
-      $active.className += ' next';
-      $next.className += ' right';
-      $next.addEventListener('webkitTransitionEnd', function () {
-        $next.className = 'slider-item slider-item-active';
-      });
-      $active.addEventListener('webkitTransitionEnd', function () {
-        $active.className = 'slider-item';
-      })
-    }
-  }
-
-  initActivateItem() {
+  initActivatedItem() {
     let firstSlider = document.querySelector(".slider-item");
     if (firstSlider) {
       let classNameTemp = firstSlider.className;
@@ -113,9 +106,9 @@ export class SliderComponent implements AfterViewInit, OnDestroy {
     }
   }
 
-  startPlay() {
+  startPlay(direction = 'next') {
     this.timer = setInterval(() => {
-      this.goNext();
+      this.goNext(direction);
     }, this.intervalTime)
   }
 
@@ -124,7 +117,7 @@ export class SliderComponent implements AfterViewInit, OnDestroy {
   }
 
   autoPlay() {
-    this.initActivateItem();
+    this.initActivatedItem();
     if (this.imgSrcArr.length < 2) {
       return;
     }
