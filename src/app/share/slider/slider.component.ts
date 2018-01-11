@@ -39,7 +39,7 @@ export class SliderComponent implements AfterViewInit, OnDestroy {
     if (Math.abs(X) > Math.abs(Y) && X > 0) {//left to right
       this.stopPlay();
       this.goNext('prev');
-      this.startPlay('prev');
+      this.startPlay();
     } else if (Math.abs(X) > Math.abs(Y) && X < 0) {//right to left
       this.stopPlay();
       this.goNext();
