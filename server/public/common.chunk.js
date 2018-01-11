@@ -5,11 +5,12 @@ webpackJsonp(["common"],{
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Product; });
-var Product = (function () {
+var Product = /*@__PURE__*/ (function () {
     function Product() {
     }
     return Product;
 }());
+
 
 
 
@@ -99,16 +100,10 @@ function switchMap(project, resultSelector) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = switchMap;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__OuterSubscriber__ = __webpack_require__("../../../../rxjs/_esm5/OuterSubscriber.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__util_subscribeToResult__ = __webpack_require__("../../../../rxjs/_esm5/util/subscribeToResult.js");
-/** PURE_IMPORTS_START .._OuterSubscriber,.._util_subscribeToResult PURE_IMPORTS_END */
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b)
-        if (b.hasOwnProperty(p))
-            d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_tslib__ = __webpack_require__("../../../../tslib/tslib.es6.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__OuterSubscriber__ = __webpack_require__("../../../../rxjs/_esm5/OuterSubscriber.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__util_subscribeToResult__ = __webpack_require__("../../../../rxjs/_esm5/util/subscribeToResult.js");
+
 
 
 /* tslint:enable:max-line-length */
@@ -164,7 +159,7 @@ function switchMap(project, resultSelector) {
         return source.lift(new SwitchMapOperator(project, resultSelector));
     };
 }
-var SwitchMapOperator = /*@__PURE__*/ (/*@__PURE__*/ function () {
+var SwitchMapOperator = /*@__PURE__*/ (function () {
     function SwitchMapOperator(project, resultSelector) {
         this.project = project;
         this.resultSelector = resultSelector;
@@ -179,8 +174,8 @@ var SwitchMapOperator = /*@__PURE__*/ (/*@__PURE__*/ function () {
  * @ignore
  * @extends {Ignored}
  */
-var SwitchMapSubscriber = /*@__PURE__*/ (/*@__PURE__*/ function (_super) {
-    __extends(SwitchMapSubscriber, _super);
+var SwitchMapSubscriber = /*@__PURE__*/ (function (_super) {
+    Object(__WEBPACK_IMPORTED_MODULE_0_tslib__["b" /* __extends */])(SwitchMapSubscriber, _super);
     function SwitchMapSubscriber(destination, project, resultSelector) {
         _super.call(this, destination);
         this.project = project;
@@ -204,7 +199,7 @@ var SwitchMapSubscriber = /*@__PURE__*/ (/*@__PURE__*/ function (_super) {
         if (innerSubscription) {
             innerSubscription.unsubscribe();
         }
-        this.add(this.innerSubscription = Object(__WEBPACK_IMPORTED_MODULE_1__util_subscribeToResult__["a" /* subscribeToResult */])(this, result, value, index));
+        this.add(this.innerSubscription = Object(__WEBPACK_IMPORTED_MODULE_2__util_subscribeToResult__["a" /* subscribeToResult */])(this, result, value, index));
     };
     SwitchMapSubscriber.prototype._complete = function () {
         var innerSubscription = this.innerSubscription;
@@ -242,8 +237,10 @@ var SwitchMapSubscriber = /*@__PURE__*/ (/*@__PURE__*/ function (_super) {
         this.destination.next(result);
     };
     return SwitchMapSubscriber;
-}(__WEBPACK_IMPORTED_MODULE_0__OuterSubscriber__["a" /* OuterSubscriber */]));
-//# sourceMappingURL=switchMap.js.map 
+}(__WEBPACK_IMPORTED_MODULE_1__OuterSubscriber__["a" /* OuterSubscriber */]));
+
+
+
 
 
 /***/ })
