@@ -22,7 +22,7 @@ export class SliderComponent implements AfterViewInit, OnDestroy {
   getStartXY(e: TouchEvent) {
     this.startX = e.changedTouches[0].pageX;
     this.startY = e.changedTouches[0].pageY;
-  }
+  };
 
   @HostListener('touchend', ['$event'])
   getEndXY(e: TouchEvent) {
@@ -30,7 +30,7 @@ export class SliderComponent implements AfterViewInit, OnDestroy {
     this.endX = e.changedTouches[0].pageX;
     this.endY = e.changedTouches[0].pageY;
     this.getSlideDirect()
-  }
+  };
 
   getSlideDirect() {
     let X, Y;
@@ -78,7 +78,6 @@ export class SliderComponent implements AfterViewInit, OnDestroy {
     let $active = document.querySelector('.slider-item-active');
     let $next = this.getNext(direction);
     if ($active && $next) {
-      $next.offsetWidth;//force reflow
       if (direction === 'next') {
         $active.className += ' prev';
         $next.className += ' left';
@@ -86,12 +85,14 @@ export class SliderComponent implements AfterViewInit, OnDestroy {
         $active.className += ' next';
         $next.className += ' right';
       }
+      $next.offsetWidth;//force reflow
       this.isTransition = true;
-      $next.addEventListener('webkitTransitionEnd',()=> {
+    $next.addEventListener('webkitTransitionEnd',()=> {
         this.isTransition=false;
         $next.className = 'slider-item slider-item-active';
       });
       $active.addEventListener('webkitTransitionEnd', ()=> {
+        this.isTransition=false;
         $active.className = 'slider-item';
       })
     }
