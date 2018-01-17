@@ -1,9 +1,9 @@
-import {AfterViewInit, Component, HostListener, Input, OnDestroy} from "@angular/core";
+import {AfterViewInit, Component, HostListener, Input, OnDestroy} from '@angular/core';
 
 @Component({
   selector: 'slider',
   templateUrl: './slider.component.html',
-  styleUrls: ["./slider.component.less"]
+  styleUrls: ['./slider.component.less']
 })
 export class SliderComponent implements AfterViewInit, OnDestroy {
   @Input() imgSrcArr: Array<string> = [];
@@ -26,7 +26,7 @@ export class SliderComponent implements AfterViewInit, OnDestroy {
 
   @HostListener('touchend', ['$event'])
   getEndXY(e: TouchEvent) {
- /*   e.preventDefault();*/
+    /*   e.preventDefault();*/
     this.endX = e.changedTouches[0].pageX;
     this.endY = e.changedTouches[0].pageY;
     this.getSlideDirect()
@@ -68,6 +68,7 @@ export class SliderComponent implements AfterViewInit, OnDestroy {
         break;
       }
     }
+    this.reflow(nextItem);
     return nextItem;
   }
 
@@ -75,34 +76,37 @@ export class SliderComponent implements AfterViewInit, OnDestroy {
     if (this.isTransition) {
       return
     }
-    let $active = document.querySelector('.slider-item-active');
+    let $active:HTMLElement = document.querySelector('.slider-item-active');
     let $next = this.getNext(direction);
     if ($active && $next) {
       if (direction === 'next') {
         $active.className += ' prev';
+        this.reflow($active);
         $next.className += ' left';
+        this.reflow($next);
       } else {
         $active.className += ' next';
         $next.className += ' right';
       }
-      $next.offsetWidth;//force reflow
       this.isTransition = true;
-    $next.addEventListener('webkitTransitionEnd',()=> {
-        this.isTransition=false;
+      $next.addEventListener('webkitTransitionEnd', () => {
+        this.isTransition = false;
         $next.className = 'slider-item slider-item-active';
       });
-      $active.addEventListener('webkitTransitionEnd', ()=> {
-        this.isTransition=false;
+      $active.addEventListener('webkitTransitionEnd', () => {
+        this.isTransition = false;
         $active.className = 'slider-item';
       })
     }
   }
-
+  reflow(el:HTMLElement){
+    console.log(el.offsetWidth);
+  }
   initActivatedItem() {
-    let firstSlider = document.querySelector(".slider-item");
+    let firstSlider = document.querySelector('.slider-item');
     if (firstSlider) {
       let classNameTemp = firstSlider.className;
-      classNameTemp += " slider-item-active";
+      classNameTemp += ' slider-item-active';
       firstSlider.className = classNameTemp;
     }
   }
