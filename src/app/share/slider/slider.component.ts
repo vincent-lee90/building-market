@@ -26,7 +26,7 @@ export class SliderComponent implements AfterViewInit, OnDestroy {
 
   @HostListener('touchend', ['$event'])
   getEndXY(e: TouchEvent) {
-    /*   e.preventDefault();*/
+       e.preventDefault();
     this.endX = e.changedTouches[0].pageX;
     this.endY = e.changedTouches[0].pageY;
     this.getSlideDirect()
