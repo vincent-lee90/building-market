@@ -68,7 +68,6 @@ export class SliderComponent implements AfterViewInit, OnDestroy {
         break;
       }
     }
-    this.reflow(nextItem);
     return nextItem;
   }
 
@@ -79,11 +78,10 @@ export class SliderComponent implements AfterViewInit, OnDestroy {
     let $active:HTMLElement = document.querySelector('.slider-item-active');
     let $next = this.getNext(direction);
     if ($active && $next) {
+      this.reflow($next);
       if (direction === 'next') {
         $active.className += ' prev';
-        this.reflow($active);
         $next.className += ' left';
-        this.reflow($next);
       } else {
         $active.className += ' next';
         $next.className += ' right';
@@ -100,7 +98,7 @@ export class SliderComponent implements AfterViewInit, OnDestroy {
     }
   }
   reflow(el:HTMLElement){
-    console.log(el.offsetWidth);
+    console.log(el.offsetWidth)//el.offsetWidth或者其他不会 force reflow 在压缩后？
   }
   initActivatedItem() {
     let firstSlider = document.querySelector('.slider-item');
