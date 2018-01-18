@@ -1,35 +1,35 @@
-import {Injectable} from "@angular/core";
-import {Http, Response, URLSearchParams} from '@angular/http';
-import {HttpClient} from "@angular/common/http";
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 import {User} from '../model/user-model';
+import {MyResponse} from '../../interfaces/response';
+
 @Injectable()
 export class AccountService {
   public loginUrl = 'users/login';
   public registerUrl = 'users/register';
 
-  constructor(private http: Http,private httpClient:HttpClient) {
+  constructor(private http: HttpClient) {
   }
 
   login(user: User) {
-    let params = new URLSearchParams();
-    params.append('userName', user.userName);
-    params.append('password', user.password);
+    let myParams = {'userName': user.userName, 'password': user.password};
     return this.http
-      .get(this.loginUrl, {search: params})
-      .map((res: Response) => {
-        return res.json();
+      .get<MyResponse>(this.loginUrl, {params: myParams})
+      .map((res) => {
+        return res.body;
       });
   }
 
   register(user: User) {
-    let params = new URLSearchParams();
-    params.append('userName', user.userName);
-    params.append('password', user.password);
-    return this.http.post(this.registerUrl,params)
-      .map((res: Response) => {
-        return res.json()
+    let params = {
+      userName: user.userName,
+      password: user.password
+    };
+    return this.http.post<MyResponse>(this.registerUrl, params)
+      .map((res) => {
+        return res.body;
       })
   }
 }

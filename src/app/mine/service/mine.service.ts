@@ -1,17 +1,19 @@
 import {Injectable} from '@angular/core';
-import {Http, Response, URLSearchParams} from '@angular/http';
 import {AppDialogService} from '../../share/myDialog/app-alert/app-dialog.service';
 import 'rxjs/add/operator/map';
-import {CommonService} from "../../service/common.service";
-import {Product} from "../../mall/model/product.model";
-import {StoreInfo} from "../../mall/model/store.model";
+import {CommonService} from '../../service/common.service';
+import {Product} from '../../mall/model/product.model';
+import {StoreInfo} from '../../mall/model/store.model';
+import {HttpClient} from '@angular/common/http';
+import {MyResponse} from '../../interfaces/response';
+
 @Injectable()
 export class MineService {
-  constructor(private http: Http, private appDialogService: AppDialogService, private commonService: CommonService) {
+  constructor(private http: HttpClient, private appDialogService: AppDialogService, private commonService: CommonService) {
   }
 
-  private getOrderUrl = "order/getOrder";
-  private getOrdersByStatusUrl = "order/getOrders";
+  private getOrderUrl = 'order/getOrder';
+  private getOrdersByStatusUrl = 'order/getOrders';
   private uploadIdCardImgUrl = 'users/completeInfo';
   private getStoreInfoByUserIdUrl = 'store/getStoreInfoByUserId';
   private getProductsByStoreCodeUrl = 'mall/getProductsByStoreCode';
@@ -19,31 +21,20 @@ export class MineService {
   private createProductUrl = 'mall/createProduct';
   public user = {};
   public storeInfo = {};//店铺申请信息
-  public myStoreInfo:StoreInfo;//我的店铺信息
+  public myStoreInfo: StoreInfo;//我的店铺信息
   getOrderByCode(order_code) {
-    let params = new URLSearchParams();
-    params.set('order_code', order_code);
-    return this.http.get(this.getOrderUrl, {search: params})
-      .map((res: Response) => {
-        let _res = res.json();
-        if (_res.statusCode != 200) {
-          this.appDialogService.setAlert(_res.message)
-        }
-        return _res.body;
+    let myParams = {'order_code': order_code};
+    return this.http.get<MyResponse>(this.getOrderUrl, {params: myParams})
+      .map(res => {
+        return res.body;
       })
   }
 
   getOrdersByStatus(order_status) {
-    let params = new URLSearchParams();
-    params.set('order_status', order_status);
-    params.set('user_id', this.commonService.user.id);
-    return this.http.get(this.getOrdersByStatusUrl, {search: params})
-      .map((res: Response) => {
-        let _res = res.json();
-        if (_res.statusCode != 200) {
-          this.appDialogService.setAlert(_res.message)
-        }
-        return _res.body;
+    let myParams = {'order_status':order_status, 'user_id': this.commonService.user.id};
+    return this.http.get<MyResponse>(this.getOrdersByStatusUrl, {params: myParams})
+      .map(res => {
+        return res.body;
       })
   }
 
@@ -53,24 +44,21 @@ export class MineService {
       return;
     }
     if (!back_id_card_img_url) {
-      this.appDialogService.setAlert("请上传身份证反面照");
+      this.appDialogService.setAlert('请上传身份证反面照');
     }
-    let params = new URLSearchParams();
-    params.append('user_id', this.commonService.user.id);
-    params.append('front_id_card_img_url', front_id_card_img_url);
-    params.append('back_id_card_img_url', back_id_card_img_url);
-    params.append('real_name', this.user['realName']);
-    params.append('telephone', this.user['telephone']);
-    params.append('store_name', this.storeInfo['storeName']);
-    params.append('store_addr', this.storeInfo['storeAddr']);
-    params.append('category', this.storeInfo['category']);
-    return this.http.post(this.uploadIdCardImgUrl, params)
-      .map((res: Response) => {
-        let _res = res.json();
-        if (_res.statusCode != 200) {
-          this.appDialogService.setAlert(_res.message)
-        }
-        return _res.body;
+    let params = {
+      user_id: this.commonService.user.id,
+      front_id_card_img_url: front_id_card_img_url,
+      back_id_card_img_url: back_id_card_img_url,
+      real_name: this.user['real_name'],
+      telephone: this.user['telephone'],
+      store_name: this.storeInfo['store_name'],
+      store_addr: this.storeInfo['store_addr'],
+      category: this.storeInfo['category']
+    };
+    return this.http.post<MyResponse>(this.uploadIdCardImgUrl, params)
+      .map(res => {
+        return res.body;
       })
   }
 
@@ -86,61 +74,43 @@ export class MineService {
   }
 
   public getStoreInfoByUserId() {
-    let params = new URLSearchParams();
-    params.set('user_id', this.commonService.user.id);
-    return this.http.get(this.getStoreInfoByUserIdUrl, {search: params})
-      .map((res: Response) => {
-        let _res = res.json();
-        if (_res.statusCode != 200) {
-          this.appDialogService.setAlert(_res.message)
-        }
-        return _res.body;
+    let myParams = {'user_id': this.commonService.user.id};
+    return this.http.get<MyResponse>(this.getStoreInfoByUserIdUrl, {params: myParams})
+      .map((res) => {
+        return res.body;
       })
   }
 
   getProductsByStoreCode(storeCode) {
-    let params = new URLSearchParams();
-    params.set('store_code', storeCode);
-    return this.http.get(this.getProductsByStoreCodeUrl, {search: params})
-      .map((res: Response) => {
-        let _res = res.json();
-        if (_res.statusCode != 200) {
-          this.appDialogService.setAlert(_res.message)
-        }
-        return _res.body;
+    let myParams = {"store_code":storeCode};
+    return this.http.get<MyResponse>(this.getProductsByStoreCodeUrl, {params: myParams})
+      .map((res) => {
+        return res.body
       })
   }
 
   getProductByProductCode(productCode) {
-    let params = new URLSearchParams();
-    params.set('store_code', productCode);
-    return this.http.get(this.getProductByProductCodeUrl, {search: params})
-      .map((res: Response) => {
-        let _res = res.json();
-        if (_res.statusCode != 200) {
-          this.appDialogService.setAlert(_res.message)
-        }
-        return _res.body;
+    let myParams ={"store_code":productCode};
+    return this.http.get<MyResponse>(this.getProductByProductCodeUrl, { params:myParams})
+      .map((res) => {
+        return res.body;
       })
   }
 
   createProduct(product: Product) {
-    let params = new URLSearchParams();
-    params.append("product_name", product.product_name);
-    params.append("product_intro", product.product_intro);
-    params.append("origin_price", product.origin_price);
-    params.append("current_price", product.current_price);
-    params.append("product_cat", product.product_cat);
-    params.append("product_logo", product.product_logo);
-    params.append("product_detail", product.product_detail);
-    params.append("store_code", product.store_code);
-    return this.http.post(this.createProductUrl, params)
-      .map((res: Response) => {
-        let _res = res.json();
-        if (_res.statusCode != 200) {
-          this.appDialogService.setAlert(_res.message)
-        }
-        return _res.body;
+    let params={
+      product_name:product.product_name,
+      product_intro:product.product_intro,
+      origin_price:product.origin_price,
+      current_price:product.current_price,
+      product_cat:product.product_cat,
+      product_logo:product.product_logo,
+      product_detail:product.product_detail,
+      store_code:product.store_code
+    };
+    return this.http.post<MyResponse>(this.createProductUrl, params)
+      .map((res) => {
+        return res.body;
       })
   }
 }
