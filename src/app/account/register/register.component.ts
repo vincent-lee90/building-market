@@ -16,7 +16,16 @@ export class RegisterComponent {
   constructor(private accountService: AccountService, private authService: AuthGuardService, private router: Router, private appDialogService: AppDialogService) {
   }
   register(rePassword) {
+    if(!this.user.password){
+      this.appDialogService.setAlert("请输入密码");
+      return;
+    }
+    if(!rePassword){
+      this.appDialogService.setAlert("请确认密码");
+      return;
+    }
     if (this.user.password !== rePassword) {
+      this.appDialogService.setAlert("两次密码输入不一致");
       return;
     }
     this.accountService.register(this.user)
