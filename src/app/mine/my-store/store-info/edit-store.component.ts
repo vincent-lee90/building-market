@@ -2,7 +2,7 @@ import {Component, OnInit} from "@angular/core";
 import {MineService} from "../../service/mine.service";
 import {StoreInfo} from "../../../mall/model/store.model";
 import {NgForm} from "@angular/forms";
-import {AppDialogService} from "../../../share/myDialog/app-alert/app-dialog.service";
+import {AppDialogService} from "../../../share/myDialog/service/app-dialog.service";
 @Component({
   selector:'edit-store',
   templateUrl:'./edit-store.component.html',

@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {NgForm} from "@angular/forms";
-import {AppDialogService} from "../../../share/myDialog/app-alert/app-dialog.service";
+import {AppDialogService} from "../../../share/myDialog/service/app-dialog.service";
 import {MineService} from "../../service/mine.service";
 import {ActivatedRoute, Router} from "@angular/router";
 

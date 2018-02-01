@@ -1,5 +1,5 @@
 import {Component,OnInit} from "@angular/core";
-import {AppDialogService} from '../share/myDialog/app-alert/app-dialog.service';
+import {AppDialogService} from '../share/myDialog/service/app-dialog.service';
 @Component({
   selector:'index',
   templateUrl:'./index.component.html',

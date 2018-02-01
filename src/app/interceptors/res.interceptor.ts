@@ -2,7 +2,7 @@ import {Injectable} from "@angular/core";
 import {HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse} from "@angular/common/http";
 import {Observable} from "rxjs/Observable";
 import 'rxjs/add/operator/do';
-import {AppDialogService} from "../share/myDialog/app-alert/app-dialog.service";
+import {AppDialogService} from "../share/myDialog/service/app-dialog.service";
 @Injectable()
 export class ResInterceptor implements HttpInterceptor {
   constructor(private appDialogService: AppDialogService) {

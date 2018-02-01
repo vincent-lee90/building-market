@@ -3,7 +3,7 @@ import {Router} from '@angular/router'
 import {User} from '../model/user-model';
 import {AccountService} from '../services/account.service';
 import {AuthGuardService} from '../../auth-guard/auth-guard.service';
-import {AppDialogService} from "../../share/myDialog/app-alert/app-dialog.service";
+import {AppDialogService} from "../../share/myDialog/service/app-dialog.service";
 import {CommonService} from "../../service/common.service";
 @Component({
   selector: 'login',

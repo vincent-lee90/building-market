@@ -14,7 +14,7 @@ import {MainMenuModule} from './share/main-menu/main-menu.module';
 import {MyDialogModule} from './share/myDialog/myDialog.module';
 import {AuthGuardService} from './auth-guard/auth-guard.service';
 import {AuthGuard} from './auth-guard/auth-guard';
-import {AppDialogService} from './share/myDialog/app-alert/app-dialog.service';
+import {AppDialogService} from './share/myDialog/service/app-dialog.service';
 import {PayComponent} from "./pay/pay.component";
 import {CommonService} from "./service/common.service";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";

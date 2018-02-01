@@ -3,7 +3,7 @@ import {MineService} from "../../service/mine.service";
 import {Product} from "../../../mall/model/product.model";
 import {ActivatedRoute, Params, Router} from "@angular/router";
 import {NgForm} from "@angular/forms";
-import {AppDialogService} from "../../../share/myDialog/app-alert/app-dialog.service";
+import {AppDialogService} from "../../../share/myDialog/service/app-dialog.service";
 @Component({
   selector: 'edit-product',
   templateUrl: "./edit-product.component.html",

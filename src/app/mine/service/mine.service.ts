@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {AppDialogService} from '../../share/myDialog/app-alert/app-dialog.service';
+import {AppDialogService} from '../../share/myDialog/service/app-dialog.service';
 import 'rxjs/add/operator/map';
 import {CommonService} from '../../service/common.service';
 import {Product} from '../../mall/model/product.model';
