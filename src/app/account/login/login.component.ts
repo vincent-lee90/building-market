@@ -19,6 +19,14 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
+    if(!this.user.userName){
+      this.appDialogService.setAlert("请输入用户名");
+      return;
+    }
+    if(!this.user.password){
+      this.appDialogService.setAlert("请输入密码");
+      return;
+    }
     this.accountService.login(this.user)
       .subscribe(data => {
         if (data.statusCode == 200) {
