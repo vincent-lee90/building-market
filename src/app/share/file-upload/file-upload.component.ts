@@ -22,7 +22,19 @@ export class FileUploadComponent {
     });
     reader.readAsDataURL(files[0]);
   }
-
+  compress(img){
+    let initSize=img.length;
+    let width=img.width;
+    let height=img.height;
+    //如果图片像素大于四百万像素，计算压缩至四百万像素以下
+    let ratio=width*height/4000000;
+    if(ratio>1){
+      width /=ratio;
+      height /=ratio;
+    }else {
+      ratio=1
+    }
+  }
   upload(baseStr, type) {
     let text = window.atob(baseStr.split(',')[1]);
     let buffer = new ArrayBuffer(text.length);
