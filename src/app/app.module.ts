@@ -37,10 +37,9 @@ import {ResInterceptor} from "./interceptors/res.interceptor";
     SliderModule,
     MainMenuModule,
     MyDialogModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes,{useHash:false})
   ],
   providers: [
-    {provide: LocationStrategy, useClass: HashLocationStrategy},
     {provide:HTTP_INTERCEPTORS,useClass:ResInterceptor,multi:true},
     AuthGuard,
     AuthGuardService,
